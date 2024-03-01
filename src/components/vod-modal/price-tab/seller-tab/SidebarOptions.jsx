@@ -1,0 +1,33 @@
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  width: 171px;
+  background-color: #1a1a18;
+  border-radius: 5px;
+  color: #dedee9;
+`;
+
+const Option = styled.h2`
+  font-weight: 500;
+  font-size: 18px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: ${(props) => (props.option ? "#FFC700" : "#dedee9")};
+  border-right: ${(props) => props.option && "2px solid #FFC700"};
+`;
+
+const SidebarOptions = ({ option, setOption, role }) => {
+  return (
+    <Wrapper>
+      <Option option={option === true} onClick={() => setOption(true)}>
+        {role === "seller" ? " کف قیمت" : "قیمت فروشنده"}
+      </Option>
+      <Option option={option === false} onClick={() => setOption(false)}>
+        {role === "seller" ? "تعیین قیمت" : "قیمت پیشنهادی"}
+      </Option>
+    </Wrapper>
+  );
+};
+
+export default SidebarOptions;
