@@ -6,7 +6,7 @@ import {
   Transforms,
   createEditor,
 } from "slate";
-import { FaBold, FaItalic, FaQuoteLeft, FaUnderline } from "react-icons/fa";
+import { FaBold, FaItalic, FaUnderline } from "react-icons/fa";
 import { useCallback, useMemo } from "react";
 
 import { FaCode } from "react-icons/fa6";
@@ -36,7 +36,6 @@ const RichText = () => {
         <MarkButton format="italic" icon=<FaItalic /> />
         <MarkButton format="underline" icon=<FaUnderline /> />
         <MarkButton format="code" icon=<FaCode /> />
-        <BlockButton format="block-quote" icon=<FaQuoteLeft  /> />
         <BlockButton format="bulleted-list" icon=<MdFormatListBulleted /> />
       </Toolbar>
       <Editable
@@ -45,6 +44,7 @@ const RichText = () => {
         placeholder="متن پیشنهادی"
         spellCheck
         autoFocus
+        style={{ padding: "15px", outline: "none", height: "100%" }}
         onKeyDown={(event) => {
           for (const hotkey in HOTKEYS) {
             if (isHotkey(hotkey, event)) {
@@ -228,39 +228,10 @@ const MarkButton = ({ format, icon }) => {
 };
 
 const initialValue = [
-//   {
-//     type: "paragraph",
-//     children: [
-//       { text: "This is editable " },
-//       { text: "rich", bold: true },
-//       { text: " text, " },
-//       { text: "much", italic: true },
-//       { text: " better than a " },
-//       { text: "<textarea>", code: true },
-//       { text: "!" },
-//     ],
-//   },
-//   {
-//     type: "paragraph",
-//     children: [
-//       {
-//         text: "Since it's rich text, you can do things like turn a selection of text ",
-//       },
-//       { text: "bold", bold: true },
-//       {
-//         text: ", or add a semantically rendered block quote in the middle of the page, like this:",
-//       },
-//     ],
-//   },
-//   {
-//     type: "block-quote",
-//     children: [{ text: "A wise quote." }],
-//   },
-//   {
-//     type: "paragraph",
-//     align: "center",
-//     children: [{ text: "Try it out for yourself!" }],
-//   },
+  {
+    type: "paragraph",
+    children: [{ text: "" }],
+  },
 ];
 
 export default RichText;

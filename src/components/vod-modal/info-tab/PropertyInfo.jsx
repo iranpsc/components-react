@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { BuyerTab, InfoTab, SellerTab } from "../index";
 
 const PropertyInfo = ({ active, role }) => {

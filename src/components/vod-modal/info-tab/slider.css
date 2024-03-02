@@ -1,6 +1,6 @@
 .slider-wrapper {
   position: fixed;
-  top: 4%;
+  top: 9%;
   right: 10%;
   width: 80%;
   height: 90%;
@@ -20,12 +20,27 @@
 }
 
 .keen-slider:first-of-type {
-  height: 75% !important;
+  height: 90% !important;
 }
 
 .keen-slider:nth-of-type(2) {
   height: 25%;
   padding-bottom: 22px;
+}
+
+@media (max-width: 800px) {
+  .keen-slider:nth-of-type(2) {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .slider-wrapper {
+    top: 4%;
+  }
+  .keen-slider:first-of-type {
+    height: 75% !important;
+  }
 }
 
 .keen-slider .number-slide1 img {

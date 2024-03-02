@@ -6,6 +6,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (min-width: 600px) {
+    height: 40vh;
+    overflow-y: auto;
+  }
+  @media (min-width: 800px) {
+    height: auto;
+  }
 `;
 
 const Text = styled.p`
@@ -20,9 +27,7 @@ const InputWrapper = styled.div`
   border: 1px solid #454545;
   background-color: #2c2c2c;
   overflow: hidden;
-  @media (min-width: 998px) {
-    width: 276px;
-  }
+  width: 276px;
 `;
 
 const Input = styled.input`

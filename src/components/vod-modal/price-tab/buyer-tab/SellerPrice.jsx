@@ -6,6 +6,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
+  height: 40vh;
+  overflow-y: auto;
 `;
 
 const Text = styled.p`

@@ -9,12 +9,12 @@ const Wrapper = styled.div`
   margin: 20px 0;
 `;
 
-const SellerTab = ({role}) => {
-  const [option, setOption] = useState(false);
+const SellerTab = ({ role }) => {
+  const [option, setOption] = useState(true);
   return (
     <Wrapper>
       <SidebarOptions role={role} option={option} setOption={setOption} />
-      <SellerContent  option={option} />
+      <SellerContent option={option} />
     </Wrapper>
   );
 };

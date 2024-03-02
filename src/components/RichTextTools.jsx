@@ -64,7 +64,7 @@ export const EditorValue = React.forwardRef(
             font-size: 14px;
             padding: 5px 20px;
             color: #404040;
-            border-top: 2px solid #eeeeee;
+            border-top: 2px solid gray;
             background: #f8f8f8;
           `}
         >
@@ -177,10 +177,11 @@ export const Toolbar = React.forwardRef(
         className,
         css`
           position: relative;
-          padding: 1px 18px 17px;
-          margin: 0 -20px;
-          border-bottom: 2px solid #eee;
-          margin-bottom: 20px;
+          padding: 5px;
+          margin: 0;
+          border-bottom: 1px solid gray;
+          display: flex;
+          gap: 12px;
         `
       )}
     />

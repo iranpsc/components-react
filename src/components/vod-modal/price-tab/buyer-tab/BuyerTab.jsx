@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `;
 
 const BuyerTab = () => {
-  const [option, setOption] = useState(false);
+  const [option, setOption] = useState(true);
   return (
     <Wrapper>
       <SidebarOptions option={option} setOption={setOption} />

@@ -46,13 +46,38 @@ const ActionWrapper = styled.div`
   cursor: pointer;
 `;
 
-const ResultInfo = ({ setAssign }) => {
+const ResultWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  @media (min-width: 1200px) {
+    align-items: center;
+  }
+`;
+
+const Title = styled.h3`
+  color: #a0a0ab;
+  font-size: 14px;
+  font-weight: 500;
+`;
+
+const Value = styled.p`
+  color: #dedee9;
+  font-size: 16px;
+  font-weight: 400;
+`;
+
+const ResultInfo = ({ setAssign, rial, psc }) => {
   return (
     <Wrapper>
       <Results>
-        <Result title="قیمت فروش(ریال)" value={1927262} />
-        <Result title="قیمت فروش(PSC)" value={22211} />
-        <Result title="قیمت نهایی" value="7,670,250 IRR / 8,521.8 PSC" />
+        <Result title="قیمت فروش(ریال)" value={rial} />
+        <Result title="قیمت فروش(PSC)" value={psc} />
+        <ResultWrapper>
+          <Title>قیمت نهایی</Title>
+          <Value>{rial}IRR / {psc} PSC</Value>
+        </ResultWrapper>
         <Result title="کارمزد" value={5} />
       </Results>
       <Actions>

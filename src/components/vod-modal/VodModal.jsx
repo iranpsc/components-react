@@ -8,10 +8,11 @@ const Modal = styled.div`
   background-color: #000000;
   padding: 15px 25px;
   width: 85%;
-  height: 94vh;
-  margin: auto;
+  height: 80%;
+  overflow: hidden;
   @media (min-width: 992px) {
     width: 70%;
+    height: 94%;
   }
   @media (min-width: 1300px) {
     width: 82%;
@@ -19,8 +20,8 @@ const Modal = styled.div`
 `;
 
 const VodModal = () => {
-  const [active, setActive] = useState("price");
-  const [role] = useState("buyer");
+  const [active, setActive] = useState("info");
+  const [role] = useState("seller");
 
   return (
     <Modal>

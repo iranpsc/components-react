@@ -1,5 +1,5 @@
 import FillInputs from "./FillInputs";
-import ResultInfo from "../seller-tab/ResultInfo";
+import ResultInfo from "../../../ResultInfo";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -8,6 +8,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
+  @media (min-width: 600px) {
+    height: 40vh;
+    overflow-y: auto;
+  }
+  @media (min-width: 800px) {
+    height: auto;
+  }
 `;
 
 const Text = styled.p`
@@ -17,13 +24,21 @@ const Text = styled.p`
 
 const SuggestPrice = () => {
   const [assign, setAssign] = useState(false);
+  const [rial, setRial] = useState(0);
+  const [psc, setPsc] = useState(0);
   return (
     <Wrapper>
-      <Text>
-        شما می توانید قیمت پیشنهادی خود را برای خرید این ملک ثبت کنید{" "}
-      </Text>
-      {!assign && <FillInputs setAssign={setAssign} />}
-      {assign && <ResultInfo setAssign={setAssign} />}
+      <Text>قیمت پیشنهادی شما </Text>
+      {!assign && (
+        <FillInputs
+          rial={rial}
+          psc={psc}
+          setRial={setRial}
+          setPsc={setPsc}
+          setAssign={setAssign}
+        />
+      )}
+      {assign && <ResultInfo rial={rial} psc={psc} setAssign={setAssign} />}
     </Wrapper>
   );
 };
