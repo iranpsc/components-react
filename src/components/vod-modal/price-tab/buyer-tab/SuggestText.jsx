@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   color: #ffffff;
   background-color: #2c2c2c;
   overflow: hidden;
-  height: 212px;
+  height: 100%;
 `;
 const SuggestText = () => {
   return (

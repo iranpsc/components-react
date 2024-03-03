@@ -3,14 +3,13 @@ import Input from "../../../Input";
 import SuggestText from "./SuggestText";
 import TitleValue from "../../../TitleValue";
 import styled from "styled-components";
-import { useState } from "react";
 
 const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding-left: 20px;
-  @media (min-width: 998px) {
+  @media (min-width: 600px) {
     flex-direction: row;
     padding-left: 0;
   }
@@ -18,7 +17,6 @@ const InputsWrapper = styled.div`
 
 const ResultWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
   gap: 20px;
   width: 100%;
   @media (min-width: 998px) {
@@ -55,6 +53,10 @@ const Value = styled.p`
   padding: 8px 20px;
 `;
 
+const Div = styled.div`
+  height: 212px !important;
+`;
+
 const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
   return (
     <>
@@ -74,7 +76,9 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           insideText="PSC"
         />
       </InputsWrapper>
-      <SuggestText />
+      <Div>
+        <SuggestText />
+      </Div>
       <ResultWrapper>
         <Wrapper>
           <Title>قیمت نهایی</Title>

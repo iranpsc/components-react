@@ -21,7 +21,7 @@ const Modal = styled.div`
 
 const VodModal = () => {
   const [active, setActive] = useState("info");
-  const [role] = useState("seller");
+  const [role] = useState("buyer");
 
   return (
     <Modal>

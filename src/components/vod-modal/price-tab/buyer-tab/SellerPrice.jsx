@@ -6,8 +6,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
-  height: 40vh;
-  overflow-y: auto;
+  @media (min-width: 600px) {
+    height: 40vh;
+    overflow-y: auto;
+  }
+  @media (min-width: 800px) {
+    height: auto;
+  }
 `;
 
 const Text = styled.p`
@@ -22,7 +27,7 @@ const SellerPrice = () => {
         این VOD توسط فروشنده قیمت گذاری شده است شما می توایند این ملک را به دو
         قیمت فروشنده به صورت ریال و PSC خریداری کنید{" "}
       </Text>
-      <SellerPriceInfo  />
+      <SellerPriceInfo />
     </Wrapper>
   );
 };
