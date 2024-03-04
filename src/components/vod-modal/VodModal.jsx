@@ -14,14 +14,14 @@ const Modal = styled.div`
     width: 70%;
     height: 94%;
   }
-  @media (min-width: 1300px) {
-    width: 82%;
+  @media (min-width: 800px) {
+    width: 1370px;
   }
 `;
 
 const VodModal = () => {
   const [active, setActive] = useState("info");
-  const [role] = useState("buyer");
+  const [role] = useState("seller");
 
   return (
     <Modal>

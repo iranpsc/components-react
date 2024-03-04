@@ -25,7 +25,8 @@ const AlbumWrapper = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  margin: 15px auto;
+  margin-top: 30px;
+  padding: 0 20px;
 `;
 
 const UploadMore = styled.div`

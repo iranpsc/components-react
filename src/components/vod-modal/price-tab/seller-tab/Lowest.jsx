@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   @media (min-width: 600px) {
-    height: 40vh;
+    height: 32vh;
     overflow-y: auto;
   }
   @media (min-width: 800px) {
@@ -21,7 +21,7 @@ const Text = styled.p`
 `;
 
 const InputWrapper = styled.div`
-  height: 50px;
+  height: 50px !important;
   position: relative;
   border-radius: 5px;
   border: 1px solid #454545;
@@ -30,13 +30,17 @@ const InputWrapper = styled.div`
   width: 276px;
 `;
 
+const Div = styled.div`
+  height: 50px !important;
+`;
+
 const Input = styled.input`
   position: absolute;
   top: 0;
   right: 0;
   width: 80%;
   border: none;
-  height: 100%;
+  height: 50px !important;
   color: gray;
   outline: none;
   padding-right: 10px;
@@ -59,18 +63,20 @@ const Lowest = () => {
         متارنگ به صورت درصدی تعیین نمایید. در این صورت پیشنهاد های کمتر از این
         محدوده برای شما ارسال نخواهد شد
       </Text>
-      <InputWrapper>
-        <Input
-          value={percentage}
-          onChange={(e) => setPercentage(e.target.value)}
-          type="number"
-          min="0"
-          max="100"
-          step="1"
-          placeholder="50"
-        />
-        <Span>%</Span>
-      </InputWrapper>
+      <Div>
+        <InputWrapper>
+          <Input
+            value={percentage}
+            onChange={(e) => setPercentage(e.target.value)}
+            type="number"
+            min="0"
+            max="100"
+            step="1"
+            placeholder="50"
+          />
+          <Span>%</Span>
+        </InputWrapper>
+      </Div>
       <Button label="ثبت قیمت" onclick={() => {}} />
     </Wrapper>
   );

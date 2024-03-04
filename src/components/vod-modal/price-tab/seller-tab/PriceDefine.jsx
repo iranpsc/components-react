@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   gap: 30px;
   width: 100%;
   @media (min-width: 600px) {
-    height: 40vh;
+    height: 33vh;
     overflow-y: auto;
   }
   @media (min-width: 800px) {
