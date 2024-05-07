@@ -7,11 +7,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   @media (min-width: 600px) {
-    height: 32vh;
     overflow-y: auto;
   }
-  @media (min-width: 800px) {
-    height: auto;
+  @media (max-width: 1024px) {
+    height: 100%;
   }
 `;
 
@@ -69,9 +68,8 @@ const Lowest = () => {
             value={percentage}
             onChange={(e) => setPercentage(e.target.value)}
             type="number"
-            min="0"
-            max="100"
-            step="1"
+            min={0}
+            max={100}
             placeholder="50"
           />
           <Span>%</Span>

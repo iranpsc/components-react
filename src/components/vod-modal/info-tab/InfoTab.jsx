@@ -3,26 +3,36 @@ import { Album, FirstRow, SecondRow, ThirdRow } from "../index";
 import styled from "styled-components";
 
 const RowsWrapper = styled.div`
-  margin: 20px 0 0 0;
+  margin: 25px 0 0 0;
   overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 6px;
+  height: 70%;
+  direction: ltr;
+  @media (max-width: 1024px) and (max-height: 600px) {
+    height: 70% !important;
   }
-  @media (min-width: 600px) and (max-width: 800px) {
-    min-height: 5vh;
-    max-height: 32vh;
+  @media (min-width: 1024px) {
+    height: 100%;
   }
-  @media (min-width: 800px) {
-    max-height: 73vh;
+  @media (min-width: 1370px) {
+    height: 77%;
   }
+`;
+
+const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  direction: rtl;
 `;
 
 const InfoTab = () => {
   return (
     <RowsWrapper>
-      <FirstRow />
-      <SecondRow />
-      <ThirdRow />
+      <Div>
+        <FirstRow />
+        <SecondRow />
+        <ThirdRow />
+      </Div>
       <Album />
     </RowsWrapper>
   );

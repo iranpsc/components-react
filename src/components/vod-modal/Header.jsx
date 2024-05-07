@@ -7,13 +7,19 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
+  @media (min-width: 998px) {
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
 `;
 
 const Text = styled.h2`
   color: #ffffff;
-  font-size: 20px;
   font-weight: 600;
+  font-size: 16px;
+  @media (min-width: 998px) {
+    font-size: 20px;
+  }
 `;
 
 const Icons = styled.div`
@@ -23,17 +29,25 @@ const Icons = styled.div`
   gap: 10px;
   svg {
     color: #3b3b3b;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    @media (min-width: 998px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 
 const CloseWrapper = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   background-color: rgb(59, 8, 8);
   cursor: pointer;
+  @media (min-width: 998px) {
+    width: 40px;
+    height: 40px;
+  }
   svg {
     color: red;
   }

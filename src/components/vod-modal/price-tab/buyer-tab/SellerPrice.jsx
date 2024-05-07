@@ -6,12 +6,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 100%;
-  @media (min-width: 600px) {
-    height: 33vh;
-    overflow-y: auto;
+  @media (max-width: 1024px) {
+    height: 67vh !important;
+    overflow: auto;
   }
-  @media (min-width: 800px) {
-    height: auto;
+  @media (min-width: 1025px) {
+    height: auto !important;
   }
 `;
 

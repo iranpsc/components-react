@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 171px;
+  max-width: 171px !important;
   background-color: #1a1a18;
   border-radius: 5px;
   color: #dedee9;
@@ -14,7 +14,8 @@ const Option = styled.h2`
   white-space: nowrap;
   cursor: pointer;
   color: ${(props) => (props.option ? "#FFC700" : "#dedee9")};
-  border-right: ${(props) => props.option && "2px solid #FFC700"};
+  border-right: ${(props) =>
+    props.option ? "2px solid #FFC700" : "2px solid transparent"};
 `;
 
 const SidebarOptions = ({ option, setOption, role }) => {

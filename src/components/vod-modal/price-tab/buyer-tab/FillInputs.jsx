@@ -19,10 +19,10 @@ const ResultWrapper = styled.div`
   display: grid;
   gap: 20px;
   width: 100%;
-  @media (min-width: 998px) {
+  @media (min-width: 670px) {
     grid-template-columns: 2fr 1fr;
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 1023px) {
     grid-template-columns: 2fr 1fr 1fr;
   }
   @media (min-width: 1300px) {
@@ -33,11 +33,14 @@ const ResultWrapper = styled.div`
 const Wrapper = styled.div`
   display: flex;
   border-radius: 5px;
-  height: 48px;
-  border: 1px solid gray;
+  height: 40px !important;
+  border: 1px solid #454545;
   font-weight: 400;
   color: #dedee9;
   overflow: hidden;
+  @media (min-width: 998px) {
+    height: 48px;
+  }
 `;
 
 const Title = styled.h3`
@@ -45,12 +48,18 @@ const Title = styled.h3`
   font-weight: 400;
   height: fit-content;
   background-color: #1a1a18;
-  padding: 8px 20px;
+  padding: 5px 20px;
+  @media (min-width: 998px) {
+    padding:8px 20px
+  }
 `;
 
 const Value = styled.p`
   font-size: 18px;
-  padding: 8px 20px;
+  padding: 5px 20px;
+  @media (min-width: 998px) {
+    padding:8px 20px
+  }
 `;
 
 const Div = styled.div`

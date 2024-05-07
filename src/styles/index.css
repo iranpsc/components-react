@@ -1,5 +1,7 @@
 body {
   font-family: "AzarMehr";
+  direction: rtl;
+  margin: 0;
 }
 
 h1,
@@ -8,7 +10,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+html {
   margin: 0;
   padding: 0;
 }
@@ -16,4 +19,32 @@ p {
 button,
 input {
   font-family: inherit;
+}
+
+input {
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+* {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #858585d2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d7d7d7c0;
+    cursor: pointer;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 }

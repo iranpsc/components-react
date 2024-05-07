@@ -2,6 +2,7 @@
 
 import { IoMdClose } from "react-icons/io";
 import KeenSlider from "./KeenSlider";
+import MobileSlider from "./MobileSlider";
 import styled from "styled-components";
 
 const Background = styled.div`
@@ -44,7 +45,7 @@ const Background = styled.div`
   }
 `;
 
-const Slider = ({ setOpen, images, deleteHandler }) => {
+const Slider = ({ setOpen, images, deleteHandler, activeImage, setActiveImage }) => {
   return (
     <div>
       <Background>
@@ -52,6 +53,7 @@ const Slider = ({ setOpen, images, deleteHandler }) => {
           <IoMdClose />
         </div>
       </Background>
+      <MobileSlider activeImage={activeImage} setActiveImage={setActiveImage} images={images} deleteHandler={deleteHandler} />
       <KeenSlider images={images} deleteHandler={deleteHandler} />
     </div>
   );

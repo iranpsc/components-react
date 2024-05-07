@@ -6,10 +6,13 @@ const Wrapper = styled.div`
   border: 1px solid #454545;
   overflow: hidden;
   border-radius: 5px;
-  height: 50px;
+  height: 40px;
   padding: 0 10px;
   display: flex;
   width: 100%;
+  @media (min-width: 998px) {
+    height: 50px;
+  }
 `;
 
 const InputElement = styled.input`
@@ -24,10 +27,20 @@ const InputElement = styled.input`
 const Span = styled.span`
   position: absolute;
   left: 10px;
-  top: 10px;
+  top: 5px;
   color: #dedee9;
+  @media (min-width: 998px) {
+    top: 10px;
+  }
 `;
-const Input = ({ type, placeholder, insideText, value, onchange, disabled }) => {
+const Input = ({
+  type,
+  placeholder,
+  insideText,
+  value,
+  onchange,
+  disabled,
+}) => {
   return (
     <Wrapper>
       <InputElement

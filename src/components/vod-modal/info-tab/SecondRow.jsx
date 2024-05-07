@@ -25,11 +25,19 @@ const second_row_info = [
 ];
 
 const RowWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   @media (min-width: 1300px) {
+    grid-template-columns: 2fr 2fr 2fr 3fr 3fr;
+  }
+  @media (min-width: 1024px)  {
+    flex-wrap: nowrap;
+  }
+  @media (max-width: 1024px) and (min-height: 600px) {
+    grid-template-columns: 2fr 2fr 2fr 3fr 3fr;
+  }
+  @media (min-width: 1180px) and (max-height: 820px) {
     grid-template-columns: 2fr 2fr 2fr 3fr 3fr;
   }
 `;
@@ -38,7 +46,7 @@ const SecondRow = () => {
   return (
     <RowWrapper>
       {second_row_info.map((item) => (
-        <TextValueIcon key={item.id} {...item} />
+        <TextValueIcon long key={item.id} {...item} />
       ))}
     </RowWrapper>
   );

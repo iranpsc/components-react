@@ -11,11 +11,20 @@ const first_row_info = [
 ];
 
 const RowWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: 1fr 1fr; */
+  gap: 20px;
   @media (min-width: 1300px) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+
+  @media (max-width: 1024px) and (min-height: 600px) {
+    grid-template-columns: 1fr 1fr 1fr !important;
+  }
+  
+  @media (min-width: 1180px) and (max-height: 820px) {
+    grid-template-columns: 1fr 1fr 1fr !important;
   }
 `;
 

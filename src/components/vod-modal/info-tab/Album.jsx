@@ -1,6 +1,7 @@
 import { HiOutlineTrash } from "react-icons/hi";
 import { IoWarningOutline } from "react-icons/io5";
 import Slider from "./Slider";
+import noPic from '../../../assets/images/nopic.jpg'
 import slide1 from "../../../assets/images/slide1.png";
 import slide2 from "../../../assets/images/slide2.png";
 import slide3 from "../../../assets/images/slide3.png";
@@ -21,12 +22,29 @@ const images_array = [
 ];
 
 const AlbumWrapper = styled.div`
-  display: flex;
+  direction: rtl;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  flex-wrap: wrap;
   gap: 20px;
   margin-top: 30px;
   padding: 0 20px;
+  overflow-y: auto;
+  @media (min-width: 840px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  @media (max-width: 1024px) and (min-height: 600px) {
+    gap: 19px;
+  }
+  @media (max-width: 1024px) and (max-height: 600px) {
+    gap: 18px;
+  }
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const UploadMore = styled.div`
@@ -40,6 +58,7 @@ const UploadMore = styled.div`
   border-radius: 10px;
   color: #dedee9;
   position: relative;
+  flex-grow: 1;
   input {
     opacity: 0;
     height: 100%;
@@ -47,14 +66,20 @@ const UploadMore = styled.div`
     cursor: pointer;
     position: absolute;
   }
-
-  @media (min-width: 400px) {
-    width: 153px;
-    height: 153px;
+  @media (min-width: 390px) {
+    height: 146px !important;
   }
-  @media (min-width: 998px) {
-    width: 187px;
-    height: 187px;
+  @media (min-width: 1024px) {
+    height: 137px !important;
+  }
+  @media (min-width: 1180px) {
+    height: 155px !important;
+  }
+  @media (min-width: 1500px) {
+    height: 188px !important;
+  }
+  @media (min-width: 2500px) {
+    height: 27vh !important;
   }
 `;
 
@@ -64,20 +89,28 @@ const ImageWrapper = styled.div`
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  @media (min-width: 400px) {
-    width: 155px;
-    height: 155px;
+  @media (min-width: 390px) {
+    height: 149px;
   }
-  @media (min-width: 998px) {
-    width: 189px;
-    height: 189px;
+  @media (min-width: 1024px) {
+    height: 144px;
+  }
+  @media (min-width: 1180px) {
+    height: 160px;
+  }
+  @media (min-width: 1500px) {
+    height: 190px;
     &:hover img {
       transform: scale(1.1);
     }
   }
+  @media (min-width: 2500px) {
+    height: 28vh !important;
+  }
   img {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     transition: transform 0.3s ease-in-out;
   }
 `;
@@ -89,8 +122,8 @@ const Actions = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 100%;
   display: flex;
   align-items: center;
@@ -100,7 +133,7 @@ const IconWrapper = styled.div`
     margin-top: 3px;
   }
   svg {
-    font-size: 13px;
+    font-size: 17px;
     cursor: pointer;
   }
   @media (min-width: 998px) {
@@ -118,12 +151,18 @@ const IconWrapper = styled.div`
 const Album = () => {
   const [open, setOpen] = useState(false);
   const [images, setImages] = useState(images_array);
+  const [activeImage, setActiveImage] = useState(images[0]);
+
   const deleteHandler = (id) => {
     const filteredImages = images.filter((item) => item.id !== id);
     setImages(filteredImages);
+    // setActiveImage(images[id + 1]);
+    if (images.length  === 0) {
+      setActiveImage(noPic);
+    }
   };
   return (
-    <>
+    <div>
       <AlbumWrapper>
         {images.map((item) => (
           <ImageWrapper key={item.id}>
@@ -152,9 +191,11 @@ const Album = () => {
           deleteHandler={deleteHandler}
           images={images}
           setOpen={setOpen}
+          activeImage={activeImage}
+          setActiveImage={setActiveImage}
         />
       )}
-    </>
+    </div>
   );
 };
 

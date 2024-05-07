@@ -9,11 +9,14 @@ const TabsWrapper = styled.div`
 const TabItem = styled.h3`
   color: ${(props) => (props.active ? "#ffc700" : "#dedee9")};
   font-weight: 500;
-  font-size: 18px;
   margin: 0;
+  font-size: 16px;
   padding: 8px 26px;
   cursor: pointer;
   border-bottom: 2px solid ${(props) => (props.active ? "#ffc700" : "#454545")};
+  @media (min-width: 998px) {
+    font-size: 18px;
+  }
   &:hover {
     color: #ffc700;
     border-bottom: 2px solid #ffc700;
