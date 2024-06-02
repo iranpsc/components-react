@@ -31,13 +31,13 @@ const InfoIcon = styled.div`
   }
 `;
 
-const Title = styled.div`
+const Title = styled.p`
   color: #dedee9;
   font-size: 16px;
   font-weight: 400;
   line-height: ${(props) => props.long && "20px"};
-  @media (max-width: 1024px) and (min-height: 600px) {
-    font-size: ${(props) => (props.long ? "12px" : "16px")};
+  @media (max-width: 1024px) {
+    font-size: ${(props) => (props.long ? "14px" : "16px")};
   }
 `;
 
@@ -46,21 +46,23 @@ const Value = styled.span`
   font-size: 12px;
   font-weight: 400;
   padding: 10px 15px;
+  line-height: ${(props) => props.smallValue && "20px"};
+
   @media (min-width: 460px) {
     font-size: 18px;
   }
-  @media (max-width: 1024px) and (min-height: 600px) {
-    font-size: 14px;
+  @media (max-width: 1024px) {
+    font-size: ${(props) => (props.smallValue ? "14px" : "16px")};
   }
 `;
-const TextValueIcon = ({ icon, title, value, long }) => {
+const TextValueIcon = ({ icon, title, value, long, smallValue }) => {
   return (
     <Item>
       <InfoIcon>
         {icon}
         <Title long={long}>{title}</Title>
       </InfoIcon>
-      <Value>{value}</Value>
+      <Value smallValue={smallValue}>{value}</Value>
     </Item>
   );
 };

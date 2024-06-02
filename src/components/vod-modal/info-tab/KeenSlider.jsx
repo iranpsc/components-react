@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import "keen-slider/keen-slider.min.css";
-import "./slider.css";
+import "../../../styles/styles.css";
 
 import { HiOutlineTrash } from "react-icons/hi";
 import { IoWarningOutline } from "react-icons/io5";

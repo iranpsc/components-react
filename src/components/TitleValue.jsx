@@ -40,5 +40,4 @@ const TitleValue = ({ title, value }) => {
     </Wrapper>
   );
 };
-
 export default TitleValue;

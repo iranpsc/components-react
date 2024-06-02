@@ -1,4 +1,3 @@
-export { default as Header } from "./Header";
 export { default as PropertyInfo } from "./info-tab/PropertyInfo";
 export { default as Tabs } from "./Tabs";
 export { default as InfoTab } from "./info-tab/InfoTab";

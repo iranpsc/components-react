@@ -4,6 +4,15 @@ const TabsWrapper = styled.div`
   border-bottom: 1px solid #454545;
   justify-content: flex-start;
   display: flex;
+  margin-top: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TabItem = styled.h3`
@@ -39,6 +48,27 @@ const Tabs = ({ active, setActive, role }) => {
           خرید
         </TabItem>
       )}
+      <TabItem active={active === "enter"} onClick={() => setActive("enter")}>
+        ورود به ملک
+      </TabItem>
+      <TabItem active={active === "build"} onClick={() => setActive("build")}>
+        ساخت بنا
+      </TabItem>
+      <TabItem active={active === "physic"} onClick={() => setActive("physic")}>
+        اطلاعات فیزیکی
+      </TabItem>
+      <TabItem
+        active={active === "participation"}
+        onClick={() => setActive("participation")}
+      >
+        مشارکت در ساخت{" "}
+      </TabItem>
+      <TabItem
+        active={active === "history"}
+        onClick={() => setActive("history")}
+      >
+        تاریخچه خرید
+      </TabItem>
     </TabsWrapper>
   );
 };

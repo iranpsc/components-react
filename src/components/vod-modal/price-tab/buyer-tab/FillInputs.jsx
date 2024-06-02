@@ -50,7 +50,7 @@ const Title = styled.h3`
   background-color: #1a1a18;
   padding: 5px 20px;
   @media (min-width: 998px) {
-    padding:8px 20px
+    padding: 8px 20px;
   }
 `;
 
@@ -58,7 +58,7 @@ const Value = styled.p`
   font-size: 18px;
   padding: 5px 20px;
   @media (min-width: 998px) {
-    padding:8px 20px
+    padding: 8px 20px;
   }
 `;
 

@@ -2,6 +2,7 @@ body {
   font-family: "AzarMehr";
   direction: rtl;
   margin: 0;
+  color: rgba(0, 0, 0, 0.713);
 }
 
 h1,
@@ -17,7 +18,9 @@ html {
 }
 
 button,
-input {
+input,
+textarea,
+select, option {
   font-family: inherit;
 }
 
