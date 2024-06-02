@@ -5,9 +5,10 @@ import { createContext, useState } from "react";
 
 import AccountSecurityModal from "./pages/AccountSecurityModal";
 import AuthenticationModal from "./pages/AuthenticationModal";
+import FeaturesModal from "./pages/FeaturesModal";
+import ProfileModal from "./pages/ProfileModal";
 import ShopModal from "./pages/ShopModal";
 import { ToastContainer } from "react-toastify";
-import VodModal from "./pages/VodModal";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -27,10 +28,11 @@ function App() {
     <AlertContext.Provider value={{ alert, setAlert }}>
       <Wrapper>
         <Routes>
-          <Route path="/features" element={<VodModal />} />
+          <Route path="/features" element={<FeaturesModal />} />
           <Route path="/shop" element={<ShopModal />} />
           <Route path="/authentication" element={<AuthenticationModal />} />
           <Route path="/accountsecurity" element={<AccountSecurityModal />} />
+          <Route path="/profile" element={<ProfileModal />} />
         </Routes>
       </Wrapper>
       <ToastContainer

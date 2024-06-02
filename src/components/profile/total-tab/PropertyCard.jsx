@@ -1,0 +1,37 @@
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #1a1a18;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 15px;
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    span {
+      color: #dedee9;
+      font-size: 13px;
+    }
+    h3 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+`;
+const PropertyCard = ({ image, label, value }) => {
+  return (
+    <Container>
+      <img width={40} height={40} loading="lazy" alt={label} src={image}/>
+      <div>
+        <span>{label}</span>
+        <h3>{value}</h3>
+      </div>
+    </Container>
+  );
+};
+
+export default PropertyCard;

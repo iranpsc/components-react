@@ -1,7 +1,7 @@
 import "react-multi-date-picker/styles/backgrounds/bg-dark.css";
 
 import DatePicker from "react-multi-date-picker";
-import EditInput from "../../vod-modal/enter-tab/EditInput";
+import EditInput from "../../features/enter-tab/EditInput";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";

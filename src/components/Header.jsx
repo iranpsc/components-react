@@ -2,7 +2,24 @@ import { FaCircleExclamation, FaCircleQuestion } from "react-icons/fa6";
 
 import { BiExitFullscreen } from "react-icons/bi";
 import { IoIosClose } from "react-icons/io";
+import { PiGearSixFill } from "react-icons/pi";
+import { TiWarning } from "react-icons/ti";
 import styled from "styled-components";
+
+const IconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b3b3b;
+  padding: 10px;
+  svg {
+    color: #949494 !important;
+    font-size: 1px !important;
+  }
+`;
 
 const Div = styled.div`
   position: relative;
@@ -14,7 +31,7 @@ const Div = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 100%;
-    background-color: white;
+    background-color: #949494;
   }
 `;
 const HeaderWrapper = styled.div`
@@ -83,7 +100,7 @@ const FullWrapper = styled.div`
   }
 `;
 
-const Header = ({ title, long, loading }) => {
+const Header = ({ title, long, loading, profile }) => {
   return (
     <HeaderWrapper>
       <Text long={long}>{title}</Text>
@@ -92,6 +109,16 @@ const Header = ({ title, long, loading }) => {
           <FullWrapper>
             <BiExitFullscreen />
           </FullWrapper>
+        )}
+        {profile && (
+          <>
+            <IconWrapper>
+              <TiWarning  />
+            </IconWrapper>
+            <IconWrapper>
+              <PiGearSixFill  />
+            </IconWrapper>
+          </>
         )}
         <Div>
           <div />

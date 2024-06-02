@@ -1,6 +1,6 @@
 import { HiOutlineUser } from "react-icons/hi";
 import Pricing from "./Pricing";
-import TitleValue from "../../shop-modal/TitleValue";
+import TitleValue from "../../shop/TitleValue";
 import styled from "styled-components";
 
 const Container = styled.div`

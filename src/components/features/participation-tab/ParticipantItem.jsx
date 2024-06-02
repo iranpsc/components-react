@@ -3,7 +3,7 @@ import DeleteConfirmModal from "./DeleteConfirmModal";
 import EditConfirmModal from "./EditConfirmModal";
 import { FiTrash2 } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
-import TitleValue from "../../shop-modal/TitleValue";
+import TitleValue from "../../shop/TitleValue";
 import UserCode from "../../UserCode";
 import satisfy from "../../../assets/images/player/satisfy.png";
 import styled from "styled-components";
