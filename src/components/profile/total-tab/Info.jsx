@@ -1,12 +1,19 @@
 import { BiCommentDots } from "react-icons/bi";
 import ButtonIcon from "../../ButtonIcon";
 import { LuShare2 } from "react-icons/lu";
+import ShareModal from "./ShareModal";
 import { TiUserAddOutline } from "react-icons/ti";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 15px;
   background-color: #1a1a18;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  @media (min-width: 1024px) {
+    padding: 20px;
+  }
 `;
 const Header = styled.div`
   display: flex;
@@ -25,10 +32,11 @@ const Title = styled.h2`
   font-size: 20px;
   font-weight: 600;
 `;
-const Code = styled.h4`
+const Code = styled.a`
   color: #0066ff;
   font-weight: 500;
   color: #0066ff;
+  text-decoration: none;
 `;
 const Content = styled.div`
   display: flex;
@@ -59,12 +67,15 @@ const Upper = styled.div`
   margin: 30px 0 10px 0;
 `;
 const Info = () => {
+  const [openShare, setOpenShare] = useState(false);
   return (
     <Container>
       <Header>
         <div>
           <Title>حسین قدیری</Title>
-          <Code>hm-2000001</Code>
+          <Code href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
+            hm-2000001
+          </Code>
         </div>
         <span>عضویت از: ۱۴۰۱/۱۰/۱۴</span>
       </Header>
@@ -94,7 +105,7 @@ const Info = () => {
             grow
             icon={<LuShare2 />}
             label="اشتراک گذاری"
-            onclick={() => {}}
+            onclick={() => setOpenShare(true)}
           />
         </Upper>
         <ButtonIcon
@@ -104,6 +115,7 @@ const Info = () => {
           onclick={() => {}}
         />
       </Buttons>
+      {openShare && <ShareModal setOpenShare={setOpenShare} />}
     </Container>
   );
 };

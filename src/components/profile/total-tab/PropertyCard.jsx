@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   background-color: #1a1a18;
   border-radius: 10px;
@@ -9,6 +10,7 @@ const Container = styled.div`
   gap: 15px;
   div {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 2px;
     span {
@@ -19,6 +21,12 @@ const Container = styled.div`
       color: #ffffff;
       font-size: 18px;
       font-weight: 600;
+    }
+  }
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    div{
+      align-items: flex-start;
     }
   }
 `;

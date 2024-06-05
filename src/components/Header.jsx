@@ -7,8 +7,8 @@ import { TiWarning } from "react-icons/ti";
 import styled from "styled-components";
 
 const IconWrapper = styled.div`
-  width: 20px;
-  height: 20px;
+  width: 11px;
+  height: 11px;
   border-radius: 100%;
   display: flex;
   align-items: center;
@@ -17,7 +17,10 @@ const IconWrapper = styled.div`
   padding: 10px;
   svg {
     color: #949494 !important;
-    font-size: 1px !important;
+  }
+  @media (min-width: 1024px) {
+    width: 20px;
+    height: 20px;
   }
 `;
 
@@ -113,10 +116,10 @@ const Header = ({ title, long, loading, profile }) => {
         {profile && (
           <>
             <IconWrapper>
-              <TiWarning  />
+              <TiWarning />
             </IconWrapper>
             <IconWrapper>
-              <PiGearSixFill  />
+              <PiGearSixFill />
             </IconWrapper>
           </>
         )}

@@ -6,7 +6,7 @@ import Text from "./Text";
 
 const Details = () => {
     return (
-        <div>
+        <div dir="rtl">
             <Colors />
             <RealEstate />
             <Level />
