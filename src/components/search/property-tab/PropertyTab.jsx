@@ -39,7 +39,7 @@ const PropertyTab = () => {
     <Container>
       <SearchInput
         onchange={(e) => setSearched(e.target.value)}
-        value=""
+        value={searched}
         placeholder="شناسه ملک یا آدرس را جستجو کنید"
       />
       {searched === "" ? (
