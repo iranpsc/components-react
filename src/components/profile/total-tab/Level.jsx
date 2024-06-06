@@ -1,3 +1,4 @@
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import level from "../../../assets/images/profile/level.png";
 import styled from "styled-components";
 
@@ -46,6 +47,13 @@ const LevelCount = styled.div`
   display: flex;
   padding-right: 10px;
   justify-content: center;
+  img {
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-3px);
+      transition: transform 0.2s;
+    }
+  }
 `;
 
 const Level = () => {
@@ -61,8 +69,17 @@ const Level = () => {
         </ProgressContainer>
       </Percent>
       <LevelCount>
-        {[1, 2].map((item) => (
-          <img width={65} height={65} src={level} key={item} alt="level" />
+        {["شهروند", "خبرنگار"].map((item) => (
+          <div key={item}>
+            <img
+              data-tooltip-id={item}
+              width={65}
+              height={65}
+              src={level}
+              alt={item}
+            />
+            <ReactTooltip id={item} place="top" content={item} />
+          </div>
         ))}
       </LevelCount>
     </Container>

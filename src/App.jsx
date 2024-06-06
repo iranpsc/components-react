@@ -7,6 +7,7 @@ import AccountSecurityModal from "./pages/AccountSecurityModal";
 import AuthenticationModal from "./pages/AuthenticationModal";
 import FeaturesModal from "./pages/FeaturesModal";
 import ProfileModal from "./pages/ProfileModal";
+import Search from "./pages/Search";
 import ShopModal from "./pages/ShopModal";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/authentication" element={<AuthenticationModal />} />
           <Route path="/accountsecurity" element={<AccountSecurityModal />} />
           <Route path="/profile" element={<ProfileModal />} />
+          <Route path="/search" element={<Search />} />
         </Routes>
       </Wrapper>
       <ToastContainer

@@ -23,6 +23,7 @@
     "react-rnd": "^10.4.10",
     "react-router-dom": "^6.23.1",
     "react-toastify": "^10.0.5",
+    "react-tooltip": "^5.26.4",
     "slate": "^0.102.0",
     "slate-history": "^0.100.0",
     "slate-hyperscript": "^0.100.0",

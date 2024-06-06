@@ -61,6 +61,12 @@ const IconWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${({ isActive }) => (isActive ? "#ff000029" : "#1a1a18")};
+  &:hover {
+    background-color: #ff000029;
+    svg {
+      color: #f44545ab;
+    }
+  }
   svg {
     font-size: 20px;
     color: ${({ isActive }) => (isActive ? "#f44545ab" : "#949494")};
