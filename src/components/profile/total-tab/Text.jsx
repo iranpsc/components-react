@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
-  margin-top: 20px;
+  margin-top: 15px;
   div {
     display: flex;
     gap: 8px;
     margin-right: auto;
     align-items: center;
     width: fit-content;
+    margin-top: -4px;
     h3 {
-      margin-top: -6px;
       color: #a0a0ab;
       font-size: 13px;
     }
