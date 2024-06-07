@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 const items = [
-  { id: 1, title: "سطح", value: "شهروند" },
-  { id: 2, title: "پیروان", value: "0" },
+  { id: 1, title: "سطح", value: "شهروند توسعه دهنده" },
+  { id: 2, title: "پیروان", value: "۳۰k" },
   { id: 3, title: "اتحاد", value: "-" },
 ];
 const Container = styled.div`
   display: flex;
-  gap: 90px;
+  justify-content: space-between;
   margin-top: 20px;
   padding: 0 20px;
   div {

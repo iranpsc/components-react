@@ -46,16 +46,17 @@ const CitizenTab = () => {
         <p
           style={{
             color: "#DEDEE9",
-            fontWeight: "600",
+            fontWeight: "500",
             textAlign: "center",
             marginTop: "20px",
+            fontSize:'18px'
           }}
         >
           اطلاعات موجود نمی باشد جستجو کنید
         </p>
       ) : (
         <Wrapper>
-          {[...Array(4)].map((result, i) => (
+          {[...Array(4)].map((_, i) => (
             <ResultCard key={i} />
           ))}
         </Wrapper>

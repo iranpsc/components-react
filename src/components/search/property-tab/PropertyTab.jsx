@@ -46,9 +46,10 @@ const PropertyTab = () => {
         <p
           style={{
             color: "#DEDEE9",
-            fontWeight: "600",
+            fontWeight: "500",
             textAlign: "center",
             marginTop: "20px",
+            fontSize: "18px",
           }}
         >
           اطلاعات موجود نمی باشد جستجو کنید

@@ -114,7 +114,7 @@ const socials = [
 const ShareModal = ({ setOpenShare }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
-    const textToCopy = "https://google.com";
+    const textToCopy = "https://rgb.irpsc.com/fa/citizen/hm-2000001";
 
     navigator.clipboard
       .writeText(textToCopy)
@@ -146,7 +146,7 @@ const ShareModal = ({ setOpenShare }) => {
         </Socials>
         <Copy>
           <span onClick={handleCopy}>{copied ? "کپی شد" : "کپی"}</span>
-          <p>https://google.com</p>
+          <p>https://rgb.irpsc.com/fa/citizen/hm-2000001</p>
         </Copy>
       </Modal>
     </BackGround>

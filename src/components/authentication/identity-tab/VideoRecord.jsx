@@ -1,6 +1,5 @@
-import { useRef, useState } from "react";
-
 import { HiOutlineCamera } from "react-icons/hi";
+import { ReactMediaRecorder } from "react-media-recorder";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -68,51 +67,29 @@ const Info = styled.div`
     }
   }
 `;
+
 const VideoRecord = () => {
-  const videoRef = useRef(null);
-  const mediaRecorderRef = useRef(null);
-  const [recording, setRecording] = useState(false);
-
-  const startRecording = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    });
-    videoRef.current.srcObject = stream;
-    mediaRecorderRef.current = new MediaRecorder(stream);
-    mediaRecorderRef.current.addEventListener(
-      "dataavailable",
-      handleDataAvailable
-    ); // Add event listener
-    mediaRecorderRef.current.start();
-    setRecording(true);
-
-    // Stop recording after 30 seconds
-    setTimeout(() => {
-      stopRecording();
-    }, 30000);
-  };
-
-  const stopRecording = () => {
-    mediaRecorderRef.current.stop();
-    videoRef.current.srcObject = null;
-    setRecording(false);
-  };
-
-  const handleDataAvailable = (event) => {
-    const videoBlob = new Blob([event.data], { type: "video/webm" });
-    // Do something with the recorded video blob, e.g., upload to server or display preview
-    console.log("Recorded video blob:", videoBlob);
-  };
-
   return (
     <Container>
       <Title>ویدیو احراز هویت</Title>
+      <div>
+        {/* <ReactMediaRecorder
+          video
+          render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
+            <div>
+              <p>{status}</p>
+              <button onClick={startRecording}>Start Recording</button>
+              <button onClick={stopRecording}>Stop Recording</button>
+              <video src={mediaBlobUrl} controls />
+            </div>
+          )}
+        /> */}
+      </div>
       <Div>
-          <Record onClick={startRecording}>
-            <HiOutlineCamera size={40} />
-            <span>برای ظبط کلیک کنید</span>
-          </Record>
+        <Record>
+          <HiOutlineCamera size={40} />
+          <span>برای ظبط کلیک کنید</span>
+        </Record>
         <Info>
           <h4>متن احراز هویت، لطفا این متن را در ویدیو بخوانید</h4>
           <p>

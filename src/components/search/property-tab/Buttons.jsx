@@ -25,9 +25,9 @@ const IconWrapper = styled.div`
     font-size: 20px;
     padding-top: 5px;
   }
-  h4 {
-    font-size: 14px;
-    font-weight: 500;
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
   }
 `;
 
@@ -44,7 +44,7 @@ const Buttons = () => {
       {items.map((item) => (
         <IconWrapper key={item.id}>
           <span>{item.icon}</span>
-          <h4>{item.label}</h4>
+          <h2>{item.label}</h2>
         </IconWrapper>
       ))}
     </Container>

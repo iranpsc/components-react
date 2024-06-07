@@ -2,7 +2,7 @@ import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 
 const Container = styled.div`
-  height: 50px;
+  height: 40px;
   border-radius: 5px;
   border: 1px solid #454545;
   padding: 10px 12px;
@@ -18,7 +18,7 @@ const Container = styled.div`
   input {
     height: 100%;
     background-color: transparent;
-    font-size: 16px;
+    font-size: 18px;
     outline: none;
     border: none;
     color: white;
@@ -28,7 +28,7 @@ const Container = styled.div`
 const SearchInput = ({ placeholder, value, onchange }) => {
   return (
     <Container>
-      <FiSearch size={24} />
+      <FiSearch size={34} />
       <input
         type="text"
         placeholder={placeholder}

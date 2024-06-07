@@ -1,15 +1,17 @@
 import { AiOutlineEdit } from "react-icons/ai";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   margin-top: 20px;
   div {
     display: flex;
     gap: 8px;
-    margin-top: 5px;
     margin-right: auto;
+    align-items: center;
     width: fit-content;
     h3 {
+      margin-top: -6px;
       color: #a0a0ab;
       font-size: 13px;
     }
@@ -18,25 +20,31 @@ const Container = styled.div`
     }
   }
 `;
-const Info = styled.p`
+const Info = styled.textarea`
   color: #dedee9;
   font-size: 16px;
   padding: 10px 12px;
-  border: 1px solid #dedee9;
+  border: 1px solid
+    ${(props) => (props.value.length === 125 ? "red" : "#dedee9")};
   background-color: #454545;
   border-radius: 5px;
+  outline: none;
+  width: 96.7%;
 `;
+
 const Text = () => {
+  const [infoText, setInfoText] = useState("");
+
+  const handleChange = (e) => {
+    const text = e.target.value;
+    setInfoText(text.slice(0, 125));
+  };
+
   return (
     <Container>
-      <Info>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد
-      </Info>
+      <Info value={infoText} onChange={handleChange} />
       <div>
-        <h3>۷۸ کاراکتر</h3>
+        <h3>{125 - infoText.length} کاراکتر</h3>
         <span>
           <AiOutlineEdit />
         </span>

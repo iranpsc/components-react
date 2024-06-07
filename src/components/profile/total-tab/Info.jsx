@@ -74,7 +74,7 @@ const Info = () => {
         <div>
           <Title>حسین قدیری</Title>
           <Code href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
-            hm-2000001
+            HM-2000001
           </Code>
         </div>
         <span>عضویت از: ۱۴۰۱/۱۰/۱۴</span>

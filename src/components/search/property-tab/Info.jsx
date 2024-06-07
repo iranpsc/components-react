@@ -1,18 +1,22 @@
-import psc from "../../../assets/images/shop/psc.png";
-import rial from "../../../assets/images/shop/rial.png";
+import psc from "../../../assets/images/profile/psc.gif";
+import rial from "../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
 
 const items = [
-  { id: 1, title: "VOD آدرس", value: "تنب, ایران" },
+  {
+    id: 1,
+    title: "آدرس vod",
+    value: "قزوین, پونک, خیابان پیروزی, روبه روی درماگاه محمدزاده, طبقه چهارم",
+  },
   { id: 2, title: "شناسه مالک", value: "HM-2000000" },
-  { id: 3, title: "قیمت گذاری", value: "0" },
-  { id: 4, title: "قیمت گذاری", value: "0" },
+  { id: 3, title: "قیمت گذاری", value: "۳۰ psc" },
+  { id: 4, title: "قیمت گذاری", value: "۳۰۰ میلیون" },
 ];
 const Container = styled.div`
-display: flex;
-flex-direction: column;
-gap: 6px;
-margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -23,16 +27,21 @@ const Wrapper = styled.div`
     align-items: center;
     gap: 5px;
   }
-  h3{
-    color: #A0A0AB;
+  h3 {
+    color: #a0a0ab;
     font-size: 14px;
     font-weight: 500;
   }
   h2 {
     font-weight: 400;
     font-size: 16px;
-    color: ${(props) => (props.textId !== 2 ? "#DEDEE9" : "#0066FF")};
-    cursor: ${(props) => (props.textId === 2 && "pointer")};
+    color: #dedee9;
+    max-width: 280px;
+    cursor: ${(props) => props.textId === 2 && "pointer"};
+  }
+  a {
+    color: #0066ff;
+    text-decoration: none;
   }
 `;
 
@@ -62,7 +71,12 @@ const Info = () => {
               />
             )}
           </div>
-          <h2>{item.value}</h2>
+          {item.id !== 2 && <h2>{item.value}</h2>}
+          {item.id == 2 && (
+            <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
+              {item.value}
+            </a>
+          )}
         </Wrapper>
       ))}
     </Container>

@@ -22,7 +22,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-right: 10px;
   justify-content: center;
   width: 100%;
   gap: 10px;

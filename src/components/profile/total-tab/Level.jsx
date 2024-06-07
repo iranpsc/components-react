@@ -5,15 +5,16 @@ import styled from "styled-components";
 const Container = styled.div`
   border-radius: 10px;
   background-color: #1a1a18;
-  padding: 20px;
+  padding: 10px 20px 10px 15px;
   margin-top: 20px;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  align-items: center;
 `;
 
 const Percent = styled.div`
   border-left: 1px solid #454545;
-  padding-left: 20px;
+  padding-left: 25px;
 `;
 const Title = styled.div`
   display: flex;
@@ -46,7 +47,9 @@ const ProgressBar = styled.div`
 const LevelCount = styled.div`
   display: flex;
   padding-right: 10px;
-  justify-content: center;
+  justify-content: end;
+  align-items: end;
+  margin-top: 10px;
   img {
     cursor: pointer;
     &:hover {
@@ -69,7 +72,7 @@ const Level = () => {
         </ProgressContainer>
       </Percent>
       <LevelCount>
-        {["شهروند", "خبرنگار"].map((item) => (
+        {["شهروند", "خبرنگار", 'خبرنگار', 'خبرنگار'].map((item) => (
           <div key={item}>
             <img
               data-tooltip-id={item}
