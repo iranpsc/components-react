@@ -3,7 +3,11 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 5px;
+  @media (min-width: 1024px) {
+    width: ${(props) => (props.shop ? "100px" : "")};
+  }
 `;
 const Title = styled.h3`
   color: #a0a0ab;
@@ -21,9 +25,9 @@ const Value = styled.h3`
     font-size: 16px;
   }
 `;
-const TitleValue = ({ title, value, small }) => {
+const TitleValue = ({ title, value, small, shop }) => {
   return (
-    <Container>
+    <Container shop={shop}>
       <Title small={small}>{title}</Title>
       <Value small={small}>{value}</Value>
     </Container>

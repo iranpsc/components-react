@@ -28,7 +28,7 @@ const CurrenciesContent = ({ option, currencies }) => {
       <Title title="ارزها" />
       <Wrapper>
         {currencyContent.items.map((item) => (
-          <InfoRow type="ارز" key={item.id} data={item} />
+          <InfoRow shop type="ارز" key={item.id} data={item} />
         ))}
       </Wrapper>
       ;

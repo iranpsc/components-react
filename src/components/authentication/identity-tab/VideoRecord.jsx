@@ -1,5 +1,5 @@
+import CaptureVideo from "./t";
 import { HiOutlineCamera } from "react-icons/hi";
-import { ReactMediaRecorder } from "react-media-recorder";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -72,19 +72,14 @@ const VideoRecord = () => {
   return (
     <Container>
       <Title>ویدیو احراز هویت</Title>
-      <div>
-        {/* <ReactMediaRecorder
-          video
-          render={({ status, startRecording, stopRecording, mediaBlobUrl }) => (
-            <div>
-              <p>{status}</p>
-              <button onClick={startRecording}>Start Recording</button>
-              <button onClick={stopRecording}>Stop Recording</button>
-              <video src={mediaBlobUrl} controls />
-            </div>
-          )}
-        /> */}
-      </div>
+      <CaptureVideo
+        currentStep={3}
+        selfiVideo={selfiVideo}
+        setSelfiVideo={setSelfiVideo}
+        capturing={capturing}
+        setCapturing={setCapturing}
+        submitIdentityHandler={submitIdentityHandler}
+      />
       <Div>
         <Record>
           <HiOutlineCamera size={40} />

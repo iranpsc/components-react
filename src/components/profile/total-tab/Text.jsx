@@ -25,7 +25,7 @@ const Info = styled.textarea`
   font-size: 16px;
   padding: 10px 12px;
   border: 1px solid
-    ${(props) => (props.value.length === 125 ? "red" : "#dedee9")};
+    ${(props) => (props.value.length === 250 ? "red" : "#dedee9")};
   background-color: #454545;
   border-radius: 5px;
   outline: none;
@@ -37,14 +37,14 @@ const Text = () => {
 
   const handleChange = (e) => {
     const text = e.target.value;
-    setInfoText(text.slice(0, 125));
+    setInfoText(text.slice(0, 250));
   };
 
   return (
     <Container>
       <Info value={infoText} onChange={handleChange} />
       <div>
-        <h3>{125 - infoText.length} کاراکتر</h3>
+        <h3>{250 - infoText.length} کاراکتر</h3>
         <span>
           <AiOutlineEdit />
         </span>

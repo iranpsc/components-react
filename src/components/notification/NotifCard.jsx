@@ -6,6 +6,7 @@ const Container = styled.div`
   padding: 20px;
   border-radius: 5px;
   background-color: #1a1a18;
+  direction: rtl;
   p {
     color: #a0a0ab;
     font-size: 14px;
@@ -16,7 +17,7 @@ const Profile = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const Info = styled.div`
@@ -49,7 +50,6 @@ const NameAndDate = styled.div`
   h3 {
     font-size: 14px;
     color: #a0a0ab;
-    margin-top: 0;
   }
 `;
 

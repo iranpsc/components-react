@@ -49,7 +49,7 @@ const PhotoContainer = styled.div`
     }
   }
 `;
-const InfoRow = ({ data, type }) => {
+const InfoRow = ({ data, type, shop }) => {
   const [openModal, setOpenModal] = useState(false);
   const { setAlert } = useContext(AlertContext);
   const buyHandler = () => {
@@ -73,17 +73,20 @@ const InfoRow = ({ data, type }) => {
             />
           </PhotoContainer>
           <TitleValue
+            shop={shop}
             title={`نوع ${type}`}
             value={`${type === "ابزار" ? "رنگ" : ""} ${data.type}`}
           />
         </div>
         <TitleValue
+          shop={shop}
           title={`تعداد ${type}`}
           value={`${data.amount
             .toLocaleString()
             .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} عدد`}
         />
         <TitleValue
+          shop={shop}
           title="مبلغ(تومان)"
           value={`${data.price
             .toLocaleString()

@@ -7,6 +7,8 @@ const Div = styled.div`
   flex-direction: column;
   gap: 15px;
   overflow-y: auto;
+  direction: ltr;
+  padding-right: 15px;
   height: 260px;
   @media (min-width: 1024px) {
     height: 220px;
@@ -16,11 +18,12 @@ const Div = styled.div`
   }
 `;
 const Container = styled.div`
-  h3 {
+  h4 {
     color: #dedee9;
     font-size: 16px;
     font-weight: 500;
     margin-bottom: 10px;
+    text-align: left;
     cursor: pointer;
     margin-top: 10px;
   }
@@ -30,7 +33,7 @@ const Notifications = ({ setIsNotif }) => {
   const [notifications, setNotifications] = useState(notifs);
   return (
     <Container>
-      <h3 onClick={() => setIsNotif(false)}>حذف همه</h3>
+      <h4 onClick={() => setIsNotif(false)}>حذف همه</h4>
       <Div>
         {notifications.map((notif) => (
           <NotifCard

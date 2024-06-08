@@ -9,8 +9,8 @@ const items = [
     value: "قزوین, پونک, خیابان پیروزی, روبه روی درماگاه محمدزاده, طبقه چهارم",
   },
   { id: 2, title: "شناسه مالک", value: "HM-2000000" },
-  { id: 3, title: "قیمت گذاری", value: "۳۰ psc" },
-  { id: 4, title: "قیمت گذاری", value: "۳۰۰ میلیون" },
+  { id: 3, title: "قیمت گذاری (PSC)", value: "۳۰ PSC" },
+  { id: 4, title: "قیمت گذاری (ریال)", value: "۳۰۰ میلیون" },
 ];
 const Container = styled.div`
   display: flex;

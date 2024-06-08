@@ -29,7 +29,7 @@ const ToolsContent = ({ option, tools }) => {
       <Title title="ابزارها" />
       <Wrapper>
         {toolContent.items.map((item) => (
-          <InfoRow type="ابزار" key={item.id} data={item} />
+          <InfoRow shop type="ابزار" key={item.id} data={item} />
         ))}
       </Wrapper>
       ;
