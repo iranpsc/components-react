@@ -21,6 +21,7 @@ const Container = styled.div`
   }
 `;
 const Info = styled.textarea`
+  resize: none;
   color: #dedee9;
   font-size: 16px;
   padding: 10px 12px;

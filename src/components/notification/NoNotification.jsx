@@ -23,7 +23,7 @@ const NoNotification = () => {
   return (
     <Container>
       <FiInbox />
-      <h2>پیامی موجود نیست!</h2>
+      <h2>اعلانی موجود نیست!</h2>
     </Container>
   );
 };

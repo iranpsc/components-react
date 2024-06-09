@@ -106,29 +106,31 @@ const Alert = styled.div`
 const SecondStep = ({ setStep, time }) => {
   const [timer, setTimer] = useState(2 * 60);
   const inputRefs = useRef([]);
+  const timerInterval = useRef(null);
+
   useEffect(() => {
-    const interval = setInterval(() => {
+    timerInterval.current = setInterval(() => {
       setTimer((prevTimer) => {
         if (prevTimer > 0) {
           return prevTimer - 1;
         } else {
-          clearInterval(interval);
+          clearInterval(timerInterval.current);
           return 0;
         }
       });
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timerInterval.current);
   }, []);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
 
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
-      2,
-      "0"
-    )}`;
+    const formattedMinutes = String(minutes).padStart(2, "۰");
+    const formattedSeconds = String(seconds).padStart(2, "۰");
+
+    return `${formattedMinutes}:${formattedSeconds}`;
   };
 
   const handleInputChange = (index, event) => {
@@ -181,10 +183,23 @@ const SecondStep = ({ setStep, time }) => {
     }
   };
 
+  const resetInputs = () => {
+    inputRefs.current.forEach((inputRef) => {
+      inputRef.value = "";
+    });
+    inputRefs.current[0].focus();
+  };
+
+  const resetHandler = () => {
+    resetInputs();
+    clearInterval(timerInterval.current);
+    setTimer(2 * 60);
+  };
+
   return (
     <Container>
       <h3>تایید حساب</h3>
-      <p>کد ۶ رقمی ارسال شده به شماره تماس ۰۹۱۹۱۱۱۱۱۱۱ را وارد کنید.</p>
+      <p>کد ۶ رقمی را وارد کنید.</p>
       <Codes>
         {[...Array(6)].map((_, index) => (
           <input
@@ -204,7 +219,11 @@ const SecondStep = ({ setStep, time }) => {
             .toLocaleString()
             .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
         </h4>
-        {timer !== 0 ? <span>تا ارسال مجدد کد</span> : <h2>ارسال مجدد کد</h2>}
+        {timer !== 0 ? (
+          <span>تا ارسال مجدد کد</span>
+        ) : (
+          <h2 onClick={resetHandler}>ارسال مجدد کد</h2>
+        )}
       </div>
       <button disabled={!allValuesNotEmpty} onClick={nextStep}>
         ادامه

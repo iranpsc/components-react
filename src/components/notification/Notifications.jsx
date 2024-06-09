@@ -10,10 +10,7 @@ const Div = styled.div`
   direction: ltr;
   padding-right: 15px;
   height: 260px;
-  @media (min-width: 1024px) {
-    height: 220px;
-  }
-  @media (min-width: 1400px) {
+  @media (min-width: 1000px) {
     height: 425px;
   }
 `;

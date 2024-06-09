@@ -5,6 +5,7 @@ import styled from "styled-components";
 const Container = styled.div`
   background-color: #1a1a18;
   border-radius: 5px;
+  direction: rtl;
   padding: 20px;
   hr {
     height: 1.5px;

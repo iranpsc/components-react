@@ -5,6 +5,8 @@ import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
+  direction: ltr;
+  padding-right: 15px;
   flex-direction: column;
   gap: 15px;
   margin-top: 15px;

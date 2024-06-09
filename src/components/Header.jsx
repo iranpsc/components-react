@@ -30,6 +30,7 @@ const Div = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
   div {
     position: absolute;
@@ -138,7 +139,7 @@ const Header = ({ title, long, loading, profile }) => {
           <IoIosClose />
         </CloseWrapper>
       </Icons>
-      {openEducation && <Education />}
+      {openEducation && <Education setOpenEducation={setOpenEducation} />}
     </HeaderWrapper>
   );
 };

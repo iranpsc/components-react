@@ -54,6 +54,7 @@ const CloseWrapper = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 100%;
+  cursor: pointer;
   background-color: rgb(59, 8, 8);
   cursor: pointer;
   @media (min-width: 998px) {
@@ -64,7 +65,7 @@ const CloseWrapper = styled.div`
     color: red;
   }
 `;
-const Header = () => {
+const Header = ({ setOpenEducation }) => {
   return (
     <HeaderWrapper>
       <Text>آموزش</Text>
@@ -72,7 +73,7 @@ const Header = () => {
         <Div>
           <IoMove style={{ color: "#949494" }} />
         </Div>
-        <CloseWrapper>
+        <CloseWrapper onClick={() => setOpenEducation(false)}>
           <IoIosClose />
         </CloseWrapper>
       </Icons>
