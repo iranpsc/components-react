@@ -1,10 +1,12 @@
 import { FaCircleExclamation, FaCircleQuestion } from "react-icons/fa6";
 
 import { BiExitFullscreen } from "react-icons/bi";
+import Education from "./education/Education";
 import { IoIosClose } from "react-icons/io";
 import { PiGearSixFill } from "react-icons/pi";
 import { TiWarning } from "react-icons/ti";
 import styled from "styled-components";
+import { useState } from "react";
 
 const IconWrapper = styled.div`
   width: 11px;
@@ -104,6 +106,7 @@ const FullWrapper = styled.div`
 `;
 
 const Header = ({ title, long, loading, profile }) => {
+  const [openEducation, setOpenEducation] = useState(false);
   return (
     <HeaderWrapper>
       <Text long={long}>{title}</Text>
@@ -123,7 +126,7 @@ const Header = ({ title, long, loading, profile }) => {
             </IconWrapper>
           </>
         )}
-        <Div>
+        <Div onClick={() => setOpenEducation(true)}>
           <div />
           <FaCircleQuestion />
         </Div>
@@ -135,6 +138,7 @@ const Header = ({ title, long, loading, profile }) => {
           <IoIosClose />
         </CloseWrapper>
       </Icons>
+      {openEducation && <Education />}
     </HeaderWrapper>
   );
 };

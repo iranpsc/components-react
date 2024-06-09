@@ -1,5 +1,5 @@
-import CaptureVideo from "./t";
 import { HiOutlineCamera } from "react-icons/hi";
+import WebcamStreamCapture from "./WebcamStreamCapture";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -69,17 +69,12 @@ const Info = styled.div`
 `;
 
 const VideoRecord = () => {
+
+
   return (
     <Container>
       <Title>ویدیو احراز هویت</Title>
-      <CaptureVideo
-        currentStep={3}
-        selfiVideo={selfiVideo}
-        setSelfiVideo={setSelfiVideo}
-        capturing={capturing}
-        setCapturing={setCapturing}
-        submitIdentityHandler={submitIdentityHandler}
-      />
+      {/* <WebcamStreamCapture /> */}
       <Div>
         <Record>
           <HiOutlineCamera size={40} />
