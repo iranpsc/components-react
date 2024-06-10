@@ -19,7 +19,7 @@ const Div = styled.div`
   gap: 4px;
   color: #a0a0ab;
   span {
-    font-size: 10px;
+    font-size: 12px;
   }
   @media (min-width: 998px) {
     span {

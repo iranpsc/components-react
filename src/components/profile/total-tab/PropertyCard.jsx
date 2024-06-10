@@ -15,12 +15,20 @@ const Container = styled.div`
     gap: 2px;
     span {
       color: #dedee9;
-      font-size: 13px;
+      font-size: 11px;
     }
     h3 {
       color: #ffffff;
-      font-size: 18px;
+      font-size: 12px;
       font-weight: 600;
+    }
+  }
+  @media (min-width: 1024px) {
+    span {
+      font-size: 13px;
+    }
+    h3 {
+      font-size: 18px;
     }
   }
   @media (min-width: 1024px) {

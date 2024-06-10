@@ -2,12 +2,15 @@ import satisfy from "../../../assets/images/player/satisfy.png";
 import styled from "styled-components";
 
 const Container = styled.div`
-  padding: 30px;
+  padding: 70px 30px;
   border-radius: 10px;
   background-color: #1a1a18;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 1000px) {
+    padding: 30px;
+  }
 `;
 const First = styled.div`
   display: flex;
@@ -24,19 +27,30 @@ const First = styled.div`
     font-weight: 500;
     color: #dedee9;
   }
+  @media (min-width: 860px) {
+    h3 {
+      font-size: 24px;
+    }
+    span {
+      font-size: 20px;
+    }
+  }
 `;
 const Second = styled.div`
   display: flex;
   align-items: center;
   gap: 2px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 12px;
   color: #dedee9;
   span {
     &:nth-of-type(2) {
       margin: 0 10px;
       color: #454545;
     }
+  }
+  @media (min-width: 940px) {
+    font-size: 15px;
   }
 `;
 const SatisfyCount = () => {

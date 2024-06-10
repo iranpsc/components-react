@@ -22,6 +22,28 @@ const Wrapper = styled.div`
     gap: 20px;
   }
 `;
+
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  svg {
+    font-size: 16px;
+    color: #3b3b3b;
+    cursor: pointer;
+    z-index: 99;
+  }
+  div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: white;
+  }
+`;
 const PhotoContainer = styled.div`
   width: 80px;
   height: 80px;
@@ -32,14 +54,7 @@ const PhotoContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  svg {
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    font-size: 16px;
-    color: #3b3b3b;
-    cursor: pointer;
-  }
+
   @media (max-width: 840px) {
     width: 60px;
     height: 60px;
@@ -63,7 +78,10 @@ const InfoRow = ({ data, type, shop }) => {
       <Wrapper openModal={openModal}>
         <div>
           <PhotoContainer>
-            <BsExclamationCircleFill onClick={() => setOpenModal(true)} />
+            <IconWrapper>
+              <div />
+              <BsExclamationCircleFill onClick={() => setOpenModal(true)} />
+            </IconWrapper>
             <img
               width={54}
               height={54}

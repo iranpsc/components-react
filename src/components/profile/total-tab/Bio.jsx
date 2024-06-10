@@ -9,7 +9,10 @@ const Container = styled.div`
   direction: rtl;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 300px;
+  height: 280px;
+  @media (min-width: 740px) {
+    height: 300px;
+  }
   @media (min-width: 1400px) {
     height: 612px;
     grid-template-columns: 1fr;

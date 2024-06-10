@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  padding-right: 15px;
   @media (min-width: 600px) {
     overflow-y: auto;
   }
@@ -70,7 +71,7 @@ const Lowest = () => {
             type="number"
             min={0}
             max={100}
-            placeholder="50"
+            placeholder="100"
           />
           <Span>%</Span>
         </InputWrapper>

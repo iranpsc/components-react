@@ -4,10 +4,12 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  direction: ltr;
+  padding-right: 15px;
   gap: 30px;
   width: 100%;
   @media (max-width: 1024px) {
-    height: 67vh !important;
+    height: 63vh !important;
     overflow: auto;
   }
   @media (min-width: 1025px) {
@@ -18,6 +20,7 @@ const Wrapper = styled.div`
 const Text = styled.p`
   color: #ffffff;
   line-height: 1.5rem;
+  direction: rtl;
 `;
 
 const SellerPrice = () => {

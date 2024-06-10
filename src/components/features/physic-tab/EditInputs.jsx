@@ -2,6 +2,7 @@ import Button from "../../Button";
 import { FiSearch } from "react-icons/fi";
 import Input from "./Input";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -79,29 +80,62 @@ const Text = styled.p`
 `;
 
 const EditInputs = ({ inputs, setInputs, setEdit }) => {
+  const [fields, setFields] = useState({
+    activity: "",
+    name: "",
+    address: "",
+    post: "",
+    web: "",
+    about: "",
+  });
+
   return (
     <Container>
       <First>
         <Field>
           <div>
             <FiSearch />
-            <input placeholder="رشته فعالیت" />
+            <input
+              value={fields.activity}
+              onChange={(e) =>
+                setFields({ ...fields, activity: e.target.value })
+              }
+              placeholder="رشته فعالیت"
+            />
           </div>
           <span>+</span>
         </Field>
         <Input
-          onchange={() => {}}
+          value={fields.name}
+          onchange={(e) => setFields({ ...fields, name: e.target.value })}
           key={inputs.first_row_info[1].id}
           placeholder={inputs.first_row_info[1].title}
         />
       </First>
-      <Input onchange={() => {}} placeholder={inputs.second_row_info.title} />
+      <Input
+        value={fields.address}
+        onchange={(e) => setFields({ ...fields, address: e.target.value })}
+        placeholder={inputs.second_row_info.title}
+      />
       <Third>
-        {inputs.third_row_info.map((row) => (
-          <Input onchange={() => {}} key={row.id} placeholder={row.title} />
-        ))}
+        <Input
+          type="number"
+          value={fields.post}
+          onchange={(e) => setFields({ ...fields, post: e.target.value })}
+          placeholder="کد پستی فیزیکی مجموعه"
+        />
+        <Input
+          value={fields.web}
+          onchange={(e) => setFields({ ...fields, web: e.target.value })}
+          placeholder="آدرس وب سایت"
+        />
       </Third>
-      <TextArea onchange={() => {}} value="" rows={4} placeholder="هدف تاسیس" />
+      <TextArea
+        onChange={(e) => setFields({ ...fields, about: e.target.value })}
+        value={fields.about}
+        rows={4}
+        placeholder="هدف تاسیس"
+      />
       <Text>ویرایش محتوای ثبت شده پس تایید سطوح بالا منتشر خواهد شد</Text>
       <Button edit onclick={() => setEdit(false)} label="ویرایش اطلاعات" />
     </Container>

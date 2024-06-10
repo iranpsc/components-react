@@ -32,6 +32,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
   height: 65%;

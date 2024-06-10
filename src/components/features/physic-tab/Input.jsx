@@ -11,8 +11,15 @@ const EditInput = styled.input`
   background-color: #2c2c2c;
   font-size: 16px;
 `;
-const Input = ({ placeholder, onchange }) => {
-  return <EditInput value='' onChange={onchange} placeholder={placeholder} />;
+const Input = ({ placeholder, onchange, value, type }) => {
+  return (
+    <EditInput
+      type={type}
+      value={value}
+      onChange={onchange}
+      placeholder={placeholder}
+    />
+  );
 };
 
 export default Input;

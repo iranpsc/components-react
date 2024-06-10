@@ -1,8 +1,8 @@
-import blue from "../../assets/images/shop/blue.png";
-import psc from '../../assets/images/shop/psc.png'
-import red from "../../assets/images/shop/red.png";
-import rial from '../../assets/images/shop/rial.png'
-import yellow from "../../assets/images/shop/yellow.png";
+import blue from "../../assets/images/profile/blue-color.gif";
+import psc from '../../assets/images/profile/psc.gif'
+import red from "../../assets/images/profile/red-color.gif";
+import rial from '../../assets/images/profile/rial.gif'
+import yellow from "../../assets/images/profile/yellow-color.gif";
 
 export const tools = [
   {

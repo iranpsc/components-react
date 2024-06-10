@@ -6,6 +6,7 @@ import styled from "styled-components";
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  direction: rtl;
   gap: 23px;
 `;
 const InputsWrapper = styled.div`

@@ -193,11 +193,14 @@
 
 .dot {
   border: none;
-  width: 40px;
+  width: 30px;
   height: 3px;
   background: #c5c5c5;
   margin: 0 5px;
   cursor: pointer;
+  @media (min-width: 740px) {
+    width: 40px;
+  }
   @media (min-width: 1024px) {
     width: 48px;
   }

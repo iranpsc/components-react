@@ -37,9 +37,12 @@ const Icons = styled.div`
   gap: 10px;
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  bottom: 55px;
   height: 100%;
   width: fit-content;
+  @media (min-width: 740px) {
+  bottom: 10px;
+  }
 `;
 
 const slides = [

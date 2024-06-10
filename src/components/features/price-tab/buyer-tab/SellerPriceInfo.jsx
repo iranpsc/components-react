@@ -8,6 +8,7 @@ const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  direction: rtl;
   gap: 20px;
   @media (min-width: 600px) {
     padding-left: 0;
@@ -19,6 +20,7 @@ const ResultWrapper = styled.div`
   display: grid;
   gap: 20px;
   width: 100%;
+  direction: rtl;
   @media (min-width: 600px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -55,7 +57,9 @@ const SellerPriceInfo = () => {
         <TitleValue title="قیمت نهایی" value="50IRR / 57 PSC" />
         <TitleValue title="کارمزد" value="5%" />
       </ResultWrapper>
-      <Button label="خرید" onclick={() => {}} />
+      <div dir="rtl">
+        <Button label="خرید" onclick={() => {}} />
+      </div>
     </>
   );
 };

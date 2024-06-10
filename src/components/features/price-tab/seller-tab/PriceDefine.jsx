@@ -6,10 +6,12 @@ import { useState } from "react";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  direction: ltr;
+  padding-right: 15px;
   gap: 30px;
   width: 100%;
   @media (max-width: 1024px) {
-    height: 64vh !important;
+    height: 60vh !important;
     overflow: auto;
   }
   @media (min-width: 1023px) {
@@ -20,6 +22,7 @@ const Wrapper = styled.div`
 const Text = styled.p`
   color: #ffffff;
   line-height: 1.5rem;
+  direction: rtl;
 `;
 
 const PriceDefine = () => {

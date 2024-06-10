@@ -5,26 +5,32 @@ import Title from "../../Title";
 import styled from "styled-components";
 import { useContext } from "react";
 
+const Container = styled.div`
+  direction: ltr;
+  text-align: right;
+  padding-right: 15px;
+  @media (max-width: 850px) {
+    height: 64% !important;
+  }
+  @media (max-width: 1023px) {
+    height: 65%;
+    overflow-y: auto;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  direction: ltr;
+  direction: rtl;
   gap: 20px;
   margin-top: 20px;
-  @media (max-width:850px) {
-    height: 52% !important;
-  }
-  @media (max-width: 1023px) {
-    height: 53%;
-    overflow-y: auto;
-  }
 `;
 const ToolsContent = ({ option, tools }) => {
   const toolContent = tools.find((tool) => tool.id === option);
   const { alert } = useContext(AlertContext);
 
   return (
-    <div>
+    <Container>
       {alert && <Alert type="success" text="خرید شما با موفقیت انجام شد" />}
       <Title title="ابزارها" />
       <Wrapper>
@@ -33,7 +39,7 @@ const ToolsContent = ({ option, tools }) => {
         ))}
       </Wrapper>
       ;
-    </div>
+    </Container>
   );
 };
 

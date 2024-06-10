@@ -10,9 +10,12 @@ const Container = styled.div`
   padding: 15px;
   background-color: #1a1a18;
   border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
   @media (min-width: 1024px) {
     padding: 20px;
+  }
+  @media (min-width: 1400px) {
+    padding: 20px;
+    border-bottom-right-radius: 10px;
   }
 `;
 const Header = styled.div`

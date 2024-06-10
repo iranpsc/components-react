@@ -38,16 +38,12 @@ const Tabs = ({ active, setActive, role }) => {
       <TabItem active={active === "info"} onClick={() => setActive("info")}>
         خصوصیات
       </TabItem>
-      {role === "seller" && (
-        <TabItem active={active === "price"} onClick={() => setActive("price")}>
-          قیمت گذاری
-        </TabItem>
-      )}
-      {role === "buyer" && (
-        <TabItem active={active === "price"} onClick={() => setActive("price")}>
-          خرید
-        </TabItem>
-      )}
+      <TabItem active={active === "seller"} onClick={() => setActive("seller")}>
+        قیمت گذاری
+      </TabItem>
+      <TabItem active={active === "buyer"} onClick={() => setActive("buyer")}>
+        خرید
+      </TabItem>
       <TabItem active={active === "enter"} onClick={() => setActive("enter")}>
         ورود به ملک
       </TabItem>

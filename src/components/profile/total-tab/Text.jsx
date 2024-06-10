@@ -30,7 +30,13 @@ const Info = styled.textarea`
   background-color: #454545;
   border-radius: 5px;
   outline: none;
-  width: 96.7%;
+  width: 95%;
+  @media (min-width: 740px) {
+    width: 96%;
+  }
+  @media (min-width: 1400px) {
+    width: 96.7%;
+  }
 `;
 
 const Text = () => {

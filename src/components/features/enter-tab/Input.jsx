@@ -69,7 +69,7 @@ const Input = ({ id, icon, title, value, long, smallValue }) => {
       </InfoIcon>
       <Value smallValue={smallValue}>
         {id === 1 || id === 2
-          ? String(value).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])
+          ? (+value).toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])
           : value}
       </Value>
     </Item>

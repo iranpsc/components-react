@@ -6,12 +6,11 @@ import { useState } from "react";
 
 const FeaturesModal = () => {
   const [active, setActive] = useState("info");
-  const [role] = useState("seller");
   return (
     <Modal>
       <Header title="اطلاعات ملک" />
-      <Tabs role={role} active={active} setActive={setActive} />
-      <PropertyInfo role={role} active={active} />
+      <Tabs active={active} setActive={setActive} />
+      <PropertyInfo active={active} />
     </Modal>
   );
 };

@@ -6,8 +6,12 @@ const Container = styled.div`
   align-items: center;
   background-color: #1a1a18;
   border-radius: 10px;
-  padding: 16px 32px;
+  padding: 14px 24px;
   gap: 20px;
+  img {
+    width: 38px;
+    height: 38px;
+  }
   div {
     display: flex;
     flex-direction: column;
@@ -15,12 +19,21 @@ const Container = styled.div`
     gap: 2px;
     span {
       color: #dedee9;
-      font-size: 13px;
+      font-size: 11px;
     }
     h3 {
       color: #ffffff;
-      font-size: 18px;
+      font-size: 12px;
       font-weight: 600;
+    }
+  }
+  @media (min-width: 740px) {
+    padding: 16px 32px;
+    span {
+      font-size: 13px;
+    }
+    h3 {
+      font-size: 18px;
     }
   }
 `;

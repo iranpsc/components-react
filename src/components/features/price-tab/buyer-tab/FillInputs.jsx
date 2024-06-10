@@ -7,6 +7,7 @@ import styled from "styled-components";
 const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  direction: rtl;
   gap: 20px;
   padding-left: 20px;
   @media (min-width: 600px) {
@@ -17,6 +18,7 @@ const InputsWrapper = styled.div`
 
 const ResultWrapper = styled.div`
   display: grid;
+  direction: rtl;
   gap: 20px;
   width: 100%;
   @media (min-width: 670px) {
@@ -39,7 +41,7 @@ const Wrapper = styled.div`
   color: #dedee9;
   overflow: hidden;
   @media (min-width: 998px) {
-    height: 48px;
+    height: 48px !important;
   }
 `;
 
@@ -64,6 +66,7 @@ const Value = styled.p`
 
 const Div = styled.div`
   height: 212px !important;
+  direction: rtl;
 `;
 
 const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
@@ -98,7 +101,9 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
         <TitleValue title="مانده" value="0" />
         <TitleValue title="کارمزد" value="5%" />
       </ResultWrapper>
-      <Button label="ثبت پیشنهاد" onclick={() => setAssign(true)} />
+      <div dir="rtl">
+        <Button label="ثبت پیشنهاد" onclick={() => setAssign(true)} />
+      </div>
     </>
   );
 };

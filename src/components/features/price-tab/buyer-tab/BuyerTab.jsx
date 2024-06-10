@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
-  gap: 40px;
+  gap: 10px;
   margin: 20px 0;
 `;
 

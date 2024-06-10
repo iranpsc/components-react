@@ -18,7 +18,13 @@ const Container = styled.div`
 const ParticipantSummary = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 10px;
+  flex-grow: 1;
+  @media (min-width: 1000px) {
+    grid-template-columns: 1fr 1.5fr 1fr 1.2fr 1.2fr 1.2fr;
+    gap: 50px;
+  }
 `;
 const ParticipantInfo = styled.div`
   background-color: #000000;
@@ -76,6 +82,9 @@ const Button = styled.div`
     height: 36px;
   }
 `;
+const Div = styled.div`
+  display: flex;
+`;
 const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,18 +99,20 @@ const ParticipantItem = ({ time, debt, level, satisfyCount, options }) => {
   return (
     <>
       <Container>
-        <ParticipantSummary>
-          <UserCode title="شناسه کاربر" code="HM-2000081" />
-          <TitleValue title="تاریخ و زمان" value={time} />
-          <TitleValue title="بدهی مشارکت" value={debt} />
-          <TitleValue title="میزان مشارکت" value={level} />
-          <SatisfyContainer>
-            <Title>
-              <h3>رضایت لانچ شده</h3>
-              <img src={satisfy} alt="pricing" width={18} height={18} />
-            </Title>
-            <span>{satisfyCount}</span>
-          </SatisfyContainer>
+        <Div>
+          <ParticipantSummary>
+            <UserCode title="شناسه کاربر" code="HM-2000081" />
+            <TitleValue title="تاریخ و زمان" value={time} />
+            <TitleValue title="بدهی مشارکت" value={debt} />
+            <TitleValue title="میزان مشارکت" value={level} />
+            <SatisfyContainer>
+              <Title>
+                <h3>رضایت لانچ شده</h3>
+                <img src={satisfy} alt="pricing" width={18} height={18} />
+              </Title>
+              <span>{satisfyCount}</span>
+            </SatisfyContainer>
+          </ParticipantSummary>
           <Buttons>
             <Button onClick={() => setDeleteParticipant(true)}>
               <FiTrash2 />
@@ -117,7 +128,7 @@ const ParticipantItem = ({ time, debt, level, satisfyCount, options }) => {
               />
             </Button>
           </Buttons>
-        </ParticipantSummary>
+        </Div>
         {openOptions && (
           <InfoWrapper>
             {options.map((option) => (

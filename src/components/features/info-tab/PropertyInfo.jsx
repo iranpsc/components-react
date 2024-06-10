@@ -6,10 +6,10 @@ import HistoryTab from "../history-tab/HistoryTab";
 import ParticipationTab from "../participation-tab/ParticipationTab";
 import PhysicTab from "../physic-tab/PhysicTab";
 
-const PropertyInfo = ({ active, role }) => {
+const PropertyInfo = ({ active }) => {
   if (active === "info") return <InfoTab />;
-  if (active === "price" && role === "seller") return <SellerTab role={role} />;
-  if (active === "price" && role === "buyer") return <BuyerTab />;
+  if (active === "seller") return <SellerTab seller />;
+  if (active === "buyer" ) return <BuyerTab />;
   if (active === "enter") return <EnterTab />;
   if (active === "build") return <BuildTab />;
   if (active === "physic") return <PhysicTab />;
