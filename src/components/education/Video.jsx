@@ -6,6 +6,9 @@ const Container = styled.div`
   border-radius: 10px;
   background-color: #383835;
   margin-top: 30px;
+  video {
+    object-fit: contain !important;
+  }
 `;
 const Video = () => {
   return (
@@ -23,7 +26,7 @@ const Video = () => {
         }}
         controls
       >
-        <source  src={video} type="video/mp4" />{" "}
+        <source src={video} type="video/mp4" />{" "}
       </video>
     </Container>
   );

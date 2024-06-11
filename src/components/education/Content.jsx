@@ -1,12 +1,16 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 const Container = styled.div`
   padding-bottom: 5px;
+  height: 160px;
+  overflow-y: auto;
+  direction: ltr;
+  padding-right: 15px;
   div {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    direction: rtl;
     h3 {
       color: #008bf8;
       font-weight: 500;
@@ -28,29 +32,30 @@ const Container = styled.div`
     color: #969696;
     font-size: 16px;
     font-weight: 500;
-    height: 110px;
-    padding-left: 5px;
-    overflow-y: auto;
     line-height: 26px;
+    direction: rtl;
+
     /* @media (max-width: 1400px) {
       display: ${(props) => (props.show ? "block" : "none")};
     } */
   }
 `;
 
-const Content = () => {
-  const [show, setShow] = useState(false);
+const Content = ({show, setShow}) => {
   return (
     <Container show={show}>
       <div>
         <h2>آموزش ورود به متاورس</h2>
-        {/* <h3 onClick={() => setShow(true)}>محتوای متنی</h3> */}
+        {/* <h3 onClick={() => setShow(!show)}>محتوای متنی</h3> */}
       </div>
       <p>
         شما با استفاده از ورود میتوانید در متاورس رنگ حضور پیدا کنید و از خدمات
         آن بهره مند شوید ازخدمات متاورس رنگ میتوان به خرید و فروش VOD, فروشندگی
         محصول, کسب علم و دانش توسط دانشگاه ها و موسسه های موجود در متاورس رنگ
-        اشاره کرد.
+        اشاره کرد. شما با استفاده از ورود میتوانید در متاورس رنگ حضور پیدا کنید
+        و از خدمات آن بهره مند شوید ازخدمات متاورس رنگ میتوان به خرید و فروش
+        VOD, فروشندگی محصول, کسب علم و دانش توسط دانشگاه ها و موسسه های موجود در
+        متاورس رنگ اشاره کرد.
       </p>
     </Container>
   );

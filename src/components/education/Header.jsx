@@ -1,5 +1,6 @@
+import { FaAngleLeft } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
-import { IoMove } from "react-icons/io5";
+import { TbMinimize } from "react-icons/tb";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -11,6 +12,7 @@ const Div = styled.div`
   background-color: #3b3b3b;
   svg {
     transform: scale(0.7);
+    cursor: pointer;
   }
 `;
 const HeaderWrapper = styled.div`
@@ -65,18 +67,43 @@ const CloseWrapper = styled.div`
     color: red;
   }
 `;
-const Header = ({ setOpenEducation }) => {
+
+const Back = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3b3b3b;
+  border-radius: 100%;
+  margin-right: auto;
+  cursor: pointer;
+  svg {
+    color: white;
+  }
+`;
+
+const Header = ({ setOpenEducation, setSize, size }) => {
   return (
     <HeaderWrapper>
-      <Text>آموزش</Text>
-      <Icons>
-        <Div>
-          <IoMove style={{ color: "#949494" }} />
-        </Div>
-        <CloseWrapper onClick={() => setOpenEducation(false)}>
-          <IoIosClose />
-        </CloseWrapper>
-      </Icons>
+      {!size && (
+        <>
+          <Text>آموزش</Text>
+          <Icons>
+            <Div onClick={() => setSize(true)}>
+              <TbMinimize style={{ color: "#949494" }} />
+            </Div>
+            <CloseWrapper onClick={() => setOpenEducation(false)}>
+              <IoIosClose />
+            </CloseWrapper>
+          </Icons>
+        </>
+      )}
+      {size && (
+        <Back onClick={() => setSize(false)}>
+          <FaAngleLeft />
+        </Back>
+      )}
     </HeaderWrapper>
   );
 };
