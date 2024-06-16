@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 const Container = styled.div`
-  margin-top: 15px;
+  margin-top: 20px;
   div {
     display: flex;
     gap: 8px;

@@ -1,4 +1,4 @@
-import satisfy from "../../../assets/images/player/satisfy.png";
+import satisfy from "../../../assets/images/profile/satisfaction.gif";
 import styled from "styled-components";
 
 const Container = styled.div`

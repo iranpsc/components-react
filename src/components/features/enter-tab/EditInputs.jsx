@@ -1,6 +1,7 @@
 import Codes from "./Codes";
 import EditInput from "./EditInput";
 import EditLevelInput from "./EditLevelInput";
+import RichText from "./RichText";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -21,21 +22,24 @@ const Second = styled.div`
   align-items: center;
   gap: 10px;
 `;
-
 const TextArea = styled.textarea`
   border-radius: 5px;
   padding: 10px;
   outline: none;
+  resize: none;
   flex-grow: 1;
   border: none;
   color: #84858f;
   background-color: #2c2c2c;
   font-size: 16px;
 `;
-
 const Title = styled.h3`
   font-weight: 600;
   color: white;
+  @media (max-width: 1024px) {
+    font-size: 14px;
+    margin-top: 8px;
+  }
 `;
 const Button = styled.button`
   border-radius: 10px;
@@ -52,13 +56,33 @@ const Button = styled.button`
   font-family: inherit;
   margin-top: 10px;
 `;
-
-const EditInputs = ({ data, setEdit, setPayed }) => {
+const Wrapper = styled.div`
+  border-radius: 5px;
+  border: 1px solid #454545;
+  color: #ffffff;
+  background-color: #2c2c2c;
+  overflow: hidden;
+  height: 100%;
+`;
+const EditInputs = ({ data, setData, setEdit, setPayed }) => {
+  // const changeHandler = (e) => {
+  //   const { name, value } = e.target;
+  //   setData((prevInputValues) => ({
+  //     ...prevInputValues[0].inputs,
+  //     [name]: value,
+  //   }));
+  // };
   return (
     <Container>
       <First>
         {data[0].inputs.slice(0, 2).map((input) => (
-          <EditInput {...input} key={input.id} />
+          <EditInput
+            type={input.type}
+            name={input.level}
+            // onchange={changeHandler}
+            title={input.title}
+            key={input.id}
+          />
         ))}
       </First>
       <Second>
@@ -66,15 +90,25 @@ const EditInputs = ({ data, setEdit, setPayed }) => {
           <EditLevelInput {...input} key={input.id} />
         ))}
         {data[0].inputs.slice(2, 3).map((input) => (
-          <EditInput {...input} key={input.id} />
+          <EditInput
+            name={input.level}
+            type={input.type}
+            // onchange={changeHandler}
+            // {...input}
+            title={input.title}
+            key={input.id}
+          />
         ))}
       </Second>
-      <TextArea
+      {/* <TextArea
         onchange={() => {}}
         value=""
         rows={3}
         placeholder="درباره مجموعه"
-      />
+      /> */}
+      <Wrapper>
+        <RichText />
+      </Wrapper>
       <Title>درست کردن کد اختصاصی ورود</Title>
       <Codes />
       <Button

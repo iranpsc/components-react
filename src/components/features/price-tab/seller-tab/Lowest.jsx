@@ -17,7 +17,8 @@ const Wrapper = styled.div`
 
 const Text = styled.p`
   color: #ffffff;
-  line-height: 1.5rem;
+  font-weight: 100;
+  line-height: 1.8rem;
 `;
 
 const InputWrapper = styled.div`

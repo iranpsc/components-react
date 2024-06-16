@@ -3,11 +3,11 @@ import Inputs from "./Inputs";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
   padding-right: 20px;
   overflow-y: auto;
   direction: ltr;
-  height: 65%;
+  height: 69% !important;
   @media (min-width: 840px) {
     height: 65%;
   }

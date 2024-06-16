@@ -9,7 +9,6 @@ const ModalContainer = styled.div`
   bottom: 0;
   padding: 15px 20px;
   max-width: 800px;
-  overflow: hidden;
   @media (min-width: 1023px) {
     border-radius: 10px;
     height: 94%;
@@ -22,12 +21,16 @@ const ModalContainer = styled.div`
     width: 85%;
   }
 
+  @media (min-width: 1400px) {
+    overflow: hidden;
+  }
+
   @media (min-width: 1920px) {
     max-width: 70%;
     max-height: 782px;
   }
 `;
-const Modal = ({ children }) => {
+const Modal = ({ children, left }) => {
   return <ModalContainer>{children}</ModalContainer>;
 };
 

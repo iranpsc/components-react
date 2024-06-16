@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Select = styled.select`
   color: #dedee9;
-  background-color: transparent;
+  background-color: black;
   border: none !important;
   outline: none !important;
   font-size: 12px;
@@ -11,7 +11,8 @@ const Select = styled.select`
   padding: 10px 15px;
   width: 100%;
   option {
-    color: black !important;
+    color: #dedee9;
+    padding-left: 15px;
     width: 100%;
     border: transparent !important;
     outline: none !important;

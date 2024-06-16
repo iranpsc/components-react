@@ -10,6 +10,9 @@ const Container = styled.div`
   padding: 15px;
   background-color: #1a1a18;
   border-bottom-left-radius: 10px;
+  @media (min-width: 840px) {
+    padding: 12px;
+  }
   @media (min-width: 1024px) {
     padding: 20px;
   }

@@ -27,6 +27,7 @@ const Title = styled.h3`
 const Value = styled.p`
   font-size: 18px;
   padding: 5px 20px;
+  direction: ltr;
   @media (min-width: 998px) {
     padding:8px 20px
   }
@@ -36,7 +37,8 @@ const TitleValue = ({ title, value }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <Value>{value}</Value>
+      <Value>{value.toLocaleString()
+        .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</Value>
     </Wrapper>
   );
 };

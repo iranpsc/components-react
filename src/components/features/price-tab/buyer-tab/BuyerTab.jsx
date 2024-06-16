@@ -6,7 +6,7 @@ import { useState } from "react";
 const Wrapper = styled.div`
   display: flex;
   gap: 10px;
-  margin: 20px 0;
+  padding-top: 20px;
 `;
 
 const BuyerTab = () => {

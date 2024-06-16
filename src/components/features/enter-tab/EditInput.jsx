@@ -41,6 +41,7 @@ const EditInput = ({
         onChange={onchange}
         type={type || "text"}
         name={name}
+        step={0.0001}
       />
       {(id === 1) | (id === 2) ? (
         <img width={28} height={28} src={icon} alt={title} />

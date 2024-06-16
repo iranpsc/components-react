@@ -91,7 +91,7 @@ const Inputs = ({ data, identityError, inputValues, handleInputChange }) => {
 
       <Birthday>
         <DatePicker
-        shadow='red'
+          shadow="red"
           value={inputValues[data[4].slug]}
           className="bg-dark"
           onChange={setValue}

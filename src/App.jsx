@@ -9,6 +9,7 @@ import FeaturesModal from "./pages/FeaturesModal";
 import Notification from "./pages/Notification";
 import ProfileModal from "./pages/ProfileModal";
 import Search from "./pages/Search";
+import Setting from "./pages/Setting";
 import ShopModal from "./pages/ShopModal";
 import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/profile" element={<ProfileModal />} />
           <Route path="/search" element={<Search />} />
           <Route path="/notification" element={<Notification />} />
+          <Route path="/setting" element={<Setting />} />
         </Routes>
       </Wrapper>
       <ToastContainer

@@ -34,6 +34,7 @@ const Left = styled.div`
 `;
 const Text = styled.p`
   color: ${(props) => (props.color ? "#C30000" : "#dedee9")};
+  font-weight: ${(props) => (props.color ? "700" : "")};
 `;
 const Alert = ({ type, text, info, buttonText, onclick }) => {
   return (

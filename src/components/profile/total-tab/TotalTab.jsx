@@ -5,14 +5,13 @@ import Details from "./Details";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
   padding-right: 10px;
-  gap: 10px;
   direction: ltr;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 30px;
   height: 75%;
   @media (min-width: 1024px) {
     height: 78%;

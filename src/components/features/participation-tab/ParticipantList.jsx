@@ -76,12 +76,13 @@ const Wrapper = styled.div`
   direction: ltr;
   gap: 10px;
   @media (min-width: 1500px) {
+    padding-right: 15px;
     overflow-y: auto;
-    height: 150px !important;
+    height: 246px !important;
   }
   @media (min-width: 1900px) {
     overflow-y: auto;
-    height: 230px !important;
+    height: 250px !important;
   }
 `;
 const ParticipantList = () => {

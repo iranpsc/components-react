@@ -25,6 +25,8 @@ const Div = styled.div`
   }
   h4 {
     color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
   }
 `;
 

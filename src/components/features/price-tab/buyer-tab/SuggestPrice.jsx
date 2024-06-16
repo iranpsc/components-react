@@ -23,6 +23,7 @@ const Text = styled.p`
   color: #ffffff;
   line-height: 1.5rem;
   direction: rtl;
+  font-weight: 100;
 `;
 
 const SuggestPrice = () => {

@@ -67,34 +67,27 @@ const Button = styled.button`
   color: #191b21;
   font-family: inherit;
 `;
-const ConfirmSecondDelete = ({
-  setBankSecondCardImage,
-  bankSecondCardImage,
-  setOpenConfirmSecondModal,
-}) => {
+const ConfirmCardDelete = ({ setOpenDeleteModal, setCards, deleteIndex }) => {
+  const handleDelete = () => {
+    setCards((prevCards) => {
+      const updatedCards = [...prevCards];
+      updatedCards.splice(deleteIndex, 1);
+      return updatedCards;
+    });
+    setOpenDeleteModal(false);
+  };
   return (
     <BackGround>
       <Modal>
         <div>
           <Title>حذف کارت ثبت شده</Title>
-          <Info>
-            آیا می خواهید کارت با شماره “ {bankSecondCardImage} ” را حذف کنید؟{" "}
-          </Info>
+          <Info>آیا می خواهید این کارت را حذف کنید؟ </Info>
         </div>
         <Buttons>
-          <Button
-            red
-            onClick={() => {
-              setBankSecondCardImage({
-                cardNumber: "",
-                shabaCard: "",
-              });
-              setOpenConfirmSecondModal(false);
-            }}
-          >
+          <Button red onClick={handleDelete}>
             بله، حذف کارت{" "}
           </Button>
-          <Button onClick={() => setOpenConfirmSecondModal(false)}>
+          <Button onClick={() => setOpenDeleteModal(false)}>
             خیر، منصرف شدم
           </Button>
         </Buttons>
@@ -103,4 +96,4 @@ const ConfirmSecondDelete = ({
   );
 };
 
-export default ConfirmSecondDelete;
+export default ConfirmCardDelete;

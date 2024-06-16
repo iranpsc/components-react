@@ -3,10 +3,11 @@ import Title from "../../Title";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
+  padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 65%;
+  height: 68%;
   @media (min-width: 1024px) {
     height: 70%;
   }
@@ -18,14 +19,15 @@ const Container = styled.div`
   }
   @media (min-width: 1500px) {
     height: 77%;
+    padding-right: 0;
     grid-template-columns: 2fr 3fr;
   }
 `;
-const EnterEdit = ({ setEdit, data, payed, setPayed }) => {
+const EnterEdit = ({ setEdit, data, setData, payed, setPayed }) => {
   return (
     <Container>
       <Title right title="ویرایش اطلاعات" />
-      <EditInputs data={data} setEdit={setEdit} setPayed={setPayed} />
+      <EditInputs data={data} setData={setData} setEdit={setEdit} setPayed={setPayed} />
     </Container>
   );
 };

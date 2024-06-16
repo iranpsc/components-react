@@ -7,6 +7,7 @@ const Message = styled.p`
 const Container = styled.div`
   display: flex;
   align-items: center;
+  direction: rtl;
   gap: 8px;
   background-color: #1a1a18;
   border-radius: 5px;

@@ -14,6 +14,7 @@ const Select = styled.select`
   display: flex;
   flex-grow: 1;
   align-items: center;
+  outline: none;
   justify-content: space-between;
   overflow: hidden;
   background-color: #2c2c2c;
@@ -23,7 +24,6 @@ const Select = styled.select`
   option {
     width: 100%;
     border: transparent !important;
-    outline: none !important;
     color: #dedee9;
     background-color: transparent !important;
   }

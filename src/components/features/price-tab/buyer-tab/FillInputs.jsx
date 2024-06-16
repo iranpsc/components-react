@@ -22,13 +22,13 @@ const ResultWrapper = styled.div`
   gap: 20px;
   width: 100%;
   @media (min-width: 670px) {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
   }
   @media (min-width: 1023px) {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
   }
   @media (min-width: 1300px) {
-    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
   }
 `;
 
@@ -69,6 +69,11 @@ const Div = styled.div`
   direction: rtl;
 `;
 
+const Sec = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 2fr 1fr;
+`;
 const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
   return (
     <>
@@ -95,11 +100,14 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
         <Wrapper>
           <Title>قیمت نهایی</Title>
           <Value>
-            {rial}IRR / {psc} PSC
+            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}IRR /{" "}
+            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
           </Value>
         </Wrapper>
-        <TitleValue title="مانده" value="0" />
-        <TitleValue title="کارمزد" value="5%" />
+        <Sec>
+          <TitleValue title="مانده" value="0" />
+          <TitleValue title="کارمزد" value="5%" />
+        </Sec>
       </ResultWrapper>
       <div dir="rtl">
         <Button label="ثبت پیشنهاد" onclick={() => setAssign(true)} />

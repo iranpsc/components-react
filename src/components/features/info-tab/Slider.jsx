@@ -12,7 +12,7 @@ const Background = styled.div`
   top: 0;
   right: 0;
   background-color: #000000;
-  opacity: 0.8;
+  opacity: 0.9;
   div {
     cursor: pointer;
     width: 40px;

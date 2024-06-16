@@ -10,9 +10,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 15px;
   margin-top: 15px;
-  height: 160px;
+  height: 190px;
   overflow-y: auto;
-  @media (min-width: 850px) {
+  @media (min-width: 840px) {
     height: 200px;
   }
   @media (min-width: 1024px) {
@@ -25,10 +25,10 @@ const Wrapper = styled.div`
     height: 750px;
   }
   @media (min-width: 1400px) {
-    height: 500px;
+    height: 535px;
   }
   @media (min-width: 1920px) {
-    height: 820px;
+    height: 670px;
   }
 `;
 const Container = styled.div`

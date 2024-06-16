@@ -1,10 +1,15 @@
 import ErrorItem from "./identity-tab/ErrorItem";
+import { IoCloseSharp } from "react-icons/io5";
 import styled from "styled-components";
 
 const Div = styled.div`
   display: flex;
   flex-direction: column;
+  direction: ltr;
   gap: 10px;
+  padding-right: 15px;
+  height: 197px;
+  overflow-y: auto;
 `;
 const BackGround = styled.div`
   z-index: 999;
@@ -26,6 +31,7 @@ const Modal = styled.div`
   width: 100%;
   max-width: 475px;
   direction: rtl;
+  position: relative;
 `;
 
 const Title = styled.h3`
@@ -43,29 +49,27 @@ const Info = styled.p`
   margin: 20px 0;
   font-size: 16px;
   @media (max-width: 1023px) {
-    font-size: 12px;
+    font-size: 14px;
+  }
+`;
+const Close = styled.div`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  svg {
+    color: red;
+    font-size: 24px;
   }
 `;
 
-const Button = styled.button`
-  border-radius: 10px;
-  background-color: #e9e9e9;
-  color: #949494;
-  border: none;
-  padding: 0 14px;
-  width: fit-content;
-  height: 45px;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  color: #949494;
-  font-family: inherit;
-  margin-top: 30px;
-`;
 const ErrorModal = ({ setOpenErrorModal }) => {
   return (
     <BackGround>
       <Modal>
+        <Close>
+          <IoCloseSharp onClick={() => setOpenErrorModal(false)} />
+        </Close>
         <div>
           <Title>خطا های احراز هویت</Title>
           <Info>
@@ -74,11 +78,10 @@ const ErrorModal = ({ setOpenErrorModal }) => {
           </Info>
         </div>
         <Div>
-          {[1, 2, 3].map((errorItem) => (
+          {[1, 2, 3, 5, 5].map((errorItem) => (
             <ErrorItem key={errorItem} />
           ))}
         </Div>
-        <Button onClick={() => setOpenErrorModal(false)}>بستن</Button>
       </Modal>
     </BackGround>
   );

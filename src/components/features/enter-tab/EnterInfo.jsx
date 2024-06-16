@@ -5,10 +5,11 @@ import Slider from "./Slider";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
+  padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 65%;
+  height: 69%;
   gap: 30px;
   display: grid;
   @media (min-width: 1024px) and (max-width: 1369px) {
@@ -49,6 +50,7 @@ const EnterInfo = ({ setEdit, data, edit, payed, setPayed, isOwner }) => {
             setEdit={setEdit}
             payed={payed}
             setPayed={setPayed}
+            isMobile={isMobile}
           />
           <Slider data={data} />
         </>

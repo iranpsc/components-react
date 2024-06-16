@@ -37,7 +37,7 @@ const Text = styled.p`
   margin-top: 10px;
   font-weight: 300;
   @media (max-width: 1023px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 
@@ -63,7 +63,7 @@ const Button = styled.button`
   font-family: inherit;
 `;
 
-const Info = ({ data, edit, setEdit, payed, setPayed, isOwner }) => {
+const Info = ({ data, edit, setEdit, payed, setPayed, isOwner, isMobile }) => {
   const [payStatus, setPayStatus] = useState(false);
   const [loading, setLoading] = useState(false);
   return (
@@ -84,13 +84,7 @@ const Info = ({ data, edit, setEdit, payed, setPayed, isOwner }) => {
         />
       )}
       <Title payed={payed} title="درباره مجموعه" />
-      <Text>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد کتابهای زیادی در شصت و سه
-        درصد گذشته حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد
-      </Text>
+      <Text>{data[0].inputs[4].about}</Text>
       {payed && !edit && (
         <Buttons>
           <Button blue onClick={() => setEdit(true)}>
@@ -107,7 +101,7 @@ const Info = ({ data, edit, setEdit, payed, setPayed, isOwner }) => {
           setLoading={setLoading}
         />
       )}
-      {loading && <LoadingModal />}
+      {loading && <LoadingModal isMobile={isMobile} />}
     </Container>
   );
 };

@@ -42,6 +42,7 @@ const Text = styled.p`
 `;
 
 const Edit = styled.span`
+  color: black;
   @media (max-width: 1023px) {
     font-size: 12px;
   }

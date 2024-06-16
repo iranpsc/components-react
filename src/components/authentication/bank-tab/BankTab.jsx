@@ -12,10 +12,11 @@ const Wrapper = styled.div`
   gap: 30px;
 `;
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
+  padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 70%;
+  height: 75%;
   @media (min-width: 1024px) {
     height: 70%;
   }
@@ -28,21 +29,10 @@ const Container = styled.div`
 `;
 const BankTab = ({ setOpenErrorModal, openErrorModal }) => {
   const [isError, setIsError] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [openAddModal, setOpenAddModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
-  const [bankFirstCardImage, setBankFirstCardImage] = useState({
-    cardNumber: "",
-    shabaCard: "",
-  });
-  const [bankSecondCardImage, setBankSecondCardImage] = useState({
-    cardNumber: "",
-    shabaCard: "",
-  });
-  const [openConfirmFirstModal, setOpenConfirmFirstModal] = useState(false);
-  const [openConfirmSecondModal, setOpenConfirmSecondModal] = useState(false);
-  const [openFirstCardNumberModal, setOpenFirstCardNumberModal] =
-    useState(false);
-  const [openSecondCardNumberModal, setOpenSecondCardNumberModal] =
-    useState(false);
   return (
     <Container>
       <Wrapper>
@@ -57,18 +47,12 @@ const BankTab = ({ setOpenErrorModal, openErrorModal }) => {
           />
         )}
         <BankCardsUpload
-          bankFirstCardImage={bankFirstCardImage}
-          setBankFirstCardImage={setBankFirstCardImage}
-          bankSecondCardImage={bankSecondCardImage}
-          setBankSecondCardImage={setBankSecondCardImage}
-          openConfirmFirstModal={openConfirmFirstModal}
-          setOpenConfirmFirstModal={setOpenConfirmFirstModal}
-          openConfirmSecondModal={openConfirmSecondModal}
-          setOpenConfirmSecondModal={setOpenConfirmSecondModal}
-          openFirstCardNumberModal={openFirstCardNumberModal}
-          setOpenFirstCardNumberModal={setOpenFirstCardNumberModal}
-          openSecondCardNumberModal={openSecondCardNumberModal}
-          setOpenSecondCardNumberModal={setOpenSecondCardNumberModal}
+          setOpenAddModal={setOpenAddModal}
+          openAddModal={openAddModal}
+          openDeleteModal={openDeleteModal}
+          setOpenDeleteModal={setOpenDeleteModal}
+          cards={cards}
+          setCards={setCards}
         />
       </Wrapper>
       {openErrorModal && <ErrorModal setOpenErrorModal={setOpenErrorModal} />}

@@ -2,7 +2,7 @@ import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 
 const Container = styled.div`
-  height: 40px;
+  height: 30px;
   border-radius: 5px;
   border: 1px solid #454545;
   padding: 10px 12px;

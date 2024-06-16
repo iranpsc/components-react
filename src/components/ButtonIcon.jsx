@@ -7,7 +7,7 @@ const Container = styled.div`
   gap: 10px;
   background-color: ${(props) => (props.fill ? "#FFC700" : "#3B3B3B")};
   color: ${(props) => (props.fill ? "#191B21" : "#949494")};
-  border-radius: 10px;
+  border-radius: 7px;
   font-size: 16px;
   cursor: pointer;
   flex-grow: ${(props) => props.grow && "1"};
@@ -28,6 +28,9 @@ const Container = styled.div`
   padding: 7px 20px 4px 20px;
     h3 {
       font-size: 16px;
+    }
+    svg{
+      font-size: 18px;
     }
   }
 `;

@@ -1,5 +1,6 @@
 import EditInput from "../../features/enter-tab/EditInput";
 import styled from "styled-components";
+import { useState } from "react";
 
 const BackGround = styled.div`
   z-index: 999;
@@ -55,11 +56,19 @@ const Button = styled.button`
   color: #191b21;
   font-family: inherit;
 `;
-const AddSecondBankCard = ({
-  setBankSecondCardImage,
-  setOpenSecondCardNumberModal,
-  bankSecondCardImage,
-}) => {
+const AddBankCard = ({ setOpenAddModal, setCards }) => {
+  const [cardInfo, setCardInfo] = useState({
+    cardNumber: "",
+    shabaNumber: "",
+  });
+
+  const addCard = () => {
+    if (cardInfo.cardNumber !== "" && cardInfo.shabaNumber !== "") {
+      setCards((prevCards) => [...prevCards, cardInfo]);
+      setOpenAddModal(false);
+    }
+  };
+
   return (
     <BackGround>
       <Modal>
@@ -68,13 +77,13 @@ const AddSecondBankCard = ({
           <EditInput
             title="شماره کارت"
             type="number"
-            value={bankSecondCardImage.bankCard}
+            value={cardInfo.cardNumber}
             onchange={(e) => {
               const inputValue = e.target.value;
               if (inputValue.length < 17) {
-                setBankSecondCardImage((prev) => ({
+                setCardInfo((prev) => ({
                   ...prev,
-                  bankCard: inputValue,
+                  cardNumber: inputValue,
                 }));
               }
             }}
@@ -82,33 +91,22 @@ const AddSecondBankCard = ({
           <EditInput
             title="شماره شبا"
             type="number"
-            value={bankSecondCardImage.shabaCard}
+            value={cardInfo.shabaNumber}
             onchange={(e) => {
               const inputValue = e.target.value;
               if (inputValue.length < 25) {
-                setBankSecondCardImage((prev) => ({
+                setCardInfo((prev) => ({
                   ...prev,
-                  shabaCard: inputValue,
+                  shabaNumber: inputValue,
                 }));
               }
             }}
           />
         </Inputs>
-        <Button
-          onClick={() => {
-            if (
-              bankSecondCardImage.bankCard !== "" &&
-              bankSecondCardImage.shabaCard !== ""
-            ) {
-              setOpenSecondCardNumberModal(false);
-            }
-          }}
-        >
-          افزودن کارت
-        </Button>
+        <Button onClick={addCard}>افزودن کارت</Button>
       </Modal>
     </BackGround>
   );
 };
 
-export default AddSecondBankCard;
+export default AddBankCard;

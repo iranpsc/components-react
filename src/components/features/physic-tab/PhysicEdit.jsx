@@ -3,10 +3,11 @@ import Title from "../../Title";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
   overflow-y: auto;
+  padding-right: 15px;
   direction: ltr;
-  height: 62%;
+  height: 68%;
   h3 {
     &:first-of-type {
       direction: rtl;
@@ -21,12 +22,15 @@ const Container = styled.div`
   @media (min-width: 1370px) {
     height: 77%;
   }
+  @media (min-width: 1500px) {
+    padding-right: 0;
+  }
 `;
 const PhysicEdit = ({ setEdit, inputs, setInputs }) => {
   return (
     <Container>
       <Title title="ویرایش اطلاعات فیزیکی" />
-      <EditInputs inputs={inputs} setInputs={setInputs} setEdit={setEdit}/>
+      <EditInputs inputs={inputs} setInputs={setInputs} setEdit={setEdit} />
     </Container>
   );
 };

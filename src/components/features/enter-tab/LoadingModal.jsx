@@ -20,38 +20,57 @@ const Text = styled.p`
   text-align: center;
 `;
 
-const style = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundColor: "#000000",
-  borderRadius: "10px",
-  flexDirection: "column",
-  padding: "15px 20px",
-  zIndex: "999",
-  "@media (min-width: 768px)": {},
+const LoadingModal = ({ isMobile }) => {
+  const style = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#000000",
+    borderRadius: "10px",
+    flexDirection: "column",
+    padding: "15px 20px",
+    zIndex: "999",
+  };
+  if (isMobile) {
+    return (
+      <Rnd
+        style={style}
+        default={{
+          x: 0,
+          y: 0,
+          width: 640,
+          height: 350
+        }}
+        bounds={"window"}
+        enableResizing={false}
+      >
+        <Header loading title="ورود به ملک" />
+        <Loader>
+          <img src={loader} width={130} height={130} alt="loader" />
+          <Text>متناسب با سرعت اینترنت شما این مجموعه بارگیری خواهد شد</Text>
+        </Loader>
+      </Rnd>
+    );
+  }
+  return (
+    <Rnd
+      style={style}
+      default={{
+        x: 0,
+        y: 0,
+        width: 1380,
+        height:750
+      }}
+      bounds={"window"}
+      enableResizing={false}
+    >
+      <Header loading title="ورود به ملک" />
+      <Loader>
+        <img src={loader} width={130} height={130} alt="loader" />
+        <Text>متناسب با سرعت اینترنت شما این مجموعه بارگیری خواهد شد</Text>
+      </Loader>
+    </Rnd>
+  );
 };
-
-const LoadingModal = () => (
-  <Rnd
-    style={style}
-    default={{
-      x: -580,
-      y: -175,
-      width: 1388,
-      height: 750,
-    }}
-    minWidth={560}
-    maxWidth={1388}
-    minHeight={350}
-    maxHeight={750}
-  >
-    <Header loading title="ورود به ملک" />
-    <Loader>
-      <img src={loader} width={130} height={130} alt="loader" />
-      <Text>متناسب با سرعت اینترنت شما این مجموعه بارگیری خواهد شد</Text>
-    </Loader>
-  </Rnd>
-);
 
 export default LoadingModal;

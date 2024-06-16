@@ -23,7 +23,7 @@ const Modal = styled.div`
   width: 760px;
   max-height: 577px;
   @media (max-width: 1023px) {
-    height: 80%;
+    height: 60%;
     overflow-y: auto;
   }
 `;
@@ -44,7 +44,7 @@ const Info = styled.p`
   margin: 10px auto;
   font-size: 16px;
   @media (max-width: 1023px) {
-    font-size: 12px;
+    font-size: 14px;
   }
 `;
 
@@ -64,7 +64,7 @@ const Buttons = styled.div`
 const Button = styled.button`
   border-radius: 10px;
   background-color: ${(props) => (props.blue ? "#18C08F" : "#3B3B3B")};
-  color: ${(props) => (props.blue ? "#FFFFFF" : "#E9E9E9")} !important;
+  color: ${(props) => (props.blue ? "#FFFFFF" : "#949494")} !important;
   border: none;
   padding: 0 14px;
   width: fit-content;

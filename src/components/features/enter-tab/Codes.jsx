@@ -47,13 +47,14 @@ const AddCode = styled.div`
   padding: 10px 14px 10px 14px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   height: 30px;
   color: white;
   cursor: pointer;
   @media (max-width: 900px) {
     h5 {
-      font-size: 8px;
+      font-size: 11px;
     }
   }
 `;

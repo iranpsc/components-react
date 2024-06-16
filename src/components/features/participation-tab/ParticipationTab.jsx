@@ -3,9 +3,10 @@ import Satisfy from "./Satisfy";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
+  padding-right: 15px;
   overflow-y: auto;
-  height: 65%;
+  height: 69%;
   direction: ltr;
   @media (min-width: 1024px) {
     height: 77%;

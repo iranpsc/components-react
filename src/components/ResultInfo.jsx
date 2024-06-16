@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   background-color: #1a1a18;
   padding: 15px;
   display: grid;
+  direction: rtl;
   grid-template-columns: 4fr 1fr;
 `;
 
@@ -76,9 +77,9 @@ const ResultInfo = ({ setAssign, rial, psc }) => {
         <Result title="قیمت فروش(PSC)" value={psc} />
         <ResultWrapper>
           <Title>قیمت نهایی</Title>
-          <Value>{rial}IRR / {psc} PSC</Value>
+          <Value dir="ltr">{rial} IRR / {psc} PSC</Value>
         </ResultWrapper>
-        <Result title="کارمزد" value={5} />
+        <Result title="کارمزد" value={'5%'} />
       </Results>
       <Actions>
         <ActionWrapper>

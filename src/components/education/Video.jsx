@@ -1,18 +1,69 @@
+import { useEffect, useState } from "react";
+
+import { FaChevronCircleLeft } from "react-icons/fa";
 import styled from "styled-components";
 import video from "../../assets/images/education/education.mp4";
 
 const Container = styled.div`
-  height: 217px;
+  height: ${(props) => (props.size ? "100%" : "217px")};
   border-radius: 10px;
-  background-color: #383835;
-  margin-top: 30px;
+  position: relative;
+  background-color: #000000;
+  margin-top: ${(props) => (props.size ? "0" : "30px")};
+  display: ${(props) => (props.show && props.isMobile ? "none" : "block")};
   video {
     object-fit: contain !important;
   }
 `;
-const Video = () => {
+
+const Icon = styled.div`
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  z-index: 888;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  div {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: absolute;
+  }
+  svg {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: #3b3b3b;
+  }
+`;
+
+const Video = ({ show, size, setSize }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1369);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1369);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
-    <Container>
+    <Container isMobile={isMobile} size={size} show={show}>
+      {size && (
+        <Icon>
+          <div />
+          <FaChevronCircleLeft onClick={() => setSize(false)} />
+        </Icon>
+      )}
       <video
         width={450}
         height={217}

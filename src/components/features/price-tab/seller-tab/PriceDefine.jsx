@@ -21,8 +21,10 @@ const Wrapper = styled.div`
 
 const Text = styled.p`
   color: #ffffff;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   direction: rtl;
+  font-weight: 100;
+  font-size: 16px;
 `;
 
 const PriceDefine = () => {
@@ -32,7 +34,7 @@ const PriceDefine = () => {
   return (
     <Wrapper>
       <Text>
-        شما می توانید ملک خود را به دو صورت ریال و pSC قیمت گذاری نمایید{" "}
+        شما می توانید ملک خود را به دو صورت ریال و PSC قیمت گذاری نمایید{" "}
       </Text>
       {!assign && (
         <FillInputs

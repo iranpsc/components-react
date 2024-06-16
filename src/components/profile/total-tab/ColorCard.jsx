@@ -27,13 +27,15 @@ const Container = styled.div`
       font-weight: 600;
     }
   }
-  @media (min-width: 740px) {
+  @media (min-width: 1024px) {
     padding: 16px 32px;
-    span {
-      font-size: 13px;
-    }
-    h3 {
-      font-size: 18px;
+    div {
+      span {
+        font-size: 13px;
+      }
+      h3 {
+        font-size: 18px;
+      }
     }
   }
 `;

@@ -1,9 +1,18 @@
 import Button from "../../Button";
 import { FiSearch } from "react-icons/fi";
 import Input from "./Input";
+import RichText from "./RichText";
 import styled from "styled-components";
 import { useState } from "react";
 
+const Wrapper = styled.div`
+  border-radius: 5px;
+  border: 1px solid #454545;
+  color: #ffffff;
+  background-color: #2c2c2c;
+  overflow: hidden;
+  height: 100%;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -130,12 +139,15 @@ const EditInputs = ({ inputs, setInputs, setEdit }) => {
           placeholder="آدرس وب سایت"
         />
       </Third>
-      <TextArea
+      {/* <TextArea
         onChange={(e) => setFields({ ...fields, about: e.target.value })}
         value={fields.about}
         rows={4}
         placeholder="هدف تاسیس"
-      />
+      /> */}
+      <Wrapper>
+        <RichText />
+      </Wrapper>
       <Text>ویرایش محتوای ثبت شده پس تایید سطوح بالا منتشر خواهد شد</Text>
       <Button edit onclick={() => setEdit(false)} label="ویرایش اطلاعات" />
     </Container>

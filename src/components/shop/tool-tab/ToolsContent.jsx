@@ -10,7 +10,7 @@ const Container = styled.div`
   text-align: right;
   padding-right: 15px;
   @media (max-width: 850px) {
-    height: 64% !important;
+    height: 75% !important;
   }
   @media (max-width: 1023px) {
     height: 65%;

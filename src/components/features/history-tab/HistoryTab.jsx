@@ -28,14 +28,14 @@ const history = [
   },
 ];
 const Container = styled.div`
-  margin: 20px 0;
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 65%;
+  height: 68%;
   @media (min-width: 1024px) {
     height: 70%;
   }

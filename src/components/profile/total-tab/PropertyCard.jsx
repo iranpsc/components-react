@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   background-color: #1a1a18;
   border-radius: 10px;
@@ -10,11 +9,11 @@ const Container = styled.div`
   gap: 15px;
   div {
     display: flex;
-    align-items: center;
     flex-direction: column;
     gap: 2px;
     span {
       color: #dedee9;
+      white-space: nowrap;
       font-size: 11px;
     }
     h3 {

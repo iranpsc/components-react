@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   width: 100%;
   direction: ltr;
   @media (max-width: 850px) {
-    height: 15.5rem;
+    height: 16.8rem;
   }
   @media (max-width: 1023px) {
     max-height: 17.5rem;

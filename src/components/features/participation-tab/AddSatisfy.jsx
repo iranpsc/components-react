@@ -4,6 +4,7 @@ import { MdAccessTime } from "react-icons/md";
 import TextValueIcon from "../../TextValueIcon";
 import Title from "../../Title";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   
@@ -23,6 +24,7 @@ const Info = styled.p`
   font-size: 16px;
 `;
 const AddSatisfy = () => {
+  const [count, setCount] = useState('0.0001')
   return (
     <Container>
       <Title title="افزودن رضایت" />
@@ -31,7 +33,7 @@ const AddSatisfy = () => {
         ملک شریک شوید{" "}
       </Info>
       <Inputs>
-        <EditInput type="number" title="تعداد رضایت" />
+        <EditInput satisfy value={count} onchange={(e) => setCount(e.target.value)} type="number" title="تعداد رضایت" />
         <TextValueIcon
           icon={<MdAccessTime />}
           title="زمان کسر شده"

@@ -24,6 +24,9 @@ const HeaderWrapper = styled.div`
     margin-bottom: 30px;
     margin-top: 10px;
   }
+  @media (max-width: 1400px) {
+    display: ${props => props.show ? 'none' : 'flex'};
+  }
 `;
 
 const Text = styled.h2`
@@ -83,11 +86,9 @@ const Back = styled.div`
   }
 `;
 
-const Header = ({ setOpenEducation, setSize, size }) => {
+const Header = ({ show, setOpenEducation, setSize }) => {
   return (
-    <HeaderWrapper>
-      {!size && (
-        <>
+    <HeaderWrapper show={show}>
           <Text>آموزش</Text>
           <Icons>
             <Div onClick={() => setSize(true)}>
@@ -97,13 +98,6 @@ const Header = ({ setOpenEducation, setSize, size }) => {
               <IoIosClose />
             </CloseWrapper>
           </Icons>
-        </>
-      )}
-      {size && (
-        <Back onClick={() => setSize(false)}>
-          <FaAngleLeft />
-        </Back>
-      )}
     </HeaderWrapper>
   );
 };

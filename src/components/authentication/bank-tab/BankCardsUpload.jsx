@@ -1,25 +1,25 @@
-import AddFirstBankCard from "./AddFirstBankCard";
-import AddSecondBankCard from "./AddSecondBankCard";
-import ConfirmFirstDelete from "./ConfirmFirstDelete";
-import ConfirmSecondDelete from "./ConfirmSecondDelete";
+import AddBankCard from "./AddBankCard";
+import ConfirmCardDelete from "./ConfirmCardDelete";
 import { HiOutlineTrash } from "react-icons/hi";
 import bank from "../../../assets/images/auth/bank-melat.png";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
   gap: 20px;
 `;
 
-const NationCard = styled.div`
-  cursor: pointer;
-`;
-
 const BankCard = styled.div`
-  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: flex-start;
 `;
 const Image = styled.div`
   position: relative;
+  background-color: #0066FF;
 `;
 
 const UploadWrapper = styled.div`
@@ -33,7 +33,7 @@ const UploadWrapper = styled.div`
     overflow: hidden;
   }
   @media (min-width: 840px) {
-    width: 320px;
+    width: 305px;
     height: 190px;
   }
   @media (min-width: 940px) {
@@ -51,7 +51,7 @@ const CardNumber = styled.div`
   background-color: #0066ff;
   flex-grow: 2;
   height: 70% !important;
-  /* background: url("/src/assets/images/auth/Shapes.png") no-repeat; */
+  background: url("/src/assets/images/auth/Shapes.png") no-repeat;
   div {
     display: flex;
     align-items: start;
@@ -132,67 +132,28 @@ const IconWrapper = styled.div`
 `;
 
 const BankCardsUpload = ({
-  bankFirstCardImage,
-  setBankFirstCardImage,
-  bankSecondCardImage,
-  setBankSecondCardImage,
-  openConfirmFirstModal,
-  setOpenConfirmFirstModal,
-  openConfirmSecondModal,
-  setOpenConfirmSecondModal,
-  openFirstCardNumberModal,
-  setOpenFirstCardNumberModal,
-  openSecondCardNumberModal,
-  setOpenSecondCardNumberModal,
+  cards,
+  setCards,
+  openAddModal,
+  setOpenAddModal,
+  openDeleteModal,
+  setOpenDeleteModal,
 }) => {
+  const [deleteIndex, setDeleteIndex] = useState(null);
+
+  const handleDeleteCard = (index) => {
+    setDeleteIndex(index);
+    setOpenDeleteModal(true);
+  };
+
   return (
     <>
       <Container>
-        <NationCard>
-          <UploadWrapper>
-            {!bankFirstCardImage.bankCard && !bankFirstCardImage.shabaCard && (
-              <Upload onClick={() => setOpenFirstCardNumberModal(true)}>
-                +<span>افزودن کارت بانکی</span>
-              </Upload>
-            )}
-            {bankFirstCardImage.bankCard && bankFirstCardImage.shabaCard && (
-              <Image>
-                <IconWrapper onClick={() => setOpenConfirmFirstModal(true)}>
-                  <HiOutlineTrash />
-                </IconWrapper>
-                <DisplayCard>
-                  <CardNumber>
-                    <div>
-                      <img width={60} src={bank} alt="bank-logo" />
-                      <span>بانک ملت</span>
-                    </div>
-                    <h2>
-                      {bankFirstCardImage.bankCard.replace(
-                        /(\d{4})(?=\d)/g,
-                        "$1 "
-                      )}
-                    </h2>
-                  </CardNumber>
-                  <CardShaba>
-                    <span>شماره شبا</span>
-                    <h3>IR-{bankFirstCardImage.shabaCard}</h3>
-                  </CardShaba>
-                </DisplayCard>
-              </Image>
-            )}
-          </UploadWrapper>
-        </NationCard>
         <BankCard>
-          <UploadWrapper>
-            {!bankSecondCardImage.bankCard &&
-              !bankSecondCardImage.shabaCard && (
-                <Upload onClick={() => setOpenSecondCardNumberModal(true)}>
-                  +<span>افزودن کارت بانکی</span>
-                </Upload>
-              )}
-            {bankSecondCardImage.bankCard && bankSecondCardImage.shabaCard && (
+          {Object.values(cards).map((card, i) => (
+            <UploadWrapper key={i}>
               <Image>
-                <IconWrapper onClick={() => setOpenConfirmSecondModal(true)}>
+                <IconWrapper onClick={() => handleDeleteCard(i)}>
                   <HiOutlineTrash />
                 </IconWrapper>
                 <DisplayCard>
@@ -201,50 +162,35 @@ const BankCardsUpload = ({
                       <img width={60} src={bank} alt="bank-logo" />
                       <span>بانک ملت</span>
                     </div>
-                    <h2>
-                      {bankSecondCardImage.bankCard.replace(
-                        /(\d{4})(?=\d)/g,
-                        "$1 "
-                      )}
-                    </h2>
+                    <h2>{card.cardNumber.replace(/(\d{4})(?=\d)/g, "$1 ")}</h2>{" "}
                   </CardNumber>
                   <CardShaba>
                     <span>شماره شبا</span>
-                    <h3>IR-{bankSecondCardImage.shabaCard}</h3>
+                    <h3>IR-{card.shabaNumber}</h3>
                   </CardShaba>
                 </DisplayCard>
               </Image>
-            )}
+            </UploadWrapper>
+          ))}
+
+          <UploadWrapper>
+            <Upload onClick={() => setOpenAddModal(true)}>
+              +<span>افزودن کارت بانکی</span>
+            </Upload>
           </UploadWrapper>
         </BankCard>
       </Container>
-      {openConfirmFirstModal && (
-        <ConfirmFirstDelete
-          setBankFirstCardImage={setBankFirstCardImage}
-          bankFirstCardImage={bankFirstCardImage.bankCard}
-          setOpenConfirmFirstModal={setOpenConfirmFirstModal}
+
+      {deleteIndex !== null && openDeleteModal && (
+        <ConfirmCardDelete
+          setOpenDeleteModal={setOpenDeleteModal}
+          setCards={setCards}
+          deleteIndex={deleteIndex}
         />
       )}
-      {openFirstCardNumberModal && (
-        <AddFirstBankCard
-          setBankFirstCardImage={setBankFirstCardImage}
-          bankFirstCardImage={bankFirstCardImage}
-          setOpenFirstCardNumberModal={setOpenFirstCardNumberModal}
-        />
-      )}
-      {openConfirmSecondModal && (
-        <ConfirmSecondDelete
-          setBankSecondCardImage={setBankSecondCardImage}
-          bankSecondCardImage={bankSecondCardImage.bankCard}
-          setOpenConfirmSecondModal={setOpenConfirmSecondModal}
-        />
-      )}
-      {openSecondCardNumberModal && (
-        <AddSecondBankCard
-          setBankSecondCardImage={setBankSecondCardImage}
-          bankSecondCardImage={bankSecondCardImage}
-          setOpenSecondCardNumberModal={setOpenSecondCardNumberModal}
-        />
+
+      {openAddModal && (
+        <AddBankCard setOpenAddModal={setOpenAddModal} setCards={setCards} />
       )}
     </>
   );

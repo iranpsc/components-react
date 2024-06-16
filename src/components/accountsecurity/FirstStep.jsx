@@ -49,6 +49,7 @@ const FirstStep = ({ setStep, time, setTime }) => {
         maxLength={3}
         min={0}
         max={200}
+        step={1}
       />
       <button
         onClick={() => {

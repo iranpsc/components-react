@@ -9,9 +9,9 @@ const Div = styled.div`
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;
-  height: 260px;
+  height: 268px;
   @media (min-width: 1000px) {
-    height: 425px;
+    height: 438px;
   }
 `;
 const Container = styled.div`

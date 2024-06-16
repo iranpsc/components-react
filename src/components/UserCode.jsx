@@ -2,12 +2,13 @@ import { HiOutlineUser } from "react-icons/hi";
 import styled from "styled-components";
 
 const User = styled.div`
-  h4 {
+  a {
     color: #0066ff;
+    text-decoration: none;
     font-size: 12px;
   }
   @media (min-width: 998px) {
-    h4 {
+    a {
       font-size: 16px;
     }
   }
@@ -34,7 +35,7 @@ const UserCode = ({ title, code }) => {
         <HiOutlineUser size={20} />
         <span>{title}</span>
       </Div>
-      <h4>{code}</h4>
+      <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">{code}</a>
     </User>
   );
 };

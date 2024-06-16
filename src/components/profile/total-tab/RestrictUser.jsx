@@ -30,7 +30,6 @@ const Container = styled.div`
   padding: 20px;
   border-radius: 10px;
   display: flex;
-  flex-direction: column;
   gap: 20px;
   align-items: center;
   justify-content: space-between;
@@ -43,7 +42,10 @@ const Container = styled.div`
 const Title = styled.h2`
   color: #ffffff;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
+  @media (min-width: 1024px) {
+    font-size: 18px;
+  }
 `;
 const Icons = styled.div`
   display: flex;

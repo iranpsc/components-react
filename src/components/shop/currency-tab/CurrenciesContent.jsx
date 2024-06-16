@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   gap: 20px;
   margin-top: 20px;
   @media (max-width:850px) {
-    height: 56% !important;
+    height: 75% !important;
   }
   @media (max-width: 1023px) {
     max-height: 14.5rem;

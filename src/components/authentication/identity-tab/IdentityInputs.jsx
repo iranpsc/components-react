@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   direction: ltr;
   overflow-y: auto;
   height: 77%;
+  padding-right: 15px;
   @media (min-width: 1180px) {
     height: 80%;
   }

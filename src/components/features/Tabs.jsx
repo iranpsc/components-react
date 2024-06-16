@@ -32,7 +32,7 @@ const TabItem = styled.h3`
   }
 `;
 
-const Tabs = ({ active, setActive, role }) => {
+const Tabs = ({ active, setActive }) => {
   return (
     <TabsWrapper>
       <TabItem active={active === "info"} onClick={() => setActive("info")}>

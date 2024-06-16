@@ -37,6 +37,9 @@ const Container = styled.div`
     font-weight: 500;
     padding-top: 2px;
   }
+  @media (max-width: 1400px) {
+    display: ${props => props.show ? 'none' : 'flex'};
+  }
 `;
 
 const Right = styled.div`
@@ -45,16 +48,16 @@ const Right = styled.div`
   gap: 5px;
   a {
     cursor: pointer;
-    color: #969696;
+    color: #007bff;
     font-size: 19px;
     font-weight: 500;
     text-decoration: none;
   }
 `;
 
-const Footer = () => {
+const Footer = ({show}) => {
   return (
-    <Container>
+    <Container show={show}>
       <Right>
         <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">HM-2000003</a>
         <span>

@@ -69,18 +69,14 @@ const Buttons = styled.div`
   }
 `;
 const Button = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 36px;
+  height: 36px;
   border-radius: 100%;
   background-color: #e9e9e9;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  @media (min-width: 1024px) {
-    width: 36px;
-    height: 36px;
-  }
 `;
 const Div = styled.div`
   display: flex;
@@ -120,7 +116,12 @@ const ParticipantItem = ({ time, debt, level, satisfyCount, options }) => {
             <Button onClick={() => setEdit(true)}>
               <AiTwotoneEdit />
             </Button>
-            <Button onClick={() => setOpenOptions(!openOptions)}>
+            <Button
+              style={{
+                backgroundColor: `${openOptions ? "#FFC700" : "#e9e9e9"}`,
+              }}
+              onClick={() => setOpenOptions(!openOptions)}
+            >
               <IoIosArrowDown
                 style={{
                   transform: `${openOptions ? "rotate(180deg)" : "rotate(0)"}`,

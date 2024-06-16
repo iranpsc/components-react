@@ -43,6 +43,12 @@ const Icons = styled.div`
   @media (min-width: 740px) {
   bottom: 10px;
   }
+  @media (min-width: 840px) {
+  bottom: 30px;
+  }
+  @media (min-width: 1024px) {
+  bottom: 10px;
+  }
 `;
 
 const slides = [

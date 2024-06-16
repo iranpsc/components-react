@@ -135,7 +135,11 @@ const SecondStep = ({ setStep, time }) => {
 
   const handleInputChange = (index, event) => {
     const value = event.target.value;
-    if (value.length === 1 && /^\d$/.test(value)) {
+    if (value === "") {
+      if (index > 0) {
+        inputRefs.current[index - 1].focus();
+      }
+    } else if (value.length === 1 && /^\d$/.test(value)) {
       if (index < inputRefs.current.length - 1) {
         inputRefs.current[index + 1].focus();
       }

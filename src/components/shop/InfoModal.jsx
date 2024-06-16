@@ -18,7 +18,7 @@ const BackGround = styled.div`
 const Modal = styled.div`
   border-radius: 10px;
   background-color: #1a1a18;
-  direction: rtl;
+  direction: ltr;
   overflow-y: auto;
   padding: 20px;
   max-width: 680px;
@@ -33,6 +33,7 @@ const Modal = styled.div`
 `;
 const Header = styled.div`
   display: flex;
+  direction: rtl;
   justify-content: space-between;
   margin-bottom: 30px;
   @media (max-width:1023px) {
@@ -54,6 +55,7 @@ const Info = styled.p`
   color: #dedee9;
   font-weight: 400;
   text-align: justify;
+  direction: rtl;
   margin: 20px 0;
   font-size: 16px;
   @media (max-width:1023px) {
@@ -104,7 +106,6 @@ const InfoModal = ({ data, type, setOpenModal }) => {
           </Title>
           <Info>{data.info}</Info>
         </div>
-        <Button label="بستن" onclick={() => setOpenModal(false)} />
       </Modal>
     </BackGround>
   );

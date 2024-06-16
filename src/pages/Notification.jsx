@@ -12,6 +12,7 @@ const Container = styled.div`
   padding: 15px 20px;
   overflow: hidden;
   margin: 0 auto;
+  margin-bottom: -35px !important;
   width: 500px;
   border-radius: 10px;
   height: ${(props) => (props.isNotif ? "340px" : "240px")};

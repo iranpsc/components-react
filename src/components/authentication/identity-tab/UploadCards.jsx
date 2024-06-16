@@ -38,7 +38,7 @@ const Image = styled.div`
 
 const UploadWrapper = styled.div`
   margin-top: 20px;
-  width: 100% !important;
+  width: 96% !important;
   height: 150px;
   div {
     width: 100%;

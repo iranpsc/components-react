@@ -18,11 +18,17 @@ const IconWrapper = styled.div`
   background-color: #3b3b3b;
   padding: 10px;
   svg {
+    transform: scale(1.7);
     color: #949494 !important;
   }
   @media (min-width: 1024px) {
     width: 20px;
     height: 20px;
+    svg {
+      transform: scale(1.1);
+      width: 40px;
+      height: 40px;
+    }
   }
 `;
 
@@ -102,7 +108,7 @@ const FullWrapper = styled.div`
     height: 40px;
   }
   svg {
-    color: black;
+    color: #949494;
   }
 `;
 
@@ -114,7 +120,7 @@ const Header = ({ title, long, loading, profile }) => {
       <Icons>
         {loading && (
           <FullWrapper>
-            <BiExitFullscreen />
+            <BiExitFullscreen scale={0.1}/>
           </FullWrapper>
         )}
         {profile && (

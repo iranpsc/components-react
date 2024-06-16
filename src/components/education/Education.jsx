@@ -12,7 +12,7 @@ const Education = ({ setOpenEducation }) => {
   const style = {
     backgroundColor: "#1A1A18",
     borderRadius: "10px",
-    padding: "15px 20px 8px 20px",
+    padding: `${size ? "0" : "15px 20px 8px 20px"}`,
     zIndex: "999",
   };
   return (
@@ -21,21 +21,19 @@ const Education = ({ setOpenEducation }) => {
       default={{
         x: 90,
         y: 20,
-        width: 550,
+        width:550
       }}
       enableResizing={false}
       bounds={"window"}
     >
-      <Header
-        size={size}
-        setSize={setSize}
-        setOpenEducation={setOpenEducation}
-      />
-      <Video />
+      {!size && (
+        <Header show={show} setSize={setSize} setOpenEducation={setOpenEducation} />
+      )}
+      <Video setSize={setSize} size={size} show={show} />
       {!size && (
         <>
           <Content show={show} setShow={setShow} />
-          <Footer />
+          <Footer show={show}/>
         </>
       )}
     </Rnd>
