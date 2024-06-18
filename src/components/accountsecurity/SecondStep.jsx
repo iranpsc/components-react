@@ -54,6 +54,11 @@ const Container = styled.div`
     width: 93%;
     color: #bababa;
     margin-top: 20px;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   button {

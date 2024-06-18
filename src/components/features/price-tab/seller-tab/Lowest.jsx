@@ -46,6 +46,11 @@ const Input = styled.input`
   outline: none;
   padding-right: 10px;
   background-color: #2c2c2c;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 const Span = styled.span`

@@ -25,14 +25,6 @@ select, option {
   font-family: inherit;
 }
 
-input {
-  &::-webkit-inner-spin-button,
-  &::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-}
-
 * {
   ::-webkit-scrollbar {
     width: 5px;

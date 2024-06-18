@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from "react";
-
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import OnOff from "../OnOff";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   border: 1px solid #454545;
   border-radius: 5px;
   direction: rtl;
 `;
+
 const Option = styled.div`
   display: flex;
   padding: 10px;
+  margin: 0 15px 15px;
   border-radius: 5px;
   background-color: #1a1a18;
   align-items: center;
@@ -22,12 +23,15 @@ const Option = styled.div`
     font-weight: 500;
   }
 `;
+
 const Options = styled.div`
-  display: ${(props) => (props.show ? "flex" : "none")};
-  padding: 15px;
+  overflow: hidden;
+  display: flex;
+  max-height: ${(props) => (props.show ? "1000px" : "0")};
+  transition: max-height 0.2s ease-in-out;
   flex-direction: column;
-  gap: 15px;
 `;
+
 const Label = styled.div`
   display: flex;
   align-items: center;
@@ -46,21 +50,18 @@ const Label = styled.div`
     transition: all 0.2s linear;
   }
 `;
+
 const Item = ({ label, options }) => {
   const [show, setShow] = useState(false);
-  const containerRef = useRef(null);
-  useEffect(() => {
-    if (show) {
-      window.scrollTo(0, window.pageYOffset + window.innerHeight + 200);
-    }
-  }, [show]);
+
+
   return (
-    <Container ref={containerRef}>
+    <Container>
       <Label show={show}>
         <h3>{label}</h3>
         <IoIosArrowDropdownCircle onClick={() => setShow(!show)} />
       </Label>
-      <Options show={show}>
+      <Options show={show} >
         {options.map((option) => (
           <Option key={option.id}>
             <p>{option.title}</p>

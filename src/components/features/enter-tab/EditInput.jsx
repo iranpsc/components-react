@@ -21,6 +21,11 @@ const Container = styled.div`
     border: none;
     outline: none;
     font-size: 16px;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 `;
 const EditInput = ({

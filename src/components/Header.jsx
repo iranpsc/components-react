@@ -37,6 +37,7 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+  z-index: 0;
   justify-content: center;
   div {
     position: absolute;
@@ -75,7 +76,7 @@ const Icons = styled.div`
     color: #3b3b3b;
     width: 30px;
     height: 30px;
-    z-index: 999;
+    z-index: 100;
     @media (min-width: 998px) {
       width: 40px;
       height: 40px;

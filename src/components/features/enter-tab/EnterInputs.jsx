@@ -9,6 +9,7 @@ const Select = styled.select`
   font-size: 12px;
   font-weight: 400;
   padding: 10px 15px;
+  padding-left: 15px;
   width: 100%;
   option {
     color: #dedee9;

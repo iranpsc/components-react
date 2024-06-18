@@ -36,21 +36,36 @@ const Container = styled.div`
     cursor: pointer;
   }
 `;
+
+const Div = styled.div`
+  height: fit-content;
+  position: relative;
+  span {
+    position: absolute;
+    right: 45px;
+    top: 32px;
+    color: #bababa;
+  }
+`;
+
 const FirstStep = ({ setStep, time, setTime }) => {
   return (
     <Container>
       <h3>مدت زمان</h3>
       <p>مدت زمانی که میخواهید کیف پولتان خاموش بماند.</p>
-      <input
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-        type="number"
-        placeholder="مدت زمان (دقیقه)"
-        maxLength={3}
-        min={0}
-        max={200}
-        step={1}
-      />
+      <Div>
+        <input
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          type="number"
+          placeholder="مدت زمان (دقیقه)"
+          maxLength={3}
+          min={0}
+          max={200}
+          step={1}
+        />
+        {time !== "" && <span>دقیقه</span>}
+      </Div>
       <button
         onClick={() => {
           if (time !== "") {

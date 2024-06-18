@@ -20,6 +20,7 @@ const Container = styled.div`
   }
   @media (min-width: 1500px) {
     height: 77%;
+    padding-right: 0px;
     grid-template-columns: 2fr 3fr;
   }
 `;

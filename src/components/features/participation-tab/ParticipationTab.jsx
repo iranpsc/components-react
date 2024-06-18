@@ -13,6 +13,7 @@ const Container = styled.div`
   }
   @media (min-width: 1500px) {
     height: auto;
+    padding-right: 0;
   }
 `;
 const ParticipationTab = () => {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
 const TabsWrapper = styled.div`
   border-bottom: 1px solid #454545;
@@ -33,35 +34,84 @@ const TabItem = styled.h3`
 `;
 
 const Tabs = ({ active, setActive }) => {
+  const tabsRef = useRef();
+  const tabHandler = (tab) => {
+    setActive(tab);
+
+    if (tabsRef.current) {
+      const selectedTab = tabsRef.current.querySelector(`[data-tab="${tab}"]`);
+
+      if (selectedTab) {
+        const tabWidth = selectedTab.offsetWidth;
+        const tabOffsetLeft = selectedTab.offsetLeft;
+
+        if (tabOffsetLeft < 400) {
+          tabsRef.current.scrollLeft -= 100;
+        } else if (
+          tabOffsetLeft + tabWidth >
+          tabsRef.current.offsetWidth - 400
+        ) {
+          tabsRef.current.scrollLeft += 100;
+        }
+      }
+    }
+  };
+
   return (
-    <TabsWrapper>
-      <TabItem active={active === "info"} onClick={() => setActive("info")}>
+    <TabsWrapper ref={tabsRef}>
+      <TabItem
+        data-tab="info"
+        active={active === "info"}
+        onClick={() => tabHandler("info")}
+      >
         خصوصیات
       </TabItem>
-      <TabItem active={active === "seller"} onClick={() => setActive("seller")}>
+      <TabItem
+        data-tab="seller"
+        active={active === "seller"}
+        onClick={() => tabHandler("seller")}
+      >
         قیمت گذاری
       </TabItem>
-      <TabItem active={active === "buyer"} onClick={() => setActive("buyer")}>
+      <TabItem
+        data-tab="buyer"
+        active={active === "buyer"}
+        onClick={() => tabHandler("buyer")}
+      >
         خرید
       </TabItem>
-      <TabItem active={active === "enter"} onClick={() => setActive("enter")}>
+      <TabItem
+        data-tab="enter"
+        active={active === "enter"}
+        onClick={() => tabHandler("enter")}
+      >
         ورود به ملک
       </TabItem>
-      <TabItem active={active === "build"} onClick={() => setActive("build")}>
+      <TabItem
+        data-tab="build"
+        active={active === "build"}
+        onClick={() => tabHandler("build")}
+      >
         ساخت بنا
       </TabItem>
-      <TabItem active={active === "physic"} onClick={() => setActive("physic")}>
+      <TabItem
+        data-tab="physic"
+        active={active === "physic"}
+        onClick={() => tabHandler("physic")}
+      >
         اطلاعات فیزیکی
       </TabItem>
       <TabItem
+        data-tab="participation"
         active={active === "participation"}
-        onClick={() => setActive("participation")}
+        onClick={() => tabHandler("participation")}
       >
         مشارکت در ساخت{" "}
       </TabItem>
       <TabItem
+        data-tab="history"
         active={active === "history"}
-        onClick={() => setActive("history")}
+        onClick={() => tabHandler("history")}
       >
         تاریخچه خرید
       </TabItem>
