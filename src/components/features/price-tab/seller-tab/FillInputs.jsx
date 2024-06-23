@@ -78,14 +78,14 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
     <Div>
       <InputsWrapper>
         <Input
-          // value={rial}
+          value={rial}
           onchange={(e) => setRial(e.target.value)}
           type="number"
           placeholder="قیمت فروش (ریال)"
           insideText="ریال"
         />
         <Input
-          // value={psc}
+          value={psc}
           onchange={(e) => setPsc(e.target.value)}
           type="number"
           placeholder="قیمت فروش (PSC)"
@@ -95,8 +95,9 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
       <ResultWrapper>
         <Wrapper>
           <Title>قیمت نهایی</Title>
-          <Value>
-            {rial}IRR / {psc} PSC
+          <Value dir="ltr">
+            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
+            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
           </Value>
         </Wrapper>
         <TitleValue title="کارمزد" value="5%" />

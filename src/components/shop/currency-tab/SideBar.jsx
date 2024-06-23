@@ -4,10 +4,11 @@ const Wrapper = styled.div`
   background-color: #1a1a18;
   border-radius: 5px;
   color: #dedee9;
+  margin-top: 20px;
   width: 100%;
   direction: ltr;
   @media (max-width: 850px) {
-    height: 16.8rem;
+    height: 17.2rem;
   }
   @media (max-width: 1023px) {
     max-height: 17.5rem;

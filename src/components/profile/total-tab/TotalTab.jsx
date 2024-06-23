@@ -7,12 +7,13 @@ import styled from "styled-components";
 const Container = styled.div`
   padding-top: 20px;
   padding-right: 10px;
+  padding-bottom: 19px;
   direction: ltr;
   overflow-y: auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
-  height: 75%;
+  height: 71%;
   @media (min-width: 1024px) {
     height: 78%;
   }

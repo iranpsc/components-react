@@ -10,13 +10,13 @@ import { useState } from "react";
 const Wrapper = styled.div`
   direction: ltr;
   overflow-y: auto;
-  height: 77%;
+  height: 84%;
   padding-right: 15px;
   @media (min-width: 1180px) {
     height: 80%;
   }
   @media (min-width: 1500px) {
-    height: ${(props) => (props.identityError ? "80%" : "auto")};
+    height: ${(props) => (props.identityError ? "85%" : "auto")};
   }
 `;
 const Container = styled.div`

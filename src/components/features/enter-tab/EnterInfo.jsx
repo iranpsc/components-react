@@ -9,7 +9,7 @@ const Container = styled.div`
   padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 69%;
+  height: 71%;
   gap: 30px;
   display: grid;
   @media (min-width: 1024px) and (max-width: 1369px) {

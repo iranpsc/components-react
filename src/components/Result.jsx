@@ -26,7 +26,7 @@ const Result = ({ title, value }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <Value>{value}</Value>
+      <Value>{value.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</Value>
     </Wrapper>
   );
 };

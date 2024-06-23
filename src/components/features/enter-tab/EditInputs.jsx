@@ -62,7 +62,7 @@ const Wrapper = styled.div`
   color: #ffffff;
   background-color: #2c2c2c;
   overflow: hidden;
-  height: 100%;
+  height: 205px;
 `;
 const EditInputs = ({ data, setData, setEdit, setPayed }) => {
   // const changeHandler = (e) => {
@@ -79,6 +79,8 @@ const EditInputs = ({ data, setData, setEdit, setPayed }) => {
           <EditInput
             type={input.type}
             name={input.level}
+            slug={input.slug}
+            icon={input.icon}
             // onchange={changeHandler}
             title={input.title}
             key={input.id}

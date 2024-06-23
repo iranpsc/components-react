@@ -69,7 +69,12 @@ const Value = styled.p`
   font-weight: 400;
 `;
 
-const ResultInfo = ({ setAssign, rial, psc }) => {
+const ResultInfo = ({ setAssign, rial, psc, setPsc, setRial }) => {
+  const deleteHandler = () => {
+    setPsc('');
+    setRial('');
+    setAssign(false);
+  };
   return (
     <Wrapper>
       <Results>
@@ -77,16 +82,19 @@ const ResultInfo = ({ setAssign, rial, psc }) => {
         <Result title="قیمت فروش(PSC)" value={psc} />
         <ResultWrapper>
           <Title>قیمت نهایی</Title>
-          <Value dir="ltr">{rial} IRR / {psc} PSC</Value>
+          <Value dir="ltr">
+            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
+            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
+          </Value>
         </ResultWrapper>
-        <Result title="کارمزد" value={'5%'} />
+        <Result title="کارمزد" value={"5%"} />
       </Results>
       <Actions>
-        <ActionWrapper>
-          <HiOutlineTrash size={20} />
-        </ActionWrapper>
         <ActionWrapper onClick={() => setAssign(false)}>
           <BiEditAlt size={20} />
+        </ActionWrapper>
+        <ActionWrapper onClick={deleteHandler}>
+          <HiOutlineTrash size={20} />
         </ActionWrapper>
       </Actions>
     </Wrapper>

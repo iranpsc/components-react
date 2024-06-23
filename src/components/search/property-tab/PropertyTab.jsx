@@ -6,33 +6,32 @@ import { useState } from "react";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  direction: ltr;
-  padding-right: 15px;
   gap: 15px;
-  margin-top: 15px;
-  height: 190px;
-  overflow-y: auto;
-  @media (min-width: 840px) {
-    height: 200px;
-  }
-  @media (min-width: 1024px) {
-    height: 500px;
-  }
-  @media (min-width: 1180px) {
-    height: 550px;
-  }
-  @media (min-width: 1366px) {
-    height: 750px;
-  }
-  @media (min-width: 1400px) {
-    height: 535px;
-  }
-  @media (min-width: 1920px) {
-    height: 670px;
-  }
+  margin: 15px 0 0 0;
 `;
 const Container = styled.div`
-  margin: 20px 0;
+  direction: ltr;
+  padding: 20px 15px 20px 0;
+  height: 245px;
+  overflow-y: auto;
+  @media (min-width: 840px) {
+    height: 255px;
+  }
+  @media (min-width: 1024px) {
+    height: 555px;
+  }
+  @media (min-width: 1180px) {
+    height: 605px;
+  }
+  @media (min-width: 1366px) {
+    height: 805px;
+  }
+  @media (min-width: 1400px) {
+    height: 590px;
+  }
+  @media (min-width: 1920px) {
+    height: 725px;
+  }
 `;
 const PropertyTab = () => {
   const [searched, setSearched] = useState("");

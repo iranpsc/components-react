@@ -1,7 +1,7 @@
 import { HiOutlineTrash } from "react-icons/hi";
 import { IoWarningOutline } from "react-icons/io5";
 import Slider from "./Slider";
-import noPic from '../../../assets/images/nopic.jpg'
+import noPic from "../../../assets/images/nopic.jpg";
 import slide1 from "../../../assets/images/slide1.png";
 import slide2 from "../../../assets/images/slide2.png";
 import slide3 from "../../../assets/images/slide3.png";
@@ -152,15 +152,32 @@ const Album = () => {
   const [open, setOpen] = useState(false);
   const [images, setImages] = useState(images_array);
   const [activeImage, setActiveImage] = useState(images[0]);
-
   const deleteHandler = (id) => {
     const filteredImages = images.filter((item) => item.id !== id);
     setImages(filteredImages);
-    // setActiveImage(images[id + 1]);
-    if (images.length  === 0) {
+    if (activeImage.id !== 1) {
+      setActiveImage(images[id - 1]);
+    }
+    if (images.length === 0) {
       setActiveImage(noPic);
     }
   };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = (upload) => {
+      const image = upload.target.result;
+      const newImage = { id: images.length + 1, image: image };
+      setImages([...images, newImage]);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div>
       <AlbumWrapper>
@@ -170,6 +187,7 @@ const Album = () => {
               onClick={() => setOpen(true)}
               src={item.image}
               alt={item.image}
+              loading="lazy"
             />
             <Actions>
               <IconWrapper onClick={() => deleteHandler(item.id)}>
@@ -183,7 +201,7 @@ const Album = () => {
         ))}
         <UploadMore>
           +
-          <input type="file" />
+          <input type="file" onChange={handleImageUpload} />
         </UploadMore>
       </AlbumWrapper>
       {open && (

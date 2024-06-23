@@ -5,34 +5,36 @@ import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
-  direction: ltr;
-  padding-right: 15px;
   flex-direction: column;
   gap: 15px;
-  margin-top: 15px;
-  height: 190px;
-  overflow-y: auto;
-  @media (min-width: 840px) {
-    height: 200px;
-  }
-  @media (min-width: 1024px) {
-    height: 500px;
-  }
-  @media (min-width: 1180px) {
-    height: 550px;
-  }
-  @media (min-width: 1366px) {
-    height: 750px;
-  }
-  @media (min-width: 1400px) {
-    height: 535px;
-  }
+  margin: 15px 0 0 0;
   @media (min-width: 1920px) {
-    height: 670px;
+    margin-bottom: -10px;
   }
 `;
 const Container = styled.div`
-  margin: 20px 0;
+  direction: ltr;
+  padding: 20px 15px 40px 0;
+  height: 240px;
+  overflow-y: auto;
+  @media (min-width: 840px) {
+    height: 262px;
+  }
+  @media (min-width: 1024px) {
+    height: 550px;
+  }
+  @media (min-width: 1180px) {
+    height: 600px;
+  }
+  @media (min-width: 1366px) {
+    height: 800px;
+  }
+  @media (min-width: 1400px) {
+    height: 585px;
+  }
+  @media (min-width: 1920px) {
+    height: 720px;
+  }
 `;
 
 const CitizenTab = () => {
@@ -51,7 +53,7 @@ const CitizenTab = () => {
             fontWeight: "500",
             textAlign: "center",
             marginTop: "20px",
-            fontSize:'18px'
+            fontSize: "18px",
           }}
         >
           اطلاعات موجود نمی باشد جستجو کنید

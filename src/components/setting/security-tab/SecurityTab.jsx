@@ -6,6 +6,7 @@ import { useState } from "react";
 const Wrapper = styled.div`
   display: grid;
   padding-top: 20px;
+  padding-bottom: 20px;
   padding-right: 15px;
   grid-template-columns: 1fr;
   align-items: flex-start;
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;
-  height: 180px;
+  height: 175px;
   @media (min-width: 1400px) {
     grid-template-columns: 1fr 1fr;
     height: 470px;

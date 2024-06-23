@@ -7,6 +7,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 30px;
   padding-right: 15px;
+  padding-top: 20px;
   @media (min-width: 600px) {
     overflow-y: auto;
   }

@@ -56,7 +56,7 @@ const Value = styled.span`
     font-size: ${(props) => (props.smallValue ? "14px" : "16px")};
   }
 `;
-const Input = ({ id, icon, title, value, long, smallValue }) => {
+const Input = ({ id, icon, title, value, options, long, smallValue }) => {
   return (
     <Item id={id}>
       <InfoIcon>
@@ -71,6 +71,7 @@ const Input = ({ id, icon, title, value, long, smallValue }) => {
         {id === 1 || id === 2
           ? (+value).toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])
           : value}
+        {id === 4 && options[0]}
       </Value>
     </Item>
   );

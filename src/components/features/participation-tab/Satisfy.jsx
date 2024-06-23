@@ -3,7 +3,6 @@ import SatisfyCount from "./SatisfyCount";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 20px 0;
   display: grid;
   direction: rtl;
   grid-template-columns: 1fr 1.2fr;

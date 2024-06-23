@@ -12,11 +12,11 @@ const Wrapper = styled.div`
   gap: 30px;
 `;
 const Container = styled.div`
-  padding-top: 20px;
+  padding: 20px 0;
   padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
-  height: 75%;
+  height: 73%;
   @media (min-width: 1024px) {
     height: 70%;
   }

@@ -82,7 +82,8 @@ const Wrapper = styled.div`
   }
   @media (min-width: 1900px) {
     overflow-y: auto;
-    height: 250px !important;
+    height: 262px !important;
+    padding-bottom: 10px;
   }
 `;
 const ParticipantList = () => {

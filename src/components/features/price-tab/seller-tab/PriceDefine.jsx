@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   direction: ltr;
   padding-right: 15px;
+  padding-top: 20px;
   gap: 30px;
   width: 100%;
   @media (max-width: 1024px) {
@@ -29,8 +30,8 @@ const Text = styled.p`
 
 const PriceDefine = () => {
   const [assign, setAssign] = useState(false);
-  const [rial, setRial] = useState("0");
-  const [psc, setPsc] = useState("0");
+  const [rial, setRial] = useState("");
+  const [psc, setPsc] = useState("");
   return (
     <Wrapper>
       <Text>
@@ -45,7 +46,15 @@ const PriceDefine = () => {
           setAssign={setAssign}
         />
       )}
-      {assign && <ResultInfo rial={rial} psc={psc} setAssign={setAssign} />}
+      {assign && (
+        <ResultInfo
+          rial={rial}
+          setRial={setRial}
+          setPsc={setPsc}
+          psc={psc}
+          setAssign={setAssign}
+        />
+      )}
     </Wrapper>
   );
 };

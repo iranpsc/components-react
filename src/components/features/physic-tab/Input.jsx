@@ -10,6 +10,11 @@ const EditInput = styled.input`
   color: #84858f;
   background-color: #2c2c2c;
   font-size: 16px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 const Input = ({ placeholder, onchange, value, type }) => {
   return (

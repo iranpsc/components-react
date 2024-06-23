@@ -23,6 +23,11 @@ const InputElement = styled.input`
   width: 100%;
   height: 100%;
   font-size: 16px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 const Span = styled.span`
   position: absolute;

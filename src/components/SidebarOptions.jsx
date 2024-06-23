@@ -5,6 +5,7 @@ const Wrapper = styled.div`
   background-color: #1a1a18;
   border-radius: 5px;
   color: #dedee9;
+  margin-top: 20px;  
 `;
 
 const Option = styled.h2`

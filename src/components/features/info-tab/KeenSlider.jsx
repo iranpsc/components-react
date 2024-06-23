@@ -125,7 +125,7 @@ export default function SwiperSlider({ images, deleteHandler }) {
         {images.map((item) => (
           <div key={item.id} className="keen-slider__slide number-slide1">
             <ImageWrapper>
-              <img src={item.image} alt="slide" />
+              <img src={item.image} alt="slide" loading="lazy" />
               <Actions>
                 <IconWrapper onClick={() => deleteHandler(item.id)}>
                   <HiOutlineTrash />

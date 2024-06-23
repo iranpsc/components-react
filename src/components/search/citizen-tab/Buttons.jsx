@@ -24,7 +24,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  gap: 10px;
+  gap: 15px;
 `;
 const items = [
   { id: 1, icon: <TiUserAddOutline />, label: "درخواست دوستی" },

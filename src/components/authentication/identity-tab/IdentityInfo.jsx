@@ -10,19 +10,20 @@ const Wrapper = styled.div`
   direction: rtl;
 `;
 const Container = styled.div`
-  margin: 20px 0;
+  padding: 20px 15px 20px 0;
   display: flex;
   flex-direction: column;
   direction: ltr;
   gap: 10px;
   overflow-y: auto;
-  height: 70%;
+  height: 71%;
   @media (min-width: 1180px) {
     height: 80%;
   }
   @media (min-width: 1500px) {
     grid-template-columns: 2fr 3fr;
     height: auto;
+    padding-right: 0;
   }
 `;
 const IdentityInfo = ({ data, inputValues }) => {

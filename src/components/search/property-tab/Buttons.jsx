@@ -22,7 +22,7 @@ const IconWrapper = styled.div`
   gap: 5px;
   cursor: pointer;
   svg {
-    font-size: 20px;
+    font-size: 23px;
     padding-top: 5px;
   }
   h2 {

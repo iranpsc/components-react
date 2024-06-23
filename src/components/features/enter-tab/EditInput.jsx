@@ -37,6 +37,7 @@ const EditInput = ({
   value,
   name,
   identityError,
+  slug,
 }) => {
   return (
     <Container identityError={identityError} value={value}>
@@ -48,6 +49,9 @@ const EditInput = ({
         name={name}
         step={0.0001}
       />
+      {(slug === "psc") | (slug === "rial") ? (
+        <img width={28} height={28} src={icon} alt={title} />
+      ):''}
       {(id === 1) | (id === 2) ? (
         <img width={28} height={28} src={icon} alt={title} />
       ) : (

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding-top: 20px;
+  padding-bottom: 20px;
   padding-right: 15px;
   overflow-y: auto;
   direction: ltr;
@@ -18,16 +19,25 @@ const Container = styled.div`
     height: 77%;
   }
   @media (min-width: 1500px) {
-    height: 77%;
-    padding-right: 0;
+    height: 82%;
     grid-template-columns: 2fr 3fr;
+  }
+
+  @media (min-width: 1920px) {
+    height: 80%;
+    padding-right: 0;
   }
 `;
 const EnterEdit = ({ setEdit, data, setData, payed, setPayed }) => {
   return (
     <Container>
       <Title right title="ویرایش اطلاعات" />
-      <EditInputs data={data} setData={setData} setEdit={setEdit} setPayed={setPayed} />
+      <EditInputs
+        data={data}
+        setData={setData}
+        setEdit={setEdit}
+        setPayed={setPayed}
+      />
     </Container>
   );
 };

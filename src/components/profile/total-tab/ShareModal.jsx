@@ -1,4 +1,11 @@
 import { FaFacebook, FaSquareWhatsapp, FaTelegram } from "react-icons/fa6";
+import {
+  FacebookShare,
+  LinkedinShare,
+  TelegramShare,
+  TwitterShare,
+  WhatsappShare,
+} from "react-share-kit";
 
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { ImLinkedin } from "react-icons/im";
@@ -25,7 +32,7 @@ const Modal = styled.div`
   direction: rtl;
   overflow-y: auto;
   padding: 20px;
-  width: 380px;
+  width: 440px;
   max-height: 577px;
   @media (min-width: 1023px) {
     width: 480px;
@@ -78,12 +85,7 @@ const Icon = styled.div`
     z-index: -5;
   }
 `;
-const ColoredIcon = styled.span`
-  span {
-    color: white;
-    font-size: 12px;
-  }
-`;
+
 const Copy = styled.div`
   background-color: black;
   border-radius: 10px;
@@ -104,13 +106,17 @@ const Copy = styled.div`
   }
 `;
 
-const socials = [
-  { id: 1, color: "green", name: "whatsapp", icon: <FaSquareWhatsapp /> },
-  { id: 2, color: "#3372ef", name: "telegram", icon: <FaTelegram /> },
-  { id: 3, color: "blue", name: "facebook", icon: <FaFacebook /> },
-  { id: 4, color: "#3372ef", name: "twitter", icon: <AiFillTwitterCircle /> },
-  { id: 5, color: "#144bb8", name: "linkedin", icon: <ImLinkedin /> },
-];
+const Social = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  span {
+    color: white;
+  }
+`;
+
 const ShareModal = ({ setOpenShare }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
@@ -134,15 +140,46 @@ const ShareModal = ({ setOpenShare }) => {
           <div />
         </Header>
         <Socials>
-          {socials.map((item) => (
-            <ColoredIcon key={item.id}>
-              <Icon color={item.color}>
-                <div />
-                {item.icon}
-              </Icon>
-              <span>{item.name}</span>
-            </ColoredIcon>
-          ))}
+          <Social>
+            <WhatsappShare
+            size={52}
+              borderRadius={100}
+              url="https://rgb.irpsc.com/fa/citizen/hm-2000001"
+            />
+            <span>Whatsapp</span>
+          </Social>
+          <Social>
+            <TelegramShare
+            size={52}
+              borderRadius={100}
+              url="https://rgb.irpsc.com/fa/citizen/hm-2000001"
+            />
+            <span>Telegram</span>{" "}
+          </Social>
+          <Social>
+            <FacebookShare
+            size={52}
+              borderRadius={100}
+              url="https://rgb.irpsc.com/fa/citizen/hm-2000001"
+            />
+            <span>Facebook</span>{" "}
+          </Social>
+          <Social>
+            <TwitterShare
+            size={52}
+              borderRadius={100}
+              url="https://rgb.irpsc.com/fa/citizen/hm-2000001"
+            />
+            <span>Twitter</span>{" "}
+          </Social>
+          <Social>
+            <LinkedinShare
+            size={52}
+              borderRadius={100}
+              url="https://rgb.irpsc.com/fa/citizen/hm-2000001"
+            />
+            <span>Linkedin</span>{" "}
+          </Social>
         </Socials>
         <Copy>
           <span onClick={handleCopy}>{copied ? "کپی شد" : "کپی"}</span>

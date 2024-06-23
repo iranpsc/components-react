@@ -65,7 +65,7 @@ const Value = styled.p`
 `;
 
 const Div = styled.div`
-  height: 212px !important;
+  height: 250px !important;
   direction: rtl;
 `;
 
@@ -99,8 +99,8 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
       <ResultWrapper>
         <Wrapper>
           <Title>قیمت نهایی</Title>
-          <Value>
-            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}IRR /{" "}
+          <Value dir="ltr">
+            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
             {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
           </Value>
         </Wrapper>

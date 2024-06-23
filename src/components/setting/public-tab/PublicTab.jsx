@@ -16,8 +16,9 @@ const settings = [
 ];
 const Container = styled.div`
   padding-top: 20px;
+  padding-bottom: 15px;
   padding-right: 15px;
-  height: 75%;
+  height: 72%;
   overflow-y: auto;
   direction: ltr;
   @media (min-width: 1300px) {

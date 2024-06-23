@@ -58,8 +58,8 @@ const MainSlider = ({
       <ImageWrapper>
         <img
           loading="lazy"
-          src={activeImage.image || noPic}
-          alt={activeImage.image || noPic}
+          src={activeImage?.image || noPic}
+          alt={activeImage?.image || noPic}
         />
         <Actions>
           <IconWrapper onClick={() => deleteHandler(activeImage.id)}>

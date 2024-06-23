@@ -75,20 +75,9 @@ const Wrapper = styled.div`
 const EnterInputs = ({ data }) => {
   return (
     <Wrapper>
-      {data[0]?.inputs?.slice(0, 3).map((input) => (
+      {data[0]?.inputs?.slice(0,4).map((input) => (
         <Input {...input} key={input.id} />
       ))}
-      <Item>
-        <InfoIcon>
-          {data[0].inputs[3]?.icon}
-          <Title>{data[0].inputs[3]?.title}</Title>
-        </InfoIcon>
-        <Select>
-          {data[0].inputs[3]?.options.map((option) => (
-            <option key={option}>{option}</option>
-          ))}
-        </Select>
-      </Item>
     </Wrapper>
   );
 };

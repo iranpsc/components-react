@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding-top: 20px;
+  padding-bottom: 20px;
   overflow-y: auto;
   padding-right: 15px;
   direction: ltr;

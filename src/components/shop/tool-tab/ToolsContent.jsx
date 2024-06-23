@@ -8,6 +8,7 @@ import { useContext } from "react";
 const Container = styled.div`
   direction: ltr;
   text-align: right;
+  padding: 20px 0;
   padding-right: 15px;
   @media (max-width: 850px) {
     height: 75% !important;

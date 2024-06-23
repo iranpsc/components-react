@@ -7,6 +7,7 @@ const Container = styled.div`
   border: 1px solid #454545;
   padding: 10px 12px;
   color: #84858f;
+  direction: rtl;
   background-color: #2c2c2c;
   display: grid;
   align-items: center;

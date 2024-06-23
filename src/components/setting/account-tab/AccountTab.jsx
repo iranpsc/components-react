@@ -34,6 +34,7 @@ const items = [
 
 const Container = styled.div`
   padding-top: 20px;
+  padding: 20px;
   padding-right: 15px;
   display: grid;
   direction: ltr;
@@ -42,7 +43,7 @@ const Container = styled.div`
   gap: 20px;
   padding-right: 15px;
   overflow-y: auto;
-  height: 74%;
+  height: 72%;
   @media (min-width: 1400px) {
     height: 79%;
   }

@@ -109,8 +109,8 @@ const Alert = styled.div`
   }
 `;
 const SecondStep = ({ setStep, time }) => {
-  const [timer, setTimer] = useState(2 * 60);
   const inputRefs = useRef([]);
+  const [timer, setTimer] = useState(2 * 60);
   const timerInterval = useRef(null);
 
   useEffect(() => {
@@ -126,7 +126,7 @@ const SecondStep = ({ setStep, time }) => {
     }, 1000);
 
     return () => clearInterval(timerInterval.current);
-  }, []);
+  }, [timer]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);

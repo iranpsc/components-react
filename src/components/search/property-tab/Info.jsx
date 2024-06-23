@@ -9,8 +9,8 @@ const items = [
     value: "قزوین, پونک, خیابان پیروزی, روبه روی درماگاه محمدزاده, طبقه چهارم",
   },
   { id: 2, title: "شناسه مالک", value: "HM-2000000" },
-  { id: 3, title: "قیمت گذاری (PSC)", value: "۳۰ PSC" },
-  { id: 4, title: "قیمت گذاری (ریال)", value: "۳۰۰ میلیون" },
+  { id: 3, title: "قیمت گذاری (PSC)", value: "4000" },
+  { id: 4, title: "قیمت گذاری (ریال)", value: "3000000" },
 ];
 const Container = styled.div`
   display: flex;
@@ -71,7 +71,25 @@ const Info = () => {
               />
             )}
           </div>
-          {item.id !== 2 && <h2>{item.value}</h2>}
+          {item.id === 1 && (
+            <h2 dir="ltr">
+              {item.value}
+            </h2>
+          )}
+          {item.id === 3 && (
+            <h2 dir="ltr">
+              {item.value >= 1000000
+                ? `${Math.floor(item.value / 1000000)}M`
+                : `${Math.floor(item.value / 1000)}K`}
+            </h2>
+          )}
+          {item.id === 4 && (
+            <h2 dir="ltr">
+              {item.value >= 1000000
+                ? `${Math.floor(item.value / 1000000)}M`
+                : `${Math.floor(item.value / 1000)}K`}
+            </h2>
+          )}
           {item.id == 2 && (
             <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
               {item.value}

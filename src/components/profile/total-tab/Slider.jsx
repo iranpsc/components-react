@@ -41,13 +41,13 @@ const Icons = styled.div`
   height: 100%;
   width: fit-content;
   @media (min-width: 740px) {
-  bottom: 10px;
+    bottom: 10px;
   }
   @media (min-width: 840px) {
-  bottom: 30px;
+    bottom: 30px;
   }
   @media (min-width: 1024px) {
-  bottom: 10px;
+    bottom: 10px;
   }
 `;
 
@@ -108,19 +108,38 @@ const Slider = () => {
   );
 
   const removeHandler = (id) => {
-    const slidesAfterRemove = images.filter((image) => image.id !== id);
-    setImages(slidesAfterRemove);
+    const indexToRemove = images.findIndex((image) => image.id === id);
+    if (indexToRemove !== -1) {
+      const slidesAfterRemove = images.filter((image) => image.id !== id);
+      setImages(slidesAfterRemove);
+      setCurrentSlide((prev) => {
+        if (prev >= indexToRemove && prev !== 0) {
+          return prev - 1;
+        }
+        return prev;
+      });
+    }
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files && e.target.files[0];
-    const newImage = {
-      id: images.length + 1,
-      image: URL.createObjectURL(file),
-    };
-    const updatedImages = [...images];
-    updatedImages.push(newImage);
-    setImages(updatedImages);
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const newImage = {
+          id: images.length + 1,
+          image: event.target.result,
+        };
+
+        const updatedImages = [...images];
+        updatedImages.push(newImage);
+        setImages(updatedImages);
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
   return (
     <>
@@ -128,7 +147,7 @@ const Slider = () => {
         {images.map((slide, i) => (
           <div key={i} className="keen-slider__slide profile number-slide1">
             <div>
-              <img src={slide.image} alt="slide" />
+              <img loading="lazy" src={slide.image} alt="slide" />
               <Icons>
                 <IconWrapper onClick={() => removeHandler(slide.id)}>
                   <LuImageMinus />
@@ -155,7 +174,9 @@ const Slider = () => {
       {loaded && instanceRef.current && (
         <div className="dots">
           {[
-            ...Array(instanceRef.current.track.details.slides.length).keys(),
+            ...Array(
+              instanceRef?.current?.track?.details?.slides?.length
+            ).keys(),
           ].map((idx) => {
             return (
               <button
