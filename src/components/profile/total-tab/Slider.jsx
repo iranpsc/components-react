@@ -1,12 +1,14 @@
-import "keen-slider/keen-slider.min.css";
+import "swiper/css";
+import "swiper/css/pagination";
 import "../../../styles/styles.css";
 
 import { LuImageMinus, LuImagePlus } from "react-icons/lu";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+import { Pagination } from "swiper/modules";
 import { TiWarningOutline } from "react-icons/ti";
 import slidePic from "../../../assets/images/profile/slide.png";
 import styled from "styled-components";
-import { useKeenSlider } from "keen-slider/react";
 import { useState } from "react";
 
 const IconWrapper = styled.div`
@@ -28,6 +30,7 @@ const IconWrapper = styled.div`
   }
   svg {
     font-size: 20px;
+    color: white;
   }
 `;
 const Icons = styled.div`
@@ -50,7 +53,6 @@ const Icons = styled.div`
     bottom: 10px;
   }
 `;
-
 const slides = [
   { id: 1, image: slidePic },
   { id: 2, image: slidePic },
@@ -59,65 +61,13 @@ const slides = [
   { id: 5, image: slidePic },
   { id: 6, image: slidePic },
 ];
-
-const Slider = () => {
+export default function Slider() {
   const [images, setImages] = useState(slides);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const [sliderRef, instanceRef] = useKeenSlider(
-    {
-      loop: true,
-      initial: 0,
-      slideChanged(s) {
-        setCurrentSlide(s.track.details.rel);
-      },
-      created() {
-        setLoaded(true);
-      },
-    },
-    [
-      (slider) => {
-        let timeout;
-        let mouseOver = false;
-        function clearNextTimeout() {
-          clearTimeout(timeout);
-        }
-        function nextTimeout() {
-          clearTimeout(timeout);
-          if (mouseOver) return;
-          timeout = setTimeout(() => {
-            slider.next();
-          }, 6000);
-        }
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true;
-            clearNextTimeout();
-          });
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false;
-            nextTimeout();
-          });
-          nextTimeout();
-        });
-        slider.on("dragStarted", clearNextTimeout);
-        slider.on("animationEnded", nextTimeout);
-        slider.on("updated", nextTimeout);
-      },
-    ]
-  );
-
   const removeHandler = (id) => {
     const indexToRemove = images.findIndex((image) => image.id === id);
     if (indexToRemove !== -1) {
       const slidesAfterRemove = images.filter((image) => image.id !== id);
       setImages(slidesAfterRemove);
-      setCurrentSlide((prev) => {
-        if (prev >= indexToRemove && prev !== 0) {
-          return prev - 1;
-        }
-        return prev;
-      });
     }
   };
 
@@ -143,55 +93,39 @@ const Slider = () => {
   };
   return (
     <>
-      <div ref={sliderRef} className="keen-slider profile">
-        {images.map((slide, i) => (
-          <div key={i} className="keen-slider__slide profile number-slide1">
-            <div>
-              <img loading="lazy" src={slide.image} alt="slide" />
-              <Icons>
-                <IconWrapper onClick={() => removeHandler(slide.id)}>
-                  <LuImageMinus />
-                </IconWrapper>
-                <IconWrapper>
-                  <label htmlFor="add">
-                    <LuImagePlus />
-                  </label>
-                  <input
-                    onChange={handleImageChange}
-                    id="add"
-                    type="file"
-                    accept="image/*"
-                  />
-                </IconWrapper>
-                <IconWrapper>
-                  <TiWarningOutline />
-                </IconWrapper>
-              </Icons>
-            </div>
-          </div>
+      <Swiper
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
+        {images.map((image) => (
+          <SwiperSlide key={image.id}>
+            <img src={image.image} alt="image" />
+            <Icons>
+              <IconWrapper onClick={() => removeHandler(image.id)}>
+                <LuImageMinus />
+              </IconWrapper>
+              <IconWrapper>
+                <label htmlFor="add">
+                  <LuImagePlus />
+                </label>
+                <input
+                  onChange={handleImageChange}
+                  id="add"
+                  type="file"
+                  accept="image/*"
+                />
+              </IconWrapper>
+              <IconWrapper>
+                <TiWarningOutline />
+              </IconWrapper>
+            </Icons>
+          </SwiperSlide>
         ))}
-      </div>
-      {loaded && instanceRef.current && (
-        <div className="dots">
-          {[
-            ...Array(
-              instanceRef?.current?.track?.details?.slides?.length
-            ).keys(),
-          ].map((idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  instanceRef.current?.moveToIdx(idx);
-                }}
-                className={"dot" + (currentSlide === idx ? " active" : "")}
-              ></button>
-            );
-          })}
-        </div>
-      )}
+      </Swiper>
     </>
   );
-};
-
-export default Slider;
+}

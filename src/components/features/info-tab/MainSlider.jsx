@@ -1,6 +1,6 @@
 import { HiOutlineTrash } from "react-icons/hi";
 import { IoWarningOutline } from "react-icons/io5";
-import noPic from '../../../assets/images/nopic.jpg'
+import noPic from "../../../assets/images/nopic.jpg";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     display: none;
   }
   img {
-    height: 100% ;
+    height: 100%;
     width: 100%;
     border-radius: 20px;
   }
@@ -49,10 +49,7 @@ const IconWrapper = styled.div`
     color: black;
   }
 `;
-const MainSlider = ({
-  activeImage,
-  deleteHandler
-}) => {
+const MainSlider = ({ activeImage, deleteHandler }) => {
   return (
     <Wrapper>
       <ImageWrapper>
@@ -61,14 +58,16 @@ const MainSlider = ({
           src={activeImage?.image || noPic}
           alt={activeImage?.image || noPic}
         />
-        <Actions>
-          <IconWrapper onClick={() => deleteHandler(activeImage.id)}>
-            <HiOutlineTrash />
-          </IconWrapper>
-          <IconWrapper>
-            <IoWarningOutline />
-          </IconWrapper>
-        </Actions>
+        {activeImage?.image && (
+          <Actions>
+            <IconWrapper onClick={() => deleteHandler(activeImage.id)}>
+              <HiOutlineTrash />
+            </IconWrapper>
+            <IconWrapper>
+              <IoWarningOutline />
+            </IconWrapper>
+          </Actions>
+        )}
       </ImageWrapper>
     </Wrapper>
   );

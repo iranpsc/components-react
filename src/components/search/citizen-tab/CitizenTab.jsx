@@ -14,11 +14,11 @@ const Wrapper = styled.div`
 `;
 const Container = styled.div`
   direction: ltr;
-  padding: 20px 15px 40px 0;
+  padding: 20px 15px 20px 0;
   height: 240px;
   overflow-y: auto;
   @media (min-width: 840px) {
-    height: 262px;
+    height: 256px;
   }
   @media (min-width: 1024px) {
     height: 550px;

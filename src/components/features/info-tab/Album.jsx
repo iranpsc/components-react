@@ -156,10 +156,9 @@ const Album = () => {
     const filteredImages = images.filter((item) => item.id !== id);
     setImages(filteredImages);
     if (activeImage.id !== 1) {
-      setActiveImage(images[id - 1]);
-    }
-    if (images.length === 0) {
-      setActiveImage(noPic);
+      setActiveImage(images[0]);
+    } else {
+      setActiveImage(images[images.length - 1]);
     }
   };
 

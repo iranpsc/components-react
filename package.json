@@ -31,7 +31,8 @@
     "slate-history": "^0.100.0",
     "slate-hyperscript": "^0.100.0",
     "slate-react": "^0.102.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
