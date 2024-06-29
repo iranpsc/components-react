@@ -7,10 +7,15 @@ import SearchInput from "../../search/SearchInput";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import Title from "../../Title";
 import TransactionsList from "./TransactionsList";
+import blue from '../../../assets/images/profile/blue-color.gif'
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
+import psc from '../../../assets/images/profile/psc.gif'
+import red from '../../../assets/images/profile/red-color.gif'
+import rial from '../../../assets/images/profile/rial.gif'
 import styled from "styled-components";
 import { useState } from "react";
+import yellow from '../../../assets/images/profile/yellow-color.gif'
 
 const Container = styled.div`
   padding: 20px 15px 20px 0;
@@ -85,7 +90,7 @@ const rows_items = [
     title_slug: "property_buy",
     subject: "رنگ آبی",
     subject_slug: "blue",
-    gif: "/src/assets/images/profile/blue-color.gif",
+    gif: blue,
     count: 100,
   },
   {
@@ -98,7 +103,7 @@ const rows_items = [
     title_slug: "property_dealing",
     subject: "رنگ قرمز",
     subject_slug: "red",
-    gif: "/src/assets/images/profile/red-color.gif",
+    gif: red,
     count: 100,
   },
   {
@@ -111,7 +116,7 @@ const rows_items = [
     title_slug: "property_buy",
     subject: "رنگ زرد",
     subject_slug: "yellow",
-    gif: "/src/assets/images/profile/yellow-color.gif",
+    gif: yellow,
     count: 100,
   },
   {
@@ -124,7 +129,7 @@ const rows_items = [
     title_slug: "property_dealing",
     subject: "ریال",
     subject_slug: "rial",
-    gif: "/src/assets/images/profile/rial.gif",
+    gif: rial,
     count: 100,
   },
   {
@@ -137,7 +142,7 @@ const rows_items = [
     title_slug: "property_buy",
     subject: "رنگ زرد",
     subject_slug: "yellow",
-    gif: "/src/assets/images/profile/yellow-color.gif",
+    gif: yellow,
     count: 100,
   },
   {
@@ -150,7 +155,7 @@ const rows_items = [
     title_slug: "property_dealing",
     subject: "PSC",
     subject_slug: "psc",
-    gif: "/src/assets/images/profile/psc.gif",
+    gif: psc,
     count: 100,
   },
   {
@@ -163,7 +168,7 @@ const rows_items = [
     title_slug: "property_dealing",
     subject: "رنگ قرمز",
     subject_slug: "red",
-    gif: "/src/assets/images/profile/red-color.gif",
+    gif: red,
     count: 100,
   },
   {
@@ -176,7 +181,7 @@ const rows_items = [
     title_slug: "property_buy",
     subject: "رنگ آبی",
     subject_slug: "blue",
-    gif: "/src/assets/images/profile/blue-color.gif",
+    gif: blue,
     count: 100,
   },
   {
@@ -189,7 +194,7 @@ const rows_items = [
     title_slug: "property_dealing",
     subject: "PSC",
     subject_slug: "psc",
-    gif: "/src/assets/images/profile/psc.gif",
+    gif: psc,
     count: 100,
   },
 ];
