@@ -43,7 +43,7 @@ const Title = styled.h3`
 `;
 const Button = styled.button`
   border-radius: 10px;
-  background-color: #008bf8;
+  background-color: #FFC700;
   color: #191b21;
   border: none;
   padding: 0 14px;

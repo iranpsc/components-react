@@ -17,7 +17,7 @@ const Results = styled.div`
   gap: 20px;
   grid-template-columns: 1fr;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr;
   }
   @media (min-width: 1200px) {
     grid-template-columns: 2fr 2fr 2fr 1fr;

@@ -46,6 +46,7 @@ const Header = styled.div`
 const Title = styled.h3`
   font-size: 24px;
   font-weight: 600;
+  text-align: right;
   color: #ffffff;
   @media (max-width:1023px) {
     font-size: 18px;
@@ -58,9 +59,6 @@ const Info = styled.p`
   direction: rtl;
   margin: 20px 0;
   font-size: 16px;
-  @media (max-width:1023px) {
-    font-size: 12px;
-  }
 `;
 const CloseWrapper = styled.div`
   width: 30px;

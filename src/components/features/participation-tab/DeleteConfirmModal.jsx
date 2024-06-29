@@ -1,4 +1,6 @@
+import { ParticipantsContext } from "./ParticipationTab";
 import styled from "styled-components";
+import { useContext } from "react";
 
 const BackGround = styled.div`
   z-index: 999;
@@ -67,7 +69,12 @@ const Button = styled.button`
   color: #191b21;
   font-family: inherit;
 `;
-const DeleteConfirmModal = ({ setDeleteParticipant }) => {
+const DeleteConfirmModal = ({ id, setDeleteParticipant }) => {
+  const { setParticipantsList } = useContext(ParticipantsContext);
+  const deleteHandler = () => {
+    setParticipantsList((prev) => [...prev.filter((item) => item.id !== id)]);
+    setDeleteParticipant(false);
+  };
   return (
     <BackGround>
       <Modal>
@@ -76,7 +83,7 @@ const DeleteConfirmModal = ({ setDeleteParticipant }) => {
           <Info>آیا می خواهید مقدار رضایت خود را از این ملک حذف کنید</Info>
         </div>
         <Buttons>
-          <Button red onClick={() => {}}>
+          <Button red onClick={deleteHandler}>
             بله، حذف رضایت{" "}
           </Button>
           <Button onClick={() => setDeleteParticipant(false)}>

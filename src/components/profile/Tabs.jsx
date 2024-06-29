@@ -13,6 +13,7 @@ const TabItem = styled.h3`
   font-size: 16px;
   padding: 8px 26px;
   cursor: pointer;
+  transition: all 0.1s linear;
   border-bottom: 2px solid ${(props) => (props.active ? "#ffc700" : "#454545")};
   @media (min-width: 998px) {
     font-size: 18px;

@@ -50,8 +50,8 @@ const ImageWrapper = styled.div`
 
 const Actions = styled.div`
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: 15px;
+  top: 15px;
 `;
 
 const IconWrapper = styled.div`
@@ -142,7 +142,7 @@ export default function SwiperSlider({ images, deleteHandler }) {
       <div ref={thumbnailRef} className="keen-slider thumbnail">
         {images.map((item) => (
           <div key={item.id} className="keen-slider__slide number-slide2">
-            <img src={item.image} alt="slide" />
+            <img src={item.image} alt="slide" loading="lazy"/>
           </div>
         ))}
         {loaded && instanceRef.current && (

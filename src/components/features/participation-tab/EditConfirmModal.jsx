@@ -1,5 +1,8 @@
+import { useContext, useState } from "react";
+
 import EditInput from "../enter-tab/EditInput";
 import { MdAccessTime } from "react-icons/md";
+import { ParticipantsContext } from "./ParticipationTab";
 import TextValueIcon from "../../TextValueIcon";
 import styled from "styled-components";
 
@@ -50,7 +53,7 @@ const Inputs = styled.div`
   align-items: center;
   gap: 25px;
   margin: 25px 0;
-  &:first-child{
+  &:first-child {
     width: 100%;
   }
 `;
@@ -73,23 +76,55 @@ const Button = styled.div`
     height: 50px;
   }
 `;
-const EditConfirmModal = ({setEdit}) => {
+
+const Div = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  span {
+    font-size: 16px;
+    color: red;
+    cursor: pointer;
+  }
+`;
+
+const EditConfirmModal = ({ id, setEdit }) => {
+  const { participantsList, setParticipantsList } =
+    useContext(ParticipantsContext);
+  let editedItem = participantsList.find((item) => item.id === id);
+  const [edited, setEdited] = useState("");
+  const editHandler = () => {
+    setParticipantsList((prev) => [
+      ...prev,
+      (editedItem = { ...editedItem, satisfyCount: edited }),
+    ]);
+    setEdit(false);
+  };
   return (
     <BackGround>
       <Modal>
         <div>
-          <Title>ویرایش تعداد رضایت</Title>
+          <Div>
+            <Title>ویرایش تعداد رضایت</Title>
+            <span onClick={() => setEdit(false)}>X</span>
+          </Div>
           <Info>با تغییر مقدار رضایت در زمان ساخت ملک تاثیر خواهید گزاشت </Info>
         </div>
         <Inputs>
-          <EditInput type="number" title="تعداد رضایت" />
+          <EditInput
+            type="number"
+            title="تعداد رضایت"
+            value={edited}
+            onchange={(e) => setEdited(e.target.value)}
+            step={0.0001}
+          />
           <TextValueIcon
             icon={<MdAccessTime />}
             title="زمان کسر شده"
             value="۲۵ دقیقه"
           />
         </Inputs>
-        <Button onClick={() => setEdit(false)}>ویرایش تعداد رضایت</Button>
+        <Button onClick={editHandler}>ویرایش تعداد رضایت</Button>
       </Modal>
     </BackGround>
   );

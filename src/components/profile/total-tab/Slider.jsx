@@ -2,10 +2,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../../../styles/styles.css";
 
+import { Autoplay, Pagination } from "swiper/modules";
 import { LuImageMinus, LuImagePlus } from "react-icons/lu";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Pagination } from "swiper/modules";
 import { TiWarningOutline } from "react-icons/ti";
 import slidePic from "../../../assets/images/profile/slide.png";
 import styled from "styled-components";
@@ -95,10 +95,14 @@ export default function Slider() {
     <>
       <Swiper
         spaceBetween={30}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
         {images.map((image) => (

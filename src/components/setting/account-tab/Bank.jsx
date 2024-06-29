@@ -70,6 +70,11 @@ const Div = styled.div`
     border-radius: 5px;
     background-color: #2c2c2c;
     color: #84858f;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
   @media (min-width: 1024px) {
     span {

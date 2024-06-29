@@ -1,16 +1,16 @@
+import { useContext, useState } from "react";
+
 import Button from "../../Button";
 import EditInput from "../enter-tab/EditInput";
 import { MdAccessTime } from "react-icons/md";
+import { ParticipantsContext } from "./ParticipationTab";
 import TextValueIcon from "../../TextValueIcon";
 import Title from "../../Title";
 import styled from "styled-components";
-import { useState } from "react";
 
-const Container = styled.div`
-  
-`;
+const Container = styled.div``;
 const Inputs = styled.div`
-  display: grid ;
+  display: grid;
   align-items: center;
   gap: 20px;
   margin: 20px 0;
@@ -24,7 +24,33 @@ const Info = styled.p`
   font-size: 16px;
 `;
 const AddSatisfy = () => {
-  const [count, setCount] = useState('0.0001')
+  const [count, setCount] = useState("");
+  const { participantsList, setParticipantsList } =
+    useContext(ParticipantsContext);
+
+  const addHandler = () => {
+    if (count !== "") {
+      setParticipantsList((prev) => [
+        ...prev,
+        {
+          id: participantsList.length + 1,
+          userCode: "HM-2000081",
+          time: "۲۰ اردیبهشت ۱۴۰۰۲ | ۱۲:۳۰",
+          debt: "۱۹۷۲.۱۹۱۰۲۲۱",
+          level: "۱۹۷۲.۱۹۱۰۲۲۱",
+          satisfyCount: count,
+          options: [
+            {
+              id: 1,
+              submit: "۲۰ اردیبهشت ۱۴۰۰۲ | ۱۲:۳۰",
+              change: "۲۰ اردیبهشت ۱۴۰۰۲ | ۱۲:۳۰",
+            },
+          ],
+        },
+      ]);
+    }
+  };
+
   return (
     <Container>
       <Title title="افزودن رضایت" />
@@ -33,14 +59,17 @@ const AddSatisfy = () => {
         ملک شریک شوید{" "}
       </Info>
       <Inputs>
-        <EditInput satisfy value={count} onchange={(e) => setCount(e.target.value)} type="number" title="تعداد رضایت" />
-        <TextValueIcon
-          icon={<MdAccessTime />}
-          title="زمان کسر شده"
-          value="۲۵ دقیقه"
+        <EditInput
+          satisfy
+          step={0.0001}
+          value={count}
+          onchange={(e) => setCount(e.target.value)}
+          type="number"
+          title="تعداد رضایت"
         />
+        <TextValueIcon icon={<MdAccessTime />} title="زمان کسر شده" value="" />
       </Inputs>
-      <Button label="ثبت رضایت" />
+      <Button label="ثبت رضایت" onclick={addHandler} />
     </Container>
   );
 };

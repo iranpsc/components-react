@@ -5,32 +5,36 @@ import { useState } from "react";
 
 const Wrapper = styled.div`
   display: grid;
-  padding-top: 20px;
+  margin-top: 20px;
   padding-bottom: 20px;
-  padding-right: 15px;
   grid-template-columns: 1fr;
   align-items: flex-start;
   gap: 20px;
-  overflow-y: auto;
-  direction: ltr;
-  padding-right: 15px;
-  height: 175px;
   @media (min-width: 1400px) {
     grid-template-columns: 1fr 1fr;
-    height: 470px;
+  }
+  @media (min-width: 1900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+const Container = styled.div`
+  padding-top: 20px;
+  padding-right: 15px;
+  overflow-y: auto;
+  padding-right: 15px;
+  height: 315px;
+  direction: ltr;
+  @media (min-width: 1400px) {
+    height: 610px;
   }
   @media (min-width: 1500px) {
     padding-right: 15px;
   }
   @media (min-width: 1900px) {
-    grid-template-columns: 1fr 1fr;
-    height: 545px;
+    height: 685px;
     padding-right: 0;
   }
-`;
-
-const Container = styled.div`
-  margin-top: 30px;
 `;
 
 const items = [
@@ -138,10 +142,11 @@ const Left = styled.div`
 const SecurityTab = () => {
   const [searched, setSearched] = useState("");
   const searchedItems = items.filter((item) => {
-    const filteredOptions = item.options.filter((option) =>
-      option.title.includes(searched)
+    const filteredOptions = item.options.filter(
+      (option) =>
+        option.title.includes(searched) || item.label.includes(searched)
     );
-    return filteredOptions.length > 0;
+    return filteredOptions.length > 0 || item.label.includes(searched);
   });
   return (
     <Container>

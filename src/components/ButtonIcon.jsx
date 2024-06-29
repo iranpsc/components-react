@@ -13,23 +13,23 @@ const Container = styled.div`
   flex-grow: ${(props) => props.grow && "1"};
   padding: 2px 20px 1px 20px;
   svg {
-    font-size: 14px;
+    font-size: 18px;
     padding-top: 8px;
   }
   h3 {
     font-size: 10px;
   }
   @media (min-width: 740px) {
-  h3 {
-    font-size: 14px;
-  }
+    h3 {
+      font-size: 14px;
+    }
   }
   @media (min-width: 1024px) {
-  padding: 7px 20px 4px 20px;
+    padding: 7px 20px 4px 20px;
     h3 {
       font-size: 16px;
     }
-    svg{
+    svg {
       font-size: 18px;
     }
   }

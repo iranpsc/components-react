@@ -33,6 +33,7 @@ const EditInput = ({
   icon,
   title,
   type,
+  step,
   onchange,
   value,
   name,
@@ -47,7 +48,7 @@ const EditInput = ({
         onChange={onchange}
         type={type || "text"}
         name={name}
-        step={0.0001}
+        step={step}
       />
       {(slug === "psc") | (slug === "rial") ? (
         <img width={28} height={28} src={icon} alt={title} />

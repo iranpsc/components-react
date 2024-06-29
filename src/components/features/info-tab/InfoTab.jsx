@@ -5,15 +5,18 @@ import styled from "styled-components";
 const RowsWrapper = styled.div`
   padding-top: 20px;
   overflow-y: auto;
-  height: 70%;
+  height: 65%;
   padding-right: 15px;
   padding-bottom: 20px !important;
   direction: ltr;
-  @media (max-width: 1024px) and (max-height: 600px) {
-    height: 70% !important;
-  }
   @media (min-width: 840px) {
     height: 65% !important;
+  }
+  @media (min-width: 890px) {
+    height: 67% !important;
+  }
+  @media (min-width: 930px) {
+    height: 69% !important;
   }
   @media (min-width: 1024px) {
     height: 100%;

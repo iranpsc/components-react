@@ -52,6 +52,7 @@ const AddCode = styled.div`
   height: 30px;
   color: white;
   cursor: pointer;
+  white-space: nowrap;
   @media (max-width: 900px) {
     h5 {
       font-size: 11px;

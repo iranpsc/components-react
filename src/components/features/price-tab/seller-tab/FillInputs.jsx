@@ -83,6 +83,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (ریال)"
           insideText="ریال"
+          gif='/src/assets/images/profile/rial.gif'
         />
         <Input
           value={psc}
@@ -90,6 +91,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (PSC)"
           insideText="PSC"
+          gif='/src/assets/images/profile/psc.gif'
         />
       </InputsWrapper>
       <ResultWrapper>

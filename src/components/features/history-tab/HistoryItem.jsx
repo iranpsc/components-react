@@ -54,6 +54,10 @@ const User = styled.div`
   h4 {
     color: ${(props) => (props.owner ? "#FFFFFF" : "#0066ff")};
     font-size: 12px;
+    a{
+      color: #0066FF;
+      text-decoration: none;
+    }
   }
   @media (min-width: 998px) {
     h4 {
@@ -76,7 +80,7 @@ const Div = styled.div`
     }
   }
 `;
-const HistoryItem = ({ date, user, time, owner }) => {
+const HistoryItem = ({ date, user, link, time, owner }) => {
   return (
     <Container>
       <UserTime>
@@ -95,7 +99,13 @@ const HistoryItem = ({ date, user, time, owner }) => {
               </>
             )}
           </Div>
-          <h4>{user}</h4>
+          {owner ? (
+            <h4>{user}</h4>
+          ) : (
+            <h4>
+              <a href={`${link}`}>{user}</a>
+            </h4>
+          )}
         </User>
       </UserTime>
       <TitleValue small title="تاریخ و زمان" value={time} />

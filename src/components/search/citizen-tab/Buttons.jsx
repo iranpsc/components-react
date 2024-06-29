@@ -37,7 +37,7 @@ const Buttons = () => {
       {items.map((item) => (
         <div key={item.id}>
           <IconWrapper data-tooltip-id={item.label}>{item.icon}</IconWrapper>
-          <ReactTooltip style={{backgroundColor:'#434343'}} id={item.label} place="right" content={item.label} />
+          <ReactTooltip style={{backgroundColor:'#434343', borderRadius:'10px'}} id={item.label} place="right" content={item.label} />
         </div>
       ))}
     </Container>

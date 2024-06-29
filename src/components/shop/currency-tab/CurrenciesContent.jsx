@@ -5,6 +5,9 @@ import Title from "../../Title";
 import styled from "styled-components";
 import { useContext } from "react";
 
+const Container = styled.div`
+padding-top: 20px;
+`
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,7 +26,7 @@ const CurrenciesContent = ({ option, currencies }) => {
   const currencyContent = currencies.find((currency) => currency.id === option);
   const { alert } = useContext(AlertContext);
   return (
-    <div>
+    <Container>
       {alert && <Alert type="success" text="خرید شما با موفقیت انجام شد!" />}
       <Title title="ارزها" />
       <Wrapper>
@@ -32,7 +35,7 @@ const CurrenciesContent = ({ option, currencies }) => {
         ))}
       </Wrapper>
       ;
-    </div>
+    </Container>
   );
 };
 

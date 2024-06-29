@@ -14,11 +14,14 @@ const Container = styled.div`
     height: 300px;
   }
   @media (min-width: 840px) {
-    height: 280px;
+    height: 290px;
   }
   @media (min-width: 1400px) {
     height: 612px;
     grid-template-columns: 1fr;
+  }
+  @media (min-width: 1920px) {
+    height: 622px;
   }
 `;
 const Bio = () => {

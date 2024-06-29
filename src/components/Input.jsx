@@ -31,6 +31,9 @@ const InputElement = styled.input`
 `;
 const Span = styled.span`
   position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   left: 10px;
   top: 5px;
   color: #dedee9;
@@ -43,6 +46,7 @@ const Input = ({
   placeholder,
   insideText,
   value,
+  gif,
   onchange,
   disabled,
 }) => {
@@ -55,7 +59,12 @@ const Input = ({
         onChange={onchange}
         disabled={disabled}
       />
-      <Span>{insideText}</Span>
+      <Span>
+        {insideText}
+        {gif && (
+          <img width={30} height={30} loading="lazy" src={gif} alt="git" />
+        )}
+      </Span>
     </Wrapper>
   );
 };

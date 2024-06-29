@@ -28,7 +28,7 @@ const AlbumWrapper = styled.div`
   align-items: center;
   gap: 20px;
   margin-top: 30px;
-  padding: 0 20px;
+  padding: 0 0 0 20px;
   overflow-y: auto;
   @media (min-width: 840px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -59,6 +59,9 @@ const UploadMore = styled.div`
   color: #dedee9;
   position: relative;
   flex-grow: 1;
+  span {
+    font-size: 60px;
+  }
   input {
     opacity: 0;
     height: 100%;
@@ -199,7 +202,7 @@ const Album = () => {
           </ImageWrapper>
         ))}
         <UploadMore>
-          +
+          <span>+</span>
           <input type="file" onChange={handleImageUpload} />
         </UploadMore>
       </AlbumWrapper>

@@ -88,7 +88,7 @@ const InfoWrapper = styled.div`
   margin-top: 20px;
 `;
 
-const ParticipantItem = ({ time, debt, level, satisfyCount, options }) => {
+const ParticipantItem = ({ id, time, debt, level, satisfyCount, options }) => {
   const [openOptions, setOpenOptions] = useState(false);
   const [edit, setEdit] = useState(false);
   const [deleteParticipant, setDeleteParticipant] = useState(false);
@@ -154,9 +154,12 @@ const ParticipantItem = ({ time, debt, level, satisfyCount, options }) => {
           </InfoWrapper>
         )}
       </Container>
-      {edit && <EditConfirmModal setEdit={setEdit} />}
+      {edit && <EditConfirmModal id={id} setEdit={setEdit} />}
       {deleteParticipant && (
-        <DeleteConfirmModal setDeleteParticipant={setDeleteParticipant} />
+        <DeleteConfirmModal
+          id={id}
+          setDeleteParticipant={setDeleteParticipant}
+        />
       )}
     </>
   );
