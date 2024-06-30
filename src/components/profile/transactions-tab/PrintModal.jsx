@@ -26,7 +26,13 @@ const Modal = styled.div`
   direction: ltr;
   padding: 20px;
   width: 415px;
-  height: 300px;
+  height: 600px;
+  @media (min-width: 660px) {
+    height: 300px;
+  }
+  @media (min-width: 840px) {
+    height: 300px;
+  }
   @media (min-width: 930px) {
     height: 350px;
   }

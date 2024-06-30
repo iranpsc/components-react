@@ -12,11 +12,10 @@ import yellow from "../../../assets/images/profile/yellow-color.gif";
 const Container = styled.div`
   border-radius: 0.25rem;
   direction: rtl;
-  width: 74vw;
-  /* overflow-x: auto; */
-  
+  width: 74vw !important;
+  overflow-x: auto;
   @media (min-width: 640px) {
-    width: 78vw;
+    width: 78vw !important;
   }
   @media (min-width: 1024px) {
     width: 83vw !important;
@@ -40,9 +39,9 @@ const Table = styled.table`
   border-collapse: collapse;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  /* overflow: hidden; */
+
   @media (min-width: 1920px) {
-    width: 100%;
+    width: 100% !important;
   }
 `;
 
