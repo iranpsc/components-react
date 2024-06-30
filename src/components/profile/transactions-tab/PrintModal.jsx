@@ -205,7 +205,6 @@ const PrintModal = ({
           </Row>
           <div style={{ marginTop: "10px" }}>
             <Button
-              disabled={status === "pending"}
               full
               label="چاپ تراکنش"
               onclick={handlePrint}

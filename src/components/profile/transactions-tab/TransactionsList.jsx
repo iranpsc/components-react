@@ -13,7 +13,8 @@ const Container = styled.div`
   border-radius: 0.25rem;
   direction: rtl;
   width: 74vw;
-  overflow-x: auto;
+  /* overflow-x: auto; */
+  
   @media (min-width: 640px) {
     width: 78vw;
   }
@@ -54,6 +55,7 @@ const TableHead = styled.thead`
 const TableRow = styled.tr``;
 const StatusFilter = styled.div`
   position: absolute;
+  top: 65px;
   width: 169px;
   padding: 20px;
   border-radius: 10px;
@@ -90,6 +92,7 @@ const StatusFilter = styled.div`
 `;
 const TitleFilter = styled.div`
   position: absolute;
+  top: 65px;
   width: 130px;
   padding: 20px;
   border-radius: 10px;
@@ -106,6 +109,7 @@ const TitleFilter = styled.div`
 `;
 const SubjectFilter = styled.div`
   position: absolute;
+  top: 65px;
   width: 140px;
   padding: 20px;
   border-radius: 10px;
@@ -168,7 +172,7 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
                 وضعیت
                 <Arrows
                   onClick={() =>
-                    setFilters({ ...filters, status: !filters.status })
+                    setFilters({ status: !filters.status })
                   }
                 >
                   <MdKeyboardArrowUp />
@@ -209,7 +213,7 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
                 عنوان
                 <Arrows
                   onClick={() =>
-                    setFilters({ ...filters, title: !filters.title })
+                    setFilters({ title: !filters.title })
                   }
                 >
                   <MdKeyboardArrowUp />
@@ -244,7 +248,7 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
                 موضوع
                 <Arrows
                   onClick={() =>
-                    setFilters({ ...filters, subject: !filters.subject })
+                    setFilters({ subject: !filters.subject })
                   }
                 >
                   <MdKeyboardArrowUp />
