@@ -23,8 +23,17 @@ const Container = styled.div`
   padding-right: 15px;
   overflow-y: auto;
   padding-right: 15px;
-  height: 315px;
+  height: 265px;
   direction: ltr;
+  @media (min-width: 840px) {
+    height: 280px;
+  }
+  @media (min-width: 890px) {
+    height: 300px;
+  }
+  @media (min-width: 930px) {
+    height: 320px;
+  }
   @media (min-width: 1400px) {
     height: 610px;
   }

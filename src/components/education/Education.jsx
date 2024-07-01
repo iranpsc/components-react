@@ -15,25 +15,30 @@ const Education = ({ setOpenEducation }) => {
     padding: `${size ? "0" : "15px 20px 8px 20px"}`,
     zIndex: "999",
   };
+  
   return (
     <Rnd
       style={style}
       default={{
         x: 90,
         y: 20,
-        width:550
+        width: 550,
       }}
       enableResizing={false}
       bounds={"window"}
     >
       {!size && (
-        <Header show={show} setSize={setSize} setOpenEducation={setOpenEducation} />
+        <Header
+          show={show}
+          setSize={setSize}
+          setOpenEducation={setOpenEducation}
+        />
       )}
       <Video setSize={setSize} size={size} show={show} />
       {!size && (
         <>
           <Content show={show} setShow={setShow} />
-          <Footer show={show}/>
+          <Footer show={show} />
         </>
       )}
     </Rnd>

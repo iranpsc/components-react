@@ -16,6 +16,12 @@ const Container = styled.div`
   width: 500px;
   border-radius: 10px;
   height: ${(props) => (props.isNotif ? "340px" : "240px")};
+  @media (min-width: 890px) {
+    margin-bottom: -60px !important;
+  }
+  @media (min-width: 930px) {
+    margin-bottom: -80px !important;
+  }
   @media (min-width: 1000px) {
     height: ${(props) => (props.isNotif ? "550px" : "450px")};
     margin-right: 100px;

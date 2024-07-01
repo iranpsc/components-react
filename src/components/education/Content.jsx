@@ -6,11 +6,11 @@ const Container = styled.div`
   height: ${(props) => (props.show ? "160px" : "")};
   overflow-y: auto;
   direction: ltr;
-  padding-right: 15px;
   @media (max-width: 1400px) {
     height: ${(props) => (props.show ? "244px" : "")};
   }
   @media (min-width: 1401px) {
+    padding-right: 15px;
     height: 160px;
   }
   div {

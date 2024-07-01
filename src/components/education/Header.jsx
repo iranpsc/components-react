@@ -1,4 +1,3 @@
-import { FaAngleLeft } from "react-icons/fa";
 import { IoIosClose } from "react-icons/io";
 import { TbMinimize } from "react-icons/tb";
 import styled from "styled-components";
@@ -20,12 +19,9 @@ const HeaderWrapper = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-between;
-  @media (min-width: 998px) {
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-  @media (max-width: 1400px) {
-    display: ${props => props.show ? 'none' : 'flex'};
+
+  @media (max-width: 998px) {
+    display: ${(props) => (props.show ? "none" : "flex")};
   }
 `;
 
@@ -71,33 +67,29 @@ const CloseWrapper = styled.div`
   }
 `;
 
-const Back = styled.div`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #3b3b3b;
-  border-radius: 100%;
-  margin-right: auto;
-  cursor: pointer;
-  svg {
-    color: white;
-  }
-`;
-
 const Header = ({ show, setOpenEducation, setSize }) => {
+  const handleMinimizeClick = (event) => {
+    event.stopPropagation(); 
+    setSize(true);
+  };
+
+  const handleCloseClick = (event) => {
+    event.stopPropagation(); 
+    setOpenEducation(false);
+  };
   return (
     <HeaderWrapper show={show}>
-          <Text>آموزش</Text>
-          <Icons>
-            <Div onClick={() => setSize(true)}>
-              <TbMinimize style={{ color: "#949494" }} />
-            </Div>
-            <CloseWrapper onClick={() => setOpenEducation(false)}>
-              <IoIosClose />
-            </CloseWrapper>
-          </Icons>
+      <Text>آموزش</Text>
+      <Icons>
+        <Div onClick={handleMinimizeClick}>
+          <TbMinimize style={{ color: "#949494" }} />
+        </Div>
+        <CloseWrapper
+          onClick={handleCloseClick}
+        >
+          <IoIosClose />
+        </CloseWrapper>
+      </Icons>
     </HeaderWrapper>
   );
 };

@@ -7,15 +7,19 @@ const Wrapper = styled.div`
   margin-top: 20px;
   width: 100%;
   direction: ltr;
-  @media (max-width: 850px) {
-    height: 17.2rem;
+  overflow-y: auto;
+  height: 20rem;
+  @media (min-width: 850px) {
+    height: 18.6rem;
   }
-  @media (max-width: 1023px) {
+  @media (min-width: 930px) {
+    height: 19.5rem;
+  }
+  @media (min-width: 1023px) {
     max-height: 17.5rem;
-    overflow-y: auto;
   }
-  @media (min-width: 1024px) {
-    height: 77%;
+  @media (min-width: 1920px) {
+    overflow-y: hidden;
   }
 `;
 

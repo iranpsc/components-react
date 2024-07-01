@@ -14,7 +14,7 @@ const Container = styled.div`
   }
   @media (min-width: 1900px) {
     overflow-y: auto;
-    height: 262px !important;
+    height: 328px !important;
     padding-bottom: 10px;
   }
 `;

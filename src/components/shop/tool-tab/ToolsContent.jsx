@@ -8,14 +8,20 @@ import { useContext } from "react";
 const Container = styled.div`
   direction: ltr;
   text-align: right;
-  padding: 20px 0;
-  padding-right: 15px;
-  @media (max-width: 850px) {
-    height: 75% !important;
+  padding: 20px 15px 0 0;
+  height: 70% !important;
+  overflow-y: auto;
+  @media (min-width: 840px) {
+    height: 76% !important;
   }
-  @media (max-width: 1023px) {
+  @media (min-width: 914px) {
+    height: 78% !important;
+  }
+  @media (min-width: 930px) {
+    height: 78% !important;
+  }
+  @media (min-width: 1023px) {
     height: 65%;
-    overflow-y: auto;
   }
 `;
 

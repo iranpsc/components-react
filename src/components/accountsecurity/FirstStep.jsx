@@ -51,6 +51,11 @@ const Div = styled.div`
     top: 32px;
     color: #bababa;
   }
+  button{
+    position: absolute;
+    left: 5;
+    width: fit-content;
+  }
 `;
 
 const FirstStep = ({ setStep, time, setTime }) => {
@@ -59,7 +64,12 @@ const FirstStep = ({ setStep, time, setTime }) => {
       <h3>مدت زمان</h3>
       <p>مدت زمانی که میخواهید کیف پولتان خاموش بماند.</p>
       <Div>
-        <input
+        <button type="button">-</button>
+
+        <input type="number" name="number" min="0" max="100" value="0" />
+
+        <button type="button">+</button>
+        {/* <input
           value={time}
           onChange={(e) => setTime(e.target.value)}
           type="number"
@@ -69,7 +79,7 @@ const FirstStep = ({ setStep, time, setTime }) => {
           max={200}
           step={1}
         />
-        {time !== "" && <span>دقیقه</span>}
+        {time !== "" && <span>دقیقه</span>} */}
       </Div>
       <button
         onClick={() => {

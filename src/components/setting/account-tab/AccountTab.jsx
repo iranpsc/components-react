@@ -43,7 +43,7 @@ const Container = styled.div`
   gap: 20px;
   padding-right: 15px;
   overflow-y: auto;
-  height: 72%;
+  height: 73%;
   @media (min-width: 1400px) {
     height: 79%;
   }

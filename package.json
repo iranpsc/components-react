@@ -25,6 +25,7 @@
     "react-rnd": "^10.4.10",
     "react-router-dom": "^6.23.1",
     "react-share-kit": "^1.1.0",
+    "react-simple-wysiwyg": "^3.0.3",
     "react-toastify": "^10.0.5",
     "react-tooltip": "^5.26.4",
     "react-webcam": "^7.2.0",

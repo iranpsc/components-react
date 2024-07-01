@@ -8,7 +8,7 @@ const Container = styled.div`
   overflow-y: auto;
   padding-right: 15px;
   direction: ltr;
-  height: 68%;
+  height: 69% !important;
   h3 {
     &:first-of-type {
       direction: rtl;
@@ -25,6 +25,9 @@ const Container = styled.div`
   }
   @media (min-width: 1500px) {
     padding-right: 0;
+  }
+  @media (min-width: 1920px) {
+    overflow-y: hidden;
   }
 `;
 const PhysicEdit = ({ setEdit, inputs, setInputs }) => {

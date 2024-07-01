@@ -14,6 +14,10 @@ const Container = styled.div`
   direction: rtl;
   width: 74vw !important;
   overflow-x: auto;
+  min-height: 55vh;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @media (min-width: 640px) {
     width: 78vw !important;
   }
@@ -39,7 +43,6 @@ const Table = styled.table`
   border-collapse: collapse;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-
   @media (min-width: 1920px) {
     width: 100% !important;
   }
@@ -60,6 +63,21 @@ const StatusFilter = styled.div`
   border-radius: 10px;
   background-color: #1a1a18;
   font-size: 16px;
+  div {
+    position: relative;
+    &:hover {
+      background-color: #3b3b3b;
+      transition: all 0.2s linear;
+    }
+    span {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      color: red;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
   h1 {
     font-weight: 400;
     color: #18c08f;
@@ -93,9 +111,25 @@ const TitleFilter = styled.div`
   position: absolute;
   top: 65px;
   width: 130px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 10px;
   background-color: #1a1a18;
+  div {
+    position: relative;
+    padding-right: 5px;
+    &:hover {
+      background-color: #3b3b3b;
+      transition: all 0.2s linear;
+    }
+    span {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      color: red;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
   h1 {
     font-size: 16px;
     color: #dedee9;
@@ -114,6 +148,21 @@ const SubjectFilter = styled.div`
   border-radius: 10px;
   background-color: #1a1a18;
   font-size: 16px;
+  div {
+    position: relative;
+    &:hover {
+      background-color: #3b3b3b;
+      transition: all 0.2s linear;
+    }
+    span {
+      position: absolute;
+      left: 10px;
+      top: 3px;
+      color: red;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  }
   span {
     color: #ffffff;
     font-weight: 400;
@@ -132,11 +181,6 @@ const Arrows = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  svg {
-    &:first-of-type {
-      margin-bottom: -6px;
-    }
-  }
 `;
 
 const TableHeader = styled.th`
@@ -146,19 +190,51 @@ const TableHeader = styled.th`
   color: #ffffff;
   position: relative;
 `;
+
+const Loader = styled.div`
+  margin: 10px 0;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button {
+    background-color: transparent;
+    color: white;
+    border: none;
+  }
+  @media (min-width: 1400px) {
+    padding-bottom: 10px;
+  }
+`;
+
 const subjects = [
-  { id: 1, label: "رنگ آبی", slug: 'blue', gif: blue },
-  { id: 2, label: "رنگ قرمز", slug: 'red', gif: red },
-  { id: 3, label: "رنگ زرد", slug: 'yellow', gif: yellow },
-  { id: 4, label: "ریال", slug: 'rial', gif: rial },
-  { id: 5, label: "PSC", slug: 'psc', gif: psc },
+  { id: 1, label: "رنگ آبی", slug: "blue", gif: blue },
+  { id: 2, label: "رنگ قرمز", slug: "red", gif: red },
+  { id: 3, label: "رنگ زرد", slug: "yellow", gif: yellow },
+  { id: 4, label: "ریال", slug: "rial", gif: rial },
+  { id: 5, label: "PSC", slug: "psc", gif: psc },
 ];
-const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
+const TransactionsList = ({
+  rows,
+  title,
+  status,
+  subject,
+  setStatus,
+  setTitle,
+  setSubject,
+}) => {
+  const [visibleRows, setVisibleRows] = useState(10);
+
   const [filters, setFilters] = useState({
     status: false,
     title: false,
     subject: false,
   });
+
+  const handleLoadMore = () => {
+    setVisibleRows((prevVisibleRows) => prevVisibleRows + 10);
+  };
+
   return (
     <Container>
       <Table>
@@ -169,76 +245,155 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
             <TableHeader>
               <Div>
                 وضعیت
-                <Arrows
-                  onClick={() =>
-                    setFilters({ status: !filters.status })
-                  }
-                >
-                  <MdKeyboardArrowUp />
+                <Arrows onClick={() => setFilters({ status: !filters.status })}>
                   <MdKeyboardArrowDown />
                 </Arrows>
               </Div>
               {filters.status && (
                 <StatusFilter>
-                  <h1
-                    onClick={() => {
-                      setStatus("success");
-                      setFilters({ ...filters, status: false });
+                  <div
+                    style={{
+                      backgroundColor: `${status === "success" && "#3B3B3B"}`,
+                      borderRadius: '5px'
                     }}
                   >
-                    موفق
-                  </h1>
-                  <h2
-                    onClick={() => {
-                      setStatus("pending");
-                      setFilters({ ...filters, status: false });
+                    <h1
+                      onClick={() => {
+                        setStatus("success");
+                        setFilters({ ...filters, status: false });
+                      }}
+                    >
+                      موفق
+                    </h1>
+                    {status === "success" && (
+                      <span
+                        onClick={() => {
+                          setStatus("");
+                          setFilters({ ...filters, status: false });
+                        }}
+                      >
+                        X
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      backgroundColor: `${status === "pending" && "#3B3B3B"}`,
+                      borderRadius: '5px'
                     }}
                   >
-                    معلق
-                  </h2>
-                  <h3
-                    onClick={() => {
-                      setStatus("failed");
-                      setFilters({ ...filters, status: false });
+                    <h2
+                      onClick={() => {
+                        setStatus("pending");
+                        setFilters({ ...filters, status: false });
+                      }}
+                    >
+                      معلق
+                    </h2>
+                    {status === "pending" && (
+                      <span
+                        onClick={() => {
+                          setStatus("");
+                          setFilters({ ...filters, status: false });
+                        }}
+                      >
+                        X
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      backgroundColor: `${status === "failed" && "#3B3B3B"}`,
+                      borderRadius: '5px'
                     }}
                   >
-                    ناموفق
-                  </h3>
+                    <h3
+                      onClick={() => {
+                        setStatus("failed");
+                        setFilters({ ...filters, status: false });
+                      }}
+                    >
+                      ناموفق
+                    </h3>
+                    {status === "failed" && (
+                      <span
+                        onClick={() => {
+                          setStatus("");
+                          setFilters({ ...filters, status: false });
+                        }}
+                      >
+                        X
+                      </span>
+                    )}
+                  </div>
                 </StatusFilter>
               )}
             </TableHeader>
             <TableHeader>
               <Div>
                 عنوان
-                <Arrows
-                  onClick={() =>
-                    setFilters({ title: !filters.title })
-                  }
-                >
-                  <MdKeyboardArrowUp />
+                <Arrows onClick={() => setFilters({ title: !filters.title })}>
                   <MdKeyboardArrowDown />
                 </Arrows>
               </Div>
               {filters.title && (
                 <TitleFilter>
-                  <h1
-                    onClick={() => {
-                      setTitle("property_buy");
-                      setFilters({ ...filters, title: false });
+                  <div
+                    style={{
+                      backgroundColor: `${
+                        title === "property_buy" && "#3B3B3B"
+                      }`,
+                      borderRadius: "10px",
                     }}
                   >
-                    {" "}
-                    خرید دارایی{" "}
-                  </h1>
-                  <h1
-                    onClick={() => {
-                      setTitle("property_dealing");
-                      setFilters({ ...filters, title: false });
+                    <h1
+                      onClick={() => {
+                        setTitle("property_buy");
+                        setFilters({ ...filters, title: false });
+                      }}
+                    >
+                      {" "}
+                      خرید دارایی{" "}
+                    </h1>
+                    {title === "property_buy" && (
+                      <span
+                        onClick={() => {
+                          setTitle("");
+                          setFilters({ ...filters, title: false });
+                        }}
+                      >
+                        X
+                      </span>
+                    )}
+                  </div>
+                  <div
+                    style={{
+                      backgroundColor: `${
+                        title === "property_dealing" && "#3B3B3B"
+                      }`,
+                      borderRadius: "10px",
                     }}
                   >
-                    {" "}
-                    معامله ملک{" "}
-                  </h1>
+                    <h1
+                      onClick={() => {
+                        setTitle("property_dealing");
+                        setFilters({ ...filters, title: false });
+                      }}
+                    >
+                      {" "}
+                      معامله ملک{" "}
+                    </h1>
+                    {title === "property_dealing" && (
+                      <span
+                        onClick={() => {
+                          setTitle("");
+                          setFilters({ ...filters, title: false });
+                        }}
+                      >
+                        X
+                      </span>
+                    )}
+                  </div>
                 </TitleFilter>
               )}
             </TableHeader>
@@ -246,39 +401,51 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
               <Div>
                 موضوع
                 <Arrows
-                  onClick={() =>
-                    setFilters({ subject: !filters.subject })
-                  }
+                  onClick={() => setFilters({ subject: !filters.subject })}
                 >
-                  <MdKeyboardArrowUp />
                   <MdKeyboardArrowDown />
                 </Arrows>
               </Div>
               {filters.subject && (
                 <SubjectFilter>
-                  {subjects.map((subject) => (
+                  {subjects.map((item) => (
                     <div
                       onClick={() => {
-                        setSubject(subject.slug);
+                        setSubject(item.slug);
                         setFilters({ ...filters, subject: false });
                       }}
-                      key={subject.id}
+                      key={item.id}
                       style={{
                         display: "flex",
                         gap: "5px",
                         cursor: "pointer",
                         alignItems: "center",
-                        marginBottom: `${subject.id !== 5 && "10px"}`,
+                        backgroundColor: `${
+                          subject === item.slug && "#3B3B3B"
+                        }`,
+                        marginBottom: `${item.id !== 5 && "10px"}`,
+                        borderRadius: "10px",
                       }}
                     >
                       <img
-                        src={subject.gif}
-                        alt={subject.slug}
+                        src={item.gif}
+                        alt={item.slug}
                         width={24}
                         height={26}
                         loading="lazy"
                       />
-                      <span>{subject.label}</span>
+                      <h3>{item.label}</h3>
+                      {subject === item.slug && (
+                        <span
+                          onClick={(e) => {
+                            setSubject("");
+                            e.stopPropagation();
+                            setFilters({ ...filters, subject: false });
+                          }}
+                        >
+                          X
+                        </span>
+                      )}
                     </div>
                   ))}
                 </SubjectFilter>
@@ -289,11 +456,16 @@ const TransactionsList = ({ rows, setStatus, setTitle, setSubject }) => {
           </TableRow>
         </TableHead>
         <tbody>
-          {rows.map((transaction) => (
+          {rows.slice(0, visibleRows).map((transaction) => (
             <TransactionRow key={transaction.id} {...transaction} />
           ))}
         </tbody>
       </Table>
+      {visibleRows < rows.length && (
+        <Loader>
+          <button onClick={handleLoadMore}>نمایش موارد بیشتر</button>
+        </Loader>
+      )}
     </Container>
   );
 };

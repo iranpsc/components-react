@@ -20,11 +20,11 @@ const Container = styled.div`
   @media (min-width: 840px) {
     height: 256px;
   }
-  @media (min-width: 1024px) {
-    height: 550px;
+  @media (min-width: 890px) {
+    height: 285px;
   }
-  @media (min-width: 1180px) {
-    height: 600px;
+  @media (min-width: 930px) {
+    height: 300px;
   }
   @media (min-width: 1366px) {
     height: 800px;
