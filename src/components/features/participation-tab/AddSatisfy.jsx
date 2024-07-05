@@ -1,8 +1,11 @@
+import {
+  MdAccessTime,
+  MdKeyboardArrowDown,
+  MdKeyboardArrowUp,
+} from "react-icons/md";
 import { useContext, useState } from "react";
 
 import Button from "../../Button";
-import EditInput from "../enter-tab/EditInput";
-import { MdAccessTime } from "react-icons/md";
 import { ParticipantsContext } from "./ParticipationTab";
 import TextValueIcon from "../../TextValueIcon";
 import Title from "../../Title";
@@ -23,6 +26,42 @@ const Info = styled.p`
   margin: 10px auto;
   font-size: 16px;
 `;
+
+const Div = styled.div`
+  border: 1px solid #454545;
+  border-radius: 5px;
+  position: relative;
+  background-color: #2C2C2C;
+  input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 10px 12px;
+    color: #84858F;
+    font-size: 16px;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+  div {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
+  }
+`;
+const Up = styled.span`
+  margin-bottom: -15px;
+`;
+const Down = styled.span``;
+
 const AddSatisfy = () => {
   const [count, setCount] = useState("");
   const { participantsList, setParticipantsList } =
@@ -59,14 +98,32 @@ const AddSatisfy = () => {
         ملک شریک شوید{" "}
       </Info>
       <Inputs>
-        <EditInput
-          satisfy
-          step={0.0001}
-          value={count}
-          onchange={(e) => setCount(e.target.value)}
-          type="number"
-          title="تعداد رضایت"
-        />
+        <Div>
+          <div>
+            <Up onClick={() => setCount((prev) => +prev + 0.0001)}>
+              <MdKeyboardArrowUp />
+            </Up>
+            <Down
+              onClick={() => {
+                if (count > 0) {
+                  setCount((prev) => +prev - 0.0001);
+                }
+              }}
+            >
+              <MdKeyboardArrowDown />
+            </Down>
+          </div>
+          <input
+            value={count}
+            onChange={(e) => setCount(e.target.value)}
+            type="number"
+            placeholder="تعداد رضایت"
+            maxLength={3}
+            min={0}
+            max={200}
+            step={0.00001}
+          />
+        </Div>
         <TextValueIcon icon={<MdAccessTime />} title="زمان کسر شده" value="" />
       </Inputs>
       <Button label="ثبت رضایت" onclick={addHandler} />

@@ -14,12 +14,15 @@ const Container = styled.div`
   direction: rtl;
   width: 74vw !important;
   overflow-x: auto;
-  min-height: 55vh;
+  min-height: 93vh;
   &::-webkit-scrollbar {
     display: none;
   }
   @media (min-width: 640px) {
     width: 78vw !important;
+  }
+  @media (min-width: 840px) {
+    min-height: 80vh;
   }
   @media (min-width: 1024px) {
     width: 83vw !important;
@@ -32,6 +35,7 @@ const Container = styled.div`
   }
   @media (min-width: 1920px) {
     width: auto !important;
+    min-height: 55vh;
   }
   margin-top: 20px;
 `;
@@ -189,6 +193,7 @@ const TableHeader = styled.th`
   font-weight: 500;
   color: #ffffff;
   position: relative;
+  width: ${props => props.date ? '235px' : props.subject ? '116px' : props.title && '140px'};
 `;
 
 const Loader = styled.div`
@@ -241,7 +246,7 @@ const TransactionsList = ({
         <TableHead>
           <TableRow>
             <TableHeader>شناسه تراکنش</TableHeader>
-            <TableHeader>تاریخ و ساعت ارسال</TableHeader>
+            <TableHeader date>تاریخ و ساعت ارسال</TableHeader>
             <TableHeader>
               <Div>
                 وضعیت
@@ -329,7 +334,7 @@ const TransactionsList = ({
                 </StatusFilter>
               )}
             </TableHeader>
-            <TableHeader>
+            <TableHeader title>
               <Div>
                 عنوان
                 <Arrows onClick={() => setFilters({ title: !filters.title })}>
@@ -397,7 +402,7 @@ const TransactionsList = ({
                 </TitleFilter>
               )}
             </TableHeader>
-            <TableHeader>
+            <TableHeader subject>
               <Div>
                 موضوع
                 <Arrows

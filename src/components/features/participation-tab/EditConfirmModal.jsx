@@ -94,10 +94,8 @@ const EditConfirmModal = ({ id, setEdit }) => {
   let editedItem = participantsList.find((item) => item.id === id);
   const [edited, setEdited] = useState("");
   const editHandler = () => {
-    setParticipantsList((prev) => [
-      ...prev,
-      (editedItem = { ...editedItem, satisfyCount: edited }),
-    ]);
+    const updatedEditedItem = { ...editedItem, satisfyCount: edited };
+    setParticipantsList((prev) => [...prev.filter((item) => item.id !== id), updatedEditedItem]);
     setEdit(false);
   };
   return (

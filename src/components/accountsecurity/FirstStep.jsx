@@ -1,3 +1,5 @@
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -45,17 +47,25 @@ const Container = styled.div`
 const Div = styled.div`
   height: fit-content;
   position: relative;
-  span {
+  div {
     position: absolute;
-    right: 45px;
-    top: 32px;
-    color: #bababa;
+    left: 10px;
+    top: 28px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    cursor: pointer;
   }
-  button{
-    position: absolute;
-    left: 5;
-    width: fit-content;
-  }
+`;
+const Up = styled.span`
+  margin-bottom: -15px;
+`;
+const Down = styled.span``;
+const Min = styled.span`
+  position: absolute;
+  color: gray;
+  right: 40px;
+  top: 32px;
 `;
 
 const FirstStep = ({ setStep, time, setTime }) => {
@@ -64,26 +74,35 @@ const FirstStep = ({ setStep, time, setTime }) => {
       <h3>مدت زمان</h3>
       <p>مدت زمانی که میخواهید کیف پولتان خاموش بماند.</p>
       <Div>
-        <button type="button">-</button>
-
-        <input type="number" name="number" min="0" max="100" value="0" />
-
-        <button type="button">+</button>
-        {/* <input
+        <div>
+          <Up onClick={() => setTime((prev) => +prev + 1)}>
+            <MdKeyboardArrowUp />
+          </Up>
+          <Down
+            onClick={() => {
+              if (time > 0) {
+                setTime((prev) => +prev - 1);
+              }
+            }}
+          >
+            <MdKeyboardArrowDown />
+          </Down>
+        </div>
+        <input
           value={time}
           onChange={(e) => setTime(e.target.value)}
           type="number"
-          placeholder="مدت زمان (دقیقه)"
+          placeholder="مدت زمان"
           maxLength={3}
           min={0}
           max={200}
           step={1}
         />
-        {time !== "" && <span>دقیقه</span>} */}
+        {time !== "" && <Min>دقیقه</Min>}
       </Div>
       <button
         onClick={() => {
-          if (time !== "") {
+          if (time !== "" && time > 0) {
             setStep(2);
           }
         }}

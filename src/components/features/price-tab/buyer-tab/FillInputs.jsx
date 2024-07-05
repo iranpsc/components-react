@@ -3,6 +3,7 @@ import Input from "../../../Input";
 import SuggestText from "./SuggestText";
 import TitleValue from "../../../TitleValue";
 import styled from "styled-components";
+import { useState } from "react";
 
 const InputsWrapper = styled.div`
   display: flex;
@@ -67,14 +68,17 @@ const Value = styled.p`
 const Div = styled.div`
   height: 250px !important;
   direction: rtl;
+  margin-bottom: 10px;
 `;
 
 const Sec = styled.div`
   display: grid;
   gap: 20px;
   grid-template-columns: 2fr 1fr;
-  `;
+`;
 const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
+  const [value, setValue] = useState("");
+
   return (
     <>
       <InputsWrapper>
@@ -96,7 +100,10 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
         />
       </InputsWrapper>
       <Div>
-        <SuggestText />
+        <SuggestText setValue={setValue} value={value} />
+        <span style={{ color: "gray", fontSize:'14px'}}>
+          {1000 - value.length} کاراکتر
+        </span>
       </Div>
       <ResultWrapper>
         <Wrapper>

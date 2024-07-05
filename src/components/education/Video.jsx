@@ -5,14 +5,14 @@ import styled from "styled-components";
 import video from "../../assets/images/education/education.mp4";
 
 const Container = styled.div`
-  height: ${(props) => (props.size ? "100%" : "217px")};
+  height: ${(props) => (props.size ? "100%" : "220px")};
   border-radius: 10px;
   position: relative;
   background-color: #000000;
-  margin-top: ${(props) => (props.size ? "0" : "30px")};
+  margin-top: ${(props) => (props.size ? "0" : "20px")};
   display: ${(props) => (props.show && props.isMobile ? "none" : "block")};
   video {
-    object-fit: contain !important;
+    /* object-fit: contain !important; */
   }
 `;
 
@@ -66,7 +66,7 @@ const Video = ({ show, size, setSize }) => {
       )}
       <video
         width={450}
-        height={217}
+        height={230}
         alt="education"
         style={{
           borderRadius: "10px",

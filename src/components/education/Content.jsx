@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding-bottom: 5px;
+  padding-right: 10px;
   height: ${(props) => (props.show ? "160px" : "")};
   overflow-y: auto;
   direction: ltr;
@@ -40,8 +41,8 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
+    text-align: justify;
     direction: rtl;
-
     @media (max-width: 1400px) {
       display: ${(props) => (props.show ? "block" : "none")};
     }

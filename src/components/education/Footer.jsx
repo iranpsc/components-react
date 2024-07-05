@@ -13,12 +13,15 @@ const actions = [
 ];
 const Left = styled.div`
   display: flex;
-  align-items: center;
-  gap: 25px;
+  align-items: end;
+  gap: 20px;
   div {
     display: flex;
     align-items: center;
     gap: 5px;
+    h3{
+      font-weight: 500;
+    }
   }
 `;
 
