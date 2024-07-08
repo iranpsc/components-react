@@ -14,8 +14,17 @@ const Container = styled.div`
   padding: 20px 15px 20px 0;
   height: 245px;
   overflow-y: auto;
+  @media (min-width: 720px) {
+    height: 405px;
+  }
+  @media (min-width: 740px) {
+    height: 230px;
+  }
   @media (min-width: 840px) {
     height: 255px;
+  }
+  @media (min-width: 882px) {
+    height: 207px;
   }
   @media (min-width: 890px) {
     height: 285px;
@@ -23,8 +32,17 @@ const Container = styled.div`
   @media (min-width: 930px) {
     height: 300px;
   }
+  @media (min-width: 1024px) {
+    height: 580px;
+  }
+  @media (min-width: 1180px) {
+    height: 640px;
+  }
+  @media (min-width: 1280px) {
+    height: 665px;
+  }
   @media (min-width: 1366px) {
-    height: 805px;
+    height: 835px;
   }
   @media (min-width: 1400px) {
     height: 590px;

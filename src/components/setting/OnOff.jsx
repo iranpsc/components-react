@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import  { useState } from "react";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const On = styled.div`
   width: 45px;
@@ -24,10 +25,26 @@ const On = styled.div`
   }
 `;
 
-const OnOff = () => {
+const OnOff = ({ label }) => {
   const [off, setOff] = useState(false);
   return (
-    <On off={off} onClick={() => setOff(!off)}>
+    <On
+      off={off}
+      onClick={() => {
+        setOff(!off);
+        toast.success(`${label} با موفقیت ${off ? "خاموش" : "روشن"} شد!`, {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          bodyClassName: "success",
+        });
+      }}
+    >
       <div></div>
     </On>
   );

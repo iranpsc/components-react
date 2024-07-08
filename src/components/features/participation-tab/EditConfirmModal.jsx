@@ -119,7 +119,8 @@ const EditConfirmModal = ({ id, setEdit }) => {
           <TextValueIcon
             icon={<MdAccessTime />}
             title="زمان کسر شده"
-            value="۲۵ دقیقه"
+            value="۳۴ روز | ۱۸ ساعت ۲۹ دقیقه ۴۵ ثانیه"
+            very_long
           />
         </Inputs>
         <Button onClick={editHandler}>ویرایش تعداد رضایت</Button>

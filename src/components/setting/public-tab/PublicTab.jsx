@@ -1,6 +1,9 @@
+import Alert from "../../Alert";
+import { AlertContext } from "../../../App";
 import Button from "../../Button";
 import OnOff from "../OnOff";
 import styled from "styled-components";
+import { useContext } from "react";
 
 const settings = [
   { id: 1, label: "ارسال پیامک تسویه حساب تراکنش ها" },
@@ -55,18 +58,29 @@ const Settings = styled.div`
 `;
 
 const PublicTab = () => {
+  const { alert, setAlert } = useContext(AlertContext);
+
   return (
     <Container>
+      {alert && <Alert type="success" text="به روزرسانی با موفقیت انجام شد" />}
       <Settings>
         {settings.map((setting) => (
           <Wrapper key={setting.id}>
             <p>{setting.label}</p>
-            <OnOff />
+            <OnOff label={setting?.label} />
           </Wrapper>
         ))}
       </Settings>
       <div dir="rtl">
-        <Button label="بروزرسانی" onclick={() => {}} />
+        <Button
+          label="بروزرسانی"
+          onclick={() => {
+            setAlert(true);
+            setTimeout(() => {
+              setAlert(false);
+            }, 3000);
+          }}
+        />
       </div>
     </Container>
   );

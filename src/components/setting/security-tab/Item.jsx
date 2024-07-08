@@ -65,7 +65,7 @@ const Item = ({ label, options }) => {
         {options.map((option) => (
           <Option key={option.id}>
             <p>{option.title}</p>
-            <OnOff />
+            <OnOff label={option.title} />
           </Option>
         ))}
       </Options>

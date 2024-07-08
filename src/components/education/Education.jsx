@@ -1,8 +1,9 @@
+import { useRef, useState } from "react";
+
 import Content from "./Content";
 import Footer from "./Footer";
 import Header from "./Header";
 import Video from "./Video";
-import { useState } from "react";
 
 const Education = ({ setOpenEducation }) => {
   const [size, setSize] = useState(false);
@@ -10,22 +11,20 @@ const Education = ({ setOpenEducation }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
-
+  const draggableRef = useRef(null);
   const handleMouseDown = (e) => {
     setDragging(true);
-    setOffset({
-      x: e.clientX - e.target.getBoundingClientRect().left,
-      y: e.clientY - e.target.getBoundingClientRect().top,
-    });
+    const offsetX = e.clientX - draggableRef.current.offsetLeft;
+    const offsetY = e.clientY - draggableRef.current.offsetTop;
+    setOffset({ x: offsetX, y: offsetY });
     e.preventDefault();
   };
 
   const handleMouseMove = (e) => {
     if (dragging) {
-      setPosition({
-        x: e.clientX - offset.x,
-        y: e.clientY - offset.y,
-      });
+      const newX = e.clientX - offset.x;
+      const newY = e.clientY - offset.y;
+      setPosition({ x: newX, y: newY });
       e.preventDefault();
     }
   };
@@ -36,12 +35,11 @@ const Education = ({ setOpenEducation }) => {
 
   const handleTouchStart = (e) => {
     setDragging(true);
-    const { clientX, clientY } = e.touches[0];
-    const rect = e.target.getBoundingClientRect();
-    const offsetX = clientX - rect.left;
-    const offsetY = clientY - rect.top;
+    const touch = e.touches[0];
+    const offsetX = touch.clientX - draggableRef.current.offsetLeft;
+    const offsetY = touch.clientY - draggableRef.current.offsetTop;
     setOffset({ x: offsetX, y: offsetY });
-    e.preventDefault(); 
+    e.preventDefault();
   };
 
   const handleTouchMove = (e) => {
@@ -74,6 +72,7 @@ const Education = ({ setOpenEducation }) => {
   return (
     <div
       style={style}
+      ref={draggableRef}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}

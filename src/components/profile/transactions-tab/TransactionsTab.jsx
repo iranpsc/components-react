@@ -7,35 +7,47 @@ import SearchInput from "../../search/SearchInput";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import Title from "../../Title";
 import TransactionsList from "./TransactionsList";
-import blue from '../../../assets/images/profile/blue-color.gif'
+import blue from "../../../assets/images/profile/blue-color.gif";
 import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
-import psc from '../../../assets/images/profile/psc.gif'
-import red from '../../../assets/images/profile/red-color.gif'
-import rial from '../../../assets/images/profile/rial.gif'
+import psc from "../../../assets/images/profile/psc.gif";
+import red from "../../../assets/images/profile/red-color.gif";
+import rial from "../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
 import { useState } from "react";
-import yellow from '../../../assets/images/profile/yellow-color.gif'
+import yellow from "../../../assets/images/profile/yellow-color.gif";
 
 const Container = styled.div`
-  padding: 20px 15px 20px 0;
+  padding: 20px 15px 0px 0;
   direction: ltr;
   overflow-y: auto;
   height: 550px;
   @media (min-width: 640px) {
     height: 290px;
   }
+  @media (min-width: 740px) {
+    height: 270px;
+  }
   @media (min-width: 840px) {
-    height: 310px;
+    height: 290px;
   }
   @media (min-width: 890px) {
-    height: 330px;
+    height: 315px;
   }
   @media (min-width: 930px) {
-    height: 350px;
+    height: 330px;
   }
   @media (min-width: 1024px) {
+    height: 400px;
+  }
+  @media (min-width: 1180px) {
     height: 600px;
+  }
+  @media (min-width: 1280px) {
+    max-height: 945px;
+  }
+  @media (min-width: 1366px) {
+    height: 650px;
   }
   @media (min-width: 1920px) {
     height: 640px;
@@ -476,15 +488,48 @@ const rows_items = [
 ];
 const TransactionsTab = () => {
   const [searched, setSearched] = useState("");
-  const [status, setStatus] = useState("");
-  const [title, setTitle] = useState("");
-  const [subject, setSubject] = useState("");
+  const [status, setStatus] = useState({
+    success: false,
+    failed: false,
+    pending: false,
+  });
+  
+  const [title, setTitle] = useState({
+    property_dealing: false,
+    property_buy: false,
+  });
+  
+  const [subject, setSubject] = useState({
+    blue: false,
+    red: false,
+    yellow: false,
+    psc: false,
+    rial: false,
+  });
+  
   const [rows, setRows] = useState(rows_items);
   const filteredItems = rows.filter((row) => {
     const codeMatch = row.code.toString().includes(searched);
-    const statusMatch = status === "" || row.status === status;
-    const titleMatch = title === "" || row.title_slug === title;
-    const subjectMatch = subject === "" || row.subject_slug === subject;
+    const statusMatch =
+      (!status.success && !status.failed && !status.pending) ||
+      (status.success && row.status === "success") ||
+      (status.failed && row.status === "failed") ||
+      (status.pending && row.status === "pending");
+    const titleMatch =
+      (!title.property_dealing && !title.property_buy) ||
+      (title.property_dealing && row.title_slug === "property_dealing") ||
+      (title.property_buy && row.title_slug === "property_buy");
+    const subjectMatch =
+      (!subject.blue &&
+        !subject.red &&
+        !subject.yellow &&
+        !subject.psc &&
+        !subject.rial) ||
+      (subject.blue && row.subject_slug === "blue") ||
+      (subject.red && row.subject_slug === "red") ||
+      (subject.yellow && row.subject_slug === "yellow") ||
+      (subject.psc && row.subject_slug === "psc") ||
+      (subject.rial && row.subject_slug === "rial");
   
     return codeMatch && statusMatch && titleMatch && subjectMatch;
   });
@@ -503,7 +548,7 @@ const TransactionsTab = () => {
           <DatePicker
             placeholder="تاریخ و ساعت"
             className="bg-dark yellow"
-            format="MM/DD/YYYY HH:mm:ss"
+            format="YYYY/DD/MM HH:mm:ss"
             plugins={[<TimePicker position="bottom" />]}
             calendar={persian}
             locale={persian_fa}

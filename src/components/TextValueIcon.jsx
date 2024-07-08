@@ -35,6 +35,7 @@ const Title = styled.p`
   color: #dedee9;
   font-size: 16px;
   font-weight: 400;
+  white-space: nowrap;
   line-height: ${(props) => props.long && "20px"};
   @media (max-width: 1024px) {
     font-size: ${(props) => (props.long ? "14px" : "16px")};
@@ -54,15 +55,18 @@ const Value = styled.span`
   @media (max-width: 1024px) {
     font-size: ${(props) => (props.smallValue ? "14px" : "16px")};
   }
+  @media (min-width: 1400px) {
+    font-size: ${(props) => (props.very_long ? "15px" : "16px")};
+  }
 `;
-const TextValueIcon = ({ icon, title, value, long, smallValue }) => {
+const TextValueIcon = ({ icon, title, value, long, smallValue, very_long }) => {
   return (
     <Item>
       <InfoIcon>
         {icon}
         <Title long={long}>{title}</Title>
       </InfoIcon>
-      <Value smallValue={smallValue}>{value}</Value>
+      <Value very_long={very_long} smallValue={smallValue}>{value}</Value>
     </Item>
   );
 };

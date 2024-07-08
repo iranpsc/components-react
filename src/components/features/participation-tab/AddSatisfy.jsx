@@ -31,15 +31,15 @@ const Div = styled.div`
   border: 1px solid #454545;
   border-radius: 5px;
   position: relative;
-  background-color: #2C2C2C;
-  input{
+  background-color: #2c2c2c;
+  input {
     width: 100%;
     height: 100%;
     background-color: transparent;
     outline: none;
     border: none;
     padding: 10px 12px;
-    color: #84858F;
+    color: #84858f;
     font-size: 16px;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
@@ -100,13 +100,13 @@ const AddSatisfy = () => {
       <Inputs>
         <Div>
           <div>
-            <Up onClick={() => setCount((prev) => +prev + 0.0001)}>
+            <Up onClick={() => setCount((prev) => +prev + 1)}>
               <MdKeyboardArrowUp />
             </Up>
             <Down
               onClick={() => {
                 if (count > 0) {
-                  setCount((prev) => +prev - 0.0001);
+                  setCount((prev) => +prev - 1);
                 }
               }}
             >
@@ -124,7 +124,14 @@ const AddSatisfy = () => {
             step={0.00001}
           />
         </Div>
-        <TextValueIcon icon={<MdAccessTime />} title="زمان کسر شده" value="" />
+        <TextValueIcon
+          icon={<MdAccessTime />}
+          title="زمان کسر شده"
+          value="۳۴ روز | ۱۸ ساعت ۲۹ دقیقه ۴۵ ثانیه"
+          smallValue
+          long
+          very_long
+        />
       </Inputs>
       <Button label="ثبت رضایت" onclick={addHandler} />
     </Container>

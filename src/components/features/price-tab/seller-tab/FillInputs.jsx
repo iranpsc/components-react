@@ -1,6 +1,8 @@
 import Button from "../../../Button";
 import Input from "../../../Input";
 import TitleValue from "../../../TitleValue";
+import psc from '../../../../assets/images/profile/psc.gif'
+import rial from '../../../../assets/images/profile/rial.gif'
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -83,7 +85,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (ریال)"
           insideText="ریال"
-          gif='/src/assets/images/profile/rial.gif'
+          gif={rial}
         />
         <Input
           value={psc}
@@ -91,7 +93,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (PSC)"
           insideText="PSC"
-          gif='/src/assets/images/profile/psc.gif'
+          gif={psc}
         />
       </InputsWrapper>
       <ResultWrapper>

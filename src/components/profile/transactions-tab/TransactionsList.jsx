@@ -22,7 +22,7 @@ const Container = styled.div`
     width: 78vw !important;
   }
   @media (min-width: 840px) {
-    min-height: 80vh;
+    min-height: 80vh !important;
   }
   @media (min-width: 1024px) {
     width: 83vw !important;
@@ -193,12 +193,13 @@ const TableHeader = styled.th`
   font-weight: 500;
   color: #ffffff;
   position: relative;
-  width: ${props => props.date ? '235px' : props.subject ? '116px' : props.title && '140px'};
+  width: ${(props) =>
+    props.date ? "235px" : props.subject ? "116px" : props.title && "140px"};
 `;
 
 const Loader = styled.div`
   margin: 10px 0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,9 +208,9 @@ const Loader = styled.div`
     color: white;
     border: none;
   }
-  @media (min-width: 1400px) {
+  /* @media (min-width: 1400px) {
     padding-bottom: 10px;
-  }
+  } */
 `;
 
 const subjects = [
@@ -258,22 +259,22 @@ const TransactionsList = ({
                 <StatusFilter>
                   <div
                     style={{
-                      backgroundColor: `${status === "success" && "#3B3B3B"}`,
-                      borderRadius: '5px'
+                      backgroundColor: `${status.success && "#3B3B3B"}`,
+                      borderRadius: "5px",
                     }}
                   >
                     <h1
                       onClick={() => {
-                        setStatus("success");
+                        setStatus({ ...status, success: true });
                         setFilters({ ...filters, status: false });
                       }}
                     >
                       موفق
                     </h1>
-                    {status === "success" && (
+                    {status.success && (
                       <span
                         onClick={() => {
-                          setStatus("");
+                          setStatus({ ...status, success: false });
                           setFilters({ ...filters, status: false });
                         }}
                       >
@@ -283,22 +284,22 @@ const TransactionsList = ({
                   </div>
                   <div
                     style={{
-                      backgroundColor: `${status === "pending" && "#3B3B3B"}`,
-                      borderRadius: '5px'
+                      backgroundColor: `${status.pending && "#3B3B3B"}`,
+                      borderRadius: "5px",
                     }}
                   >
                     <h2
                       onClick={() => {
-                        setStatus("pending");
+                        setStatus({ ...status, pending: true });
                         setFilters({ ...filters, status: false });
                       }}
                     >
                       معلق
                     </h2>
-                    {status === "pending" && (
+                    {status.pending && (
                       <span
                         onClick={() => {
-                          setStatus("");
+                          setStatus({ ...status, pending: false });
                           setFilters({ ...filters, status: false });
                         }}
                       >
@@ -308,22 +309,22 @@ const TransactionsList = ({
                   </div>
                   <div
                     style={{
-                      backgroundColor: `${status === "failed" && "#3B3B3B"}`,
-                      borderRadius: '5px'
+                      backgroundColor: `${status.failed && "#3B3B3B"}`,
+                      borderRadius: "5px",
                     }}
                   >
                     <h3
                       onClick={() => {
-                        setStatus("failed");
+                        setStatus({ ...status, failed: true });
                         setFilters({ ...filters, status: false });
                       }}
                     >
                       ناموفق
                     </h3>
-                    {status === "failed" && (
+                    {status.failed && (
                       <span
                         onClick={() => {
-                          setStatus("");
+                          setStatus({ ...status, failed: false });
                           setFilters({ ...filters, status: false });
                         }}
                       >
@@ -345,25 +346,23 @@ const TransactionsList = ({
                 <TitleFilter>
                   <div
                     style={{
-                      backgroundColor: `${
-                        title === "property_buy" && "#3B3B3B"
-                      }`,
+                      backgroundColor: `${title.property_buy && "#3B3B3B"}`,
                       borderRadius: "10px",
                     }}
                   >
                     <h1
                       onClick={() => {
-                        setTitle("property_buy");
+                        setTitle({ ...title, property_buy: true });
                         setFilters({ ...filters, title: false });
                       }}
                     >
                       {" "}
                       خرید دارایی{" "}
                     </h1>
-                    {title === "property_buy" && (
+                    {title.property_buy && (
                       <span
                         onClick={() => {
-                          setTitle("");
+                          setTitle({ ...title, property_buy: false });
                           setFilters({ ...filters, title: false });
                         }}
                       >
@@ -373,25 +372,23 @@ const TransactionsList = ({
                   </div>
                   <div
                     style={{
-                      backgroundColor: `${
-                        title === "property_dealing" && "#3B3B3B"
-                      }`,
+                      backgroundColor: `${title.property_dealing && "#3B3B3B"}`,
                       borderRadius: "10px",
                     }}
                   >
                     <h1
                       onClick={() => {
-                        setTitle("property_dealing");
+                        setTitle({ ...title, property_dealing: true });
                         setFilters({ ...filters, title: false });
                       }}
                     >
                       {" "}
                       معامله ملک{" "}
                     </h1>
-                    {title === "property_dealing" && (
+                    {title.property_dealing && (
                       <span
                         onClick={() => {
-                          setTitle("");
+                          setTitle({ ...title, property_dealing: false });
                           setFilters({ ...filters, title: false });
                         }}
                       >
@@ -416,7 +413,7 @@ const TransactionsList = ({
                   {subjects.map((item) => (
                     <div
                       onClick={() => {
-                        setSubject(item.slug);
+                        setSubject((prev) => ({ ...prev, [item.slug]: true }));
                         setFilters({ ...filters, subject: false });
                       }}
                       key={item.id}
@@ -425,9 +422,7 @@ const TransactionsList = ({
                         gap: "5px",
                         cursor: "pointer",
                         alignItems: "center",
-                        backgroundColor: `${
-                          subject === item.slug && "#3B3B3B"
-                        }`,
+                        backgroundColor: `${subject[item.slug] && "#3B3B3B"}`,
                         marginBottom: `${item.id !== 5 && "10px"}`,
                         borderRadius: "10px",
                       }}
@@ -440,10 +435,13 @@ const TransactionsList = ({
                         loading="lazy"
                       />
                       <h3>{item.label}</h3>
-                      {subject === item.slug && (
+                      {subject[item.slug] && (
                         <span
                           onClick={(e) => {
-                            setSubject("");
+                            setSubject((prev) => ({
+                              ...prev,
+                              [item.slug]: false,
+                            }));
                             e.stopPropagation();
                             setFilters({ ...filters, subject: false });
                           }}

@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   background-color: #1a1a18;
+  direction: rtl;
   border-radius: 5px;
   padding: 10px;
   display: flex;
