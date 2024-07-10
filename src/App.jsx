@@ -8,6 +8,7 @@ import AuthenticationModal from "./pages/AuthenticationModal";
 import FeaturesModal from "./pages/FeaturesModal";
 import Notification from "./pages/Notification";
 import ProfileModal from "./pages/ProfileModal";
+import Profit from "./pages/Profit";
 import Search from "./pages/Search";
 import Setting from "./pages/Setting";
 import ShopModal from "./pages/ShopModal";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/authentication" element={<AuthenticationModal />} />
           <Route path="/accountsecurity" element={<AccountSecurityModal />} />
           <Route path="/profile" element={<ProfileModal />} />
+          <Route path="/profit" element={<Profit />} />
           <Route path="/search" element={<Search />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/setting" element={<Setting />} />

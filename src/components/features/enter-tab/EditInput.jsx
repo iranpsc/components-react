@@ -5,6 +5,7 @@ const Container = styled.div`
   border: 1px solid
     ${(props) =>
       props.identityError && props.value === "" ? "red" : "#454545"};
+  border: 1px solid ${(props) => (props.error ? "red" : "#454545")};
   display: flex;
   flex-grow: 1;
   align-items: center;
@@ -38,10 +39,11 @@ const EditInput = ({
   value,
   name,
   identityError,
+  error,
   slug,
 }) => {
   return (
-    <Container identityError={identityError} value={value}>
+    <Container error={error} identityError={identityError} value={value}>
       <input
         placeholder={title}
         value={value}
@@ -52,7 +54,9 @@ const EditInput = ({
       />
       {(slug === "psc") | (slug === "rial") ? (
         <img width={28} height={28} src={icon} alt={title} />
-      ):''}
+      ) : (
+        ""
+      )}
       {(id === 1) | (id === 2) ? (
         <img width={28} height={28} src={icon} alt={title} />
       ) : (

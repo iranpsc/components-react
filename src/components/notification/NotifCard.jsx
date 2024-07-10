@@ -41,7 +41,6 @@ const IconWrapper = styled.div`
 `;
 
 const NameAndDate = styled.div`
-
   h2 {
     color: #dedee9;
     font-size: 16px;
@@ -50,6 +49,9 @@ const NameAndDate = styled.div`
   h3 {
     font-size: 14px;
     color: #a0a0ab;
+  }
+  span{
+    margin-right: 7px;
   }
 `;
 
@@ -84,7 +86,9 @@ const NotifCard = ({ id, setNotifications, notifications }) => {
           </IconWrapper>
           <NameAndDate>
             <h2>لورم ایپسوم متن </h2>
-            <h3>۱۴۰۲/۱۰/۲۰</h3>
+            <h3>
+              ۱۴۰۲/۱۰/۲۰ <span>۱۴:۱۰:۲۰</span>{" "}
+            </h3>
           </NameAndDate>
         </Info>
         <TrashWrapper onClick={handleDeleteNotification}>

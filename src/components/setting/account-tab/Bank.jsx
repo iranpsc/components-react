@@ -1,6 +1,8 @@
 import Button from "../../Button";
 import { IoCardOutline } from "react-icons/io5";
+import Title from "../../Title";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 import { useState } from "react";
 
 const Select = styled.select`
@@ -28,11 +30,11 @@ const Select = styled.select`
     gap: 5px;
   }
 `;
-const Title = styled.div`
-  color: #353535;
-  font-size: 16px;
-  font-weight: 600;
-`;
+// const Title = styled.div`
+//   color: #353535;
+//   font-size: 16px;
+//   font-weight: 600;
+// `;
 const Container = styled.div`
   padding: 20px;
   border-radius: 5px;
@@ -66,7 +68,7 @@ const Div = styled.div`
     outline: none;
     width: 70px;
     height: 50px;
-    border: 1px solid #454545;
+    border: 1px solid ${(props) => (props.error ? "red" : "#454545")};
     border-radius: 5px;
     background-color: #2c2c2c;
     color: #84858f;
@@ -83,9 +85,9 @@ const Div = styled.div`
   }
 `;
 
-const items = [
-  { id: 1, title: "زمان تسویه حساب بازه زمانی | روزانه", value: 3 },
-  { id: 2, title: "خروج اتوماتیک از حساب کاربری | دقیقه", value: 60 },
+const items_info = [
+  { id: 1, title: "زمان تسویه حساب بازه زمانی | روزانه", value: "" },
+  { id: 2, title: "خروج اتوماتیک از حساب کاربری | دقیقه", value: "" },
 ];
 
 const options = [
@@ -94,14 +96,57 @@ const options = [
 ];
 const Bank = () => {
   const [selectedValue, setSelectedValue] = useState("");
-
+  const [items, setItems] = useState(items_info);
   const handleSelectChange = (e) => {
     setSelectedValue(e.target.value);
   };
 
+  const handleInputChange = (e, itemId) => {
+    const updatedItems = items.map((item) =>
+      item.id === itemId
+        ? { ...item, value: e.target.value, error: false }
+        : item
+    );
+
+    setItems(updatedItems);
+  };
+
+  const handleSaveButtonClick = () => {
+    let hasError = false;
+
+    items.forEach((item) => {
+      if (item.value === "") {
+        hasError = true;
+        item.error = true;
+      } else {
+        item.error = false;
+      }
+    });
+
+    setItems([...items]);
+
+    if (hasError) {
+      console.log("Please fill in all the inputs.");
+    } else {
+      const resetItems = items.map((item) => ({ ...item, value: "" }));
+      setItems(resetItems);
+      toast.success("متغییر های الزامی با موفقیت ذخیره شد!", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        bodyClassName: "success",
+      });
+    }
+  };
+
   return (
     <Container>
-      <Title>متغییر های الزامی</Title>
+      <Title title="متغییر های الزامی" />
       <Select onChange={handleSelectChange} value={selectedValue}>
         <option value="">شماره کارت</option>
         {options.map((item) => (
@@ -113,17 +158,18 @@ const Bank = () => {
       </Select>
       <Wrapper>
         {items.map((item) => (
-          <Div id={item.id} key={item.id}>
+          <Div error={item.error} id={item.id} key={item.id}>
             <span>{item.title}</span>
-            <input placeholder={item.value} type="number" />
+            <input
+              onChange={(e) => handleInputChange(e, item.id)}
+              value={item.value}
+              placeholder="0"
+              type="number"
+            />
           </Div>
         ))}
       </Wrapper>
-      <Button
-        full
-        label="ذخیره شود"
-        onclick={() => {}}
-      />
+      <Button full label="ذخیره شود" onclick={handleSaveButtonClick} />
     </Container>
   );
 };
