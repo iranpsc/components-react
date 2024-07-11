@@ -100,13 +100,13 @@ const AddSatisfy = () => {
       <Inputs>
         <Div>
           <div>
-            <Up onClick={() => setCount((prev) => +prev + 1)}>
+            <Up onClick={() => setCount((prev) => (+prev + 0.0001).toFixed(4))}>
               <MdKeyboardArrowUp />
             </Up>
             <Down
               onClick={() => {
                 if (count > 0) {
-                  setCount((prev) => +prev - 1);
+                  setCount((prev) => (+prev - 0.0001).toFixed(4));
                 }
               }}
             >

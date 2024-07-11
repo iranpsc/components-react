@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import ProfitView from "../components/profit/ProfitView";
+import Tabs from "../components/profit/Tabs";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -15,7 +16,8 @@ const Container = styled.div`
 const Profit = () => {
   return (
     <Container>
-      <Header />
+      <Header title='جذب سود ساعت شمار' />
+      <Tabs />
       <ProfitView />
     </Container>
   );
