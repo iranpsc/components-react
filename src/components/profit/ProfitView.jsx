@@ -202,9 +202,7 @@ const ProfitView = () => {
       })
     );
 
-    setTimeout(() => {
-      setCards((prevCards) => prevCards.filter((card) => card.id !== id));
-    }, 1500);
+    setCards((prevCards) => prevCards.filter((card) => card.id !== id));
   };
 
   return (
