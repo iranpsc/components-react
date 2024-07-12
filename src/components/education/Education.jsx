@@ -4,11 +4,17 @@ import Content from "./Content";
 import Footer from "./Footer";
 import Header from "./Header";
 import Video from "./Video";
+import { useLocation } from "react-router-dom";
 
 const Education = ({ setOpenEducation }) => {
   const [size, setSize] = useState(false);
   const [show, setShow] = useState(false);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const location = useLocation();
+  const path = location.pathname;
+  const [position, setPosition] = useState({
+    x: path !== "/profit" ? 40 : -200,
+    y: 0,
+  });
   const [dragging, setDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const draggableRef = useRef(null);
@@ -49,7 +55,7 @@ const Education = ({ setOpenEducation }) => {
         x: clientX - offset.x,
         y: clientY - offset.y,
       });
-      e.preventDefault(); 
+      e.preventDefault();
     }
   };
 

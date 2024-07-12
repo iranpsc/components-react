@@ -1,5 +1,4 @@
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-
+import { MdKeyboardArrowDown } from "react-icons/md";
 import TransactionRow from "./TransactionRow";
 import blue from "../../../assets/images/profile/blue-color.gif";
 import psc from "../../../assets/images/profile/psc.gif";
@@ -12,14 +11,14 @@ import yellow from "../../../assets/images/profile/yellow-color.gif";
 const Container = styled.div`
   border-radius: 0.25rem;
   direction: rtl;
-  width: 74vw !important;
+  width: 73vw !important;
   overflow-x: auto;
   min-height: 93vh;
   &::-webkit-scrollbar {
     display: none;
   }
   @media (min-width: 640px) {
-    width: 78vw !important;
+    width: 75vw !important;
   }
   @media (min-width: 840px) {
     min-height: 80vh !important;
@@ -208,9 +207,6 @@ const Loader = styled.div`
     color: white;
     border: none;
   }
-  /* @media (min-width: 1400px) {
-    padding-bottom: 10px;
-  } */
 `;
 
 const subjects = [
@@ -252,7 +248,13 @@ const TransactionsList = ({
               <Div>
                 وضعیت
                 <Arrows onClick={() => setFilters({ status: !filters.status })}>
-                  <MdKeyboardArrowDown />
+                  <MdKeyboardArrowDown
+                    style={{
+                      transform: `${
+                        filters.status ? "rotate(180deg)" : "rotate(360deg)"
+                      }`,
+                    }}
+                  />
                 </Arrows>
               </Div>
               {filters.status && (
@@ -339,7 +341,13 @@ const TransactionsList = ({
               <Div>
                 عنوان
                 <Arrows onClick={() => setFilters({ title: !filters.title })}>
-                  <MdKeyboardArrowDown />
+                  <MdKeyboardArrowDown
+                    style={{
+                      transform: `${
+                        filters.title ? "rotate(180deg)" : "rotate(360deg)"
+                      }`,
+                    }}
+                  />
                 </Arrows>
               </Div>
               {filters.title && (
@@ -405,7 +413,13 @@ const TransactionsList = ({
                 <Arrows
                   onClick={() => setFilters({ subject: !filters.subject })}
                 >
-                  <MdKeyboardArrowDown />
+                  <MdKeyboardArrowDown
+                    style={{
+                      transform: `${
+                        filters.subject ? "rotate(180deg)" : "rotate(360deg)"
+                      }`,
+                    }}
+                  />
                 </Arrows>
               </Div>
               {filters.subject && (

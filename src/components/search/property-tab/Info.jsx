@@ -43,6 +43,10 @@ const Wrapper = styled.div`
     color: #0066ff;
     text-decoration: none;
   }
+  img {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const Info = () => {
@@ -71,11 +75,7 @@ const Info = () => {
               />
             )}
           </div>
-          {item.id === 1 && (
-            <h2 dir="ltr">
-              {item.value}
-            </h2>
-          )}
+          {item.id === 1 && <h2 dir="ltr">{item.value}</h2>}
           {item.id === 3 && (
             <h2 dir="ltr">
               {item.value >= 1000000

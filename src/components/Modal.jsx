@@ -30,7 +30,7 @@ const ModalContainer = styled.div`
     max-height: 782px;
   }
 `;
-const Modal = ({ children, left }) => {
+const Modal = ({ children }) => {
   return <ModalContainer>{children}</ModalContainer>;
 };
 

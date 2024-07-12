@@ -8,6 +8,7 @@ import styled from "styled-components";
 const BackGround = styled.div`
   z-index: 999;
   position: fixed;
+
   top: 0;
   left: 0;
   width: 100%;
@@ -25,6 +26,7 @@ const Modal = styled.div`
   overflow-y: auto;
   direction: ltr;
   padding: 20px;
+  z-index: 999;
   width: 415px;
   height: 600px;
   @media (min-width: 660px) {
@@ -210,11 +212,7 @@ const PrintModal = ({
             <Value>{count}</Value>
           </Row>
           <div style={{ marginTop: "10px" }}>
-            <Button
-              full
-              label="چاپ تراکنش"
-              onclick={handlePrint}
-            />
+            <Button full label="چاپ تراکنش" onclick={handlePrint} />
           </div>
         </Info>
         <CloseWrapper onClick={() => setOpenPrint(false)}>

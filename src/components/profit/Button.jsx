@@ -35,8 +35,12 @@ const Container = styled.div`
     margin-top: 2px;
   }
 `;
-const Button = ({ id, color, title, value, logo, onClick }) => {
+const Button = ({ id, color, title, value, logo, onClick, cards }) => {
   const [isExploding, setIsExploding] = useState(false);
+  
+  const sameButtons = cards.filter((card) => card.color === color);
+  const sumValues = sameButtons.reduce((pre, cur) => pre + cur.value, 0);
+  console.log(sumValues);
 
   return (
     <Container
@@ -59,8 +63,12 @@ const Button = ({ id, color, title, value, logo, onClick }) => {
       <span>{title}</span>
       <div>
         <img width={24} height={24} src={logo} alt={title} />
-        <h3>{value.toFixed(2).toLocaleString()
-          .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</h3>
+        <h3>
+          {sumValues
+            .toFixed(2)
+            .toLocaleString()
+            .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
+        </h3>
       </div>
     </Container>
   );

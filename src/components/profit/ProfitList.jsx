@@ -1,7 +1,6 @@
 import { animated, useTransition } from "react-spring";
 
 import ProfitCard from "./ProfitCard";
-import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`

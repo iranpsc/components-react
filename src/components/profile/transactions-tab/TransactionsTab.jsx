@@ -22,6 +22,7 @@ const Container = styled.div`
   direction: ltr;
   overflow-y: auto;
   height: 550px;
+  z-index: -10;
   @media (min-width: 640px) {
     height: 290px;
   }

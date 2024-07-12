@@ -1,5 +1,7 @@
 import Button from "../../../Button";
 import Input from "../../../Input";
+import Psc from "../../../Psc";
+import Rial from "../../../Rial";
 import TitleValue from "../../../TitleValue";
 import psc from '../../../../assets/images/profile/psc.gif'
 import rial from '../../../../assets/images/profile/rial.gif'
@@ -84,7 +86,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           onchange={(e) => setRial(e.target.value)}
           type="number"
           placeholder="قیمت فروش (ریال)"
-          insideText="ریال"
+          insideText={<Rial />}
           gif={rial}
         />
         <Input
@@ -92,7 +94,7 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           onchange={(e) => setPsc(e.target.value)}
           type="number"
           placeholder="قیمت فروش (PSC)"
-          insideText="PSC"
+          insideText=<Psc />
           gif={psc}
         />
       </InputsWrapper>

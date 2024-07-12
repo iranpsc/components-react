@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-const Wrapper = styled.div`
-  background-color: #1a1a18;
-  border-radius: 5px;
-  color: #dedee9;
-  width: 100%;
-  margin-top: 20px;
+const Container = styled.div`
   direction: ltr;
   overflow-y: auto;
+  padding-right: 10px;
   height: 18rem;
   @media (min-width: 850px) {
     height: 19rem;
@@ -22,6 +18,14 @@ const Wrapper = styled.div`
   @media (min-width: 1920px) {
     height: auto;
   }
+`;
+
+const Wrapper = styled.div`
+  background-color: #1a1a18;
+  border-radius: 5px;
+  color: #dedee9;
+  width: 100%;
+  margin-top: 20px;
 `;
 
 const Option = styled.h2`
@@ -40,19 +44,23 @@ const Option = styled.h2`
 `;
 const SideBar = ({ tools, option, setOption }) => {
   return (
-    <Wrapper>
-      {tools.map((item) => (
-        <Option
-          option={option === item.id}
-          onClick={() => setOption(item.id)}
-          key={item.id}
-        >
-          بسته
-          {item.number.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}{" "}
-          عددی
-        </Option>
-      ))}
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        {tools.map((item) => (
+          <Option
+            option={option === item.id}
+            onClick={() => setOption(item.id)}
+            key={item.id}
+          >
+            بسته
+            {item.number
+              .toLocaleString()
+              .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}{" "}
+            عددی
+          </Option>
+        ))}
+      </Wrapper>
+    </Container>
   );
 };
 

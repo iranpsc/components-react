@@ -7,7 +7,6 @@ const Wrapper = styled.div`
   direction: ltr;
   padding-right: 15px;
   padding-top: 20px;
-  /* padding-bottom: 20px; */
   gap: 30px;
   width: 100%;
   @media (max-width: 1024px) {

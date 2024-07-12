@@ -1,56 +1,21 @@
+import { useEffect, useRef, useState } from "react";
+
 import Button from "./Button";
 import ProfitList from "./ProfitList";
 import building from "../../assets/images/profile/building.png";
 import education from "../../assets/images/profile/courthouse.png";
 import house from "../../assets/images/profile/house.png";
 import styled from "styled-components";
-import { useState } from "react";
 
 const Scroll = styled.div`
   padding-top: 30px;
   padding-bottom: 20px;
   overflow-y: auto;
-  height: 230px;
+  height: calc(100% - 115px);
   direction: ltr;
   padding-right: 15px;
-  @media (min-width: 740px) {
-    height: 215px;
-  }
-  @media (min-width: 840px) {
-    height: 245px;
-  }
-  @media (min-width: 882px) {
-    height: 200px;
-  }
-  @media (min-width: 890px) {
-    height: 269px;
-  }
-  @media (min-width: 900px) {
-    height: 285px;
-  }
-  @media (min-width: 910px) {
-    height: 267px;
-  }
-  @media (min-width: 930px) {
-    height: 285px;
-  }
   @media (min-width: 1024px) {
-    height: 573px;
-  }
-  @media (min-width: 1180px) {
-    height: 625px;
-  }
-  @media (min-width: 1280px) {
-    height: 600px;
-  }
-  @media (min-width: 1366px) {
-    height: 715px;
-  }
-  @media (min-width: 1500px) {
-    height: 580px;
-  }
-  @media (min-width: 1920px) {
-    height: 720px;
+    height: calc(100% - 170px);
   }
 `;
 const Buttons = styled.div`
@@ -156,42 +121,203 @@ const cards_items = [
     color: "#FF0000",
     background: "#ff000021",
   },
+  {
+    id: 8,
+    title: "ملک تجاری",
+    logo: building,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FF0000",
+    background: "#ff000021",
+  },
+  {
+    id: 9,
+    title: "ملک آموزشی",
+    logo: education,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#0066FF",
+    background: "#0066ff21",
+  },
+  {
+    id: 10,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 11,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 12,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 13,
+    title: "ملک آموزشی",
+    logo: education,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#0066FF",
+    background: "#0066ff21",
+  },
+  {
+    id: 14,
+    title: "ملک تجاری",
+    logo: building,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FF0000",
+    background: "#ff000021",
+  },
+  {
+    id: 15,
+    title: "ملک تجاری",
+    logo: building,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FF0000",
+    background: "#ff000021",
+  },
+  {
+    id: 16,
+    title: "ملک آموزشی",
+    logo: education,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#0066FF",
+    background: "#0066ff21",
+  },
+  {
+    id: 17,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 18,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 19,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 20,
+    title: "ملک آموزشی",
+    logo: education,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#0066FF",
+    background: "#0066ff21",
+  },
+  {
+    id: 21,
+    title: "ملک تجاری",
+    logo: building,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FF0000",
+    background: "#ff000021",
+  },
+  {
+    id: 22,
+    title: "ملک مسکونی",
+    logo: house,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FFC700",
+    background: "#ffc80021",
+  },
+  {
+    id: 23,
+    title: "ملک آموزشی",
+    logo: education,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#0066FF",
+    background: "#0066ff21",
+  },
+  {
+    id: 24,
+    title: "ملک تجاری",
+    logo: building,
+    code: "QA31-11213",
+    value: 3.24,
+    date: "۲۲ اردیبهشت ۱۴۰۲",
+    color: "#FF0000",
+    background: "#ff000021",
+  },
 ];
 
 const ProfitView = () => {
   const [buttons, setButtons] = useState(buttons_items);
   const [cards, setCards] = useState(cards_items);
 
-  const sumHandler = ({ color, value, id }) => {
+  const sumHandler = ({ color, value }) => {
     const sameButtons = cards.filter((card) => card.color === color);
-    const sumValues = sameButtons.reduce((pre, cur) => pre + cur.value, 0);
-    const total = value + sumValues;
     const allIsZero = sameButtons.every((item) => item.value === 0);
 
     if (!allIsZero) {
       setButtons((prevButtons) =>
         prevButtons.map((button) => {
           if (button.value === value) {
-            return { ...button, value: total };
+            return { ...button, value: 0 };
           }
           return button;
         })
       );
 
-      setCards((prevCards) =>
-        prevCards.map((card) => {
-          if (card.color === color) {
-            return { ...card, value: 0 };
-          }
-          return card;
-        })
-      );
+      setCards((prevCards) => prevCards.filter((card) => card.color !== color));
     }
   };
 
   const singleSumHandler = ({ color, value, id }) => {
     const mainButton = buttons.find((button) => button.color === color);
-    const addedToMainButton = mainButton.value + value;
+    const addedToMainButton = mainButton.value - value;
 
     setButtons((prevButtons) =>
       prevButtons.map((button) => {
@@ -201,8 +327,9 @@ const ProfitView = () => {
         return button;
       })
     );
-
     setCards((prevCards) => prevCards.filter((card) => card.id !== id));
+    setTimeout(() => {
+    }, 1050);
   };
 
   return (
@@ -212,15 +339,12 @@ const ProfitView = () => {
           <Button
             onClick={() => sumHandler(button)}
             key={button.id}
+            cards={cards}
             {...button}
           />
         ))}
       </Buttons>
-      <ProfitList
-        cards={cards}
-        // setCards={setCards}
-        onClick={singleSumHandler}
-      />
+      <ProfitList cards={cards} onClick={singleSumHandler} />
     </Scroll>
   );
 };

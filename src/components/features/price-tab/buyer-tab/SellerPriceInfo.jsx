@@ -1,8 +1,8 @@
 import Button from "../../../Button";
 import Input from "../../../Input";
+import Psc from "../../../Psc";
+import Rial from "../../../Rial";
 import TitleValue from "../../../TitleValue";
-import pscGif from "../../../../assets/images/profile/psc.gif";
-import rialGif from "../../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -31,29 +31,10 @@ const ResultWrapper = styled.div`
   }
 `;
 
-const RiCur = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-`;
-
 const SellerPriceInfo = () => {
   const [rial, setRial] = useState(50);
   const [psc, setPsc] = useState(57);
 
-  const rialHtml = (
-    <RiCur>
-      <span>ریال</span>
-      <img width={26} alt="rial" src={rialGif} />
-    </RiCur>
-  );
-
-  const pscHtml = (
-    <RiCur>
-      <span>PSC</span>
-      <img width={26} alt="psc" src={pscGif} />
-    </RiCur>
-  );
 
   return (
     <>
@@ -64,7 +45,7 @@ const SellerPriceInfo = () => {
           onchange={(e) => setRial(e.target.value)}
           type="number"
           placeholder="قیمت فروش (ریال)"
-          insideText={rialHtml}
+          insideText={<Rial />}
         />
         <Input
           disabled
@@ -72,7 +53,7 @@ const SellerPriceInfo = () => {
           onchange={(e) => setPsc(e.target.value)}
           type="number"
           placeholder="قیمت فروش (PSC)"
-          insideText={pscHtml}
+          insideText={<Psc />}
         />
       </InputsWrapper>
       <ResultWrapper>

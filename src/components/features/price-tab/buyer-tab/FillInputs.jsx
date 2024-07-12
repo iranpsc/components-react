@@ -1,5 +1,7 @@
 import Button from "../../../Button";
 import Input from "../../../Input";
+import Psc from "../../../Psc";
+import Rial from "../../../Rial";
 import SuggestText from "./SuggestText";
 import TitleValue from "../../../TitleValue";
 import styled from "styled-components";
@@ -87,16 +89,14 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           onchange={(e) => setRial(e.target.value)}
           type="number"
           placeholder="پیشنهاد قیمت فروش (ریال)"
-          insideText="ریال"
-          gif="/src/assets/images/profile/rial.gif"
+          insideText={<Rial />}
         />
         <Input
           value={psc}
           onchange={(e) => setPsc(e.target.value)}
           type="number"
           placeholder="پیشنهاد قیمت فروش (PSC)"
-          insideText="PSC"
-          gif="/src/assets/images/profile/psc.gif"
+          insideText={<Psc />}
         />
       </InputsWrapper>
       <Div>
