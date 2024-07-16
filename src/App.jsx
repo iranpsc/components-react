@@ -5,6 +5,7 @@ import { createContext, useState } from "react";
 
 import AccountSecurityModal from "./pages/AccountSecurityModal";
 import AuthenticationModal from "./pages/AuthenticationModal";
+import Challenge from "./pages/Challenge";
 import FeaturesModal from "./pages/FeaturesModal";
 import Notification from "./pages/Notification";
 import ProfileModal from "./pages/ProfileModal";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/setting" element={<Setting />} />
+          <Route path="/challenge" element={<Challenge />} />
         </Routes>
       </Wrapper>
       <ToastContainer

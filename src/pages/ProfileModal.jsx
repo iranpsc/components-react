@@ -5,7 +5,7 @@ import Tabs from "../components/profile/Tabs";
 import { useState } from "react";
 
 const ProfileModal = () => {
-  const [active, setActive] = useState("total");
+  const [active, setActive] = useState("property");
 
   return (
     <Modal>

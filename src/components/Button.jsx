@@ -29,13 +29,14 @@ const ButtonElement = styled.button`
   }
 `;
 
-const Button = ({ label, onclick, row, edit, large, full, disabled }) => {
+const Button = ({ label, onclick, row, color, edit, large, full, disabled }) => {
   return (
     <ButtonElement
       full={full}
       large={large}
       edit={edit}
       row={row}
+      color={color}
       onClick={onclick}
       disabled={disabled}
     >

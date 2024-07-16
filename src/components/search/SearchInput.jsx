@@ -20,6 +20,7 @@ const Container = styled.div`
     height: 100%;
     background-color: transparent;
     font-size: 18px;
+    width: 100% !important;
     outline: none;
     border: none;
     color: white;
