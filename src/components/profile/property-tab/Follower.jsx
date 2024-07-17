@@ -10,8 +10,11 @@ const Button = styled.div`
   font-weight: 600;
   background-color: ${(props) => (props.gray ? "#3B3B3B" : "#c3000026")};
   border-radius: 10px;
-  padding: 12px 22px;
+  padding: 7px 20px 6px 20px;
   cursor: pointer;
+  @media (min-width: 1024px) {
+    padding: 7px 20px 4px 20px;
+  }
 `;
 const Profile = styled.div`
   display: flex;
@@ -57,7 +60,40 @@ const Buttons = styled.div`
     flex-direction: row;
   }
 `;
-const Follower = ({ id, followers, setFollowers, name }) => {
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #FFC700;
+  color: #191B21;
+  border-radius: 7px;
+  font-size: 16px;
+  cursor: pointer;
+  flex-grow: 1;
+  padding: 8px 20px 3px 20px;
+  svg {
+    font-size: 18px;
+    padding-top: 4px;
+  }
+  @media (min-width: 740px) {
+    h3 {
+      font-size: 14px;
+    }
+  }
+  @media (min-width: 1024px) {
+    padding: 5px 20px 4px 20px;
+    h3 {
+      font-size: 16px;
+    }
+    svg {
+      font-size: 18px;
+    }
+  }
+`;
+
+const Follower = ({ id, followers, setFollowers, name, code }) => {
   const [follow, setFollow] = useState(true);
   const deleteHandler = () => {
     setFollowers(followers.filter((item) => item.id !== id));
@@ -68,7 +104,7 @@ const Follower = ({ id, followers, setFollowers, name }) => {
         <img src={avatar} width={80} height={80} />
         <div>
           <h3>{name}</h3>
-          <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">HM-200020</a>
+          <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">{code}</a>
         </div>
       </Profile>
       <Buttons>
@@ -77,12 +113,12 @@ const Follower = ({ id, followers, setFollowers, name }) => {
             آنفالو کردن
           </Button>
         ) : (
-          <ButtonIcon
-            onclick={() => setFollow(true)}
-            fill
-            label="دنبال کردن"
-            icon={<TiUserAddOutline size={24} />}
-          />
+          <Container onClick={() => setFollow(true)}>
+            <span>
+              <TiUserAddOutline />
+            </span>
+            <h3>دنبال کردن</h3>
+          </Container>
         )}
         <Button onClick={deleteHandler}>حذف کردن</Button>
       </Buttons>

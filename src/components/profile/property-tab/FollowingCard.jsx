@@ -46,7 +46,7 @@ const Card = styled.div`
   border-radius: 10px;
   padding: 15px;
 `;
-const FollowingCard = ({name}) => {
+const FollowingCard = ({name, code}) => {
   const [follow, setFollow] = useState(true);
   return (
     <Card>
@@ -54,7 +54,7 @@ const FollowingCard = ({name}) => {
         <img src={avatar} width={80} height={80} />
         <div>
           <h3>{name}</h3>
-          <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">HM-200020</a>
+          <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">{code}</a>
         </div>
       </Profile>
       {follow ? (

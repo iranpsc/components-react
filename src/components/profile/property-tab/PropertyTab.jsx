@@ -10,7 +10,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 20px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
 `;
 
 const PropertyTab = () => {

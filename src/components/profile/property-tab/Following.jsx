@@ -4,68 +4,83 @@ import Title from "../../Title";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Container = styled.div``;
-const List = styled.div`
-  padding: 20px 0;
+const Container = styled.div`
   direction: ltr;
   padding-right: 15px;
-  display: flex;
-  flex-direction: column;
+  padding-top: 20px;
   gap: 20px;
   overflow-y: auto;
-  height: 131px;
+  height: 255px;
   @media (min-width: 720px) {
     height: 280px;
   }
   @media (min-width: 740px) {
-    height: 102px;
+    height: 242px;
   }
   @media (min-width: 840px) {
-    height: 132px;
+    height: 272px;
+  }
+  @media (min-width: 880px) {
+    height: 225px;
   }
   @media (min-width: 890px) {
-    height: 155px;
+    height: 295px;
+  }
+  @media (min-width: 915px) {
+    height: 295px;
   }
   @media (min-width: 930px) {
-    height: 172px;
+    height: 312px;
   }
   @media (min-width: 1024px) {
-    height: 257px;
+    height: 397px;
   }
   @media (min-width: 1180px) {
     height: 454px;
   }
   @media (min-width: 1280px) {
-    height: 437px;
+    height: 577px;
   }
   @media (min-width: 1366px) {
-    height: 500px;
+    height: 640px;
   }
   @media (min-width: 1400px) {
-    height: 413px;
+    height: 560px;
   }
   @media (min-width: 1920px) {
-    height: 495px;
+    height: 640px;
   }
+`;
+const List = styled.div`
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 `;
 
 const following_items = [
-  { id: 1, name: "Ali Madani Far" },
-  { id: 2, name: "Amir Madani Far" },
-  { id: 3, name: "nader Madani Far" },
-  { id: 4, name: "mohammad Madani Far" },
-  { id: 5, name: "yusef Madani Far" },
-  { id: 6, name: "shahin Madani Far" },
+  { id: 1, code: "HM-230120", name: "Ali Madani Far" },
+  { id: 2, code: "HM-208020", name: "Amir Madani Far" },
+  { id: 3, code: "HM-220420", name: "nader Madani Far" },
+  { id: 4, code: "HM-200020", name: "mohammad Madani Far" },
+  { id: 5, code: "HM-220620", name: "yusef Madani Far" },
+  { id: 6, code: "HM-204020", name: "shahin Madani Far" },
 ];
 const Following = () => {
   const [followings, setFollowings] = useState(following_items);
   const [searched, setSearched] = useState("");
-  const filteredItems = followings.filter((item) =>
-    item.name.toLowerCase().includes(searched.toLowerCase())
-  );
+
+  const filteredItems = followings.filter((item) => {
+    const query = searched.toLowerCase().trim();
+    const codeMatch = item.code.toLowerCase().includes(query);
+    const nameMatch = item.name.toLowerCase().includes(query);
+
+    return codeMatch || nameMatch; 
+  });
+
   return (
     <Container>
-      <div style={{ marginBottom: "20px" }}>
+      <div dir="rtl" style={{ marginBottom: "20px" }}>
         <Title title="دنبال شوندگان" />
       </div>
       <SearchInput

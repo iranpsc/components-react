@@ -13,44 +13,47 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
   direction: ltr;
-  padding-right: 15px;
   gap: 20px;
   padding-top: 20px;
+`;
+const Container = styled.div`
   padding-bottom: 20px;
+  padding-right: 15px;
+  padding-top: 20px;
+  direction: ltr;
   overflow-y: auto;
-  height: 102px;
+  height: 226px;
   @media (min-width: 840px) {
-    height: 130px;
+    height: 254px;
   }
   @media (min-width: 880px) {
-    height: 85px;
+    height: 209px;
   }
   @media (min-width: 890px) {
-    height: 154px;
+    height: 278px;
   }
   @media (min-width: 930px) {
-    height: 170px;
+    height: 294px;
   }
   @media (min-width: 1024px) {
-    height: 257px;
+    height: 381px;
   }
   @media (min-width: 1180px) {
-    height: 455px;
+    height: 579px;
   }
   @media (min-width: 1280px) {
-    height: 437px;
+    height: 561px;
   }
   @media (min-width: 1360px) {
-    height: 498px;
+    height: 622px;
   }
   @media (min-width: 1400px) {
-    height: 414px;
+    height: 538px;
   }
   @media (min-width: 1920px) {
-    height: 495px;
+    height: 619px;
   }
 `;
-const Container = styled.div``;
 const Provider = styled.div`
   position: relative;
   color: #dedee9;
@@ -59,10 +62,7 @@ const Provider = styled.div`
   border-radius: 10px;
   transition: all 0.2s linear;
   &:hover {
-    background: var(--Button-Primary---bg---off, #332800);
-    h1 {
-      color: #ffc700;
-    }
+    background: #fdfdfd21;
   }
   h1 {
     font-size: 16px;
@@ -114,6 +114,7 @@ const Select = styled.div`
 `;
 const Div = styled.div`
   display: grid;
+  direction: rtl;
   grid-template-columns: 1fr 1fr;
   margin-top: 20px;
   gap: 20px;
@@ -144,6 +145,7 @@ const Search = styled.div`
   }
   input {
     position: absolute;
+    width: 100% !important;
     top: 0;
     padding-right: 55px;
     height: 100%;
@@ -197,7 +199,7 @@ const cards_items = [
     photo: house,
     code: "QA34-201497",
     color: "#ffc80021",
-    address: "میرمیران، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
+    address: "والفجر، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
     meter: 120,
     slug: "house",
     psc: 3000,
@@ -209,7 +211,7 @@ const cards_items = [
     photo: education,
     code: "QA81-89462",
     color: "#0066ff21",
-    address: "میرمیران، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
+    address: "والفجر، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
     meter: 180,
     slug: "education",
     psc: 3000,
@@ -221,7 +223,7 @@ const cards_items = [
     photo: business,
     code: "QA71-79543",
     color: "#ff000021",
-    address: "میرمیران، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
+    address: "میرمیران، میثم، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
     meter: 200,
     slug: "industry",
     psc: 3000,
@@ -233,7 +235,7 @@ const cards_items = [
     photo: education,
     code: "QA46-96524",
     color: "#0066ff21",
-    address: "میرمیران، نوروزیان، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
+    address: "میرمیران، میثم، پونک، شهر قزوین، بزرگراه آذری، خیابان گنجوی",
     meter: 180,
     slug: "education",
     psc: 3000,
@@ -252,7 +254,7 @@ const Houses = () => {
   });
 
   const filteredItems = cards.filter((item) => {
-    const query = searched.toLowerCase().trim();
+    const query = searched.toUpperCase().trim();
     const codeMatch = item.code.includes(query);
     const addressMatch = item.address.includes(query);
     const meterMatch = item.meter.toString().includes(query);
@@ -267,7 +269,9 @@ const Houses = () => {
 
   return (
     <Container>
-      <Title title="املاک و مستغلات" />
+      <div dir="rtl">
+        <Title title="املاک و مستغلات" />
+      </div>
       <Div>
         <Search>
           <FiSearch size={34} />
@@ -298,14 +302,11 @@ const Houses = () => {
             <Filter>
               <Provider
                 style={{
-                  color: `${property.industry && "#FFC700"}`,
-                  backgroundColor: `${
-                    property.industry &&
-                    "var(--Button-Primary---bg---off, #332800)"
-                  }`,
+                  color: `${property.industry && "#FF0000"}`,
+                  backgroundColor: `${property.industry && "#ff000021"}`,
                 }}
                 onClick={() => {
-                  setProperty({ industry: true });
+                  setProperty({ ...property, industry: true });
                   setOpen(false);
                 }}
               >
@@ -313,7 +314,7 @@ const Houses = () => {
                 {property.industry && (
                   <span
                     onClick={(e) => {
-                      setProperty({ industry: false });
+                      setProperty({ ...property, industry: false });
                       e.stopPropagation();
                       setOpen(false);
                     }}
@@ -324,14 +325,11 @@ const Houses = () => {
               </Provider>
               <Provider
                 style={{
-                  color: `${property.education && "#FFC700"}`,
-                  backgroundColor: `${
-                    property.education &&
-                    "var(--Button-Primary---bg---off, #332800)"
-                  }`,
+                  color: `${property.education && "#0066FF"}`,
+                  backgroundColor: `${property.education && "#0066ff21"}`,
                 }}
                 onClick={() => {
-                  setProperty({ education: true });
+                  setProperty({ ...property, education: true });
                   setOpen(false);
                 }}
               >
@@ -339,7 +337,7 @@ const Houses = () => {
                 {property.education && (
                   <span
                     onClick={(e) => {
-                      setProperty({ education: false });
+                      setProperty({ ...property, education: false });
                       e.stopPropagation();
                       setOpen(false);
                     }}
@@ -357,7 +355,7 @@ const Houses = () => {
                   }`,
                 }}
                 onClick={() => {
-                  setProperty({ house: true });
+                  setProperty({ ...property, house: true });
                   setOpen(false);
                 }}
               >
@@ -365,7 +363,7 @@ const Houses = () => {
                 {property.house && (
                   <span
                     onClick={(e) => {
-                      setProperty({ house: false });
+                      setProperty({ ...property, house: false });
                       e.stopPropagation();
                       setOpen(false);
                     }}
