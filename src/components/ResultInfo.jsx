@@ -1,6 +1,7 @@
 import { BiEditAlt } from "react-icons/bi";
 import { HiOutlineTrash } from "react-icons/hi";
 import Result from "./Result";
+import { convertToPersian } from "../lib/convertToPersian";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -83,8 +84,8 @@ const ResultInfo = ({ setAssign, rial, psc, setPsc, setRial }) => {
         <ResultWrapper>
           <Title>قیمت نهایی</Title>
           <Value dir="ltr">
-            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
-            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
+            {convertToPersian(rial)} IRR /{" "}
+            {convertToPersian(psc)} PSC
           </Value>
         </ResultWrapper>
         <Result title="کارمزد" value={"5%"} />

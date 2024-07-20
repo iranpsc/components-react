@@ -1,3 +1,4 @@
+import { convertToPersian } from "../../../lib/convertToPersian";
 import styled from "styled-components";
 
 const Item = styled.div`
@@ -69,7 +70,7 @@ const Input = ({ id, icon, title, value, options, long, smallValue }) => {
       </InfoIcon>
       <Value smallValue={smallValue}>
         {id === 1 || id === 2
-          ? (+value).toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])
+          ? convertToPersian(+value)
           : value}
         {id === 4 && options[0]}
       </Value>

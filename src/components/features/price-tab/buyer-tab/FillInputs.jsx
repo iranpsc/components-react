@@ -4,6 +4,7 @@ import Psc from "../../../Psc";
 import Rial from "../../../Rial";
 import SuggestText from "./SuggestText";
 import TitleValue from "../../../TitleValue";
+import { convertToPersian } from "../../../../lib/convertToPersian";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -109,8 +110,8 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
         <Wrapper>
           <Title>قیمت نهایی</Title>
           <Value dir="ltr">
-            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
-            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
+            {convertToPersian(rial)} IRR /{" "}
+            {psc} PSC
           </Value>
         </Wrapper>
         <Sec>

@@ -1,3 +1,4 @@
+import { convertToPersian } from "../../../lib/convertToPersian";
 import psc from "../../../assets/images/shop/psc.png";
 import rial from "../../../assets/images/shop/rial.png";
 import styled from "styled-components";
@@ -40,7 +41,7 @@ const Pricing = ({ type }) => {
           height={18}
         />
       </Title>
-      <span>0</span>
+      <span>{convertToPersian(0)}</span>
     </Container>
   );
 };

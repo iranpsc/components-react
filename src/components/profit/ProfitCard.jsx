@@ -1,4 +1,5 @@
 import ConfettiExplosion from "react-confetti-explosion";
+import { convertToPersian } from "../../lib/convertToPersian";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -110,8 +111,7 @@ const ProfitCard = ({
               colors={[`${color}`]}
             />
           )}
-          <span>{value.toLocaleString()
-            .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</span>
+          <span>{convertToPersian(value)}</span>
         </Value>
       </Content>
       <Footer>

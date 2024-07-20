@@ -3,6 +3,7 @@ import { BiDislike, BiLike } from "react-icons/bi";
 import { FaRegComment } from "react-icons/fa";
 import { IoEyeOutline } from "react-icons/io5";
 import { TfiWrite } from "react-icons/tfi";
+import { convertToPersian } from "../../lib/convertToPersian";
 import styled from "styled-components";
 
 const actions = [
@@ -19,7 +20,7 @@ const Left = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
-    h3{
+    h3 {
       font-weight: 500;
     }
   }
@@ -41,7 +42,7 @@ const Container = styled.div`
     padding-top: 2px;
   }
   @media (max-width: 1400px) {
-    display: ${props => props.show ? 'none' : 'flex'};
+    display: ${(props) => (props.show ? "none" : "flex")};
   }
 `;
 
@@ -58,7 +59,7 @@ const Right = styled.div`
   }
 `;
 
-const Footer = ({show}) => {
+const Footer = ({ show }) => {
   return (
     <Container show={show}>
       <Right>
@@ -70,11 +71,7 @@ const Footer = ({show}) => {
       <Left>
         {actions.map((item) => (
           <div key={item.id}>
-            <h3>
-              {item.value
-                .toLocaleString()
-                .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}{" "}
-            </h3>
+            <h3>{convertToPersian(item.value)} </h3>
             <span>{item.icon}</span>
           </div>
         ))}

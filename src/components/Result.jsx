@@ -1,3 +1,4 @@
+import { convertToPersian } from "../lib/convertToPersian";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -26,7 +27,7 @@ const Result = ({ title, value }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
-      <Value>{value.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</Value>
+      <Value>{convertToPersian(value)}</Value>
     </Wrapper>
   );
 };

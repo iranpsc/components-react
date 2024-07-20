@@ -1,3 +1,4 @@
+import { convertToPersian } from "../lib/convertToPersian";
 import styled from "styled-components";
 
 const Item = styled.div`
@@ -66,7 +67,7 @@ const TextValueIcon = ({ icon, title, value, long, smallValue, very_long }) => {
         {icon}
         <Title long={long}>{title}</Title>
       </InfoIcon>
-      <Value very_long={very_long} smallValue={smallValue}>{value}</Value>
+      <Value very_long={very_long} smallValue={smallValue}>{convertToPersian(value)}</Value>
     </Item>
   );
 };

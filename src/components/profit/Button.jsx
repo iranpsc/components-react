@@ -1,4 +1,5 @@
 import ConfettiExplosion from "react-confetti-explosion";
+import { convertToPersian } from "../../lib/convertToPersian";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -37,7 +38,7 @@ const Container = styled.div`
 `;
 const Button = ({ id, color, title, value, logo, onClick, cards }) => {
   const [isExploding, setIsExploding] = useState(false);
-  
+
   const sameButtons = cards.filter((card) => card.color === color);
   const sumValues = sameButtons.reduce((pre, cur) => pre + cur.value, 0);
   console.log(sumValues);
@@ -63,12 +64,7 @@ const Button = ({ id, color, title, value, logo, onClick, cards }) => {
       <span>{title}</span>
       <div>
         <img width={24} height={24} src={logo} alt={title} />
-        <h3>
-          {sumValues
-            .toFixed(2)
-            .toLocaleString()
-            .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
-        </h3>
+        <h3>{convertToPersian(sumValues.toFixed(2))}</h3>
       </div>
     </Container>
   );

@@ -1,5 +1,6 @@
 import { LuEye } from "react-icons/lu";
 import PrintModal from "./PrintModal";
+import { convertToPersian } from "../../../lib/convertToPersian";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -130,7 +131,7 @@ const TransactionRow = ({
       </TableCell>
       <TableCell>
         <div>
-          <Title>{count}</Title>
+          <Title>{convertToPersian(count)}</Title>
         </div>
       </TableCell>
       <TableCell>

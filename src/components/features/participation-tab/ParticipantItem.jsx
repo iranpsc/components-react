@@ -5,6 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import TitleValue from "../../shop/TitleValue";
 import UserCode from "../../UserCode";
+import { convertToPersian } from "../../../lib/convertToPersian";
 import satisfy from "../../../assets/images/player/satisfy.png";
 import styled from "styled-components";
 import { useState } from "react";
@@ -106,7 +107,7 @@ const ParticipantItem = ({ id, time, debt, level, satisfyCount, options }) => {
                 <h3>رضایت لانچ شده</h3>
                 <img src={satisfy} alt="pricing" width={18} height={18} />
               </Title>
-              <span>{satisfyCount}</span>
+              <span>{convertToPersian(satisfyCount)}</span>
             </SatisfyContainer>
           </ParticipantSummary>
           <Buttons>
@@ -147,7 +148,7 @@ const ParticipantItem = ({ id, time, debt, level, satisfyCount, options }) => {
                     <h3>رضایت لانچ شده</h3>
                     <img src={satisfy} alt="pricing" width={18} height={18} />
                   </Title>
-                  <span>{satisfyCount}</span>
+                  <span>{convertToPersian(satisfyCount)}</span>
                 </SatisfyContainer>
               </ParticipantInfo>
             ))}

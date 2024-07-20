@@ -1,3 +1,4 @@
+import { convertToPersian } from "../../../lib/convertToPersian";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -52,7 +53,7 @@ const SideBar = ({ currencies, option, setOption }) => {
             key={item.id}
           >
             بسته{" "}
-            {item.id.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
+            {convertToPersian(item.id)}
           </Option>
         ))}
       </Wrapper>

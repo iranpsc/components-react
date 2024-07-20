@@ -12,7 +12,7 @@ const Education = ({ setOpenEducation }) => {
   const location = useLocation();
   const path = location.pathname;
   const [position, setPosition] = useState({
-    x: path !== "/profit" ? 40 : -200,
+    x: path === "/profit" ? -200 : path === "/challenge" ? -200 : 40,
     y: 0,
   });
   const [dragging, setDragging] = useState(false);

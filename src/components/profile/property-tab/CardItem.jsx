@@ -1,5 +1,6 @@
 import Button from "../../Button";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import { convertToPersian } from "../../../lib/convertToPersian";
 import pscpng from "../../../assets/images/profile/psc.gif";
 import rialpng from "../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
@@ -173,7 +174,7 @@ const CardItem = ({ name, code, color, address, meter, psc, rial, photo }) => {
       <Left>
         <Meter>
           <span>متراژ</span>
-          <p>{meter.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}</p>
+          <p>{convertToPersian(meter)}</p>
         </Meter>
         {isDeleted ? (
           <div />
@@ -184,17 +185,13 @@ const CardItem = ({ name, code, color, address, meter, psc, rial, photo }) => {
               <div>
                 <img width={24} height={24} src={rialpng} />
                 <span>
-                  {formattedRial
-                    .toLocaleString()
-                    .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
+                  {convertToPersian(formattedRial)}
                 </span>
               </div>
               <div>
                 <img width={24} height={24} src={pscpng} />
                 <span>
-                  {formattedPsc
-                    .toLocaleString()
-                    .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
+                  {convertToPersian(formattedPsc)}
                 </span>
               </div>
             </Div>

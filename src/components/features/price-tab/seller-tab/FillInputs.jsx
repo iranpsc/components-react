@@ -3,6 +3,7 @@ import Input from "../../../Input";
 import Psc from "../../../Psc";
 import Rial from "../../../Rial";
 import TitleValue from "../../../TitleValue";
+import { convertToPersian } from "../../../../lib/convertToPersian";
 import psc from '../../../../assets/images/profile/psc.gif'
 import rial from '../../../../assets/images/profile/rial.gif'
 import styled from "styled-components";
@@ -87,7 +88,6 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (ریال)"
           insideText={<Rial />}
-          gif={rial}
         />
         <Input
           value={psc}
@@ -95,15 +95,14 @@ const FillInputs = ({ setAssign, rial, setRial, psc, setPsc }) => {
           type="number"
           placeholder="قیمت فروش (PSC)"
           insideText=<Psc />
-          gif={psc}
         />
       </InputsWrapper>
       <ResultWrapper>
         <Wrapper>
           <Title>قیمت نهایی</Title>
           <Value dir="ltr">
-            {rial.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} IRR /{" "}
-            {psc.toLocaleString().replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])} PSC
+            {convertToPersian(rial)} IRR /{" "}
+            {convertToPersian(psc)} PSC
           </Value>
         </Wrapper>
         <TitleValue title="کارمزد" value="5%" />

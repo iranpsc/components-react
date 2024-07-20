@@ -20,7 +20,8 @@ html {
 button,
 input,
 textarea,
-select, option {
+select,
+option {
   font-family: inherit;
 }
 
