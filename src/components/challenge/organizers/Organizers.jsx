@@ -5,48 +5,53 @@ import Footer from "./Footer";
 import styled from "styled-components";
 
 const Container = styled.div`
-height: 325px;
-padding-bottom: 20px;
-overflow-y: auto;
-direction: ltr;
-padding-right: 15px;
-margin-top: 30px;
-@media (min-width: 720px) {
-  height: 442px;
-}
-@media (min-width: 740px) {
-  height: 265px;
-}
-@media (min-width: 840px) {
-  height: 300px;
-}
-@media (min-width: 880px) {
-  height: 248px;
-}
-@media (min-width: 890px) {
   height: 325px;
-}
-@media (min-width: 930px) {
-  height: 340px;
-}
-@media (min-width: 1024px) {
-  height: auto;
-  padding-right: 0;
-}
-@media (min-width: 1366px) {
-  height: auto;
-  padding-right: 0;
-}
-@media (min-width: 1400px) {
-  height: 670px;
+  padding-bottom: 20px;
+  overflow-y: auto;
+  direction: ltr;
   padding-right: 15px;
-  overflow-y: auto;
-}
-@media (min-width: 1920px) {
-  height: auto;
-  padding-right: 0;
-  overflow-y: auto;
-}
+  margin-top: 30px;
+  @media (min-width: 720px) {
+    height: 442px;
+  }
+  @media (min-width: 740px) {
+    height: 265px;
+  }
+  @media (min-width: 840px) {
+    height: 300px;
+  }
+  @media (min-width: 880px) {
+    height: 248px;
+  }
+  @media (min-width: 890px) {
+    height: 325px;
+  }
+  @media (min-width: 930px) {
+    height: 340px;
+  }
+  @media (min-width: 1024px) {
+    height: auto;
+    padding-right: 0;
+  }
+  @media (min-width: 1366px) {
+    height: auto;
+    padding-right: 0;
+  }
+  @media (min-width: 1400px) {
+    height: 670px;
+    padding-right: 15px;
+    overflow-y: auto;
+  }
+  @media (min-width: 1600px) {
+    height: auto;
+    padding-right: 0;
+    overflow-y: auto;
+  }
+  @media (min-width: 1920px) {
+    height: auto;
+    padding-right: 0;
+    overflow-y: auto;
+  }
 `;
 const Time = styled.div`
   display: flex;
@@ -55,7 +60,7 @@ const Time = styled.div`
   justify-content: space-between;
   border-radius: 5px;
   background-color: #1a1a18;
-  padding: 20px;
+  padding: 5px 20px;
   h3 {
     color: #ffffff;
     font-size: 18px;
@@ -68,7 +73,13 @@ const Time = styled.div`
   }
 `;
 
-const Organizers = ({ organizers, setFirstPage, footers }) => {
+const Organizers = ({
+  organizers,
+  firstPage,
+  setFirstPage,
+  footers,
+  shining,
+}) => {
   const [timer, setTimer] = useState(0.25 * 60);
   const timerInterval = useRef(null);
 
@@ -110,7 +121,7 @@ const Organizers = ({ organizers, setFirstPage, footers }) => {
         </span>
       </Time>
       <Content organizers={organizers} />
-      <Footer footers={footers} />
+      <Footer footers={footers} shining={shining} firstPage={firstPage} />
     </Container>
   );
 };

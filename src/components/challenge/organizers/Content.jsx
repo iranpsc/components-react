@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import Other from "./Other";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import Title from "../../Title";
@@ -123,8 +121,8 @@ const Others = styled.div`
   align-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
-  /* height: 270px;
-  overflow-y: auto;
+  /* height: 270px; */
+  /* overflow-y: hidden !important;
   &::-webkit-scrollbar {
     width: 0;
   } */
@@ -221,8 +219,8 @@ const Content = ({ organizers }) => {
             loading="lazy"
             src={main.image}
             alt={main.company}
-            width={400}
-            height={250}
+            width={70}
+            height={70}
           />
         </MainPhoto>
       </Div>

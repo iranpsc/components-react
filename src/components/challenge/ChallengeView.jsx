@@ -102,6 +102,7 @@ const footer_items = [
 
 const ChallengeView = () => {
   const [firstPage, setFirstPage] = useState(true);
+  const [shining, setShining] = useState("four");
   const [footers, setFooters] = useState(footer_items);
 
   if (firstPage)
@@ -110,6 +111,8 @@ const ChallengeView = () => {
         footers={footers}
         organizers={organizers}
         setFirstPage={setFirstPage}
+        firstPage={firstPage}
+        shining={shining}
       />
     );
   if (!firstPage)
@@ -118,6 +121,7 @@ const ChallengeView = () => {
         setFooters={setFooters}
         footers={footers}
         setFirstPage={setFirstPage}
+        setShining={setShining}
       />
     );
 };

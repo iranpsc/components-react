@@ -26,7 +26,7 @@ const Photo = styled.div`
   justify-content: center;
   border-radius: 5px;
   padding: 0px 13px;
-  border: ${(props) => props.showAnswer && "1px solid #ffffff"};
+  border: ${(props) => props.showAnswer && props.status && "1px solid #ffffff"};
   background-color: #1a1a18;
   img {
     width: 40px;
@@ -79,12 +79,14 @@ const Question = ({
   setTimer,
   setFirstPage,
   setFooters,
-  footers,
+  setShining,
+  question,
 }) => {
   const [isFalse, setIsFalse] = useState(false);
   const [isExploding, setIsExploding] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState(null);
-  const selectAnswerHandler = (status) => {
+
+  const selectAnswerHandler = (status, id) => {
     if (showAnswer) return;
     setFooters((prevFooters) => [
       { ...prevFooters[0], count: prevFooters[0].count + (status ? 1 : 0) },
@@ -92,6 +94,12 @@ const Question = ({
       { ...prevFooters[2], count: prevFooters[2].count + 1 },
       ...prevFooters.slice(3),
     ]);
+    const clickedOption = question?.options?.find((item) => item.id === id);
+    if (clickedOption?.status) {
+      setShining('five');
+    } else if(!clickedOption?.status) {
+      setShining('six');
+    }
     setTimer(0.25 * 60);
     setTimeout(() => {
       setFirstPage(true);
@@ -109,12 +117,13 @@ const Question = ({
       falseSelected.style.boxShadow = "0px 30px 20px -20px #FF000033";
       falseSelected.style.borderBottom = "3px solid #C30000";
       falseSelected.querySelector("h3").style.color = "#C30000";
+      falseSelected.querySelector(".border").style.border = "1px solid #ffffff";
     }
   };
   return (
     <Container
       id={id}
-      onClick={() => selectAnswerHandler(status)}
+      onClick={() => selectAnswerHandler(status, id)}
       status={status}
       style={{
         borderBottom: `${showAnswer && `3px solid ${status && "#18C08F"}`}`,
@@ -134,7 +143,7 @@ const Question = ({
         />
       )}
       <Wrapper>
-        <Photo showAnswer={showAnswer}>
+        <Photo className="border" showAnswer={showAnswer} status={status}>
           <img src={image} alt={title} width={40} height={40} />
         </Photo>
         <Percent>

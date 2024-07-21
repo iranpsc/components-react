@@ -17,6 +17,7 @@ const Content = ({
   setTimer,
   setFirstPage,
   setFooters,
+  setShining,
   footers,
 }) => {
   return (
@@ -32,7 +33,8 @@ const Content = ({
             setTimer={setTimer}
             setFirstPage={setFirstPage}
             setFooters={setFooters}
-            footers={footers}
+            setShining={setShining}
+            question={question}
           />
         ))}
       </Wrapper>
