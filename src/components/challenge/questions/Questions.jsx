@@ -100,7 +100,7 @@ const Wrapper = styled.div`
 const Div = styled.div``;
 
 const Questions = ({ setFirstPage, footers, setFooters, setShining }) => {
-  const [timer, setTimer] = useState(5000.25 * 60);
+  const [timer, setTimer] = useState(0.25 * 60);
   const [showAnswer, setShowAnswer] = useState(false);
   const timerInterval = useRef(null);
 
