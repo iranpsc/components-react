@@ -7,49 +7,8 @@ import image from "../../../assets/images/challenge/challenge1.png";
 import styled from "styled-components";
 
 const Container = styled.div`
-  height: 290px;
-  overflow-y: auto;
-  direction: ltr;
-  margin-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 15px;
-  img {
-    border-radius: 10px;
-    width: 100%;
-  }
-  @media (min-width: 720px) {
-    height: 454px;
-  }
-  @media (min-width: 740px) {
-    height: 275px;
-  }
-  @media (min-width: 840px) {
-    height: 305px;
-  }
-  @media (min-width: 880px) {
-    height: 258px;
-  }
-  @media (min-width: 890px) {
-    height: 330px;
-  }
-  @media (min-width: 930px) {
-    height: 350px;
-  }
-  @media (min-width: 1024px) {
-    height: 490px;
-  }
-  @media (min-width: 1180px) {
-    height: auto;
-    padding-right: 0;
-  }
-  @media (min-width: 1400px) {
-    height: 660px;
-    padding-right: 15px;
-  }
-  @media (min-width: 1920px) {
-    height: 800px;
-    padding-right: 15px;
-  }
+  height: 100%;
+  position: relative;
 `;
 const Timer = styled.div`
   display: grid;
@@ -75,6 +34,9 @@ const Title = styled.h3`
   color: #dedee9;
 `;
 const Gif = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: start;
   div {
     display: flex;
     align-items: center;
@@ -111,6 +73,26 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 370px;
   gap: 20px;
   margin-top: 20px;
+  height: calc(100% - 140px);
+  overflow-y: auto;
+  direction: ltr;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 15px;
+  img {
+    border-radius: 10px;
+    width: 100%;
+  }
+  @media (min-width: 1180px) {
+    padding-right: 0;
+  }
+  @media (min-width: 1400px) {
+    height: calc(100% - 175px);
+    padding-right: 15px;
+  }
+  @media (min-width: 1920px) {
+    padding-right: 15px;
+  }
   @media (min-width: 1400px) {
     grid-template-columns: 1fr;
   }
@@ -118,7 +100,7 @@ const Wrapper = styled.div`
 const Div = styled.div``;
 
 const Questions = ({ setFirstPage, footers, setFooters, setShining }) => {
-  const [timer, setTimer] = useState(0.25 * 60);
+  const [timer, setTimer] = useState(5000.25 * 60);
   const [showAnswer, setShowAnswer] = useState(false);
   const timerInterval = useRef(null);
 

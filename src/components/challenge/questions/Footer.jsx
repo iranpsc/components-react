@@ -7,10 +7,9 @@ const Container = styled.div`
   align-items: center;
   direction: rtl;
   position: sticky;
-  bottom: 0px;
+  bottom: 15px;
   justify-content: space-between;
   gap: 10px;
-  margin-top: 20px;
   div {
     flex-grow: 1;
     background-color: #1a1a18;

@@ -10,13 +10,9 @@ const Container = styled.div`
   direction: rtl;
   align-items: center;
   position: sticky;
-  bottom: 0;
+  bottom: 15px;
   justify-content: space-between;
-  margin-top: 10px;
   gap: 10px;
-  @media (min-width: 1920px) {
-    margin-top: 60px;
-  }
   div {
     flex-grow: 1;
     background-color: #1a1a18;
@@ -75,7 +71,7 @@ const Footer = ({ footers, shining, firstPage }) => {
                 position: "absolute",
                 top: "20px",
                 right: "30px",
-                opacity:'0%'
+                opacity: "0%",
               }}
               particleSize={5}
               width={400}
@@ -89,7 +85,7 @@ const Footer = ({ footers, shining, firstPage }) => {
                 position: "absolute",
                 top: "20px",
                 right: "175px",
-                opacity:"0%"
+                opacity: "0%",
               }}
               particleSize={5}
               width={400}
