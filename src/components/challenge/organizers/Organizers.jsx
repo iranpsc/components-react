@@ -7,14 +7,19 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+  @media (min-width: 1400px) {
+    gap: 115px;
+  }
 `;
 const Container = styled.div`
-  height: calc(100% - 150px);
-  padding-bottom: 20px;
+  height: calc(100% - 120px);
+  padding-bottom: 10px;
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;
-  margin-top: 30px;
   @media (min-width: 1024px) {
     padding-right: 0;
   }
@@ -22,7 +27,7 @@ const Container = styled.div`
     padding-right: 0;
   }
   @media (min-width: 1400px) {
-    height: calc(100% - 175px);
+    height: calc(100% - 165px);
     padding-right: 15px;
     overflow-y: auto;
   }
@@ -33,25 +38,6 @@ const Container = styled.div`
   @media (min-width: 1920px) {
     padding-right: 0;
     overflow-y: auto;
-  }
-`;
-const Time = styled.div`
-  display: flex;
-  direction: rtl;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 5px;
-  background-color: #1a1a18;
-  padding: 5px 20px;
-  h3 {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 500;
-  }
-  span {
-    color: #0066ff;
-    font-weight: 700;
-    font-size: 24px;
   }
 `;
 
@@ -95,15 +81,12 @@ const Organizers = ({
   return (
     <Wrapper>
       <Container>
-        <Time>
-          <h3>منتظر برقراری ارتباط باشید</h3>
-          <span>
-            {formatTime(timer)
-              .toLocaleString()
-              .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
-          </span>
-        </Time>
-        <Content organizers={organizers} />
+        <Content
+          organizers={organizers}
+          time={formatTime(timer)
+            .toLocaleString()
+            .replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[d])}
+        />
       </Container>
       <Footer footers={footers} shining={shining} firstPage={firstPage} />
     </Wrapper>

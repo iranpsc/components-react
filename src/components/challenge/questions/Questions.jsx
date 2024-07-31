@@ -9,6 +9,12 @@ import styled from "styled-components";
 const Container = styled.div`
   height: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 65px;
+  @media (min-width: 1400px) {
+    gap: 115px;
+  }
 `;
 const Timer = styled.div`
   display: grid;
@@ -76,8 +82,7 @@ const Wrapper = styled.div`
   height: calc(100% - 140px);
   overflow-y: auto;
   direction: ltr;
-  margin-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 22px;
   padding-right: 15px;
   img {
     border-radius: 10px;
@@ -89,15 +94,20 @@ const Wrapper = styled.div`
   @media (min-width: 1400px) {
     height: calc(100% - 175px);
     padding-right: 15px;
+    grid-template-columns: 1fr;
   }
   @media (min-width: 1920px) {
     padding-right: 15px;
   }
-  @media (min-width: 1400px) {
-    grid-template-columns: 1fr;
-  }
 `;
-const Div = styled.div``;
+const Div = styled.div`
+height: fit-content;
+position: sticky;
+top: 0px;
+@media (min-width: 1400px) {
+  position: static;
+}
+`;
 
 const Questions = ({ setFirstPage, footers, setFooters, setShining }) => {
   const [timer, setTimer] = useState(0.25 * 60);

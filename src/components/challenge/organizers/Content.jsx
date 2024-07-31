@@ -1,6 +1,5 @@
 import Other from "./Other";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import Title from "../../Title";
 import styled from "styled-components";
 
 const MainPhoto = styled.div`
@@ -145,13 +144,52 @@ const Image = styled.img`
   object-fit: fill;
   height: 100%;
 `;
-
-const Content = ({ organizers }) => {
+const Time = styled.div`
+  display: flex;
+  direction: rtl;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: #1a1a18;
+  padding: 5px 20px;
+  h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  span {
+    color: #0066ff;
+    font-weight: 700;
+    font-size: 24px;
+    display: block;
+    width: 50px;
+    text-align: left;
+  }
+`;
+const Content = ({ organizers, time }) => {
   const main = organizers[0];
 
   return (
     <Container>
-      <Title right title="برگزار کنندگان آزاد" />
+      <Time>
+        <h3>برگزار کنندگان آزاد</h3>
+        <div data-tooltip-id='time'>
+        <span>{time}</span>
+        <ReactTooltip
+            style={{
+              backgroundColor: "#1a1a18",
+              borderRadius: "10px",
+              width: "150px",
+              paddingBottom: "9.5px",
+              textAlign: "center",
+              zIndex: "999",
+            }}
+            id='time'
+            place="top"
+            content='منتظر برقراری ارتباط باشید'
+          />
+        </div>
+      </Time>{" "}
       <Div>
         <Others>
           {organizers.slice(1, 7).map((other) => (
