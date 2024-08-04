@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 const Container = styled.div`
   height: calc(100% - 120px);
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;

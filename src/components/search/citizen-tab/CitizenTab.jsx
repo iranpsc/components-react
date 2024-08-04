@@ -1,5 +1,5 @@
 import ResultCard from "./ResultCard";
-import SearchInput from "../SearchInput";
+import SearchInput from "../../SearchInput";
 import styled from "styled-components";
 import { useState } from "react";
 

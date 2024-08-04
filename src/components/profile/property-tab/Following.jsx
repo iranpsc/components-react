@@ -1,5 +1,5 @@
 import FollowingCard from "./FollowingCard";
-import SearchInput from "../../search/SearchInput";
+import SearchInput from "../../SearchInput";
 import Title from "../../Title";
 import styled from "styled-components";
 import { useState } from "react";

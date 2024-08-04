@@ -3,7 +3,7 @@ import "react-multi-date-picker/styles/colors/yellow.css";
 
 import DatePicker from "react-multi-date-picker";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import SearchInput from "../../search/SearchInput";
+import SearchInput from "../../SearchInput";
 import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import Title from "../../Title";
 import TransactionsList from "./TransactionsList";

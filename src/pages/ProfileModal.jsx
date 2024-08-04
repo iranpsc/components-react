@@ -1,16 +1,23 @@
 import Header from "../components/Header";
 import Modal from "../components/Modal";
 import ProfileInfo from "../components/profile/ProfileInfo";
-import Tabs from "../components/profile/Tabs";
+import Tabs from "../components/Tabs";
 import { useState } from "react";
 
 const ProfileModal = () => {
-  const [active, setActive] = useState("property");
+  const [active, setActive] = useState("dynasty");
+
+  const tabs = [
+    { key: "total", label: "کلیات" },
+    { key: "property", label: "دارایی" },
+    { key: "transactions", label: "تراکنش ها" },
+    { key: "dynasty", label: "سلسله" }
+  ];
 
   return (
     <Modal>
       <Header profile title="حساب کاربری" />
-      <Tabs active={active} setActive={setActive} />
+      <Tabs tabs={tabs} active={active} setActive={setActive} />
       <ProfileInfo active={active} />
     </Modal>
   );

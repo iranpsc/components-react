@@ -1,4 +1,3 @@
-import Content from "./Content";
 import Followers from "./Followers";
 import Following from "./Following";
 import Houses from "./Houses";
@@ -21,7 +20,6 @@ const PropertyTab = () => {
       {menu === 1 && <Houses />}
       {menu === 2 && <Following />}
       {menu === 3 && <Followers />}
-      <Content />
     </Container>
   );
 };

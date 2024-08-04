@@ -1,5 +1,4 @@
 export { default as PropertyInfo } from "./info-tab/PropertyInfo";
-export { default as Tabs } from "./Tabs";
 export { default as InfoTab } from "./info-tab/InfoTab";
 export { default as SellerTab } from "./price-tab/seller-tab/SellerTab";
 export { default as BuyerTab } from "./price-tab/buyer-tab/BuyerTab";

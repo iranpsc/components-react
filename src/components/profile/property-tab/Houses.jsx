@@ -1,7 +1,6 @@
 import CardItem from "./CardItem";
 import { FiSearch } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import SearchInput from "../../search/SearchInput";
 import Title from "../../Title";
 import business from "../../../assets/images/profile/building.png";
 import education from "../../../assets/images/profile/courthouse.png";
