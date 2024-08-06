@@ -1,4 +1,3 @@
-import { FaFacebook, FaSquareWhatsapp, FaTelegram } from "react-icons/fa6";
 import {
   FacebookShare,
   LinkedinShare,
@@ -7,8 +6,6 @@ import {
   WhatsappShare,
 } from "react-share-kit";
 
-import { AiFillTwitterCircle } from "react-icons/ai";
-import { ImLinkedin } from "react-icons/im";
 import styled from "styled-components";
 import { useState } from "react";
 

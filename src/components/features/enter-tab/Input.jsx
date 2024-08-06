@@ -62,16 +62,14 @@ const Input = ({ id, icon, title, value, options, long, smallValue }) => {
     <Item id={id}>
       <InfoIcon>
         {id === 1 || id === 2 ? (
-          <img src={icon} alt={value} width={28} height={28} />
+          <img src={icon} alt={value} width={26} height={26} />
         ) : (
           icon
         )}
         <Title long={long}>{title}</Title>
       </InfoIcon>
       <Value smallValue={smallValue}>
-        {id === 1 || id === 2
-          ? convertToPersian(+value)
-          : value}
+        {id === 1 || id === 2 ? convertToPersian(+value) : value}
         {id === 4 && options[0]}
       </Value>
     </Item>

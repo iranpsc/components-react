@@ -8,11 +8,11 @@ const Container = styled.div`
   margin: 20px 0;
   gap: 20px;
 `;
-const DynastyEstablish = ({ members }) => {
+const DynastyEstablish = ({ members, setMode }) => {
   return (
     <Container>
       <Establish members={members} />
-      <PropertySelect />
+      <PropertySelect setMode={setMode} />
     </Container>
   );
 };

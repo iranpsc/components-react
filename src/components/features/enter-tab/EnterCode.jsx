@@ -37,7 +37,7 @@ const EnterCode = ({ setPayStatus, isOwner, setEdit }) => {
     <Container>
       <Input placeholder="کد ورود اختصاصی" onchange={() => {}} />
       <Div>
-        <Button label="پرداخت و ورود" onclick={() => setPayStatus(true)} />
+        <Button fit label="پرداخت و ورود" onclick={() => setPayStatus(true)} />
         {isOwner && (
           <ButtonEdit blue onClick={() => setEdit(true)}>
             ویرایش اطلاعات

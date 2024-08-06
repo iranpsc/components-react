@@ -17,7 +17,7 @@ const Top = styled.div`
   justify-content: space-between;
 `;
 
-const PropertySelect = () => {
+const PropertySelect = ({ setMode }) => {
   return (
     <Container>
       <Top>
@@ -30,7 +30,7 @@ const PropertySelect = () => {
       </Top>
       <Div>
         {[...Array(10)].map((item) => (
-          <PropertyCard key={item} />
+          <PropertyCard onClick={() => setMode(2)} label='انتخاب' key={item} />
         ))}
       </Div>
     </Container>

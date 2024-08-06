@@ -1,3 +1,5 @@
+import Psc from "../../Psc";
+import Rial from "../../Rial";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -52,11 +54,7 @@ const EditInput = ({
         name={name}
         step={step}
       />
-      {(slug === "psc") | (slug === "rial") ? (
-        <img width={28} height={28} src={icon} alt={title} />
-      ) : (
-        ""
-      )}
+      {slug === "psc" ? <Psc color='#DEDEE9'/> : slug === "rial" && <Rial color='#DEDEE9'/>}
       {(id === 1) | (id === 2) ? (
         <img width={28} height={28} src={icon} alt={title} />
       ) : (

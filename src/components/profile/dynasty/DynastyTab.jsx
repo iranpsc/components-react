@@ -1,4 +1,4 @@
-import DynastyEstablishEstate from "./dynasty-establish/DynastyEstablishEstate";
+import DynastyEstablishEstate from "./DynastyEstablishEstate";
 import DynastyMembers from "./DynastyMembers";
 import ReceiveRequest from "./ReceiveRequest";
 import SendRequest from "./SendRequest";
@@ -18,8 +18,13 @@ const DynastyTab = () => {
   const [dynastyEstablishEstate, setDynastyEstablishEstate] = useState(1);
   return (
     <Container>
-      <Sidebar setMenu={setMenu} menu={menu} mode={dynastyEstablishEstate}/>
-      {menu === 1 && <DynastyEstablishEstate mode={dynastyEstablishEstate}/>}
+      <Sidebar setMenu={setMenu} menu={menu} mode={dynastyEstablishEstate} />
+      {menu === 1 && (
+        <DynastyEstablishEstate
+          mode={dynastyEstablishEstate}
+          setMode={setDynastyEstablishEstate}
+        />
+      )}
       {menu === 2 && <DynastyMembers />}
       {menu === 3 && <SendRequest />}
       {menu === 4 && <ReceiveRequest />}

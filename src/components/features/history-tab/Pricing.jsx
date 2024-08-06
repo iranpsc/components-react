@@ -1,6 +1,6 @@
 import { convertToPersian } from "../../../lib/convertToPersian";
-import psc from "../../../assets/images/shop/psc.png";
-import rial from "../../../assets/images/shop/rial.png";
+import psc from "../../../assets/images/profile/psc.gif";
+import rial from "../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
 
 const Container = styled.div`

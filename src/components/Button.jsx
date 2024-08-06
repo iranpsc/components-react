@@ -2,11 +2,18 @@ import styled from "styled-components";
 
 const ButtonElement = styled.button`
   border-radius: 10px;
-  background-color: ${(props) => (props.disabled === 'pending' ? "#3B3B3B" : "#ffc700")};
+  background-color: ${(props) =>
+    props.color
+      ? props.color
+      : props.disabled === "pending"
+      ? "#3B3B3B"
+      : "#ffc700"};
   border: none;
-  padding: ${(props) => props.large && "0 20px"};
+  padding: ${(props) => (props.large ? "0 20px" : "10px 22px")};
   width: ${(props) =>
-    props.edit
+    props.fit
+      ? "fit-content"
+      : props.edit
       ? "125px"
       : props.large
       ? "fit-content"
@@ -17,7 +24,8 @@ const ButtonElement = styled.button`
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  color: ${(props) => (props.disabled === 'pending' ? "#949494" : "#191b21")};
+  color: ${(props) => (props.disabled === "pending" ? "#949494" : "#191b21")};
+  color: ${(props) => (props.textColor ? props.textColor : "")};
   font-family: inherit;
   @media (max-width: 840px) {
     width: ${(props) => (props.row ? "55px" : props.full && "100%")};
@@ -29,7 +37,18 @@ const ButtonElement = styled.button`
   }
 `;
 
-const Button = ({ label, onclick, row, color, edit, large, full, disabled }) => {
+const Button = ({
+  label,
+  onclick,
+  row,
+  color,
+  edit,
+  large,
+  full,
+  disabled,
+  fit,
+  textColor,
+}) => {
   return (
     <ButtonElement
       full={full}
@@ -39,6 +58,8 @@ const Button = ({ label, onclick, row, color, edit, large, full, disabled }) => 
       color={color}
       onClick={onclick}
       disabled={disabled}
+      fit={fit}
+      textColor={textColor}
     >
       {label}
     </ButtonElement>

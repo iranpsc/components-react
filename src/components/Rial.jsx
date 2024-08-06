@@ -5,10 +5,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  span {
+    color: ${(props) => props.color};
+  }
 `;
-const Rial = () => {
+const Rial = ({ color }) => {
   return (
-    <Container>
+    <Container color={color}>
       <span>ریال</span>
       <img width={26} alt="rial" src={rialGif} />
     </Container>

@@ -30,9 +30,9 @@ const Image = styled.div`
   justify-content: center;
 `;
 const Info = styled.div`
-display: flex;
-flex-direction: column;
-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   h3 {
     font-size: 18px;
     color: #dedee9;
@@ -53,7 +53,7 @@ const Container = styled.div`
   border-radius: 5px;
 `;
 
-const PropertyCard = () => {
+const PropertyCard = ({ onClick, label }) => {
   return (
     <Container>
       <Right>
@@ -69,7 +69,7 @@ const PropertyCard = () => {
         <h3>متراژ</h3>
         <h4>۱۲۰</h4>
       </Center>
-      <Button label="انتخاب" onclick={() => {}} />
+      <Button label={label} onclick={onClick} />
     </Container>
   );
 };

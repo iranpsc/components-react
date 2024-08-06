@@ -5,10 +5,13 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
+  span {
+    color: ${(props) => props.color};
+  }
 `;
-const Psc = () => {
+const Psc = ({ color }) => {
   return (
-    <Container>
+    <Container color={color}>
       <span>PSC</span>
       <img width={26} alt="psc" src={pscGif} />
     </Container>
