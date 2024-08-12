@@ -102,7 +102,7 @@ const Delete = styled.div`
 const Left = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr 110px;
+  grid-template-columns: 1fr 1fr 130px;
 `;
 const Right = styled.div`
   display: grid;
@@ -198,7 +198,7 @@ const CardItem = ({ name, code, color, address, meter, psc, rial, photo }) => {
           </Price>
         )}
         {isDeleted ? (
-          <Button label="قیمت گذاری" onclick={() => setIsDeleted(false)} />
+          <Button fit label="قیمت گذاری" onclick={() => setIsDeleted(false)} />
         ) : (
           <Delete onClick={() => setIsDeleted(true)}>حذف قیمت</Delete>
         )}

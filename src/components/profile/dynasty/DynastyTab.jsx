@@ -1,7 +1,7 @@
 import DynastyEstablishEstate from "./DynastyEstablishEstate";
-import DynastyMembers from "./DynastyMembers";
-import ReceiveRequest from "./ReceiveRequest";
-import SendRequest from "./SendRequest";
+import DynastyMembers from "./dynasty-members/DynastyMembers";
+import RecieveRequest from "./recieve/RecieveRequest";
+import SendRequest from "./sent/SendRequest";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import { useState } from "react";
@@ -27,7 +27,7 @@ const DynastyTab = () => {
       )}
       {menu === 2 && <DynastyMembers />}
       {menu === 3 && <SendRequest />}
-      {menu === 4 && <ReceiveRequest />}
+      {menu === 4 && <RecieveRequest />}
     </Container>
   );
 };

@@ -28,7 +28,8 @@ const ButtonElement = styled.button`
   color: ${(props) => (props.textColor ? props.textColor : "")};
   font-family: inherit;
   @media (max-width: 840px) {
-    width: ${(props) => (props.row ? "55px" : props.full && "100%")};
+    width: ${(props) => (props.fit
+      ? "fit-content" : props.row ? "55px" : props.full && "100%")};
     height: ${(props) => props.row && "35px"};
     font-size: ${(props) => props.row && "14px"};
   }
@@ -48,6 +49,7 @@ const Button = ({
   disabled,
   fit,
   textColor,
+  two
 }) => {
   return (
     <ButtonElement
