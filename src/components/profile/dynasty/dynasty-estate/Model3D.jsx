@@ -1,6 +1,7 @@
 import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
 
 import { Canvas } from "@react-three/fiber";
+import model from '../../../../assets/images/profile/home.png'
 import styled from "styled-components";
 import { useRef } from "react";
 
@@ -11,7 +12,7 @@ const Container = styled.div`
 `;
 
 const HouseModel = () => {
-  const texture = useTexture("/src/assets/images/profile/home.png");
+  const texture = useTexture(model);
   const meshRef = useRef();
 
   return (
