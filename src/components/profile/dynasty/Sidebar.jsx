@@ -13,6 +13,7 @@ const Container = styled.div`
 const Label = styled.div`
   font-size: 18px;
   font-weight: 500;
+  white-space: nowrap;
   color: ${(props) => (props.menu ? "#FFC700" : "#dedee9")};
   padding: 8px 25px;
   cursor: pointer;

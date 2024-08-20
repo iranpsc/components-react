@@ -6,12 +6,15 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  padding: 15px 20px;
+  padding: 15px 7px;
   border-bottom: 1px solid #454545;
   color: #ffffff;
   padding-right: 30px;
   div {
     width: fit-content;
+  }
+  @media (min-width: 845px) {
+    padding: 15px 20px;
   }
 `;
 

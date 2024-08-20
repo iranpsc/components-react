@@ -6,26 +6,26 @@ import { useState } from "react";
 const Container = styled.div`
   border-radius: 0.25rem;
   direction: rtl;
-  width: 73vw !important;
+  /* width: 73vw !important; */
   overflow-x: auto;
   min-height: 93vh;
   &::-webkit-scrollbar {
     display: none;
   }
   @media (min-width: 640px) {
-    width: 75vw !important;
+    /* width: 75vw !important; */
   }
   @media (min-width: 840px) {
     min-height: 80vh !important;
   }
   @media (min-width: 1024px) {
-    width: 83vw !important;
+    /* width: 83vw !important; */
   }
   @media (min-width: 1280px) {
-    width: 78.5vw !important;
+    /* width: 78.5vw !important; */
   }
   @media (min-width: 1360px) {
-    width: 64.5vw !important;
+    /* width: 64.5vw !important; */
   }
   @media (min-width: 1920px) {
     width: auto !important;

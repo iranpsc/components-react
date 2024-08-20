@@ -2,7 +2,9 @@ import List from "./List";
 import Title from "../../../Title";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  direction: rtl;
+`;
 const Top = styled.div`
   div {
     margin-top: 10px;

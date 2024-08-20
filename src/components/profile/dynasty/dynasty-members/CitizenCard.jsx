@@ -1,4 +1,5 @@
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import citizen from "../../../../assets/images/profile/slide.png";
 import down from "../../../../assets/images/profile/downcitizen.png";
 import level1 from "../../../../assets/images/profile/level1.png";
 import level2 from "../../../../assets/images/profile/level2.png";
@@ -13,19 +14,20 @@ const levels = [
 
 const Container = styled.div`
   background-color: #1a1a18;
-  border: 1px solid transparent;
+  border: 1px solid
+    ${({ isSelected }) => (isSelected ? "#FFBC00" : "transparent")};
   margin-top: 20px;
   border-radius: 5px;
   padding: 20px;
-  /* width: 245px; */
   display: flex;
   flex-direction: column;
   gap: 15px;
   align-items: center;
   justify-content: space-between;
   transition: all 0.2s linear;
+  cursor: pointer;
   &:hover {
-    border: 1px solid #0066ff;
+    border: 1px solid #ffbc00;
   }
   h2 {
     color: #ffffff;
@@ -38,6 +40,7 @@ const Container = styled.div`
     font-weight: 500;
   }
 `;
+
 const Image = styled.div`
   width: 120px;
   height: 120px;
@@ -47,6 +50,7 @@ const Image = styled.div`
     object-fit: contain;
   }
 `;
+
 const Level = styled.div`
   p {
     color: #969696;
@@ -60,6 +64,7 @@ const Level = styled.div`
     justify-content: center;
   }
 `;
+
 const Footer = styled.div`
   display: flex;
   align-items: center;
@@ -75,12 +80,12 @@ const Footer = styled.div`
   }
 `;
 
-const CitizenCard = ({ name, code, image }) => {
+const CitizenCard = ({ id, name, code, image, age, onClick, isSelected }) => {
   return (
-    <Container>
+    <Container onClick={onClick} isSelected={isSelected}>
       <Image>
         <img
-          src={image}
+          src={citizen}
           alt="citizen"
           loading="lazy"
           width={120}
@@ -108,7 +113,7 @@ const CitizenCard = ({ name, code, image }) => {
         </div>
       </Level>
       <Footer>
-        <span>جزییات شهروند</span>
+        <span>مشخصات شهروند</span>
         <img alt="down" src={down} width={17} height={19} />
       </Footer>
     </Container>

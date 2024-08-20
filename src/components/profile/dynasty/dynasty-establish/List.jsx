@@ -11,7 +11,7 @@ const Container = styled.div`
   border-radius: 0.25rem;
   direction: rtl;
   overflow-x: auto;
-  min-height: 93vh;
+  /* min-height: 93vh; */
   &::-webkit-scrollbar {
     display: none;
   }
@@ -19,12 +19,12 @@ const Container = styled.div`
 `;
 
 const Table = styled.table`
+  width: 100%;
   text-align: right;
   margin-top: 5px;
   border-collapse: collapse;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  width: 579px;
   height: 430px;
 `;
 
@@ -44,10 +44,10 @@ const TableHeader = styled.th`
   position: relative;
   padding-bottom: 10px;
   text-align: center;
-  &:nth-of-type(2){
+  &:nth-of-type(2) {
     padding-right: 45px;
   }
-  div{
+  div {
     width: fit-content;
   }
 `;

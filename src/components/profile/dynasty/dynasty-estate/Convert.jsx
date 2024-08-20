@@ -5,12 +5,16 @@ import Title from "../../../Title";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Container = styled.div``;
+const Container = styled.div`
+  direction: rtl;
+`;
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-top: 20px;
+  @media (min-width: 1366px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 const Div = styled.div`
   display: flex;
