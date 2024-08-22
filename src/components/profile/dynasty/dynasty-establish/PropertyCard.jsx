@@ -23,7 +23,6 @@ const Image = styled.div`
   height: 80px;
   width: 80px;
   border-radius: 5px;
-  padding: 10px;
   background-color: #302b16;
   display: flex;
   align-items: center;

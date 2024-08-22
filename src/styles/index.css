@@ -31,11 +31,11 @@ option {
   }
 
   ::-webkit-scrollbar-track {
-    background: #858585d2;
+    background: #85858590;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #d7d7d7c0;
+    background: #d7d7d74d;
     cursor: pointer;
   }
 

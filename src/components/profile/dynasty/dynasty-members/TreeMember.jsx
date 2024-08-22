@@ -29,7 +29,8 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: 600;
   }
-  p {
+  a {
+    text-decoration: none;
     color: #0066ff;
     font-size: 14px;
     font-weight: 500;
@@ -78,7 +79,7 @@ const TreeMember = ({ item }) => {
         <img src={member} alt="member" width={80} height={80} />
       </Image>
       <h3>{item.role}</h3>
-      <p>{item.code}</p>
+      <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">{item.code}</a>
     </Container>
   );
 };

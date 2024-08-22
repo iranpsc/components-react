@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 const Container = styled.div`
   height: 80%;
-  width: 80%;
+  width: 70%;
   background-color: #000000;
   direction: ltr;
   padding: 15px;

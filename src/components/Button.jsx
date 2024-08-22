@@ -23,6 +23,7 @@ const ButtonElement = styled.button`
   height: 45px;
   font-weight: 600;
   font-size: 16px;
+  position: relative;
   cursor: pointer;
   color: ${(props) => (props.disabled === "pending" ? "#949494" : "#191b21")};
   color: ${(props) => (props.textColor ? props.textColor : "")};

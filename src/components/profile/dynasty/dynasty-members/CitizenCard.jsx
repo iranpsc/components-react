@@ -1,10 +1,11 @@
+import styled, { css, keyframes } from "styled-components";
+
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import citizen from "../../../../assets/images/profile/slide.png";
 import down from "../../../../assets/images/profile/downcitizen.png";
 import level1 from "../../../../assets/images/profile/level1.png";
 import level2 from "../../../../assets/images/profile/level2.png";
 import level3 from "../../../../assets/images/profile/level3.png";
-import styled from "styled-components";
 
 const levels = [
   { id: "1", label: "سطح 1", image: level1 },
@@ -12,11 +13,24 @@ const levels = [
   { id: "3", label: "سطح 3", image: level3 },
 ];
 
-const Container = styled.div`
+const svgAnimation = keyframes`
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1000;
+  }
+`;
+
+const Card = styled.div`
+  position: relative;
+  z-index: 1; 
+`;
+
+const Inner = styled.div`
   background-color: #1a1a18;
-  border: 1px solid
-    ${({ isSelected }) => (isSelected ? "#FFBC00" : "transparent")};
-  margin-top: 20px;
+  direction: rtl;
+  z-index: 2; 
   border-radius: 5px;
   padding: 20px;
   display: flex;
@@ -26,18 +40,44 @@ const Container = styled.div`
   justify-content: space-between;
   transition: all 0.2s linear;
   cursor: pointer;
-  &:hover {
-    border: 1px solid #ffbc00;
-  }
   h2 {
     color: #ffffff;
     font-size: 20px;
     font-weight: 700;
   }
-  h5 {
+  a {
     color: #0066ff;
+    text-decoration: none;
     font-size: 16px;
     font-weight: 500;
+    position: relative;
+  z-index: 10;
+  display: inline-block;
+  }
+  background: #222;
+  color: #fff;
+`;
+
+const Example5Svg = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1; 
+`;
+
+const Line = styled.rect`
+  stroke-dasharray: 260;
+  stroke-width: 2px;
+  fill: transparent;
+  stroke: ${(props) => props.isSelected ? `#ffc700` : ``};
+  transition: stroke 0.2s ease, animation 0.2s ease;
+  animation: ${svgAnimation} 2.5s linear infinite;
+
+  &:hover {
+    stroke: #ffc700;
+    animation: ${svgAnimation} 2.5s linear infinite;
   }
 `;
 
@@ -52,6 +92,7 @@ const Image = styled.div`
 `;
 
 const Level = styled.div`
+  z-index: 1;
   p {
     color: #969696;
     font-weight: 500;
@@ -82,41 +123,53 @@ const Footer = styled.div`
 
 const CitizenCard = ({ id, name, code, image, age, onClick, isSelected }) => {
   return (
-    <Container onClick={onClick} isSelected={isSelected}>
-      <Image>
-        <img
-          src={citizen}
-          alt="citizen"
-          loading="lazy"
-          width={120}
-          height={120}
+    <Card onClick={onClick}>
+      <Example5Svg xmlns="http://www.w3.org/2000/svg">
+        <Line
+          isSelected={isSelected}
+          rx="8"
+          ry="8"
+          strokeLinejoin="round"
+          height="100%"
+          width="100%"
         />
-      </Image>
-      <h2>{name}</h2>
-      <h5>{code}</h5>
-      <Level>
-        <p>سطح توسعه دهنده</p>
-        <div>
-          {levels.map((level) => (
-            <div key={level.id}>
-              <img
-                data-tooltip-id={level?.id}
-                src={level.image}
-                alt={level.label}
-                width={27}
-                height={27}
-                loading="lazy"
-              />
-              <ReactTooltip id={level.id} place="top" content={level.label} />
-            </div>
-          ))}
-        </div>
-      </Level>
-      <Footer>
-        <span>مشخصات شهروند</span>
-        <img alt="down" src={down} width={17} height={19} />
-      </Footer>
-    </Container>
+      </Example5Svg>
+      <Inner>
+        <Image>
+          <img
+            src={citizen}
+            alt="citizen"
+            loading="lazy"
+            width={120}
+            height={120}
+          />
+        </Image>
+        <h2>{name}</h2>
+        <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">{code}</a>
+        <Level>
+          <p>سطح توسعه دهنده</p>
+          <div>
+            {levels.map((level) => (
+              <div key={level.id}>
+                <img
+                  data-tooltip-id={level?.id}
+                  src={level.image}
+                  alt={level.label}
+                  width={27}
+                  height={27}
+                  loading="lazy"
+                />
+                <ReactTooltip id={level.id} place="top" content={level.label} />
+              </div>
+            ))}
+          </div>
+        </Level>
+        <Footer>
+          <span>مشخصات شهروند</span>
+          <img alt="down" src={down} width={17} height={19} />
+        </Footer>
+      </Inner>
+    </Card>
   );
 };
 

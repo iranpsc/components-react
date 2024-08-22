@@ -1,10 +1,12 @@
+import { useContext, useState } from "react";
+
+import { LoaderContext } from "../../../../LoaderProvider";
 import { LuEye } from "react-icons/lu";
 import RequestDetails from "./RequestDetails";
 import { convertToPersian } from "../../../../lib/convertToPersian";
 import gift from "../../../../assets/images/player/satisfy.png";
 import pscGif from "../../../../assets/images/profile/psc.gif";
 import styled from "styled-components";
-import { useState } from "react";
 
 const TableRow = styled.tr`
   background-color: transparent;
@@ -14,6 +16,9 @@ const TableCell = styled.td`
   padding: 15px 20px;
   border-bottom: 1px solid #454545;
   color: #ffffff;
+  &:nth-of-type(5) {
+    padding-right: 10px;
+  }
 `;
 
 const Image = styled.img`
@@ -41,6 +46,7 @@ const Title = styled.h3`
 
 const Subject = styled.div`
   display: flex;
+  justify-content: end;
   align-items: center;
   gap: 16px;
 `;
@@ -48,7 +54,7 @@ const Subject = styled.div`
 const View = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #3b3b3b;
+  background-color: ${(props) => (props.id === 1 ? "#ffc700" : "#3b3b3b")};
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -82,12 +88,12 @@ const Div = styled.div`
   }
 `;
 
-const RequestRow = ({ code, date, time, status, member, gif, psc }) => {
+const RequestRow = ({ id, code, date, time, status, member, gif, psc }) => {
   const [showDetails, setShowDetails] = useState(false);
-
+  const { setIsLoading } = useContext(LoaderContext);
   return (
     <>
-      <TableRow className="odd:bg-slate-50 hover:bg-black/10 py-5 duration-200">
+      <TableRow>
         <TableCell>
           <div>
             <Code>HM-{code}</Code>
@@ -147,7 +153,16 @@ const RequestRow = ({ code, date, time, status, member, gif, psc }) => {
           </Subject>
         </TableCell>
         <TableCell>
-          <View onClick={() => setShowDetails(true)}>
+          <View
+            id={id}
+            onClick={() => {
+              setIsLoading(true);
+              setTimeout(() => {
+                setIsLoading(false);
+                setShowDetails(true);
+              }, 2000);
+            }}
+          >
             <LuEye size={20} />
           </View>
         </TableCell>

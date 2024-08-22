@@ -1,25 +1,26 @@
-import { OrbitControls, useGLTF, useTexture } from "@react-three/drei";
+import { OrbitControls, useFBX } from "@react-three/drei";
 
 import { Canvas } from "@react-three/fiber";
-import model from '../../../../assets/images/profile/home.png'
 import styled from "styled-components";
-import { useRef } from "react";
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
+  canvas {
+    width: 100px;
+  }
 `;
-
-const HouseModel = () => {
-  const texture = useTexture(model);
-  const meshRef = useRef();
+const Model = () => {
+  const fbx = useFBX("/building.fbx");
 
   return (
-    <mesh ref={meshRef}>
-      <planeGeometry args={[5, 5]} />
-      <meshBasicMaterial map={texture} transparent />
-    </mesh>
+    <primitive
+      object={fbx}
+      scale={[0.002, 0.002, 0.002]}
+      position={[0, -2, 0]}
+    />
   );
 };
 
@@ -29,7 +30,7 @@ const Model3D = () => {
       <Canvas camera={{ position: [3, 3, 3] }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
-        <HouseModel />
+        <Model />
         <OrbitControls enableZoom={false} />
       </Canvas>
     </Container>

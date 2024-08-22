@@ -7,6 +7,8 @@ import AccountSecurityModal from "./pages/AccountSecurityModal";
 import AuthenticationModal from "./pages/AuthenticationModal";
 import Challenge from "./pages/Challenge";
 import FeaturesModal from "./pages/FeaturesModal";
+import Loader from "./components/Loader";
+import { LoaderProvider } from "./LoaderProvider";
 import Notification from "./pages/Notification";
 import ProfileModal from "./pages/ProfileModal";
 import Profit from "./pages/Profit";
@@ -30,34 +32,36 @@ export const AlertContext = createContext();
 function App() {
   const [alert, setAlert] = useState(false);
   return (
-    <AlertContext.Provider value={{ alert, setAlert }}>
-      <Wrapper>
-        <Routes>
-          <Route path="/features" element={<FeaturesModal />} />
-          <Route path="/shop" element={<ShopModal />} />
-          <Route path="/authentication" element={<AuthenticationModal />} />
-          <Route path="/accountsecurity" element={<AccountSecurityModal />} />
-          <Route path="/profile" element={<ProfileModal />} />
-          <Route path="/profit" element={<Profit />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/notification" element={<Notification />} />
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/challenge" element={<Challenge />} />
-        </Routes>
-      </Wrapper>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
-    </AlertContext.Provider>
+    <LoaderProvider>
+      <AlertContext.Provider value={{ alert, setAlert }}>
+        <Wrapper>
+          <Routes>
+            <Route path="/features" element={<FeaturesModal />} />
+            <Route path="/shop" element={<ShopModal />} />
+            <Route path="/authentication" element={<AuthenticationModal />} />
+            <Route path="/accountsecurity" element={<AccountSecurityModal />} />
+            <Route path="/profile" element={<ProfileModal />} />
+            <Route path="/profit" element={<Profit />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/notification" element={<Notification />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="/challenge" element={<Challenge />} />
+          </Routes>
+        </Wrapper>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
+      </AlertContext.Provider>
+    </LoaderProvider>
   );
 }
 

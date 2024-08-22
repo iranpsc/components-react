@@ -1,3 +1,4 @@
+import { IoRadioButtonOnOutline } from "react-icons/io5";
 import avatar from "../../../../assets/images/profile/slide.png";
 import { convertToPersian } from "../../../../lib/convertToPersian";
 import styled from "styled-components";
@@ -71,18 +72,12 @@ const Profile = styled.div`
     transition: all 0.2s linear;
   }
 `;
-const Status = styled.div`
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  background-color: #ffc700;
-  /* border: 1px solid #ffc700; */
-`;
+
 const MemberCard = ({ selectedCitizen }) => {
   return (
     <Container>
       <Right>
-        <Status />
+      <IoRadioButtonOnOutline size={24} style={{color:'#ffc700'}} />
         <Profile>
           <img src={avatar} width={80} height={80} />
           <div>

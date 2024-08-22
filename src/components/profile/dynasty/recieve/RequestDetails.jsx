@@ -1,4 +1,5 @@
 import Button from "../../../Button";
+import ConfettiExplosion from "react-confetti-explosion";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import MemberCard from "../sent/MemberCard";
 import Title from "../../../Title";
@@ -6,10 +7,11 @@ import { convertToPersian } from "../../../../lib/convertToPersian";
 import gift from "../../../../assets/images/player/satisfy.png";
 import pscGif from "../../../../assets/images/profile/psc.gif";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   padding: 20px 0;
-  width: 80%;
+  width: 70%;
   height: 80%;
   position: relative;
   border-radius: 10px;
@@ -59,6 +61,7 @@ const Info = styled.div`
 const Div = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
   gap: 4px;
   h3 {
     color: #868b90;
@@ -87,7 +90,6 @@ const Subject = styled.div`
 `;
 
 const Back = styled.div`
-  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -98,6 +100,20 @@ const Back = styled.div`
   justify-content: center;
   backdrop-filter: blur(5px);
   background-color: rgba(0, 0, 0, 0.713);
+`;
+
+const GifButton = styled.button`
+  background-color: #18c08f;
+  color: #d7fbf0;
+  border-radius: 10px;
+  height: 45px;
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
+  position: relative;
+  padding: 0 22px;
+  cursor: pointer;
+  font-family: inherit;
 `;
 
 const Buttons = styled.div`
@@ -116,6 +132,7 @@ const RequestDetails = ({
   date,
   time,
 }) => {
+  const [isExploding, setIsExploding] = useState(false);
   return (
     <Back>
       <Container>
@@ -169,13 +186,31 @@ const RequestDetails = ({
                   />
                 </Div>
               </Subject>
-              <Button
-                onclick={() => setShowDetails(false)}
-                label="جذب پاداش"
-                color="#18C08F"
-                fit
-                textColor="#D7FBF0"
-              />
+              <GifButton
+                onClick={() => {
+                  setIsExploding(!isExploding);
+                  setTimeout(() => {
+                    setShowDetails(false);
+                  }, 2700);
+                }}
+              >
+                جذب پاداش
+                {isExploding && (
+                  <ConfettiExplosion
+                    style={{
+                      zIndex: 1000,
+                      position: "absolute",
+                      top: "10px",
+                      left: "60px",
+                    }}
+                    particleSize={5}
+                    width={400}
+                    height={"100vh"}
+                    duration={3000}
+                    colors={["#18C08F", "#FF6347", "#FFD700", "#4682B4"]}
+                  />
+                )}
+              </GifButton>
             </Wrapper>
           </>
         )}

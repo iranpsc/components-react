@@ -23,7 +23,7 @@ const Container = styled.div`
   direction: ltr;
   padding: 0 15px;
   height: 80%;
-  width: 80%;
+  width: 70%;
   background-color: #000000;
   overflow-y: auto;
   /* @media (min-width: 890px) {

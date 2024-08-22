@@ -37,7 +37,7 @@ const TableHead = styled.thead`
 const TableRow = styled.tr``;
 
 const TableHeader = styled.th`
-  padding: 20px;
+  padding: 20px 10px;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
@@ -45,7 +45,7 @@ const TableHeader = styled.th`
   padding-bottom: 10px;
   text-align: center;
   &:nth-of-type(2) {
-    padding-right: 45px;
+    padding-right: 37px;
   }
   div {
     width: fit-content;

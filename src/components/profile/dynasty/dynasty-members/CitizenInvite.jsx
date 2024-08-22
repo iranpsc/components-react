@@ -46,6 +46,7 @@ const Container = styled.div`
 const Header = styled.div`
   display: grid;
   direction: rtl;
+  margin-bottom: 20px;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   @media (min-width: 1366px) {
@@ -56,8 +57,11 @@ const Header = styled.div`
 const Citizens = styled.div`
   display: grid;
   gap: 20px;
-  margin-bottom: 20px;
-  direction: rtl;
+  margin-bottom: 15px;
+  direction: ltr;
+  padding-right: 10px;
+  height: calc(100% - 10px);
+  overflow: auto;
   grid-template-columns: 1fr 1fr;
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
@@ -73,7 +77,18 @@ const Buttons = styled.div`
   gap: 15px;
   direction: rtl;
 `;
-
+const SelectButton = styled.button`
+  color: #ffffff;
+  background-color:${props=>props.disabled?'gray':'#18c08f'} ;
+  border-radius: 10px;
+  border: none;
+  height: 49px;
+  padding: 10px 22px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: inherit;
+`;
 const CitizenInvite = ({ citizens, setMode, mode, members, setMembers }) => {
   const [searched, setSearched] = useState("");
   const [openDetails, setOpenDetails] = useState(false);
@@ -131,13 +146,12 @@ const CitizenInvite = ({ citizens, setMode, mode, members, setMembers }) => {
             ))}
         </Citizens>
         <Buttons>
-          <Button
-            fit
-            color="#18C08F"
-            textColor="#FFFFFF"
-            label="انتخاب"
-            onclick={handleSelectClick}
-          />
+          <SelectButton
+            disabled={selectedCitizen === null}
+            onClick={handleSelectClick}
+          >
+            انتخاب
+          </SelectButton>
           <Button
             fit
             color="#C30000"
