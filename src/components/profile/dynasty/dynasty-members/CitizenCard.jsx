@@ -74,7 +74,6 @@ const Line = styled.rect`
   stroke: ${(props) => props.isSelected ? `#ffc700` : ``};
   transition: stroke 0.2s ease, animation 0.2s ease;
   animation: ${svgAnimation} 2.5s linear infinite;
-
   &:hover {
     stroke: #ffc700;
     animation: ${svgAnimation} 2.5s linear infinite;
@@ -129,7 +128,7 @@ const CitizenCard = ({ id, name, code, image, age, onClick, isSelected }) => {
           isSelected={isSelected}
           rx="8"
           ry="8"
-          strokeLinejoin="round"
+          strokeLinejoin="bevel"
           height="100%"
           width="100%"
         />

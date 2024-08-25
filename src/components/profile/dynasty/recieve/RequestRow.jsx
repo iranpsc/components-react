@@ -27,10 +27,11 @@ const Image = styled.img`
   border-radius: 50%;
 `;
 
-const Code = styled.h2`
+const Code = styled.a`
   font-size: 16px;
   font-weight: 500;
   color: #0066ff;
+  text-decoration: none;
 `;
 
 const Date = styled.h3`
@@ -97,7 +98,7 @@ const RequestRow = ({ id, code, date, time, status, member, gif, psc }) => {
       <TableRow className="odd:bg-slate-50 hover:bg-black/10 py-5 duration-200">
         <TableCell>
           <div>
-            <Code>HM-{code}</Code>
+            <Code href='https://rgb.irpsc.com/fa/citizen/hm-2000001'>HM-{code}</Code>
           </div>
         </TableCell>
         <TableCell>

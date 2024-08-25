@@ -10,6 +10,7 @@ const Setting = () => {
     { key: "public", label: "تنظیمات عمومی" },
     { key: "account", label: "حساب کاربری" },
     { key: "security", label: "حریم خصوصی" },
+    { key: "aboutme", label: "درباره من" },
   ];
   return (
     <Modal>

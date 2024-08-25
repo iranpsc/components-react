@@ -1,5 +1,7 @@
 import { AiOutlineExclamationCircle } from "react-icons/ai";
+import DetailsModal from "./DetailsModal";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Container = styled.div`
   background-color: #000000;
@@ -8,6 +10,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  svg{
+    cursor: pointer;
+  }
 `;
 
 const Header = styled.div`
@@ -41,6 +46,7 @@ const KeyValue = styled.div`
 `;
 
 const Details = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <Container>
       <Header>
@@ -58,7 +64,7 @@ const Details = () => {
       <KeyValue>
         <h3 style={{ display: "flex", alignItems: "center", gap: "4px" }}>
           افزایش سود از ملک
-          <AiOutlineExclamationCircle />
+          <AiOutlineExclamationCircle onClick={() => setOpenModal(true)} />
         </h3>
         <span>۱٪</span>
       </KeyValue>
@@ -68,10 +74,12 @@ const Details = () => {
       </KeyValue>
       <KeyValue>
         <h3 style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-          قابلیت انتقال <AiOutlineExclamationCircle />
+          قابلیت انتقال{" "}
+          <AiOutlineExclamationCircle onClick={() => setOpenModal(true)} />
         </h3>
         <span>۲۰ : ۱۲ : ۴۴</span>
       </KeyValue>
+      {openModal && <DetailsModal setOpenModal={setOpenModal} />}
     </Container>
   );
 };

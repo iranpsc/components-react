@@ -52,7 +52,7 @@ const Container = styled.div`
   border-radius: 5px;
 `;
 
-const PropertyCard = ({ onClick, label }) => {
+const PropertyCard = ({ onClick, label,code,meter }) => {
   return (
     <Container>
       <Right>
@@ -61,12 +61,12 @@ const PropertyCard = ({ onClick, label }) => {
         </Image>
         <Info>
           <h3>شناسه زمین</h3>
-          <h4>QA31-11213</h4>
+          <h4>{code}</h4>
         </Info>
       </Right>
       <Center>
         <h3>متراژ</h3>
-        <h4>۱۲۰</h4>
+        <h4>{meter}</h4>
       </Center>
       <Button label={label} onclick={onClick} />
     </Container>
