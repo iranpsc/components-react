@@ -1,41 +1,58 @@
 import styled from "styled-components";
 import { useGlobalState } from "./GlobalStateProvider";
 
-// Styled components
 const Container = styled.div`
   margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  direction: rtl;
+
+  div {
+    width: 100%;
+  }
+
+  @media (min-width: 1366px) {
+    flex-direction: row;
+    div {
+      width: 48%;
+    }
+  }
 `;
 
 const Label = styled.label`
   color: #ffffff;
   display: block;
   margin-bottom: 10px;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 16px;
 `;
 
 const Input = styled.input`
   width: 100%;
-  padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #454545;
   background-color: #2c2c2c;
   color: #fff;
+  padding: 10px 12px;
+  outline: none;
 `;
 
 const Select = styled.select`
   width: 100%;
-  padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: 1px solid #454545;
   background-color: #2c2c2c;
   color: #fff;
+  padding: 10px 12px;
+  outline: none;
+  color: #84858f;
 `;
 
-// The component
 const EducationsAndJob = () => {
   const { state, dispatch } = useGlobalState();
 
@@ -51,23 +68,26 @@ const EducationsAndJob = () => {
     <Container>
       <div>
         <Label htmlFor="education">تحصیلات (نام شهروند)</Label>
-        <Input
+        <Select
           id="education"
           value={state.educations}
           onChange={handleEducationChange}
-          placeholder="تحصیلات (نام شهروند)"
-        />
+        >
+          <option value="">تحصیلات (نام شهروند)</option>
+          <option value="diploma">دیپلم</option>
+          <option value="license">لیسانس</option>
+          <option value="Engineer">ارشد</option>
+          <option value="doctor">دکتری</option>
+        </Select>
       </div>
       <div>
-        <Label htmlFor="job">شغل (نام شهروند)</Label>
-        <Select id="job" value={state.job} onChange={handleJobChange}>
-          <option value="">انتخاب شغل</option>
-          <option value="Software Developer">توسعه‌دهنده نرم‌افزار</option>
-          <option value="Designer">طراح</option>
-          <option value="Engineer">مهندس</option>
-          <option value="Teacher">معلم</option>
-          <option value="Doctor">پزشک</option>
-        </Select>
+        <Label htmlFor="job">شغل (نام شهروند) در فیزیک</Label>
+        <Input
+          id="job"
+          value={state.job}
+          onChange={handleJobChange}
+          placeholder="شغل (نام شهروند) در فیزیک"
+        />
       </div>
     </Container>
   );

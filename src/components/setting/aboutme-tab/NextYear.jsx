@@ -26,12 +26,13 @@ const EditorContainer = styled.div`
     color: white;
     border: none;
     direction: rtl;
-    text-align: right;   }
+    text-align: right;
+  }
 
   .ql-editor {
     min-height: 150px;
     direction: rtl;
-    text-align: right; 
+    text-align: right;
   }
 
   .ql-editor::before {
@@ -39,7 +40,7 @@ const EditorContainer = styled.div`
     color: #a0a0ab;
     font-style: italic;
     position: absolute;
-    left: 0; 
+    left: 0;
     right: 20px;
     font-family: inherit;
     text-align: right;
@@ -75,6 +76,7 @@ const EditorContainer = styled.div`
     background-color: #555;
   }
 `;
+
 const Label = styled.h2`
   color: #ffffff;
   display: block;
@@ -82,14 +84,13 @@ const Label = styled.h2`
   font-weight: 500;
   font-size: 16px;
   margin-top: 20px;
-  direction: rtl;
 `;
+
 const Char = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
   gap: 5px;
-  direction: rtl;
 
   svg {
     color: ${({ isOverLimit }) => (isOverLimit ? "red" : "#ffffff")};
@@ -102,15 +103,15 @@ const Char = styled.div`
   }
 `;
 
-const Opportunity = () => {
+const NextYear = () => {
   const { state, dispatch } = useGlobalState();
-  const charLimit = 2000;
+  const charLimit = 10000;
 
   const handleChange = (value) => {
-    dispatch({ type: "SET_OPPORTUNITY", payload: value });
+    dispatch({ type: "SET_NEXT_YEAR_PREDICTION", payload: value });
   };
 
-  const isOverLimit = state.opportunity.length > charLimit;
+  const isOverLimit = state.prediction2024.length > charLimit;
 
   const modules = {
     toolbar: [
@@ -144,23 +145,22 @@ const Opportunity = () => {
 
   return (
     <>
-      <Label>اگر فرصتی برای حل یک مشکل داشتی آن مشکل چی بود؟</Label>
-
+      <Label>پیش بینی شما برای سال ۱۴۰۴ چیست؟</Label>
       <EditorContainer>
         <ReactQuill
-          value={state.opportunity}
+          value={state.prediction2024}
           onChange={handleChange}
           modules={modules}
           formats={formats}
-          // placeholder="اگر فرصتی برای حل یک مشکل داشتی آن مشکل چی بود؟"
+          // placeholder="پیش بینی شما برای سال ۱۴۰۳ چیست؟"
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>
-        <span>{convertToPersian(state.opportunity.length)} کاراکتر</span>
+        <span>{convertToPersian(state.prediction2024.length)} کاراکتر</span>
         <CiEdit size={20} />
       </Char>
     </>
   );
 };
 
-export default Opportunity;
+export default NextYear;

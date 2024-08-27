@@ -10,7 +10,7 @@ const initialState = {
   memory: "",
   opportunity: "",
   prediction2023: "",
-  prediction2043: "",
+  prediction2024: "",
 };
 
 
@@ -35,7 +35,7 @@ const reducer = (state, action) => {
     case "SET_PREDICTION_2023":
       return { ...state, prediction2023: action.payload };
     case "SET_NEXT_YEAR_PREDICTION":
-      return { ...state, prediction2043: action.payload };
+      return { ...state, prediction2024: action.payload };
     default:
       return state;
   }

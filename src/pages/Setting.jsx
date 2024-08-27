@@ -5,7 +5,7 @@ import Tabs from "../components/Tabs";
 import { useState } from "react";
 
 const Setting = () => {
-  const [active, setActive] = useState("public");
+  const [active, setActive] = useState("aboutme");
   const tabs = [
     { key: "public", label: "تنظیمات عمومی" },
     { key: "account", label: "حساب کاربری" },
