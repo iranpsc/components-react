@@ -15,6 +15,7 @@ const EditorContainer = styled.div`
   margin: 10px auto;
   height: 212px;
   overflow: auto;
+  
   .ql-toolbar {
     background-color: #2c2c2c;
     border: none;
@@ -26,12 +27,13 @@ const EditorContainer = styled.div`
     color: white;
     border: none;
     direction: rtl;
-    text-align: right;   }
+    text-align: right;
+  }
 
   .ql-editor {
     min-height: 150px;
     direction: rtl;
-    text-align: right; 
+    text-align: right;
   }
 
   .ql-editor::before {
@@ -39,7 +41,7 @@ const EditorContainer = styled.div`
     color: #a0a0ab;
     font-style: italic;
     position: absolute;
-    left: 0; 
+    left: 0;
     right: 20px;
     font-family: inherit;
     text-align: right;
@@ -109,10 +111,14 @@ const Memory = () => {
   const charLimit = 2000;
 
   const handleChange = (value) => {
-    dispatch({ type: "SET_MEMORY", payload: value });
+    if (value.length <= charLimit) {
+      dispatch({ type: "SET_MEMORY", payload: value });
+    }
   };
 
-  const isOverLimit = state.memory.length > charLimit;
+  const currentLength = state.memory.length;
+  const remainingChars = charLimit - currentLength;
+  const isOverLimit = remainingChars <= 0;
 
   const modules = {
     toolbar: [
@@ -157,7 +163,7 @@ const Memory = () => {
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>
-        <span>{convertToPersian(state.memory.length)} کاراکتر</span>
+        <span>{convertToPersian(remainingChars)} کاراکتر</span>
         <CiEdit size={20} />
       </Char>
     </>

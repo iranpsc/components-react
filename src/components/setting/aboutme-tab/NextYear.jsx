@@ -15,6 +15,7 @@ const EditorContainer = styled.div`
   margin: 10px auto;
   height: 212px;
   overflow: auto;
+
   .ql-toolbar {
     background-color: #2c2c2c;
     border: none;
@@ -106,12 +107,16 @@ const Char = styled.div`
 const NextYear = () => {
   const { state, dispatch } = useGlobalState();
   const charLimit = 10000;
-
+console.log(state);
   const handleChange = (value) => {
-    dispatch({ type: "SET_NEXT_YEAR_PREDICTION", payload: value });
+    if (value.length <= charLimit) {
+      dispatch({ type: "SET_NEXT_YEAR_PREDICTION", payload: value });
+    }
   };
 
-  const isOverLimit = state.prediction2024.length > charLimit;
+  const currentLength = state.prediction2024.length;
+  const remainingChars = charLimit - currentLength;
+  const isOverLimit = remainingChars <= 0;
 
   const modules = {
     toolbar: [
@@ -152,11 +157,11 @@ const NextYear = () => {
           onChange={handleChange}
           modules={modules}
           formats={formats}
-          // placeholder="پیش بینی شما برای سال ۱۴۰۳ چیست؟"
+          // placeholder="پیش بینی شما برای سال ۱۴۰۴ چیست؟"
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>
-        <span>{convertToPersian(state.prediction2024.length)} کاراکتر</span>
+        <span>{convertToPersian(remainingChars)} کاراکتر</span>
         <CiEdit size={20} />
       </Char>
     </>

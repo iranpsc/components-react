@@ -97,10 +97,15 @@ const About = () => {
   const charLimit = 10000;
 
   const handleChange = (value) => {
-    dispatch({ type: "SET_ABOUT", payload: value });
+    // Update state only if the new text length is within the limit
+    if (value.length <= charLimit) {
+      dispatch({ type: "SET_ABOUT", payload: value });
+    }
   };
 
-  const isOverLimit = state.about.length > charLimit;
+  const currentLength = state.about.length;
+  const remainingChars = charLimit - currentLength;
+  const isOverLimit = remainingChars <= 0;
 
   const modules = {
     toolbar: [
@@ -145,7 +150,7 @@ const About = () => {
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>
-        <span>{convertToPersian(state.about.length)} کاراکتر</span>
+        <span>{convertToPersian(remainingChars)} کاراکتر</span>
         <CiEdit size={20} />
       </Char>
     </>

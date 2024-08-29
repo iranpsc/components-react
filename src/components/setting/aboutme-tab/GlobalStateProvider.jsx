@@ -6,7 +6,8 @@ const initialState = {
   job: "",
   hobbies: [],
   country: "",
-  languages: [],
+  language: '',
+  city: '',
   memory: "",
   opportunity: "",
   prediction2023: "",
@@ -26,8 +27,10 @@ const reducer = (state, action) => {
       return { ...state, hobbies: action.payload };
     case "SET_COUNTRY":
       return { ...state, country: action.payload };
-    case "SET_LANGUAGES":
-      return { ...state, languages: action.payload };
+    case "SET_CITY":
+      return { ...state, city: action.payload };
+    case "SET_LANGUAGE":
+      return { ...state, language: action.payload };
     case "SET_MEMORY":
       return { ...state, memory: action.payload };
     case "SET_OPPORTUNITY":

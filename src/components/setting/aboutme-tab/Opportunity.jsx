@@ -15,6 +15,7 @@ const EditorContainer = styled.div`
   margin: 10px auto;
   height: 212px;
   overflow: auto;
+  
   .ql-toolbar {
     background-color: #2c2c2c;
     border: none;
@@ -26,12 +27,13 @@ const EditorContainer = styled.div`
     color: white;
     border: none;
     direction: rtl;
-    text-align: right;   }
+    text-align: right;
+  }
 
   .ql-editor {
     min-height: 150px;
     direction: rtl;
-    text-align: right; 
+    text-align: right;
   }
 
   .ql-editor::before {
@@ -39,7 +41,7 @@ const EditorContainer = styled.div`
     color: #a0a0ab;
     font-style: italic;
     position: absolute;
-    left: 0; 
+    left: 0;
     right: 20px;
     font-family: inherit;
     text-align: right;
@@ -75,6 +77,7 @@ const EditorContainer = styled.div`
     background-color: #555;
   }
 `;
+
 const Label = styled.h2`
   color: #ffffff;
   display: block;
@@ -84,6 +87,7 @@ const Label = styled.h2`
   margin-top: 20px;
   direction: rtl;
 `;
+
 const Char = styled.div`
   display: flex;
   justify-content: end;
@@ -107,10 +111,15 @@ const Opportunity = () => {
   const charLimit = 2000;
 
   const handleChange = (value) => {
-    dispatch({ type: "SET_OPPORTUNITY", payload: value });
+    // Only update state if the new text length is within the character limit
+    if (value.length <= charLimit) {
+      dispatch({ type: "SET_OPPORTUNITY", payload: value });
+    }
   };
 
-  const isOverLimit = state.opportunity.length > charLimit;
+  const currentLength = state.opportunity.length;
+  const remainingChars = charLimit - currentLength;
+  const isOverLimit = remainingChars <= 0;
 
   const modules = {
     toolbar: [
@@ -156,7 +165,7 @@ const Opportunity = () => {
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>
-        <span>{convertToPersian(state.opportunity.length)} کاراکتر</span>
+        <span>{convertToPersian(remainingChars)} کاراکتر</span>
         <CiEdit size={20} />
       </Char>
     </>

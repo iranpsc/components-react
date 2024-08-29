@@ -2,6 +2,7 @@ import brush from "../../../assets/images/settings/brush.png";
 import bubble from "../../../assets/images/settings/bubble.png";
 import clock from "../../../assets/images/settings/clock.png";
 import coffee from "../../../assets/images/settings/coffee.png";
+import { convertToPersian } from "../../../lib/convertToPersian";
 import cpu from "../../../assets/images/settings/cpu.png";
 import dollar from "../../../assets/images/settings/dollar-circle.png";
 import ghost from "../../../assets/images/settings/ghost.png";
@@ -99,7 +100,9 @@ const CheckboxLabel = styled.label`
 const Hobby = () => {
   const { state, dispatch } = useGlobalState();
   const maxHobbies = 5;
-  const limitReached = state.hobbies.length >= maxHobbies;
+  const selectedHobbiesCount = state.hobbies.length;
+  const remainingHobbies = maxHobbies - selectedHobbiesCount;
+  const limitReached = selectedHobbiesCount >= maxHobbies;
 
   const hobbies = [
     { id: 1, name: "ساز و موسیقی", icon: music },
@@ -132,7 +135,7 @@ const Hobby = () => {
     <Container>
       <Div limitReached={limitReached}>
         <Label>علایق (نام شهروند)</Label>
-        <h4>۵ مورد انتخاب کنید</h4>
+        <h4>{`${convertToPersian(remainingHobbies)} مورد انتخاب کنید`}</h4>
       </Div>
       <CheckboxContainer>
         {hobbies.map((hobby) => (
