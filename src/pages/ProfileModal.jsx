@@ -11,12 +11,21 @@ const ProfileModal = () => {
     { key: "total", label: "کلیات" },
     { key: "property", label: "دارایی" },
     { key: "transactions", label: "تراکنش ها" },
-    { key: "dynasty", label: "سلسله" }
+    { key: "dynasty", label: "سلسله" },
   ];
+
+  const subdomain =
+    active === "dynasty"
+      ? "سلسله"
+      : active === "transactions"
+      ? "تراکنش ها"
+      : active === "property"
+      ? "دارایی"
+      : "کلیات";
 
   return (
     <Modal>
-      <Header profile title="حساب کاربری" />
+      <Header profile title="حساب کاربری" subdomain={subdomain} />
       <Tabs tabs={tabs} active={active} setActive={setActive} />
       <ProfileInfo active={active} />
     </Modal>

@@ -6,6 +6,7 @@ import { IoIosClose } from "react-icons/io";
 import { PiGearSixFill } from "react-icons/pi";
 import { TiWarning } from "react-icons/ti";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const IconWrapper = styled.div`
@@ -113,20 +114,24 @@ const FullWrapper = styled.div`
   }
 `;
 
-const Header = ({ title, long, loading, profile }) => {
+const Header = ({ title, long, loading, profile, subdomain }) => {
   const [openEducation, setOpenEducation] = useState(false);
+  const navigate = useNavigate();
+  const reportsHandler = () => {
+    navigate("/reports", { state: { title, subdomain } });
+  };
   return (
     <HeaderWrapper>
       <Text long={long}>{title}</Text>
       <Icons>
         {loading && (
           <FullWrapper>
-            <BiExitFullscreen scale={0.1}/>
+            <BiExitFullscreen scale={0.1} />
           </FullWrapper>
         )}
         {profile && (
           <>
-            <IconWrapper>
+            <IconWrapper  onClick={reportsHandler} style={{ cursor: "pointer" }}>
               <TiWarning />
             </IconWrapper>
             <IconWrapper>

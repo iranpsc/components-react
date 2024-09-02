@@ -12,6 +12,7 @@ import { LoaderProvider } from "./LoaderProvider";
 import Notification from "./pages/Notification";
 import ProfileModal from "./pages/ProfileModal";
 import Profit from "./pages/Profit";
+import Reports from "./pages/Reports";
 import Search from "./pages/Search";
 import Setting from "./pages/Setting";
 import ShopModal from "./pages/ShopModal";
@@ -46,6 +47,7 @@ function App() {
             <Route path="/notification" element={<Notification />} />
             <Route path="/setting" element={<Setting />} />
             <Route path="/challenge" element={<Challenge />} />
+            <Route path="/reports" element={<Reports />} />
           </Routes>
         </Wrapper>
         <ToastContainer
