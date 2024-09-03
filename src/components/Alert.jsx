@@ -22,6 +22,7 @@ const Container = styled.div`
 const Right = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
 `;
 const Texts = styled.div``;

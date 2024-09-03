@@ -129,7 +129,7 @@ const Description = () => {
         { indent: "-1" },
         { indent: "+1" },
       ],
-      ["link", "image", "code-block"],
+      ["link", "code-block"],
       [{ align: [] }],
     ],
   };
@@ -145,7 +145,6 @@ const Description = () => {
     "bullet",
     "indent",
     "link",
-    "image",
     "code-block",
     "align",
   ];

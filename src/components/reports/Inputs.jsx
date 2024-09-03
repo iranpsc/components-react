@@ -38,9 +38,12 @@ const Title = styled.div`
     padding: 10px 12px;
     outline: none;
     color: #84858f;
-    width: 96.5%;
+    width: 94%;
     font-size: 16px;
     font-weight: 400;
+    @media (min-width: 1366px) {
+      width: 96.5%;
+    }
   }
 `;
 
@@ -61,7 +64,7 @@ const Inputs = () => {
 
   const titleHandler = (e) => {
     const value = e.target.value;
-    if (value.length < 21) {
+    if (value.length < 201) {
       dispatch({ type: "SET_TITLE", payload: value });
     }
   };

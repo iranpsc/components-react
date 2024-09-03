@@ -1,9 +1,14 @@
+import React, { useContext, useEffect, useRef, useState } from "react";
+
+import Alert from "../Alert";
+import { AlertContext } from "../../App";
 import Button from "../Button";
 import Description from "./Description";
 import Inputs from "./Inputs";
 import SendFiles from "./SendFiles";
 import Title from "../Title";
 import styled from "styled-components";
+import { useGlobalState } from "./GlobalReportStateProvider";
 
 const Container = styled.div`
   padding: 20px 0;
@@ -25,6 +30,9 @@ const Container = styled.div`
   }
   @media (min-width: 910px) {
     height: 254px;
+  }
+  @media (min-width: 930px) {
+    height: 270px;
   }
   @media (min-width: 1024px) {
     height: 380px;
@@ -54,20 +62,83 @@ const Container = styled.div`
   }
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: right;
+`;
+
 const ErrorReportTab = ({ title, subdomain }) => {
+  const { state, dispatch } = useGlobalState();
+  const { alert, setAlert } = useContext(AlertContext);
+  const [error, setError] = useState("");
+  const containerRef = useRef(null);
+
+  const resetForm = () => {
+    dispatch({ type: "SET_SUBJECT", payload: "" });
+    dispatch({ type: "SET_TITLE", payload: "" });
+    dispatch({ type: "SET_DESCRIPTION", payload: "" });
+    dispatch({ type: "SET_FILES", payload: [] });
+  };
+
+  const sendReport = () => {
+    if (
+      state.subject &&
+      state.title &&
+      state.description &&
+      state.files.length > 0
+    ) {
+      if (containerRef.current) {
+        containerRef.current.scrollTo(0, 0); 
+      }
+      setAlert(true);
+      setError(""); 
+
+
+      setTimeout(() => {
+        resetForm();
+      }, 2000);
+
+
+      setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+    } else {
+      setError("تمامی فیلدها باید قبل از ارسال گزارش پر شوند");
+    }
+  };
+
+  useEffect(() => {
+    if (alert) {
+      const timer = setTimeout(() => {
+        setAlert(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [alert, setAlert]);
+
   return (
-    <Container>
+    <Container ref={containerRef}>
       <Title title="گزارش خطا" right />
       <p>
         گزارش خود را از صفحه <span>{title}</span> بخش <span>{subdomain}</span>{" "}
         بنویسید
       </p>
+      {alert && (
+        <Alert
+          type="success"
+          text={`گزارش شما با عنوان ${state.title} با موفقیت ارسال شد`}
+        />
+      )}
       <Inputs />
       <Description />
       <SendFiles />
       <div dir="rtl">
-        <Button fit label="ارسال گزارش" />
+        <Button fit label="ارسال گزارش" onclick={sendReport} />
       </div>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };

@@ -12,6 +12,7 @@ import { useState } from "react";
 const IconWrapper = styled.div`
   width: 11px;
   height: 11px;
+  z-index: 0;
   border-radius: 100%;
   display: flex;
   align-items: center;

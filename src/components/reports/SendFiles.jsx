@@ -1,8 +1,10 @@
+import React, { useState } from "react";
+
 import Title from "../Title";
+import nonPhoto from '../../assets/images/reports/file.png';
 import remove from "../../assets/images/reports/remove.png";
 import styled from "styled-components";
 import { useGlobalState } from "./GlobalReportStateProvider";
-import { useState } from "react";
 
 const Files = styled.div`
   display: flex;
@@ -45,7 +47,6 @@ const FilePreview = styled.div`
   align-items: center;
   margin-right: 10px;
   border-radius: 10px;
-  /* border: 1px solid gray; */
 `;
 
 const FileImage = styled.img`
@@ -53,7 +54,7 @@ const FileImage = styled.img`
   height: 140px;
   border: 1px solid #454545;
   border-radius: 10px;
-  object-fit: cover;
+  object-fit: contain;
   position: relative;
   margin-bottom: 5px;
 `;
@@ -69,15 +70,43 @@ const RemoveButton = styled.img`
   bottom: 10px;
 `;
 
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 14px;
+  margin: 10px 0;
+`;
+
 const SendFiles = () => {
   const { state, dispatch } = useGlobalState();
   const [previews, setPreviews] = useState([]);
+  const [error, setError] = useState("");
+console.log(state.files);
+  const MAX_FILE_SIZE_MB = 9;
 
   const fileHandler = (e) => {
+    setError("");
+
     const files = Array.from(e.target.files);
-    const filePreviews = files.map((file) => URL.createObjectURL(file));
-    setPreviews([...previews, ...filePreviews]);
-    dispatch({ type: "SET_FILES", payload: [...state.files, ...files] });
+    let filePreviews = [];
+    let isError = false;
+
+    files.forEach((file) => {
+      if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+        setError(`سایز ${file.name} نباید بیشتر از ${MAX_FILE_SIZE_MB} MB باشد.`);
+        isError = true;
+      } else {
+        if (file.type.startsWith("image/")) {
+          filePreviews.push(URL.createObjectURL(file));
+        } else {
+          filePreviews.push(nonPhoto);
+        }
+      }
+    });
+
+    if (!isError) {
+      setPreviews([...previews, ...filePreviews]);
+      dispatch({ type: "SET_FILES", payload: [...state.files, ...files] });
+    }
   };
 
   const removeFile = (index) => {
@@ -97,7 +126,7 @@ const SendFiles = () => {
       <Files>
         {previews.map((preview, index) => (
           <FilePreview key={index}>
-            <FileImage src={preview} alt={`file-preview-${index}`} />
+            <FileImage src={preview} alt={`file-preview-${index}`}/>
             <RemoveButton
               src={remove}
               alt="remove"
@@ -107,16 +136,19 @@ const SendFiles = () => {
             />
           </FilePreview>
         ))}
-        <Div onClick={handleDivClick}>
-          <span>+</span>
-          <HiddenInput
-            id="file-input"
-            type="file"
-            onChange={fileHandler}
-            multiple
-          />
-        </Div>
+        {state.files.length < 5 && (
+          <Div onClick={handleDivClick}>
+            <span>+</span>
+            <HiddenInput
+              id="file-input"
+              type="file"
+              onChange={fileHandler}
+              multiple
+            />
+          </Div>
+        )}
       </Files>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
   );
 };
