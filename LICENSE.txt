@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 Behesht Supply Chain Cooperative Company
+Copyright (c) 2024 Paradise Supply Chain Cooperative Company
 
 This project was developed using Rocket.
 
