@@ -1,6 +1,7 @@
 import { BiEditAlt } from "react-icons/bi";
 import { HiOutlineTrash } from "react-icons/hi";
 import Result from "./Result";
+import { convertToPersian } from "../lib/convertToPersian";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -8,6 +9,7 @@ const Wrapper = styled.div`
   background-color: #1a1a18;
   padding: 15px;
   display: grid;
+  direction: rtl;
   grid-template-columns: 4fr 1fr;
 `;
 
@@ -16,7 +18,7 @@ const Results = styled.div`
   gap: 20px;
   grid-template-columns: 1fr;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr;
   }
   @media (min-width: 1200px) {
     grid-template-columns: 2fr 2fr 2fr 1fr;
@@ -68,7 +70,12 @@ const Value = styled.p`
   font-weight: 400;
 `;
 
-const ResultInfo = ({ setAssign, rial, psc }) => {
+const ResultInfo = ({ setAssign, rial, psc, setPsc, setRial }) => {
+  const deleteHandler = () => {
+    setPsc('');
+    setRial('');
+    setAssign(false);
+  };
   return (
     <Wrapper>
       <Results>
@@ -76,16 +83,19 @@ const ResultInfo = ({ setAssign, rial, psc }) => {
         <Result title="قیمت فروش(PSC)" value={psc} />
         <ResultWrapper>
           <Title>قیمت نهایی</Title>
-          <Value>{rial}IRR / {psc} PSC</Value>
+          <Value dir="ltr">
+            {convertToPersian(rial)} IRR /{" "}
+            {convertToPersian(psc)} PSC
+          </Value>
         </ResultWrapper>
-        <Result title="کارمزد" value={5} />
+        <Result title="کارمزد" value={"5%"} />
       </Results>
       <Actions>
-        <ActionWrapper>
-          <HiOutlineTrash size={20} />
-        </ActionWrapper>
         <ActionWrapper onClick={() => setAssign(false)}>
           <BiEditAlt size={20} />
+        </ActionWrapper>
+        <ActionWrapper onClick={deleteHandler}>
+          <HiOutlineTrash size={20} />
         </ActionWrapper>
       </Actions>
     </Wrapper>

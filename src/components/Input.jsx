@@ -6,10 +6,13 @@ const Wrapper = styled.div`
   border: 1px solid #454545;
   overflow: hidden;
   border-radius: 5px;
-  height: 50px;
+  height: 40px;
   padding: 0 10px;
   display: flex;
   width: 100%;
+  @media (min-width: 998px) {
+    height: 50px;
+  }
 `;
 
 const InputElement = styled.input`
@@ -20,14 +23,33 @@ const InputElement = styled.input`
   width: 100%;
   height: 100%;
   font-size: 16px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 const Span = styled.span`
   position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 5px;
   left: 10px;
-  top: 10px;
+  top: 5px;
   color: #dedee9;
+  @media (min-width: 998px) {
+    top: 10px;
+  }
 `;
-const Input = ({ type, placeholder, insideText, value, onchange, disabled }) => {
+const Input = ({
+  type,
+  placeholder,
+  insideText,
+  value,
+  gif,
+  onchange,
+  disabled,
+}) => {
   return (
     <Wrapper>
       <InputElement
@@ -37,7 +59,12 @@ const Input = ({ type, placeholder, insideText, value, onchange, disabled }) => 
         onChange={onchange}
         disabled={disabled}
       />
-      <Span>{insideText}</Span>
+      <Span>
+        {insideText}
+        {gif && (
+          <img width={30} height={30} loading="lazy" src={gif} alt="git" />
+        )}
+      </Span>
     </Wrapper>
   );
 };
