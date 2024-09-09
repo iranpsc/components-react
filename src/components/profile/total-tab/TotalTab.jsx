@@ -18,7 +18,7 @@ const Container = styled.div`
     height: 78%;
   }
   @media (min-width: 1024px) {
-    height: 78%;
+    height: 71%;
   }
   @media (min-width: 1400px) {
     height: 80%;

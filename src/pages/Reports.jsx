@@ -1,7 +1,6 @@
 import { GlobalReportStateProvider } from "../components/reports/GlobalReportStateProvider";
 import Header from "../components/Header";
 import Modal from "../components/Modal";
-import ProfileInfo from "../components/profile/ProfileInfo";
 import ReportsInfo from "../components/reports/ReportsInfo";
 import Tabs from "../components/Tabs";
 import { useLocation } from "react-router-dom";

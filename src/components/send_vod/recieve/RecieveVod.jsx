@@ -1,6 +1,7 @@
 import RecievedList from "./RecievedList";
 
-const RecieveRequest = () => {
+const RecieveVod = () => {
   return <RecievedList />;
 };
-export default RecieveRequest;
+
+export default RecieveVod;
