@@ -58,7 +58,7 @@ const WriteVodTab = () => {
     dispatch({ type: "SET_FILES", payload: [] });
   };
 
-  const sendReport = () => {
+  const sendVod = () => {
     if (
       state.subject &&
       state.title &&
@@ -109,7 +109,7 @@ const WriteVodTab = () => {
       <Description />
       <SendFiles files={state.files} onFilesChange={handleFilesChange} />
       <div dir="rtl">
-        <Button fit label="ارسال گزارش" onclick={sendReport} />
+        <Button fit label="ارسال سند" onclick={sendVod} />
       </div>
       {error && <ErrorMessage>{error}</ErrorMessage>}
     </Container>
