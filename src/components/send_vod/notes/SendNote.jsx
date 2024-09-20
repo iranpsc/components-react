@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Title from "../../Title";
-import nonPhoto from "../../../assets/images/reports/file.png";
 import remove from "../../../assets/images/reports/remove.png";
 import styled from "styled-components";
-import { useGlobalState } from "../GlobalVodStateProvider";
 
 const Files = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin: 20px 0;
 `;
 
 const Container = styled.div`
@@ -22,6 +19,7 @@ const Container = styled.div`
 const Div = styled.div`
   display: flex;
   align-items: center;
+  background-color: black;
   justify-content: center;
   gap: 10px;
   border: 1px dashed #454545;
@@ -76,83 +74,64 @@ const ErrorMessage = styled.div`
   margin: 10px 0;
 `;
 
-const SendNote = () => {
-  const { state, dispatch } = useGlobalState();
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 15px 0;
+`;
+
+const SendNote = ({ files, setFiles }) => {
   const [previews, setPreviews] = useState([]);
-  const [error, setError] = useState("");
-  console.log(state.files);
-  const MAX_FILE_SIZE_MB = 9;
 
-  const fileHandler = (e) => {
-    setError("");
+  useEffect(() => {
+    const filePreviews = files.map((file) => URL.createObjectURL(file));
+    setPreviews(filePreviews);
 
-    const files = Array.from(e.target.files);
-    let filePreviews = [];
-    let isError = false;
-
-    files.forEach((file) => {
-      if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-        setError(
-          `سایز ${file.name} نباید بیشتر از ${MAX_FILE_SIZE_MB} MB باشد.`
-        );
-        isError = true;
-      } else {
-        if (file.type.startsWith("image/")) {
-          filePreviews.push(URL.createObjectURL(file));
-        } else {
-          filePreviews.push(nonPhoto);
-        }
-      }
-    });
-
-    if (!isError) {
-      setPreviews([...previews, ...filePreviews]);
-      dispatch({ type: "SET_FILES", payload: [...state.files, ...files] });
-    }
-  };
-
-  const removeFile = (index) => {
-    const updatedFiles = state.files.filter((_, i) => i !== index);
-    const updatedPreviews = previews.filter((_, i) => i !== index);
-    setPreviews(updatedPreviews);
-    dispatch({ type: "SET_FILES", payload: updatedFiles });
-  };
+    return () => {
+      filePreviews.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [files]);
 
   const handleDivClick = () => {
     document.getElementById("file-input").click();
   };
 
+  const fileHandler = (event) => {
+    const newFiles = Array.from(event.target.files);
+    setFiles([...files, ...newFiles]); 
+  };
+
+  const handleRemove = (index) => {
+    const updatedFiles = files.filter((_, i) => i !== index);
+    setFiles(updatedFiles);
+  };
+
   return (
     <Container>
-      <Title title="ضمینه سند" />
-      <Files>
-        {previews.map((preview, index) => (
-          <FilePreview key={index}>
-            <FileImage src={preview} alt={`file-preview-${index}`} />
-            <RemoveButton
-              src={remove}
-              alt="remove"
-              width={36}
-              height={36}
-              onClick={() => removeFile(index)}
-            />
-          </FilePreview>
-        ))}
-        {state.files.length < 5 && (
-          <Div onClick={handleDivClick}>
-            <span>+</span>
-            <HiddenInput
-              id="file-input"
-              type="file"
-              onChange={fileHandler}
-              multiple
-            />
-          </Div>
-        )}
-      </Files>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <Title title='ضمینه یادداشت'/>
+      <Wrapper>
+        <Div onClick={handleDivClick}>
+          <span>+</span>
+          <HiddenInput
+            id="file-input"
+            type="file"
+            accept="image/*,video/*,.pdf"
+            multiple
+            onChange={fileHandler}
+          />
+        </Div>
+        <Files>
+          {previews.map((preview, index) => (
+            <FilePreview key={index}>
+              <FileImage src={preview} />
+              <RemoveButton src={remove} onClick={() => handleRemove(index)} />
+            </FilePreview>
+          ))}
+        </Files>
+      </Wrapper>
     </Container>
   );
 };
+
 
 export default SendNote;

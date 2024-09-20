@@ -1,5 +1,4 @@
-import AdminMessage from "../AdminMessage";
-import CitizenMessage from "../CitizenMessage";
+import CitizenMessage from "./CitizenMessage";
 import { EditContext } from "./NoteDetails";
 import EditNote from "./EditNote";
 import styled from "styled-components";
@@ -8,9 +7,8 @@ import { useContext } from "react";
 const Container = styled.div`
   direction: ltr;
 `;
-const NoteMessages = ({ member, description }) => {
+const NoteMessages = ({ member, id, description, files }) => {
   const { isEditing, setIsEditing } = useContext(EditContext);
-  console.log(isEditing);
   return (
     <Container>
       {!isEditing && (
@@ -18,11 +16,17 @@ const NoteMessages = ({ member, description }) => {
           member={member}
           isEditing={isEditing}
           description={description}
+          files={files}
         />
       )}
       {/* <AdminMessage /> */}
       {isEditing && (
-        <EditNote isEditing={isEditing} description={description} />
+        <EditNote
+          setIsEditing={setIsEditing}
+          description={description}
+          files={files}
+          id={id}
+        />
       )}
     </Container>
   );

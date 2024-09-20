@@ -20,7 +20,6 @@ const Table = styled.table`
   border-collapse: collapse;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  height: 430px;
 `;
 
 const TableHead = styled.thead`
@@ -30,6 +29,7 @@ const TableHead = styled.thead`
 `;
 
 const TableRow = styled.tr``;
+
 
 const TableHeader = styled.th`
   padding: 20px 10px;
@@ -48,26 +48,27 @@ const TableHeader = styled.th`
 `;
 
 const NotesList = ({ notes }) => {
+  const reversedNotes = [...notes].reverse();
   return (
     <Container>
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeader>
+            <TableHeader style={{width:"100px"}}>
               <div>کد یادداشت</div>
             </TableHeader>
-            <TableHeader>
+            <TableHeader style={{width:"350px"}}>
               <div>عنوان یادداشت</div>
             </TableHeader>
-            <TableHeader>
+            <TableHeader style={{width:"210px"}}>
               <div>عملیات ها</div>
             </TableHeader>
           </TableRow>
         </TableHead>
         <tbody>
-          {notes.map((note) => (
-            <Row key={note.id} {...note} />
-          ))}
+            {reversedNotes.map((note) => (
+              <Row key={note.id} {...note} />
+            ))}
         </tbody>
       </Table>
     </Container>

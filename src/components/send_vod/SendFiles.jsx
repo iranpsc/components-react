@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Title from "../Title";
 import nonPhoto from "../../assets/images/reports/file.png";
 import remove from "../../assets/images/reports/remove.png";
 import styled from "styled-components";
-import { useGlobalState } from "./GlobalVodStateProvider";
 
 const Files = styled.div`
   display: flex;
@@ -76,50 +75,54 @@ const ErrorMessage = styled.div`
   margin: 10px 0;
 `;
 
-const SendFiles = () => {
-  const { state, dispatch } = useGlobalState();
+const SendFiles = ({ files, onFilesChange }) => {
   const [previews, setPreviews] = useState([]);
   const [error, setError] = useState("");
-  console.log(state.files);
+  const fileInputRef = useRef(null);
   const MAX_FILE_SIZE_MB = 9;
+
+  useEffect(() => {
+    const filePreviews = files.map((file) =>
+      file.type.startsWith("image/") ? URL.createObjectURL(file) : nonPhoto
+    );
+    setPreviews(filePreviews);
+
+    return () => {
+      filePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    };
+  }, [files]);
 
   const fileHandler = (e) => {
     setError("");
 
-    const files = Array.from(e.target.files);
-    let filePreviews = [];
+    const newFiles = Array.from(e.target.files);
+    let newPreviews = [];
     let isError = false;
 
-    files.forEach((file) => {
+    newFiles.forEach((file) => {
       if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-        setError(
-          `سایز ${file.name} نباید بیشتر از ${MAX_FILE_SIZE_MB} MB باشد.`
-        );
+        setError(`سایز ${file.name} نباید بیشتر از ${MAX_FILE_SIZE_MB} MB باشد.`);
         isError = true;
       } else {
-        if (file.type.startsWith("image/")) {
-          filePreviews.push(URL.createObjectURL(file));
-        } else {
-          filePreviews.push(nonPhoto);
-        }
+        newPreviews.push(file.type.startsWith("image/") ? URL.createObjectURL(file) : nonPhoto);
       }
     });
 
     if (!isError) {
-      setPreviews([...previews, ...filePreviews]);
-      dispatch({ type: "SET_FILES", payload: [...state.files, ...files] });
+      setPreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
+      onFilesChange([...files, ...newFiles]); // Notify parent of file changes
     }
   };
 
   const removeFile = (index) => {
-    const updatedFiles = state.files.filter((_, i) => i !== index);
+    const updatedFiles = files.filter((_, i) => i !== index);
     const updatedPreviews = previews.filter((_, i) => i !== index);
     setPreviews(updatedPreviews);
-    dispatch({ type: "SET_FILES", payload: updatedFiles });
+    onFilesChange(updatedFiles); // Notify parent of file removal
   };
 
   const handleDivClick = () => {
-    document.getElementById("file-input").click();
+    fileInputRef.current.click();
   };
 
   return (
@@ -138,11 +141,11 @@ const SendFiles = () => {
             />
           </FilePreview>
         ))}
-        {state.files.length < 5 && (
+        {files.length < 5 && (
           <Div onClick={handleDivClick}>
             <span>+</span>
             <HiddenInput
-              id="file-input"
+              ref={fileInputRef}
               type="file"
               onChange={fileHandler}
               multiple

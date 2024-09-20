@@ -1,10 +1,10 @@
 import "react-quill/dist/quill.snow.css";
 
 import { CiEdit } from "react-icons/ci";
+import React from "react";
 import ReactQuill from "react-quill";
 import { convertToPersian } from "../../lib/convertToPersian";
 import styled from "styled-components";
-import { useGlobalState } from "./GlobalVodStateProvider";
 
 const EditorContainer = styled.div`
   background-color: #2c2c2c;
@@ -106,17 +106,9 @@ const Label = styled.h2`
   direction: rtl;
 `;
 
-const EditInput = ({ description }) => {
-  const { state, dispatch } = useGlobalState();
+const EditInput = ({ description, onChange }) => {
   const charLimit = 2000;
-
-  const handleChange = (value) => {
-    if (value.length <= charLimit) {
-      dispatch({ type: "SET_DESCRIPTION", payload: value });
-    }
-  };
-
-  const currentLength = state.description.length;
+  const currentLength = description.length;
   const remainingChars = charLimit - currentLength;
   const isOverLimit = remainingChars <= 0;
 
@@ -151,11 +143,11 @@ const EditInput = ({ description }) => {
 
   return (
     <>
-      <Label>پاسخ دادن به سند</Label>
+      <Label>ویرایش یادداشت</Label>
       <EditorContainer>
         <ReactQuill
           value={description}
-          onChange={handleChange}
+          onChange={onChange}
           modules={modules}
           formats={formats}
           // placeholder="پاسخ خود را بنویسید"

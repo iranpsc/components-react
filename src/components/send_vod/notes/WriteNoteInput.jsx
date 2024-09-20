@@ -106,59 +106,36 @@ const Label = styled.h2`
   direction: rtl;
 `;
 
-const WriteNoteInput = () => {
-  const { state, dispatch } = useGlobalState();
+const WriteNoteInput = ({ description, onChange }) => {
   const charLimit = 2000;
-
-  const handleChange = (value) => {
-    if (value.length <= charLimit) {
-      dispatch({ type: "SET_DESCRIPTION", payload: value });
-    }
-  };
-
-  const currentLength = state.description.length;
+  const currentLength = description.length;
   const remainingChars = charLimit - currentLength;
   const isOverLimit = remainingChars <= 0;
 
   const modules = {
     toolbar: [
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "code-block"],
       [{ align: [] }],
     ],
   };
 
   const formats = [
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "code-block",
-    "align",
+    "size", "bold", "italic", "underline", "strike", "blockquote",
+    "list", "bullet", "indent", "link", "code-block", "align"
   ];
 
   return (
     <>
-      <Label>یادداشت  خود را بنویسید</Label>
+      <Label>یادداشت خود را بنویسید</Label>
       <EditorContainer>
         <ReactQuill
-          value={state.description}
-          onChange={handleChange}
+          value={description}
+          onChange={onChange} // Handle description change
           modules={modules}
           formats={formats}
-          // placeholder="یادداشت  خود را بنویسید"
+          // placeholder="یادداشت خود را بنویسید"
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>

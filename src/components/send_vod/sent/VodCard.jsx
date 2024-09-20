@@ -92,7 +92,16 @@ const socials = [
   { id: 3, icon: insta },
   { id: 4, icon: send },
 ];
-const VodCard = ({ status, code, date, time, member, domain, subdomain }) => {
+const VodCard = ({
+  status,
+  code,
+  date,
+  time,
+  member,
+  domain,
+  subdomain,
+  setShowDetails,
+}) => {
   return (
     <Container>
       <Info>
@@ -136,13 +145,20 @@ const VodCard = ({ status, code, date, time, member, domain, subdomain }) => {
             {date} | {time}
           </h2>
         </Date>
-        <div style={{ marginRight: "auto" }}>
+        <div style={{ marginRight: "auto", display: "flex", gap: "10px" }}>
           <Button
             fit
-            onclick={() => {}}
+            onclick={() => setShowDetails(false)}
             color="#3B3B3B"
             textColor="#949494"
             label="بستن سند"
+          />
+          <Button
+            fit
+            onclick={() => setShowDetails(false)}
+            color="#3B3B3B"
+            textColor="#949494"
+            label="ثبت سند"
           />
         </div>
       </Content>

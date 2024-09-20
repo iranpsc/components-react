@@ -1,7 +1,5 @@
-import avatar from "../../assets/images/profile/slide.png";
-import download from "../../assets/images/reports/download.png";
-import file from "../../assets/images/reports/file.png";
-import photo from "../../assets/images/reports/photo.jpeg";
+import React from "react";
+import download from "../../../assets/images/reports/download.png";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -75,43 +73,50 @@ const Image = styled.div`
   }
 `;
 
-const handleDownload = (imageSrc, filename) => {
+const handleDownload = (url, filename) => {
   const link = document.createElement("a");
-  link.href = imageSrc;
+  link.href = url;
   link.download = filename;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
+const stripHtmlTags = (htmlString) => {
+  const div = document.createElement("div");
+  div.innerHTML = htmlString;
+  return div.textContent || div.innerText || "";
+};
+const CitizenMessage = ({ isEditing, description, files }) => {
+  const filePreviews = files.map((file) => ({
+    ...file,
+    url: URL.createObjectURL(file),
+  }));
 
-const CitizenMessage = ({ isEditing, description }) => {
   return (
     <Container>
       <Content>
         <Files>
           <h2>متن یادداشت</h2>
-          <p>{description}</p>
+          <p>{stripHtmlTags(description)}</p>
           <div>
-            <Image>
-              <img src={photo} alt="file" width={200} height={179} />
-              <Download
-                src={download}
-                alt="download"
-                width={36}
-                height={36}
-                onClick={() => handleDownload(photo, "photo.jpeg")}
-              />
-            </Image>
-            <Image>
-              <img src={file} alt="file" width={200} height={179} />
-              <Download
-                src={download}
-                alt="download"
-                width={36}
-                height={36}
-                onClick={() => handleDownload(file, "file.png")}
-              />
-            </Image>
+            {filePreviews.length > 0 &&
+              filePreviews.map((file, index) => (
+                <Image key={index}>
+                  <img
+                    src={file.url}
+                    alt={file.name}
+                    width={200}
+                    height={179}
+                  />
+                  <Download
+                    src={download}
+                    alt="download"
+                    width={36}
+                    height={36}
+                    onClick={() => handleDownload(file.url, file.name)}
+                  />
+                </Image>
+              ))}
           </div>
         </Files>
       </Content>

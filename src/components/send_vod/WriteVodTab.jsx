@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import Alert from "../Alert";
 import { AlertContext } from "../../App";
@@ -16,49 +16,26 @@ const Container = styled.div`
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;
-  @media (min-width: 840px) {
-    height: 232px;
+  @media (min-width: 844px) {
+    height: 240px;
   }
   @media (min-width: 880px) {
-    height: 187px;
+    height: 190px;
   }
   @media (min-width: 890px) {
-    height: 256px;
-  }
-  @media (min-width: 900px) {
-    height: 274px;
-  }
-  @media (min-width: 910px) {
-    height: 254px;
+    height: 260px;
   }
   @media (min-width: 930px) {
-    height: 270px;
+    height: 280px;
   }
   @media (min-width: 1024px) {
     height: 380px;
-  }
-  @media (min-width: 1180px) {
-    height: 577px;
   }
   @media (min-width: 1280px) {
     height: 560px;
   }
   @media (min-width: 1366px) {
     height: 620px;
-  }
-  @media (min-width: 1920px) {
-    height: 622px;
-  }
-  p {
-    margin: 10px 0;
-    direction: rtl;
-    color: #dedee9;
-    font-size: 16px;
-    font-weight: 400;
-    span {
-      font-weight: 600;
-      color: white;
-    }
   }
 `;
 
@@ -69,12 +46,11 @@ const ErrorMessage = styled.div`
   text-align: right;
 `;
 
-const WriteVodTab = ({ title, subdomain }) => {
+const WriteVodTab = () => {
   const { state, dispatch } = useGlobalState();
   const { alert, setAlert } = useContext(AlertContext);
   const [error, setError] = useState("");
   const containerRef = useRef(null);
-
   const resetForm = () => {
     dispatch({ type: "SET_SUBJECT", payload: "" });
     dispatch({ type: "SET_TITLE", payload: "" });
@@ -107,12 +83,15 @@ const WriteVodTab = ({ title, subdomain }) => {
     }
   };
 
+  const handleFilesChange = (files) => {
+    dispatch({ type: "SET_FILES", payload: files });
+  };
+
   useEffect(() => {
     if (alert) {
       const timer = setTimeout(() => {
         setAlert(false);
       }, 2000);
-
       return () => clearTimeout(timer);
     }
   }, [alert, setAlert]);
@@ -128,7 +107,7 @@ const WriteVodTab = ({ title, subdomain }) => {
       )}
       <Inputs />
       <Description />
-      <SendFiles />
+      <SendFiles files={state.files} onFilesChange={handleFilesChange} />
       <div dir="rtl">
         <Button fit label="ارسال گزارش" onclick={sendReport} />
       </div>

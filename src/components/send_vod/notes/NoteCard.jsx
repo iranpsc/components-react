@@ -14,10 +14,12 @@ const Button = styled.div`
   border-radius: 10px;
   display: flex;
   padding: 10px 22px;
-  align-items: start;
   gap: 6px;
   cursor: pointer;
   color: #949494;
+  svg {
+    margin-top: 2px;
+  }
 `;
 
 const Container = styled.div`
@@ -108,13 +110,13 @@ const NoteCard = ({
   name,
   title,
   publish_date,
+  onRemove,
   description,
   date,
   time,
   member,
 }) => {
-  const { setIsEditing, isEditing } = useContext(EditContext);
-  console.log(isEditing);
+  const { isEditing, setIsEditing } = useContext(EditContext);
   return (
     <Container>
       <Info>
@@ -158,7 +160,7 @@ const NoteCard = ({
             alignItems: "start",
           }}
         >
-          <Button onClick={() => {}}>
+          <Button onClick={onRemove}>
             <GoTrash size={22} />
             <h4>حذف</h4>
           </Button>

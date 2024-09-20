@@ -117,6 +117,7 @@ const VodDetails = ({
             member={member}
             domain={domain}
             subdomain={subdomain}
+            setShowDetails={setShowDetails}
           />
           <Messages member={member} />
         </Div>

@@ -1,8 +1,10 @@
+import { useContext, useState } from "react";
+
 import Button from "../../Button";
 import { FiTrash2 } from "react-icons/fi";
+import { GlobalNoteStateContext } from "../GlobalNoteStateProvider";
 import NoteDetails from "../notes/NoteDetails";
 import styled from "styled-components";
-import { useState } from "react";
 
 const TableRow = styled.tr`
   background-color: transparent;
@@ -45,12 +47,21 @@ const Buttons = styled.div`
     }
   }
 `;
-
-const Row = ({ code, title, publish_date, name, description }) => {
+const Row = ({ id, code, title, publish_date, name, description, files }) => {
   const [showDetails, setShowDetails] = useState(false);
+  const { dispatch } = useContext(GlobalNoteStateContext);
+
+  const showHandler = () => {
+    setShowDetails(true);
+  };
+
+  const removeNoteHandler = () => {
+    dispatch({ type: "REMOVE_NOTE", payload: id });
+  };
+
   return (
     <>
-      <TableRow className="odd:bg-slate-50 hover:bg-black/10 py-5 duration-200">
+      <TableRow>
         <TableCell>
           <div>
             <Code>#{code}</Code>
@@ -63,25 +74,29 @@ const Row = ({ code, title, publish_date, name, description }) => {
         </TableCell>
         <TableCell>
           <Buttons>
-            <div>
+            <div onClick={removeNoteHandler}>
               <FiTrash2 size={20} />
             </div>
             <Button
               label="مشاهده"
               color="#3B3B3B"
               textColor="#FFFFFF"
-              onclick={() => setShowDetails(true)}
+              onclick={showHandler}
             />
           </Buttons>
         </TableCell>
       </TableRow>
+
       {showDetails && (
         <NoteDetails
           code={code}
           name={name}
+          onRemove={removeNoteHandler}
           title={title}
           publish_date={publish_date}
           description={description}
+          files={files}
+          id={id}
           setShowDetails={setShowDetails}
         />
       )}

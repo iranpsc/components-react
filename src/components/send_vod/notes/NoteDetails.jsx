@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 import NoteCard from "./NoteCard";
 import NoteMessages from "./NoteMessages";
@@ -99,16 +99,20 @@ const NoteDetails = ({
   status,
   code,
   title,
+  id,
+  onRemove,
   date,
   name,
   time,
   publish_date,
   description,
+  files,
   member,
   domain,
   subdomain,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
+  
   return (
     <EditContext.Provider value={{ isEditing, setIsEditing }}>
       <Back>
@@ -123,6 +127,7 @@ const NoteDetails = ({
               date={date}
               time={time}
               code={code}
+              onRemove={onRemove}
               name={name}
               title={title}
               description={description}
@@ -131,7 +136,12 @@ const NoteDetails = ({
               domain={domain}
               subdomain={subdomain}
             />
-            <NoteMessages member={member} description={description} />
+            <NoteMessages
+              member={member}
+              description={description}
+              files={files}
+              id={id}
+            />
           </Div>
         </Container>
       </Back>

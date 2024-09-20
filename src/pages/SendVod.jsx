@@ -15,15 +15,15 @@ const SendVod = () => {
   ];
 
   return (
-    <GlobalVodStateProvider>
-      <GlobalNoteStateProvider>
+    <GlobalNoteStateProvider>
+      <GlobalVodStateProvider>
         <Modal>
           <Header profile title="اسناد" />
           <Tabs tabs={tabs} active={active} setActive={setActive} />
           <VodsInfo active={active} />
         </Modal>
-      </GlobalNoteStateProvider>
-    </GlobalVodStateProvider>
+      </GlobalVodStateProvider>
+    </GlobalNoteStateProvider>
   );
 };
 

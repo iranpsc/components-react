@@ -19,19 +19,25 @@ const Container = styled.div`
   overflow-y: auto;
   height: 550px;
   @media (min-width: 640px) {
-    height: 290px;
+    height: 240px;
   }
   @media (min-width: 740px) {
-    height: 270px;
+    height: 225px;
   }
   @media (min-width: 840px) {
-    height: 290px;
+    height: 253px;
   }
   @media (min-width: 890px) {
-    height: 315px;
+    height: 290px;
+  }
+  @media (min-width: 910px) {
+    height: 275px;
+  }
+  @media (min-width: 915px) {
+    height: 275px;
   }
   @media (min-width: 930px) {
-    height: 330px;
+    height: 300px;
   }
   @media (min-width: 1024px) {
     height: 400px;
