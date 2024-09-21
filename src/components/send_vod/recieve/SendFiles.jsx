@@ -143,7 +143,6 @@ console.log(state.files);
               id="file-input"
               type="file"
               onChange={fileHandler}
-              multiple
             />
           </Div>
         )}

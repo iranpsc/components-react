@@ -24,7 +24,8 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: white;
+    color: #606060;
+    font-family: inherit;
     border: none;
     direction: rtl;
     text-align: right;

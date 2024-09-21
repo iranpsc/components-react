@@ -5,6 +5,7 @@ import ReactQuill from "react-quill";
 import { convertToPersian } from "../../../lib/convertToPersian";
 import styled from "styled-components";
 import { useGlobalState } from "../GlobalVodStateProvider";
+import { useState } from "react";
 
 const EditorContainer = styled.div`
   background-color: #2c2c2c;
@@ -15,7 +16,7 @@ const EditorContainer = styled.div`
   margin: 10px auto;
   height: 212px;
   overflow: auto;
-  
+
   .ql-toolbar {
     background-color: #2c2c2c;
     border: none;
@@ -24,7 +25,8 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: white;
+    color: #606060;
+    font-family: inherit;
     border: none;
     direction: rtl;
     text-align: right;
@@ -107,16 +109,16 @@ const Label = styled.h2`
 `;
 
 const ReplyInput = () => {
-  const { state, dispatch } = useGlobalState();
+  const [replyText, setReplyText] = useState("");
   const charLimit = 2000;
 
   const handleChange = (value) => {
     if (value.length <= charLimit) {
-      dispatch({ type: "SET_DESCRIPTION", payload: value });
+      setReplyText(value);
     }
   };
 
-  const currentLength = state.description.length;
+  const currentLength = replyText.length;
   const remainingChars = charLimit - currentLength;
   const isOverLimit = remainingChars <= 0;
 
@@ -154,7 +156,7 @@ const ReplyInput = () => {
       <Label>پاسخ دادن به سند</Label>
       <EditorContainer>
         <ReactQuill
-          value={state.description}
+          value={replyText}
           onChange={handleChange}
           modules={modules}
           formats={formats}

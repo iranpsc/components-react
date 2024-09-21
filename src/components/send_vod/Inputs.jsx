@@ -8,10 +8,13 @@ const Wrapper = styled.div``;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   margin-top: 20px;
   direction: rtl;
+  @media (min-width: 1366px) {
+    grid-template-columns: 1fr 2fr;
+  }
 `;
 
 const Subject = styled.div`
@@ -44,7 +47,7 @@ const Title = styled.div`
     padding: 10px 12px;
     outline: none;
     color: #84858f;
-    width: 94%;
+    width: 91%;
     font-size: 16px;
     font-weight: 400;
     @media (min-width: 1366px) {

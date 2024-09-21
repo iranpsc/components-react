@@ -24,7 +24,8 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: white;
+    color: #606060;
+    font-family: inherit;
     border: none;
     direction: rtl;
     text-align: right;
@@ -115,15 +116,30 @@ const WriteNoteInput = ({ description, onChange }) => {
   const modules = {
     toolbar: [
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
       ["link", "code-block"],
       [{ align: [] }],
     ],
   };
 
   const formats = [
-    "size", "bold", "italic", "underline", "strike", "blockquote",
-    "list", "bullet", "indent", "link", "code-block", "align"
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "code-block",
+    "align",
   ];
 
   return (
@@ -132,7 +148,7 @@ const WriteNoteInput = ({ description, onChange }) => {
       <EditorContainer>
         <ReactQuill
           value={description}
-          onChange={onChange} // Handle description change
+          onChange={onChange}
           modules={modules}
           formats={formats}
           // placeholder="یادداشت خود را بنویسید"

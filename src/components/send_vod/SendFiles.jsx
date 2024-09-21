@@ -110,7 +110,7 @@ const SendFiles = ({ files, onFilesChange }) => {
 
     if (!isError) {
       setPreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
-      onFilesChange([...files, ...newFiles]); // Notify parent of file changes
+      onFilesChange([...files, ...newFiles]); 
     }
   };
 
@@ -148,7 +148,6 @@ const SendFiles = ({ files, onFilesChange }) => {
               ref={fileInputRef}
               type="file"
               onChange={fileHandler}
-              multiple
             />
           </Div>
         )}

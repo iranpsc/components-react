@@ -26,6 +26,16 @@ const Content = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-top: 20px;
 `;
+
+const Buttons = styled.div`
+  margin-right: auto;
+  display: flex;
+  gap: 10px;
+  button{
+    white-space: nowrap;
+  }
+`;
+
 const Socials = styled.div`
   padding-right: 20px;
   border-right: 1px solid #454545;
@@ -145,7 +155,7 @@ const VodCard = ({
             {date} | {time}
           </h2>
         </Date>
-        <div style={{ marginRight: "auto", display: "flex", gap: "10px" }}>
+        <Buttons>
           <Button
             fit
             onclick={() => setShowDetails(false)}
@@ -160,7 +170,7 @@ const VodCard = ({
             textColor="#949494"
             label="ثبت سند"
           />
-        </div>
+        </Buttons>
       </Content>
     </Container>
   );

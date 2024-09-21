@@ -7,13 +7,16 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding: 20px 0;
-  width: 70%;
+  width: 90%;
   height: 80%;
   position: relative;
   border-radius: 10px;
   background-color: #000000;
   padding: 20px;
   z-index: 9999;
+  @media (min-width: 1366px) {
+    width: 70%;
+  }
 `;
 
 const Header = styled.div`
@@ -112,7 +115,7 @@ const NoteDetails = ({
   subdomain,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  
+
   return (
     <EditContext.Provider value={{ isEditing, setIsEditing }}>
       <Back>

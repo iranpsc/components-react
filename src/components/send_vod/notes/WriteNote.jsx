@@ -60,7 +60,7 @@ const WriteNote = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
-  
+
   useEffect(() => {
     if (alert) {
       const timer = setTimeout(() => {
@@ -108,7 +108,7 @@ const WriteNote = () => {
           type="text"
           placeholder="عنوان"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => title.length < 201 && setTitle(e.target.value)}
         />
       </Subject>
       <WriteNoteInput description={description} onChange={setDescription} />

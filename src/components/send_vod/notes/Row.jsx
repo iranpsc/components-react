@@ -33,7 +33,7 @@ const Buttons = styled.div`
   align-items: center;
   gap: 10px;
   div {
-    padding: 15px 22px;
+    padding: 13px 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,6 +44,11 @@ const Buttons = styled.div`
     cursor: pointer;
     &:hover {
       background-color: #c30000;
+    }
+  }
+  @media (min-width: 1366px) {
+    div {
+      padding: 15px 22px;
     }
   }
 `;
@@ -68,7 +73,7 @@ const Row = ({ id, code, title, publish_date, name, description, files }) => {
           </div>
         </TableCell>
         <TableCell>
-          <div>
+          <div style={{paddingRight:"25px"}}>
             <Code>{title}</Code>
           </div>
         </TableCell>
