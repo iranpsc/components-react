@@ -5,13 +5,14 @@ import Tabs from "../components/Tabs";
 import { useState } from "react";
 
 const ProfileModal = () => {
-  const [active, setActive] = useState("dynasty");
+  const [active, setActive] = useState("suggestion");
 
   const tabs = [
     { key: "total", label: "کلیات" },
     { key: "property", label: "دارایی" },
     { key: "transactions", label: "تراکنش ها" },
     { key: "dynasty", label: "سلسله" },
+    { key: "suggestion", label: "پیشنهادات" },
   ];
 
   const subdomain =
@@ -21,6 +22,8 @@ const ProfileModal = () => {
       ? "تراکنش ها"
       : active === "property"
       ? "دارایی"
+      : active === "suggestion"
+      ? "پیشنهادات"
       : "کلیات";
 
   return (
