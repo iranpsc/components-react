@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Button from "../../../Button";
+import ConfettiExplosion from "react-confetti-explosion";
 import { convertToPersian } from "../../../../lib/convertToPersian";
 import line from "../../../../assets/images/profile/Line.png";
 import pscpng from "../../../../assets/images/profile/psc.gif";
@@ -130,11 +131,25 @@ const Text = styled.div`
   }
 `;
 
+const RejectButton = styled.button`
+  background-color: #c30000;
+  color: #d7fbf0;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
+  position: relative;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-family: inherit;
+`;
+
 const Proposer = ({
   code,
   date,
   rial,
   psc,
+  onReject,
   information,
   initialHours,
   initialMinutes,
@@ -144,6 +159,7 @@ const Proposer = ({
   const [minutes, setMinutes] = useState(initialMinutes);
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isExploding, setIsExploding] = useState(false);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -213,7 +229,29 @@ const Proposer = ({
           </TimeBox>
         </TimeSection>
         <Buttons>
-          <Button label="رد پیشنهاد" color="#C30000" textColor="#FFFFFF" full />
+          <RejectButton
+            onClick={() => {
+              onReject();
+              setIsExploding(!isExploding);
+            }}
+          >
+            رد پیشنهاد
+            {isExploding && (
+              <ConfettiExplosion
+                style={{
+                  zIndex: 1000,
+                  position: "absolute",
+                  top: "10px",
+                  left: "120px",
+                }}
+                particleSize={5}
+                width={400}
+                height={"100vh"}
+                duration={3000}
+                colors={["#C30000"]}
+              />
+            )}
+          </RejectButton>{" "}
         </Buttons>
       </ProposalStatus>
     </Container>

@@ -1,4 +1,5 @@
 import Button from "../../../Button";
+import ConfettiExplosion from "react-confetti-explosion";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 import { convertToPersian } from "../../../../lib/convertToPersian";
 import line from "../../../../assets/images/profile/Line.png";
@@ -148,9 +149,32 @@ const Remained = styled.div`
   font-weight: 400;
 `;
 
-const Proposer = ({ code, date, rial, psc, information, percent }) => {
+const RejectButton = styled.button`
+  background-color: #C30000;
+  color: #d7fbf0;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  font-size: 16px;
+  position: relative;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-family: inherit;
+`;
+
+const Proposer = ({
+  code,
+  date,
+  rial,
+  psc,
+  information,
+  percent,
+  onReject,
+}) => {
   const [day, setDay] = useState(0);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isExploding, setIsExploding] = useState(false);
+
   const handleToggle = () => {
     setIsExpanded(!isExpanded);
   };
@@ -225,7 +249,29 @@ const Proposer = ({ code, date, rial, psc, information, percent }) => {
           </Div>
         )}
         <Buttons>
-          <Button label="رد پیشنهاد" color="#C30000" textColor="#FFFFFF" full />
+          <RejectButton
+            onClick={() => {
+              onReject();
+              setIsExploding(!isExploding);
+            }}
+          >
+            رد پیشنهاد
+            {isExploding && (
+              <ConfettiExplosion
+                style={{
+                  zIndex: 1000,
+                  position: "absolute",
+                  top: "10px",
+                  left: "120px",
+                }}
+                particleSize={5}
+                width={400}
+                height={"100vh"}
+                duration={3000}
+                colors={["#C30000"]}
+              />
+            )}
+          </RejectButton>
           <Button
             label="قبول پیشنهاد"
             color="#18C08F"
