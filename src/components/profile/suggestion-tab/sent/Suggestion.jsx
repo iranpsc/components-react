@@ -106,43 +106,35 @@ const Time = styled.div`
     margin-left: 70px;
   }
 `;
-const Meter = styled.div`
+
+const AreaContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
   background-color: #2c2c2c;
   border-radius: 6px;
   position: relative;
-  width: 100px;
-  height: 100px;
   background-image: url(${vector});
   background-size: cover;
 `;
 
-const DynamicDiv = styled.div`
-  position: absolute;
-  background-color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  font-size: 12px;
-  font-weight: bold;
-  z-index: 10;
+const StyledSVG = styled.svg`
+  width: 100%;
+  height: 100%;
 `;
-const Suggestion = ({
-  id,
-  property,
-  suggestions_list,
-  onRejectProposal,
-  x,
-  y,
-  z,
-  t,
-}) => {
+
+const Polygon = styled.polygon`
+  fill: white;
+  stroke-width: 2;
+`;
+
+const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
+  const points = property.coordinates
+    .map((coord) => `${coord.x},${coord.y}`)
+    .join(" ");
+
   const transitions = useTransition(suggestions_list, {
     from: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
     enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
@@ -152,14 +144,11 @@ const Suggestion = ({
     <Container>
       <Property>
         <Location>
-          <Meter>
-            <DynamicDiv
-              x={parseFloat(x)}
-              y={parseFloat(y)}
-              z={parseFloat(z)}
-              t={parseFloat(t)}
-            />
-          </Meter>
+          <AreaContainer>
+            <StyledSVG>
+              <Polygon points={points} />
+            </StyledSVG>
+          </AreaContainer>
           <div>
             <p>{property.location}</p>
             <h3>{property.code}</h3>
