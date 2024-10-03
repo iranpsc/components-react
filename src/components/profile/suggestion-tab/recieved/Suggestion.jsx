@@ -26,6 +26,7 @@ const Property = styled.div`
     align-items: center;
   }
 `;
+
 const Location = styled.div`
   display: flex;
   align-items: center;
@@ -42,11 +43,13 @@ const Location = styled.div`
     margin-top: 4px;
   }
 `;
+
 const Pricing = styled.div`
   display: flex;
   align-items: center;
   gap: 120px;
 `;
+
 const Price = styled.div`
   h2 {
     color: #a0a0ab;
@@ -54,6 +57,7 @@ const Price = styled.div`
     font-weight: 600;
   }
 `;
+
 const Prices = styled.div`
   display: flex;
   align-items: center;
@@ -70,6 +74,7 @@ const Prices = styled.div`
     font-weight: 500;
   }
 `;
+
 const Value = styled.div`
   div {
     display: flex;
@@ -87,6 +92,7 @@ const Value = styled.div`
     font-weight: 500;
   }
 `;
+
 const Suggestions = styled.div`
   display: grid;
   gap: 20px;
@@ -113,29 +119,40 @@ const StyledSVG = styled.svg`
 
 const Polygon = styled.polygon`
   fill: white;
-  stroke-width: 2;
+  stroke: black;
+  stroke-width: 1;
 `;
 
-const Suggestion = ({
-  id,
-  property,
-  suggestions_list,
-  onRejectProposal
-}) => {
-  const points = property.coordinates.map((coord) => `${coord.x},${coord.y}`).join(" ");
-  const transitions = useTransition(suggestions_list, {
-    from: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
-    enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-    leave: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
-  });
+const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
+  const xCoords = property.coordinates.map((coord) => coord.x);
+  const yCoords = property.coordinates.map((coord) => coord.y);
 
+  const minX = Math.min(...xCoords);
+  const maxX = Math.max(...xCoords);
+  const minY = Math.min(...yCoords);
+  const maxY = Math.max(...yCoords);
+
+  const normalizedPoints = property.coordinates
+    .map((coord) => {
+      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
+      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
+      return `${normalizedX},${normalizedY}`;
+    })
+    .join(" ");
+
+    const transitions = useTransition(suggestions_list, {
+      from: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
+      enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+      leave: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
+    });
+    
   return (
     <Container>
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG>
-              <Polygon points={points} />
+            <StyledSVG viewBox="-20 0 150 100">
+              <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
           <div>

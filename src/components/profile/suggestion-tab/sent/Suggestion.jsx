@@ -127,12 +127,25 @@ const StyledSVG = styled.svg`
 
 const Polygon = styled.polygon`
   fill: white;
-  stroke-width: 2;
+  stroke: black;
+  stroke-width: 1;
 `;
 
 const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
-  const points = property.coordinates
-    .map((coord) => `${coord.x},${coord.y}`)
+  const xCoords = property.coordinates.map((coord) => coord.x);
+  const yCoords = property.coordinates.map((coord) => coord.y);
+
+  const minX = Math.min(...xCoords);
+  const maxX = Math.max(...xCoords);
+  const minY = Math.min(...yCoords);
+  const maxY = Math.max(...yCoords);
+
+  const normalizedPoints = property.coordinates
+    .map((coord) => {
+      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
+      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
+      return `${normalizedX},${normalizedY}`;
+    })
     .join(" ");
 
   const transitions = useTransition(suggestions_list, {
@@ -145,8 +158,8 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG>
-              <Polygon points={points} />
+            <StyledSVG viewBox="-20 0 150 100">
+              <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
           <div>
