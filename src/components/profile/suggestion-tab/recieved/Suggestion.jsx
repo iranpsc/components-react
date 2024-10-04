@@ -134,8 +134,8 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
 
   const normalizedPoints = property.coordinates
     .map((coord) => {
-      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
-      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
+      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 50;
+      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 150;
       return `${normalizedX},${normalizedY}`;
     })
     .join(" ");
@@ -151,7 +151,7 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG viewBox="-20 0 150 100">
+            <StyledSVG viewBox="-62 10 180 130">
               <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
