@@ -133,26 +133,33 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
   const minY = Math.min(...yCoords);
   const maxY = Math.max(...yCoords);
 
+  const hasXGreaterThan50 = xCoords.some((x) => x > 50);
+
   const normalizedPoints = property.coordinates
     .map((coord) => {
-      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
+      const normalizedX =
+        coord.x > 50
+          ? ((coord.x - minX) / (maxX - minX)) * 40
+          : ((coord.x - minX) / (maxX - minX)) * 100;
       const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
       return `${normalizedX},${normalizedY}`;
     })
     .join(" ");
 
-    const transitions = useTransition(suggestions_list, {
-      from: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
-      enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
-      leave: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
-    });
-    
+  const transitions = useTransition(suggestions_list, {
+    from: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
+    enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
+    leave: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
+  });
+
   return (
     <Container>
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG viewBox="-30 -110 150 120">
+            <StyledSVG
+              viewBox={`-30 ${hasXGreaterThan50 ? -85 : -110} 150 120`}
+            >
               <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>

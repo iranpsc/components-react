@@ -8,6 +8,7 @@ import rial from "../../../../assets/images/profile/rial.gif";
 import styled from "styled-components";
 import vector from "../../../../assets/images/profile/Vector.png";
 
+// Styled Components
 const Container = styled.div`
   background-color: #1a1a18;
   padding: 10px;
@@ -26,15 +27,18 @@ const Property = styled.div`
     align-items: center;
   }
 `;
+
 const Location = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
   p {
     color: #dedee9;
     font-size: 16px;
     font-weight: 600;
   }
+
   h3 {
     color: #ffc700;
     font-size: 14px;
@@ -42,11 +46,13 @@ const Location = styled.div`
     margin-top: 4px;
   }
 `;
+
 const Pricing = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media (min-width: 1366px) {
     gap: 120px;
     width: auto;
@@ -59,28 +65,33 @@ const Value = styled.div`
     align-items: center;
     gap: 6px;
   }
+
   h2 {
     color: #a0a0ab;
     font-size: 14px;
     font-weight: 600;
   }
+
   span {
     color: #dedee9;
     font-size: 18px;
     font-weight: 500;
   }
 `;
+
 const Suggestions = styled.div`
   display: grid;
   gap: 20px;
   padding: 20px 0;
 `;
+
 const Owner = styled.div`
   p {
     color: #a0a0ab;
     font-size: 14px;
     font-weight: 600;
   }
+
   a {
     text-decoration: none;
     color: #0066ff;
@@ -96,12 +107,14 @@ const Time = styled.div`
     font-size: 14px;
     font-weight: 600;
   }
+
   h3 {
     color: #dedee9;
     font-size: 18px;
     font-weight: 500;
     margin-top: 4px;
   }
+
   @media (min-width: 1366px) {
     margin-left: 70px;
   }
@@ -132,6 +145,7 @@ const Polygon = styled.polygon`
   transform: rotate(270deg);
 `;
 
+// Component
 const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
   const xCoords = property.coordinates.map((coord) => coord.x);
   const yCoords = property.coordinates.map((coord) => coord.y);
@@ -141,9 +155,14 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
   const minY = Math.min(...yCoords);
   const maxY = Math.max(...yCoords);
 
+  const hasXGreaterThan50 = xCoords.some((x) => x > 50);
+
   const normalizedPoints = property.coordinates
     .map((coord) => {
-      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
+      const normalizedX =
+        coord.x > 50
+          ? ((coord.x - minX) / (maxX - minX)) * 40
+          : ((coord.x - minX) / (maxX - minX)) * 100;
       const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
       return `${normalizedX},${normalizedY}`;
     })
@@ -154,12 +173,15 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
     enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
     leave: { opacity: 0, transform: "translate3d(0, 40px, 0)" },
   });
+
   return (
     <Container>
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG viewBox="-30 -110 150 120">
+            <StyledSVG
+              viewBox={`-30 ${hasXGreaterThan50 ? -85 : -110} 150 120`}
+            >
               <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
@@ -170,25 +192,21 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
         </Location>
         <Pricing>
           <Owner>
-            <div>
-              <p>صاحب ملک</p>
-              <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
-                {property.owner}
-              </a>
-            </div>
+            <p>صاحب ملک</p>
+            <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">
+              {property.owner}
+            </a>
           </Owner>
           <Value>
             <h2>ارزش پایه</h2>
             <div>
-              <img width={24} height={24} src={red} />
+              <img width={24} height={24} src={red} alt="red-color" />
               <span>{property.value}</span>
             </div>
           </Value>
           <Time>
-            <div>
-              <p>تاریخ ثبت پیشنهاد</p>
-              <h3>{property.date}</h3>
-            </div>
+            <p>تاریخ ثبت پیشنهاد</p>
+            <h3>{property.date}</h3>
           </Time>
         </Pricing>
       </Property>
