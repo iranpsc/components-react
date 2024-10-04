@@ -45,6 +45,7 @@ const Prices = styled.div`
   }
   div {
     display: flex;
+  flex-wrap: wrap;
     align-items: center;
     gap: 6px;
   }
@@ -52,6 +53,7 @@ const Prices = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 16px;
 `;
