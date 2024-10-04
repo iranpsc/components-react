@@ -119,9 +119,8 @@ const StyledSVG = styled.svg`
 
 const Polygon = styled.polygon`
   fill: white;
-  stroke: black;
   stroke-width: 1;
-  transform: rotate(270deg);
+  transform: ${(props) => (props.hasXGreaterThan50 ? 'rotate(250deg)' : 'rotate(270deg)')};
 `;
 
 const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
@@ -141,7 +140,9 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
         coord.x > 50
           ? ((coord.x - minX) / (maxX - minX)) * 40
           : ((coord.x - minX) / (maxX - minX)) * 100;
-      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
+      const normalizedY = coord.x > 50
+      ? ((coord.y - minY) / (maxY - minY)) * 140
+      : ((coord.y - minY) / (maxY - minY)) * 100;
       return `${normalizedX},${normalizedY}`;
     })
     .join(" ");
@@ -158,9 +159,9 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
         <Location>
           <AreaContainer>
             <StyledSVG
-              viewBox={`-30 ${hasXGreaterThan50 ? -85 : -110} 150 120`}
+              viewBox={` ${hasXGreaterThan50 ? -15 : -30} ${hasXGreaterThan50 ? -85 : -110} 150 ${hasXGreaterThan50 ? 100 : 120}`}
             >
-              <Polygon points={normalizedPoints} />
+              <Polygon hasXGreaterThan50={hasXGreaterThan50} points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
           <div>
