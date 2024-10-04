@@ -129,6 +129,7 @@ const Polygon = styled.polygon`
   fill: white;
   stroke: black;
   stroke-width: 1;
+  transform: rotate(270deg);
 `;
 
 const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
@@ -142,8 +143,8 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
 
   const normalizedPoints = property.coordinates
     .map((coord) => {
-      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 50;
-      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 150;
+      const normalizedX = ((coord.x - minX) / (maxX - minX)) * 100;
+      const normalizedY = ((coord.y - minY) / (maxY - minY)) * 100;
       return `${normalizedX},${normalizedY}`;
     })
     .join(" ");
@@ -158,7 +159,7 @@ const Suggestion = ({ id, property, suggestions_list, onRejectProposal }) => {
       <Property>
         <Location>
           <AreaContainer>
-            <StyledSVG viewBox="-62 10 180 130">
+            <StyledSVG viewBox="-30 -110 150 120">
               <Polygon points={normalizedPoints} />
             </StyledSVG>
           </AreaContainer>
