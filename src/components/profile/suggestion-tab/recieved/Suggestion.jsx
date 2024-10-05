@@ -99,7 +99,7 @@ const Value = styled.div`
 const Suggestions = styled.div`
   display: grid;
   gap: 20px;
-  padding: 20px;
+  padding: 20px 0;
 `;
 
 const AreaContainer = styled.div`

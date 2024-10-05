@@ -6,6 +6,37 @@ import { useState } from "react";
 
 const Container = styled.div`
   margin: 20px 0;
+  height: 225px;
+  overflow-y: auto;
+  direction: ltr;
+  padding-right: 15px;
+  @media (min-width: 844px) {
+    height: 255px;
+  }
+  @media (min-width: 880px) {
+    height: 280px !important;
+  }
+  @media (min-width: 890px) {
+    height: 230px;
+  }
+  @media (min-width: 900px) {
+    height: 275px !important;
+  }
+  @media (min-width: 930px) {
+    height: 290px !important;
+  }
+  @media (min-width: 1024px) {
+    height: 280px;
+  }
+  @media (min-width: 1180px) {
+    height: 380px !important;
+  }
+  @media (min-width: 1280px) {
+    height: 577px;
+  }
+  @media (min-width: 1366px) {
+    height: 640px !important;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -13,37 +44,6 @@ const Wrapper = styled.div`
   align-items: start;
   gap: 20px;
   margin-top: 20px;
-  height: 190px;
-  overflow-y: auto;
-  direction: ltr;
-  padding-right: 15px;
-  @media (min-width: 844px) {
-    height: 205px;
-  }
-  @media (min-width: 880px) {
-    height: 158px;
-  }
-  @media (min-width: 890px) {
-    height: 230px;
-  }
-  @media (min-width: 900px) {
-    height: 225px;
-  }
-  @media (min-width: 930px) {
-    height: 244px;
-  }
-  @media (min-width: 1024px) {
-    height: 280px;
-  }
-  @media (min-width: 1180px) {
-    height: 550px;
-  }
-  @media (min-width: 1280px) {
-    height: 577px;
-  }
-  @media (min-width: 1366px) {
-    height: 590px;
-  }
 `;
 
 const suggestions_items = [
@@ -220,7 +220,7 @@ const RecievedSuggestion = () => {
   };
   return (
     <Container>
-      <Title title="پیشنهادات دریافتی" />
+      <Title right title="پیشنهادات دریافتی" />
       <Wrapper>
         {suggestions.map(
           (suggestion) =>

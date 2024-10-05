@@ -115,7 +115,8 @@ const Prices = styled.div`
 
 const Text = styled.div`
   margin-top: 16px;
-
+  padding-bottom: 20px;
+  border-bottom: 1px solid #454545;
   p {
     color: #dedee9;
     font-size: 16px;
@@ -128,6 +129,10 @@ const Text = styled.div`
     display: inline;
     font-weight: 400;
     cursor: pointer;
+  }
+  @media (min-width: 1366px) {
+    border: none;
+    padding-bottom: 0;
   }
 `;
 

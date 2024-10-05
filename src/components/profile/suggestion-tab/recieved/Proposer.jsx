@@ -45,7 +45,7 @@ const Prices = styled.div`
   }
   div {
     display: flex;
-  flex-wrap: wrap;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
   }
@@ -53,13 +53,13 @@ const Prices = styled.div`
 const Header = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 16px;
 `;
 const Text = styled.div`
   margin-top: 16px;
-
+  padding-bottom: 20px;
+  border-bottom: 1px solid #454545;
   p {
     color: #dedee9;
     font-size: 16px;
@@ -71,6 +71,10 @@ const Text = styled.div`
     display: inline;
     font-weight: 400;
     cursor: pointer;
+  }
+  @media (min-width: 1366px) {
+    border: none;
+    padding-bottom: 0;
   }
 `;
 const Person = styled.div`
@@ -131,8 +135,12 @@ const Days = styled.div`
 
 const Buttons = styled.div`
   display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-top: 16px;
+  @media (min-width: 1366px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Div = styled.div`
@@ -152,7 +160,7 @@ const Remained = styled.div`
 `;
 
 const RejectButton = styled.button`
-  background-color: #C30000;
+  background-color: #c30000;
   color: #d7fbf0;
   border-radius: 10px;
   font-weight: 600;
