@@ -1,5 +1,7 @@
 import "react-quill/dist/quill.snow.css";
 
+import { useEffect, useState } from "react";
+
 import { CiEdit } from "react-icons/ci";
 import ReactQuill from "react-quill";
 import { convertToPersian } from "../../lib/convertToPersian";
@@ -24,30 +26,44 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: #606060;
+    direction: rtl;
+    text-align: right;
+    border: none !important;
+  }
+
+  .ql-container * {
+    background-color: #2c2c2c;
+    color: #84858f;
     font-family: inherit;
-    border: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     direction: rtl;
     text-align: right;
   }
 
   .ql-editor {
+    background-color: #2c2c2c;
+    color: red !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     min-height: 150px;
     direction: rtl;
     text-align: right;
   }
 
-  .ql-editor::before {
-    content: attr(data-placeholder);
-    color: #a0a0ab;
-    font-style: italic;
-    position: absolute;
-    left: 0;
-    right: 20px;
-    font-family: inherit;
-    text-align: right;
-    pointer-events: none;
-    display: block;
+  .ql-editor:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .ql-editor:before,
+  .ql-editor:after {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .ql-toolbar .ql-picker {
@@ -110,14 +126,29 @@ const Label = styled.h2`
 const Description = () => {
   const { state, dispatch } = useGlobalState();
   const charLimit = 2000;
+  
+  const [description, setDescription] = useState(state.description); // Local state for the editor value
+
+  useEffect(() => {
+    setDescription(state.description); // Sync local state with global state
+  }, [state.description]);
 
   const handleChange = (value) => {
+    setDescription(value);
+    // Ensure the dispatch only occurs if the character limit is not exceeded
     if (value.length <= charLimit) {
       dispatch({ type: "SET_DESCRIPTION", payload: value });
     }
   };
 
-  const currentLength = state.description.length;
+  const handleKeyDown = (event) => {
+    // If character limit is reached and the key pressed is not backspace or delete
+    if (description.length >= charLimit && event.key !== "Backspace" && event.key !== "Delete") {
+      event.preventDefault(); // Prevent further input
+    }
+  };
+
+  const currentLength = description.length;
   const remainingChars = charLimit - currentLength;
   const isOverLimit = remainingChars <= 0;
 
@@ -155,11 +186,11 @@ const Description = () => {
       <Label>متن سند</Label>
       <EditorContainer>
         <ReactQuill
-          value={state.description}
+          value={description}
           onChange={handleChange}
+          onKeyDown={handleKeyDown} // Add the onKeyDown event
           modules={modules}
           formats={formats}
-          // placeholder="متن سند را بنویسید"
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>

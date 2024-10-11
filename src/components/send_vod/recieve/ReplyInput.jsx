@@ -4,7 +4,6 @@ import { CiEdit } from "react-icons/ci";
 import ReactQuill from "react-quill";
 import { convertToPersian } from "../../../lib/convertToPersian";
 import styled from "styled-components";
-import { useGlobalState } from "../GlobalVodStateProvider";
 import { useState } from "react";
 
 const EditorContainer = styled.div`
@@ -25,30 +24,44 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: #606060;
+    direction: rtl;
+    text-align: right;
+    border: none !important;
+  }
+
+  .ql-container * {
+    background-color: #2c2c2c;
+    color: #84858f;
     font-family: inherit;
-    border: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     direction: rtl;
     text-align: right;
   }
 
   .ql-editor {
+    background-color: #2c2c2c;
+    color: red !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     min-height: 150px;
     direction: rtl;
     text-align: right;
   }
 
-  .ql-editor::before {
-    content: attr(data-placeholder);
-    color: #a0a0ab;
-    font-style: italic;
-    position: absolute;
-    left: 0;
-    right: 20px;
-    font-family: inherit;
-    text-align: right;
-    pointer-events: none;
-    display: block;
+  .ql-editor:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .ql-editor:before,
+  .ql-editor:after {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .ql-toolbar .ql-picker {
@@ -86,11 +99,9 @@ const Char = styled.div`
   align-items: center;
   gap: 5px;
   direction: rtl;
-
   svg {
     color: ${({ isOverLimit }) => (isOverLimit ? "red" : "#ffffff")};
   }
-
   span {
     color: ${({ isOverLimit }) => (isOverLimit ? "red" : "#a0a0ab")};
     font-size: 13px;
@@ -108,13 +119,21 @@ const Label = styled.h2`
   direction: rtl;
 `;
 
-const ReplyInput = () => {
+const ReplyInput = ({ setMessage }) => {
   const [replyText, setReplyText] = useState("");
   const charLimit = 2000;
 
   const handleChange = (value) => {
     if (value.length <= charLimit) {
       setReplyText(value);
+      setMessage(value);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    const currentLength = replyText.length;
+    if (currentLength >= charLimit) {
+      e.preventDefault(); 
     }
   };
 
@@ -125,30 +144,14 @@ const ReplyInput = () => {
   const modules = {
     toolbar: [
       ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
+      [{ list: "ordered" }, { list: "bullet" }, { indent: "-1" }, { indent: "+1" }],
       ["link", "code-block"],
       [{ align: [] }],
     ],
   };
 
   const formats = [
-    "size",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-    "code-block",
-    "align",
+    "size", "bold", "italic", "underline", "strike", "blockquote", "list", "bullet", "indent", "link", "code-block", "align",
   ];
 
   return (
@@ -158,9 +161,9 @@ const ReplyInput = () => {
         <ReactQuill
           value={replyText}
           onChange={handleChange}
+          onKeyPress={handleKeyPress} 
           modules={modules}
           formats={formats}
-          // placeholder="پاسخ خود را بنویسید"
         />
       </EditorContainer>
       <Char isOverLimit={isOverLimit}>

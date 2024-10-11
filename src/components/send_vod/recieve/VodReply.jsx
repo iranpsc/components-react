@@ -1,11 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-import { AlertContext } from "../../../App";
 import Button from "../../Button";
 import ReplyInput from "./ReplyInput";
 import SendFiles from "./SendFiles";
 import styled from "styled-components";
-import { useGlobalState } from "../GlobalVodStateProvider";
 
 const Container = styled.div`
   background-color: #1a1a18;
@@ -14,56 +12,34 @@ const Container = styled.div`
   margin-top: 30px;
 `;
 
-const VodReply = () => {
-    const { state, dispatch } = useGlobalState();
-    const { alert, setAlert } = useContext(AlertContext);
-    const [error, setError] = useState("");
-    const containerRef = useRef(null);
-  
-    const resetForm = () => {
-      dispatch({ type: "SET_DESCRIPTION", payload: "" });
-      dispatch({ type: "SET_FILES", payload: [] });
-    };
-  
-    const saveVod = () => {
-      if (
-        state.description &&
-        state.files.length > 0
-      ) {
-        if (containerRef.current) {
-          containerRef.current.scrollTo(0, 0);
-        }
-        setAlert(true);
-        setError("");
-  
-        setTimeout(() => {
-          resetForm();
-        }, 2000);
-  
-        setTimeout(() => {
-          setAlert(false);
-        }, 2000);
-      } else {
-        setError("تمامی فیلدها باید قبل از ارسال گزارش پر شوند");
-      }
-    };
-  
-    useEffect(() => {
-      if (alert) {
-        const timer = setTimeout(() => {
-          setAlert(false);
-        }, 2000);
-  
-        return () => clearTimeout(timer);
-      }
-    }, [alert, setAlert]);
-  
+const VodReply = ({ setReply }) => {
+  const [message, setMessage] = useState("");
+  const [files, setFiles] = useState([]);
+
+  const containerRef = useRef(null);
+
+  const handleSendReply = () => {
+    setReply({
+      message: message.replace(/<[^>]+>/g, ""),
+      files,
+    });
+
+    setMessage("");
+    setFiles([]);
+
+    if (containerRef.current) {
+      containerRef.current.scrollIntoView({
+        behavior: "smooth", 
+      });
+    }
+  };
+
   return (
-    <Container>
-      <ReplyInput />
-      <SendFiles />
+    <Container ref={containerRef}>
+      <ReplyInput message={message} setMessage={setMessage} />
+      <SendFiles files={files} setFiles={setFiles} />
       <div dir="rtl">
-        <Button fit label="ارسال پاسخ" onclick={saveVod} />
+        <Button fit label="ارسال پاسخ" onclick={handleSendReply} />
       </div>
     </Container>
   );

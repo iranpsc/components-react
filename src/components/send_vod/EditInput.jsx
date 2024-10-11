@@ -24,30 +24,44 @@ const EditorContainer = styled.div`
 
   .ql-container {
     background-color: #2c2c2c;
-    color: #606060;
+    direction: rtl;
+    text-align: right;
+    border: none !important;
+  }
+
+  .ql-container * {
+    background-color: #2c2c2c;
+    color: #84858f;
     font-family: inherit;
-    border: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     direction: rtl;
     text-align: right;
   }
 
   .ql-editor {
+    background-color: #2c2c2c;
+    color: red !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
     min-height: 150px;
     direction: rtl;
     text-align: right;
   }
 
-  .ql-editor::before {
-    content: attr(data-placeholder);
-    color: #a0a0ab;
-    font-style: italic;
-    position: absolute;
-    left: 0;
-    right: 20px;
-    font-family: inherit;
-    text-align: right;
-    pointer-events: none;
-    display: block;
+  .ql-editor:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .ql-editor:before,
+  .ql-editor:after {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
   }
 
   .ql-toolbar .ql-picker {
@@ -113,6 +127,18 @@ const EditInput = ({ description, onChange }) => {
   const remainingChars = charLimit - currentLength;
   const isOverLimit = remainingChars <= 0;
 
+  const handleKeyDown = (event) => {
+    if (currentLength >= charLimit && event.key !== "Backspace" && event.key !== "Delete") {
+      event.preventDefault();
+    }
+  };
+
+  const handleChange = (value) => {
+    if (value.length <= charLimit) {
+      onChange(value);
+    }
+  };
+
   const modules = {
     toolbar: [
       ["bold", "italic", "underline", "strike", "blockquote"],
@@ -148,9 +174,10 @@ const EditInput = ({ description, onChange }) => {
       <EditorContainer>
         <ReactQuill
           value={description}
-          onChange={onChange}
+          onChange={handleChange} 
           modules={modules}
           formats={formats}
+          onKeyDown={handleKeyDown}
           // placeholder="پاسخ خود را بنویسید"
         />
       </EditorContainer>

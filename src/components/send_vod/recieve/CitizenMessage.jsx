@@ -25,7 +25,7 @@ const Header = styled.div`
 `;
 
 const Text = styled.div`
-  background-color: #1A1A18;
+  background-color: #1a1a18;
   padding: 12px;
   border-radius: 10px;
   p {
@@ -38,17 +38,17 @@ const Text = styled.div`
     font-size: 16px;
     font-weight: 400;
     width: fit-content;
-    margin-right: auto;
+    margin-left: auto;
     margin-top: 10px;
   }
 `;
 
 const Files = styled.div`
-  background-color: #1A1A18;
+  background-color: #1a1a18;
   padding: 12px;
   border-radius: 10px;
   margin-top: 10px;
-  margin-right: auto;
+  margin-left: auto;
   width: fit-content;
   div {
     &:first-of-type {
@@ -74,7 +74,7 @@ const Container = styled.div`
   display: flex;
   gap: 12px;
   width: 80%;
-  margin-right: auto;
+  margin-left: auto;
   direction: rtl;
   margin-top: 20px;
 `;
@@ -106,7 +106,7 @@ const Image = styled.div`
 `;
 
 const handleDownload = (imageSrc, filename) => {
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = imageSrc;
   link.download = filename;
   document.body.appendChild(link);
@@ -114,13 +114,14 @@ const handleDownload = (imageSrc, filename) => {
   document.body.removeChild(link);
 };
 
-const CitizenMessage = ({member}) => {
+const CitizenMessage = ({ member }) => {
   return (
     <Container>
+      <Avatar src={avatar} alt="avatar" width={50} height={50} />
       <Content>
         <Header>
-          <span>{member}</span>
           <a href="https://rgb.irpsc.com/fa/citizen/hm-2000001">HM-200020</a>
+          <span>{member}</span>
         </Header>
         <Text>
           <p>
@@ -140,7 +141,7 @@ const CitizenMessage = ({member}) => {
                 alt="download"
                 width={36}
                 height={36}
-                onClick={() => handleDownload(photo, 'photo.jpeg')}
+                onClick={() => handleDownload(photo, "photo.jpeg")}
               />
             </Image>
             <Image>
@@ -150,14 +151,13 @@ const CitizenMessage = ({member}) => {
                 alt="download"
                 width={36}
                 height={36}
-                onClick={() => handleDownload(file, 'file.png')}
+                onClick={() => handleDownload(file, "file.png")}
               />
             </Image>
           </div>
           <h4>۲۱ اردیبهشت ۱۴۰۳ | ۱۲:۲۰</h4>
         </Files>
       </Content>
-      <Avatar src={avatar} alt="avatar" width={50} height={50} />
     </Container>
   );
 };

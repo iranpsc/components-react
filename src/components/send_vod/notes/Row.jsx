@@ -26,6 +26,7 @@ const TableCell = styled.td`
 const Code = styled.h2`
   font-size: 16px;
   font-weight: 500;
+  color: #FFFFFF;
 `;
 
 const Buttons = styled.div`

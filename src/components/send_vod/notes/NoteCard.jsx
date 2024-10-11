@@ -20,6 +20,9 @@ const Button = styled.div`
   svg {
     margin-top: 2px;
   }
+  h4{
+    color: #949494;
+  }
 `;
 
 const Container = styled.div`

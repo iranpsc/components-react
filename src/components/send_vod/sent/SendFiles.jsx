@@ -76,44 +76,36 @@ const ErrorMessage = styled.div`
   margin: 10px 0;
 `;
 
-const SendFiles = () => {
-  const { state, dispatch } = useGlobalState();
+const SendFiles = ({ setFiles }) => {
   const [previews, setPreviews] = useState([]);
   const [error, setError] = useState("");
-console.log(state.files);
-  const MAX_FILE_SIZE_MB = 9;
 
   const fileHandler = (e) => {
-    setError("");
+    const selectedFiles = Array.from(e.target.files);
 
-    const files = Array.from(e.target.files);
-    let filePreviews = [];
-    let isError = false;
-
-    files.forEach((file) => {
-      if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-        setError(`سایز ${file.name} نباید بیشتر از ${MAX_FILE_SIZE_MB} MB باشد.`);
-        isError = true;
-      } else {
-        if (file.type.startsWith("image/")) {
-          filePreviews.push(URL.createObjectURL(file));
-        } else {
-          filePreviews.push(nonPhoto);
-        }
-      }
-    });
-
-    if (!isError) {
-      setPreviews([...previews, ...filePreviews]);
-      dispatch({ type: "SET_FILES", payload: [...state.files, ...files] });
+    if (previews.length + selectedFiles.length > 5) {
+      setError("You can only upload up to 5 files.");
+      return;
     }
+
+    const filePreviews = selectedFiles.map((file) => ({
+      name: file.name,
+      url: URL.createObjectURL(file), 
+      file, 
+    }));
+
+    setPreviews((prev) => [...prev, ...filePreviews]);
+    
+    setFiles((prevFiles) => [...prevFiles, ...filePreviews]);
+
+    e.target.value = null; 
   };
 
   const removeFile = (index) => {
-    const updatedFiles = state.files.filter((_, i) => i !== index);
     const updatedPreviews = previews.filter((_, i) => i !== index);
     setPreviews(updatedPreviews);
-    dispatch({ type: "SET_FILES", payload: updatedFiles });
+
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
   const handleDivClick = () => {
@@ -126,7 +118,7 @@ console.log(state.files);
       <Files>
         {previews.map((preview, index) => (
           <FilePreview key={index}>
-            <FileImage src={preview} alt={`file-preview-${index}`}/>
+            <FileImage src={preview.url} alt={`file-preview-${index}`} />
             <RemoveButton
               src={remove}
               alt="remove"
@@ -136,15 +128,10 @@ console.log(state.files);
             />
           </FilePreview>
         ))}
-        {state.files.length < 5 && (
+        {previews.length < 5 && (
           <Div onClick={handleDivClick}>
             <span>+</span>
-            <HiddenInput
-              id="file-input"
-              type="file"
-              onChange={fileHandler}
-              multiple
-            />
+            <HiddenInput id="file-input" type="file" multiple onChange={fileHandler} />
           </Div>
         )}
       </Files>
@@ -154,3 +141,4 @@ console.log(state.files);
 };
 
 export default SendFiles;
+
