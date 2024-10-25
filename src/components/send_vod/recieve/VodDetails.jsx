@@ -7,6 +7,7 @@ const Container = styled.div`
   padding: 20px 0;
   width: 90%;
   height: 80%;
+  overflow: hidden;
   position: relative;
   border-radius: 10px;
   background-color: #000000;
