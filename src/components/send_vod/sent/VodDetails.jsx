@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   padding: 20px 0;
-  width: 90%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   position: relative;
   border-radius: 10px;
@@ -15,6 +15,7 @@ const Container = styled.div`
   z-index: 9999;
   @media (min-width: 1366px) {
     width: 70%;
+    height:80%
   }
 `;
 
@@ -50,39 +51,39 @@ const Back = styled.div`
 `;
 
 const Div = styled.div`
-  height: 272px;
+  height: 332px;
   overflow-y: auto;
   direction: ltr;
   padding-right: 15px;
   @media (min-width: 720px) {
-    height: 408px;
+    height: 500px;
   }
   @media (min-width: 740px) {
-    height: 260px;
+    height: 315px;
   }
   @media (min-width: 840px) {
-    height: 286px;
+    height: 355px;
   }
   @media (min-width: 880px) {
-    height: 250px;
+    height: 310px;
   }
   @media (min-width: 890px) {
-    height: 308px;
+    height: 370px;
   }
   @media (min-width: 900px) {
-    height: 307px;
+    height: 370px;
   }
   @media (min-width: 930px) {
-    height: 320px;
+    height: 390px;
   }
   @media (min-width: 1024px) {
-    height: 460px;
+    height: 560px;
   }
   @media (min-width: 1180px) {
-    height: 629px;
+    height: 780px;
   }
   @media (min-width: 1280px) {
-    height: 629px;
+    height: 760px;
   }
   @media (min-width: 1366px) {
     height: 795px;
@@ -92,8 +93,7 @@ const Div = styled.div`
   }
   @media (min-width: 1920px) {
     height: 710px;
-  }
-`;
+  }`;
 
 const VodDetails = ({
   setShowDetails,
