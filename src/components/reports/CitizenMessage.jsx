@@ -69,6 +69,8 @@ const Files = styled.div`
 
 const Avatar = styled.img`
   border-radius: 100%;
+  width: 50px;
+  height: 50px;
 `;
 
 const Container = styled.div`
@@ -131,7 +133,7 @@ const CitizenMessage = () => {
             ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
             کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد
           </p>
-          <h4>۲۱ اردیبهشت ۱۴۰۳ | ۱۲:۲۰</h4>
+          <h4>۲۱ اردیبهشت ۱۴۰۳     <span style={{display: 'inline-block',margin: '0 5px'}}>|</span>   ۱۲:۲۰</h4>
         </Text>
         <Files>
           <div>
@@ -156,7 +158,7 @@ const CitizenMessage = () => {
               />
             </Image>
           </div>
-          <h4>۲۱ اردیبهشت ۱۴۰۳ | ۱۲:۲۰</h4>
+          <h4>۲۱ اردیبهشت ۱۴۰۳  <span style={{display: 'inline-block',margin: '0 5px'}}>|</span>   ۱۲:۲۰</h4>
         </Files>
       </Content>
     </Container>

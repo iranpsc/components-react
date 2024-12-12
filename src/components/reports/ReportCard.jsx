@@ -153,7 +153,7 @@ const ReportCard = ({
         <Date>
           <Label>تاریخ و ساعت ارسال</Label>
           <h2>
-            {date} | {time}
+            {date} <span style={{display: 'inline-block',margin: '0 5px'}}>|</span>  {time}
           </h2>
         </Date>
       </Content>

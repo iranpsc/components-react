@@ -75,6 +75,9 @@ const ReportRow = ({
 }) => {
   const [showDetails, setShowDetails] = useState(false);
   const { setIsLoading } = useContext(LoaderContext);
+  const truncateTitle = (titleString) => {
+    return titleString.length > 40 ? titleString.substring(0, 40) + '...' : titleString;
+  };
   return (
     <>
       <TableRow status={status}>
@@ -85,7 +88,7 @@ const ReportRow = ({
         </TableCell>
         <TableCell>
           <div>
-            <Date>{title}</Date>
+            <Date>{truncateTitle(title)}</Date>
           </div>
         </TableCell>
         <TableCell>

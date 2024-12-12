@@ -158,6 +158,8 @@ const TableHeader = styled.th`
   font-weight: 500;
   color: #ffffff;
   position: relative;
+  width: ${(props) => (props.date ? "300px" : "auto")};
+  
 `;
 
 const Loader = styled.div`
@@ -199,8 +201,8 @@ const ReportsList = ({
         <TableHead>
           <TableRow>
             <TableHeader>کد گزارش</TableHeader>
-            <TableHeader date>عنوان گزارش</TableHeader>
-            <TableHeader>
+            <TableHeader  date>عنوان گزارش</TableHeader>
+            <TableHeader style={{ width: "120px" }}>
               <Div>
                 موضوع
                 <Arrows onClick={() => setFilters({ member: !filters.member })}>
@@ -343,7 +345,7 @@ const ReportsList = ({
                 </StatusFilter>
               )}
             </TableHeader>
-            <TableHeader title>
+            <TableHeader style={{ width: "120px" }} title>
               <Div>
                 وضعیت
                 <Arrows onClick={() => setFilters({ status: !filters.status })}>
